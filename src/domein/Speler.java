@@ -24,8 +24,16 @@ public class Speler {
 	}
 	
 	private void controleerGebruikersnaam(String gebruikersnaam) {
-		if(!gebruikersnaam.contains(" ") || !gebruikersnaam.contains("_"))
-			throw new IllegalArgumentException("Gebruikersnaam mag enkel spaties en _ bevatten, anders geen speciale tekens!");
+		String specialeKarakters = "!#$%&'()*+,-./:;<=>?@[]^_`{|}";
+		boolean speciaalTeken = false;
+		for(int i = 0; i < specialeKarakters.length(); i++) {
+			if(gebruikersnaam.contains(Character.toString(specialeKarakters.charAt(i)))) {
+				speciaalTeken = true;
+				break;
+			}
+		}
+		
+		
 		char c = gebruikersnaam.charAt(0);
 		if((c <= 'A' && c >= 'Z') || (c <= 'a' || c >= 'z'))
 			throw new IllegalArgumentException("Gebruikersnaam moet starten met een letter (klein of groot)!");
