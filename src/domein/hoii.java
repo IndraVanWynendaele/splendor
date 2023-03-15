@@ -1,6 +1,0 @@
-package domein;
-
-public class hoii {
-	// eiihfezo
-	// groetjes x
-}
