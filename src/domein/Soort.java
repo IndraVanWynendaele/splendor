@@ -1,9 +1,9 @@
 package domein;
 
 public enum Soort {
-	smaragd,
-	diamant,
-	saffier,
-	onyx,
-	robijn
+	SMARAGD,
+	DIAMANT,
+	SAFFIER,
+	ONYX,
+	ROBIJN
 }
