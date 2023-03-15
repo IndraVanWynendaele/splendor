@@ -1,34 +1,27 @@
 package domein;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 public class SpelerRepository {
 
 	private List<Speler> spelers;
 
-	/**
-	 * 
-	 * @param speler
-	 */
-	public void voegToe(Speler speler) {
-		// TODO - implement SpelerRepository.voegToe
-		throw new UnsupportedOperationException();
+	public SpelerRepository() {
+		spelers = new ArrayList<>();
 	}
 
-	/**
-	 * 
-	 * @param gebruikersnaam
-	 * @param Geboortejaar
-	 */
-	public Speler geefSpeler(String gebruikersnaam, LocalDate Geboortejaar) {
+	public void voegToe(Speler speler) {
+		spelers.add(speler);
+	}
+
+	public List<Speler> getSpelers() {
+		return spelers;
+	}
+	
+	/* public Speler geefSpeler(String gebruikersnaam, LocalDate Geboortejaar) {
 		// TODO - implement SpelerRepository.geefSpeler
 		throw new UnsupportedOperationException();
-	}
-
-	public SpelerRepository() {
-		// TODO - implement SpelerRepository.SpelerRepository
-		throw new UnsupportedOperationException();
-	}
-
+	}*/
 }
