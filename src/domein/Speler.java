@@ -7,7 +7,6 @@ public class Speler {
 	private Spel s;
 	private final String gebruikersnaam;
 	private final LocalDate geboortejaar;
-	private final LocalDate huidigJaar = LocalDate.parse("2017");
 
 	public String getGebruikersnaam() {
 		return this.gebruikersnaam;
@@ -33,8 +32,8 @@ public class Speler {
 	}
 	
 	private void controleerGeboortejaar(LocalDate geboortejaar) {
-		if(geboortejaar.isAfter(huidigJaar)) {
-			throw new IllegalArgumentException("Speler moet minimum 6 jaar oud zijn");
-		}
+		LocalDate minimumJaar = LocalDate.now().minusYears(6);
+		if(geboortejaar.isAfter(minimumJaar))
+			throw new IllegalArgumentException("Gebruiker moet minimum 6 jaar oud zijn");
 	}
 }
