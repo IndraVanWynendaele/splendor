@@ -22,7 +22,7 @@ public class DomeinController {
 		
 		System.out.print("Geef de gebruikersnaam: ");
 		naam= input.nextLine();
-		System.out.print("Geef je geboortjejaar: ");
+		System.out.print("Geef je geboortjejaar (formaat: jjjj-mm-dd): ");
 		stringJaar=input.nextLine();
 		
 		jaar = LocalDate.parse(stringJaar);
@@ -38,7 +38,7 @@ public class DomeinController {
 			i++;
 			System.out.printf("Geef de gebruikersnaam van speler %d: ",i+1);
 			naam= input.nextLine();
-			System.out.printf("Geef je geboortjejaar van speler %d: ",i+1);
+			System.out.printf("Geef je geboortjejaar van speler %d (formaat: jjjj-mm-dd): ",i+1);
 			stringJaar=input.nextLine();
 			
 			jaar = LocalDate.parse(stringJaar);
@@ -56,7 +56,6 @@ public class DomeinController {
 				 gebruikerGedaan=true;
 			}
 		}while(!gebruikerGedaan);
-		
 		
 	}
 
