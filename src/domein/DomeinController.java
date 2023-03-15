@@ -29,7 +29,7 @@ public class DomeinController {
 		
 		meldAan(naam,jaar);
 		
-		//spelers=sRepo.getSpelers();
+		spelers=sRepo.getSpelers();
 		//Speler startSpeler=spelers.get(0);
 		//spelers.remove(0);
 		
@@ -69,7 +69,8 @@ public class DomeinController {
 		s = new Spel();
 		Speler s = new Speler(gebruikersnaam,geboortejaar);
 		sRepo.voegToe(s);
-		spelers.add(s);
+		//spelers.add(s);
+		
 		//Speler startSpeler = new Speler(gebruikersnaam,geboortejaar);
 		//List<Speler> spelers= new ArrayList<>();
 	}
