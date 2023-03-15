@@ -32,9 +32,7 @@ public class Speler {
 		char c = gebruikersnaam.charAt(0);
 		/*if((c < 'A' && c > 'Z') || (c < 'a' && c > 'z'))
 			throw new IllegalArgumentException("Gebruikersnaam moet starten met een letter (klein of groot)!");*/
-		if((c >= 'A' && c <='Z') || (c >= 'a' && c <='z'))
-			goed = true;
-		else
+		if(!((c >= 'A' && c <='Z') || (c >= 'a' && c <='z')))
 			throw new IllegalArgumentException("Gebruikersnaam moet starten met een letter (klein of groot)!");
 
 		
