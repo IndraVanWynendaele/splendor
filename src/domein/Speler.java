@@ -30,7 +30,7 @@ public class Speler {
 				throw new IllegalArgumentException("gebruikersnaam mag geen speicale tekens buiten spatie en _ bevatten");
 		
 		char c = gebruikersnaam.charAt(0);
-		if((c <= 'A' && c >= 'Z') || (c <= 'a' || c >= 'z'))
+		if((c < 'A' && c > 'Z') || (c < 'a' && c > 'z'))
 			throw new IllegalArgumentException("Gebruikersnaam moet starten met een letter (klein of groot)!");
 	}
 	
