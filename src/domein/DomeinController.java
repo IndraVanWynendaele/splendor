@@ -11,8 +11,7 @@ public class DomeinController {
 	private Spel s;
 
 	public void startSpel() {
-		// TODO - implement DomeinController.startSpel
-		throw new UnsupportedOperationException();
+		spelers=sRepo.getSpelers();
 	}
 
 	/**
@@ -21,13 +20,18 @@ public class DomeinController {
 	 * @param geboortejaar
 	 */
 	public void meldAan(String gebruikersnaam, LocalDate geboortejaar) {
-		// TODO - implement DomeinController.meldAan
-		throw new UnsupportedOperationException();
+		s = new Spel();
+		Speler s = new Speler(gebruikersnaam,geboortejaar);
+		sRepo.voegToe(s);
+		
+		//Speler startSpeler = new Speler(gebruikersnaam,geboortejaar);
+		//List<Speler> spelers= new ArrayList<>();
 	}
 
 	public DomeinController() {
-		// TODO - implement DomeinController.DomeinController
-		throw new UnsupportedOperationException();
+		spelers = new ArrayList<>();
+		sRepo = new SpelerRepository();
+		
 	}
 
 

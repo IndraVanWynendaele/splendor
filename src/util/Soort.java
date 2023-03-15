@@ -1,4 +1,4 @@
-package domein;
+package util;
 
 public enum Soort {
 	SMARAGD,

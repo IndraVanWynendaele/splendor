@@ -1,5 +1,7 @@
 package domein;
 
+import util.Soort;
+
 public class Edelsteenfiche extends Component {
 
 	private final Soort kleur;
