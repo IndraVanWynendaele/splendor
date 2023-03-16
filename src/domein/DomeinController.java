@@ -6,7 +6,7 @@ import java.util.*;
 
 import dtos.SpelerDTO;
 import javafx.scene.control.Spinner;
-
+// ik heb bang
 public class DomeinController {
 
 	private List<SpelerDTO> spelers;
