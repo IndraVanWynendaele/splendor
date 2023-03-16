@@ -1,6 +1,6 @@
 package domein;
 
-public class Edele extends Component {
+public class Edele {
 
 	public Edele() {
 		// TODO - implement Edele.Edele
