@@ -1,22 +1,19 @@
 package persistentie;
 
-import java.math.BigDecimal;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.time.LocalDate;
 
 import domein.Speler;
 
 public class SpelerMapper {
 	
-	public SpelerMapper() {
+	/*public SpelerMapper() {
 		//geen idee
-		
 	}
-		
+	*/
 	public Speler geefSpeler(String gn,int gj) {
 		Speler speler = null;
 		try(Connection conn = DriverManager.getConnection(Connectie.JDBC_URL)){
