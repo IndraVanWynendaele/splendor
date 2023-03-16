@@ -7,6 +7,7 @@ public class Speler {
 	private Spel s;
 	private final String gebruikersnaam;
 	private final int geboortejaar;
+	private final int minimumJaar = 2017;
 
 	public String getGebruikersnaam() {
 		return this.gebruikersnaam;
@@ -34,7 +35,6 @@ public class Speler {
 	}
 	
 	private void controleerGeboortejaar(int geboortejaar) {
-		int minimumJaar = 2017;
 		if(geboortejaar > minimumJaar)
 			throw new IllegalArgumentException("Gebruiker moet minimum 6 jaar oud zijn");
 	}
