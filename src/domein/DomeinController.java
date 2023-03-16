@@ -4,11 +4,12 @@ package domein;
 import java.time.LocalDate;
 import java.util.*;
 
+import dtos.SpelerDTO;
 import javafx.scene.control.Spinner;
 
 public class DomeinController {
 
-	private List<Speler> spelers;
+	private List<SpelerDTO> spelers;
 	private SpelerRepository sRepo;
 	private Spel s;
 	
@@ -17,19 +18,17 @@ public class DomeinController {
 
 	public void startSpel() {
 		String naam;
-		String stringJaar;
-		LocalDate jaar;
+		int jaar;
 		
 		System.out.print("Geef de gebruikersnaam: ");
 		naam= input.nextLine();
-		System.out.print("Geef je geboortjejaar (formaat: jjjj-mm-dd): ");
-		stringJaar=input.nextLine();
-		
-		jaar = LocalDate.parse(stringJaar);
+		System.out.print("Geef je geboortjejaar (formaat: jjjj): ");
+		jaar=input.nextInt();
 		
 		meldAan(naam,jaar);
 		
-		spelers=sRepo.getSpelers();
+		//List<Spelers>
+		//spelers=sRepo.getSpelers();
 		//Speler startSpeler=spelers.get(0);
 		//spelers.remove(0);
 		
@@ -38,10 +37,8 @@ public class DomeinController {
 			i++;
 			System.out.printf("Geef de gebruikersnaam van speler %d: ",i+1);
 			naam= input.nextLine();
-			System.out.printf("Geef je geboortjejaar van speler %d (formaat: jjjj-mm-dd): ",i+1);
-			stringJaar=input.nextLine();
-			
-			jaar = LocalDate.parse(stringJaar);
+			System.out.printf("Geef je geboortjejaar van speler %d (formaat: jjjj): ",i+1);
+			jaar=input.nextInt();
 				
 			meldAan(naam,jaar);
 				
@@ -64,12 +61,14 @@ public class DomeinController {
 	 * @param gebruikersnaam
 	 * @param geboortejaar
 	 */
-	public void meldAan(String gebruikersnaam, LocalDate geboortejaar) {
+	public void meldAan(String gebruikersnaam, int geboortejaar) {
 		s = new Spel();
-		Speler s = new Speler(gebruikersnaam,geboortejaar);
-		sRepo.voegToe(s);
-		//spelers.add(s);
+		s.meldAan(gebruikersnaam,geboortejaar);		
 		
+		//Speler s = new Speler(gebruikersnaam,geboortejaar);
+		//sRepo.voegToe(s);
+		
+		//spelers.add(s);
 		//Speler startSpeler = new Speler(gebruikersnaam,geboortejaar);
 		//List<Speler> spelers= new ArrayList<>();
 	}
