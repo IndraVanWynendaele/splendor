@@ -6,18 +6,18 @@ import java.util.*;
 
 import dtos.SpelerDTO;
 import javafx.scene.control.Spinner;
-// ik heb bang
+
 public class DomeinController {
 
-	private List<SpelerDTO> spelers;
+	//private List<SpelerDTO> spelers;
 	private SpelerRepository sRepo;
 	private Spel s;
 	
 	private Scanner input = new Scanner(System.in);
-	private boolean gebruikerGedaan;
+	//private boolean gebruikerGedaan;
 
 	public void startSpel() {
-		String naam;
+	/*	String naam;
 		int jaar;
 		
 		System.out.print("Geef de gebruikersnaam: ");
@@ -53,7 +53,8 @@ public class DomeinController {
 				 gebruikerGedaan=true;
 			}
 		}while(!gebruikerGedaan);
-		
+		*/
+		s = new Spel();
 	}
 
 	/**
@@ -62,8 +63,8 @@ public class DomeinController {
 	 * @param geboortejaar
 	 */
 	public void meldAan(String gebruikersnaam, int geboortejaar) {
-		s = new Spel();
-		s.meldAan(gebruikersnaam,geboortejaar);		
+		Speler sp =sRepo.geefSpeler( gebruikersnaam, geboortejaar);
+		s.meldAan(sp);		
 		
 		//Speler s = new Speler(gebruikersnaam,geboortejaar);
 		//sRepo.voegToe(s);
@@ -74,7 +75,7 @@ public class DomeinController {
 	}
 
 	public DomeinController() {
-		spelers = new ArrayList<>();
+		//spelers = new ArrayList<>();
 		sRepo = new SpelerRepository();
 		
 	}

@@ -1,6 +1,6 @@
 package domein;
 
-import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Spel {
@@ -9,17 +9,21 @@ public class Spel {
 	private Speler startSpeler;
 	
 	public Spel() {
-		
+		spelers= new ArrayList<>();
 	}
 	
-	public void meldAan(String gebruikersnaam, int geboortejaar){
-		Speler s = new Speler(gebruikersnaam,geboortejaar);
-		spelers.add(s);
+	public Speler getStartSpeler() {
+		return startSpeler;
 	}
 	
-
-	public Spel() {
-		// TODO Auto-generated constructor stub
+	public List<Speler> getSpelers() {
+		return spelers;
 	}
-
+	
+	public void meldAan(Speler sp){
+		if(startSpeler==null) {
+			startSpeler=sp;
+		}
+		spelers.add(sp);
+	}
 }

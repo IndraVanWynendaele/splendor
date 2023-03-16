@@ -20,8 +20,8 @@ public class SpelerRepository {
 		return spelers;
 	}
 	
-	/* public Speler geefSpeler(String gebruikersnaam, LocalDate Geboortejaar) {
-		// TODO - implement SpelerRepository.geefSpeler
-		throw new UnsupportedOperationException();
-	}*/
+	public Speler geefSpeler(String gebruikersnaam, LocalDate Geboortejaar) {
+		// link naar de spelermapper
+		retrun sp
+	}
 }
