@@ -17,17 +17,17 @@ import domein.SpelerRepository;
 
 class SpelTest {
 	
-	private LocalDate geldigeDatum = LocalDate.parse("2000-01-01");
+	private int geboortejaar;
 	private SpelerRepository sr;
 	private Speler s1, s2, s3, s4, s5;
 	
 	@BeforeEach
 	void setUp1() {
-		Speler s1 = new Speler("naam", geldigeDatum);
-		Speler speler2 = new Speler("naam", geldigeDatum);
-		Speler speler3 = new Speler("naam", geldigeDatum);
-		Speler speler4 = new Speler("naam", geldigeDatum);
-		Speler speler5 = new Speler("naam", geldigeDatum);
+		Speler s1 = new Speler("naam", geboortejaar);
+		Speler speler2 = new Speler("naam", geboortejaar);
+		Speler speler3 = new Speler("naam", geboortejaar);
+		Speler speler4 = new Speler("naam", geboortejaar);
+		Speler speler5 = new Speler("naam", geboortejaar);
 		
 		sr = new SpelerRepository();
 		ArrayList<Speler> spelers= new ArrayList<>();
