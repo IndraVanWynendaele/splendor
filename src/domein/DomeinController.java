@@ -1,59 +1,14 @@
 package domein;
 
-
-import java.time.LocalDate;
-import java.util.*;
-
-import dtos.SpelerDTO;
-import javafx.scene.control.Spinner;
-
+import domein.EdeleRepository;
 public class DomeinController {
 
 	//private List<SpelerDTO> spelers;
 	private SpelerRepository sRepo;
 	private Spel s;
-	
-	private Scanner input = new Scanner(System.in);
-	//private boolean gebruikerGedaan;
+	private EdeleRepository eRepo;
 
 	public void startSpel() {
-	/*	String naam;
-		int jaar;
-		
-		System.out.print("Geef de gebruikersnaam: ");
-		naam= input.nextLine();
-		System.out.print("Geef je geboortjejaar (formaat: jjjj): ");
-		jaar=input.nextInt();
-		
-		meldAan(naam,jaar);
-		
-		//List<Spelers>
-		//spelers=sRepo.getSpelers();
-		//Speler startSpeler=spelers.get(0);
-		//spelers.remove(0);
-		
-		int i=1;
-		do {
-			i++;
-			System.out.printf("Geef de gebruikersnaam van speler %d: ",i+1);
-			naam= input.nextLine();
-			System.out.printf("Geef je geboortjejaar van speler %d (formaat: jjjj): ",i+1);
-			jaar=input.nextInt();
-				
-			meldAan(naam,jaar);
-				
-			System.out.printf("Wil je nog een %d de speler toevoegen? (1=ja, 2=nee)");
-			int keuze = input.nextInt();
-			switch(keuze) {
-			case 1 -> gebruikerGedaan=false;
-			case 2 -> gebruikerGedaan=true;
-			default -> throw new IllegalArgumentException("Je moet 1 of 2 ingeven");
-			}
-			if (i==4) {
-				 gebruikerGedaan=true;
-			}
-		}while(!gebruikerGedaan);
-		*/
 		s = new Spel();
 	}
 
