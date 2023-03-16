@@ -6,17 +6,17 @@ public class Speler {
 
 	private Spel s;
 	private final String gebruikersnaam;
-	private final LocalDate geboortejaar;
+	private final int geboortejaar;
 
 	public String getGebruikersnaam() {
 		return this.gebruikersnaam;
 	}
 
-	public LocalDate getGeboortejaar() {
+	public int getGeboortejaar() {
 		return this.geboortejaar;
 	}
 
-	public Speler(String gebruikersnaam, LocalDate geboortejaar) {
+	public Speler(String gebruikersnaam, int geboortejaar) {
 		controleerGebruikersnaam(gebruikersnaam);
 		controleerGeboortejaar(geboortejaar);
 		this.gebruikersnaam = gebruikersnaam;
@@ -30,17 +30,13 @@ public class Speler {
 			if(gebruikersnaam.contains(Character.toString(specialeKarakters.charAt(i))))
 				throw new IllegalArgumentException("gebruikersnaam mag geen speicale tekens buiten spatie en _ bevatten");
 		char c = gebruikersnaam.charAt(0);
-		/*if((c < 'A' && c > 'Z') || (c < 'a' && c > 'z'))
-			throw new IllegalArgumentException("Gebruikersnaam moet starten met een letter (klein of groot)!");*/
 		if(!((c >= 'A' && c <='Z') || (c >= 'a' && c <='z')))
-			throw new IllegalArgumentException("Gebruikersnaam moet starten met een letter (klein of groot)!");
-
-		
+			throw new IllegalArgumentException("Gebruikersnaam moet starten met een letter (klein of groot)!");		
 	}
 	
-	private void controleerGeboortejaar(LocalDate geboortejaar) {
-		LocalDate minimumJaar = LocalDate.now().minusYears(6);
-		if(geboortejaar.isAfter(minimumJaar))
+	private void controleerGeboortejaar(int geboortejaar) {
+		int minimumJaar = 2017;
+		if(geboortejaar > minimumJaar)
 			throw new IllegalArgumentException("Gebruiker moet minimum 6 jaar oud zijn");
 	}
 }
