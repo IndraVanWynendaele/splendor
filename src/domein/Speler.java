@@ -25,7 +25,6 @@ public class Speler {
 	
 	private void controleerGebruikersnaam(String gebruikersnaam) {
 		String specialeKarakters = "!#$%&'()*+,-./:;<=>?@[]^`{|}";
-		boolean goed;
 		for(int i = 0; i < specialeKarakters.length(); i++)
 			if(gebruikersnaam.contains(Character.toString(specialeKarakters.charAt(i))))
 				throw new IllegalArgumentException("gebruikersnaam mag geen speicale tekens buiten spatie en _ bevatten");
