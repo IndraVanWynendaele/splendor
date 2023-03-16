@@ -1,6 +1,6 @@
 package domein;
 
-public class Ontwikkelingskaart extends Component {
+public class Ontwikkelingskaart {
 
 	private final int niveau;
 
