@@ -4,7 +4,7 @@ import java.time.LocalDate;
 import java.util.List;
 
 public class Spel {
-	
+
 	private List<Speler> spelers;
 	private Speler startSpeler;
 	
@@ -17,4 +17,9 @@ public class Spel {
 		spelers.add(s);
 	}
 	
+
+	public Spel() {
+		// TODO Auto-generated constructor stub
+	}
+
 }

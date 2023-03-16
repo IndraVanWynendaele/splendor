@@ -14,9 +14,9 @@ import domein.Speler;
 
 class SpelerTest {
 
-	private LocalDate geldigGeboortejaar = LocalDate.now().minusYears(8);
-	private LocalDate netOngeldigGeboortejaar = LocalDate.now().minusYears(5);
-	private LocalDate ongeldigGeboortejaar = LocalDate.now().minusYears(2);
+	private int geldigGeboortejaar = 2017;
+	private int netOngeldigGeboortejaar = 2018;
+	private int ongeldigGeboortejaar = 2020;
 	
 	@ParameterizedTest
 	@ValueSource(strings = {"Aenof", "Afu12", "a12 fBfz", "fe_12 AB"})
