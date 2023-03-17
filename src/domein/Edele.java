@@ -12,7 +12,7 @@ public class Edele {
 		this.prestigePunten = prestigePunten;
 	}
 	
-	public void addKost(int aantal, EdelsteenSoort soort) { //mapper en repo gebruikt deze methode
+	public void voegKostToe(int aantal, EdelsteenSoort soort) { //mapper en repo gebruikt deze methode
 		kosten.add(new Kost(aantal, soort));
 	}
 }

@@ -1,15 +1,11 @@
 package domein;
 
-import util.Soort;
+import util.EdelsteenSoort;
 
 public class Edelsteenfiche {
 
-	private final Soort kleur;
+	private final EdelsteenSoort kleur;
 
-	/**
-	 * 
-	 * @param kleur
-	 */
 	public Edelsteenfiche(String kleur) {
 		// TODO - implement Edelsteenfiche.Edelsteenfiche
 		throw new UnsupportedOperationException();

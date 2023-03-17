@@ -1,6 +1,5 @@
 package domein;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import persistentie.EdeleMapper;
@@ -14,8 +13,7 @@ public class EdeleRepository {
 	}
 	
 	public List<Edele> geefEdelen(){
-		List<Edele> lijstEdelen = new ArrayList<>();
-		
+		List<Edele>lijstEdele = mapper.lijstEdelen();
+		return lijstEdele;
 	}
-
 }
