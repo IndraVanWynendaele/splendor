@@ -1,6 +1,6 @@
 package util;
 
-public enum Soort {
+public enum EdelsteenSoort {
 	SMARAGD,
 	DIAMANT,
 	SAFFIER,
