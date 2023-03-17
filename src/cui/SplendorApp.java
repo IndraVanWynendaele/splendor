@@ -18,7 +18,7 @@ public class SplendorApp {
 		System.out.print("test");
 		SpelerMapper mp = new SpelerMapper();
 		System.out.print(mp.geefSpeler("gebruiker1",2004 ));
-		/* test
+		/*
 		 * String naam;
 		int jaar;
 		
