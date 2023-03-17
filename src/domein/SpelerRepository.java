@@ -1,6 +1,5 @@
 package domein;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import persistentie.SpelerMapper;
@@ -8,13 +7,14 @@ import persistentie.SpelerMapper;
 public class SpelerRepository {
 
 	private final SpelerMapper sm;
+	private final List<Speler> spelers;
 
 	public SpelerRepository() {
 		sm= new SpelerMapper();
+		spelers = sm.geefSpelers();
 	}
 	
-	public Speler geefSpeler(String gebruikersnaam, int geboortejaar) {
-		Speler s=sm.geefSpeler(gebruikersnaam,geboortejaar );
-		return s;
+	public List<Speler> geefSpelers() {
+		return spelers;
 	}
 }
