@@ -1,9 +1,11 @@
 package cui;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 import domein.DomeinController;
-import persistentie.SpelerMapper;
+import domein.Speler;
 
 public class SplendorApp {
 
@@ -11,13 +13,66 @@ public class SplendorApp {
 	private Scanner input = new Scanner(System.in);
 	//private boolean gebruikerGedaan;
 	
+	private List<Speler> dbSpelers = new ArrayList<>();
+	private int keuze;
+	private int keuzeKeuzeMenu;
+	
 	public SplendorApp(DomeinController dc) {
 		this.dc= dc;
 	}
 	public void start() {
-		System.out.print("test");
-		SpelerMapper mp = new SpelerMapper();
-		System.out.print(mp.geefSpeler("gebruiker1",2004 ));
+		toonKeuzeMenu();
+		do {
+			toonKeuzeMenu();
+			toonSpelers();
+			maakKeuze();
+			// switch voor keuze speler
+		}while(keuzeKeuzeMenu == 1);
+		
+		
+	}
+	
+	private int toonKeuzeMenu() {
+		do {
+			System.out.println("1. Een speler aanmelden");
+			System.out.println("2. Stoppen met aanmelden en het spel starten");
+			System.out.println("3. De applicatie stoppen");
+			keuzeKeuzeMenu = input.nextInt();
+		}while(keuzeKeuzeMenu < 1 || keuzeKeuzeMenu > 3);
+		return keuzeKeuzeMenu;
+	}
+	
+	public String toonSpelers() {
+		dbSpelers = dc.geefSpelers();
+		String spelerLijst = "";
+		int index = 1;
+		System.out.printf("%15s %15s%15s", "Speler", "Gebruikersnaam", "Geboortejaar");
+		for(Speler s: dbSpelers) 
+			spelerLijst += String.format("%15d:%15s%15d",index++, s.getGebruikersnaam(), s.getGeboortejaar());
+		return spelerLijst;		
+	}
+	
+	public int maakKeuze() {
+		dbSpelers = dc.geefSpelers();
+		do {
+			System.out.println("Geef het nummer van de speler waarmee je wil spelen: ");
+			keuze = input.nextInt();
+		}while(keuze > dbSpelers.size() + 1);
+		return keuze;
+	}
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 		/*
 		 * String naam;
 		int jaar;
@@ -56,6 +111,5 @@ public class SplendorApp {
 			}
 		}while(!gebruikerGedaan);
 		 * */
-	}
 	
 }

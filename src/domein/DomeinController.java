@@ -24,6 +24,12 @@ public class DomeinController {
 			s.meldAan(sp);
 		}
 	}
+	
+	public List<Speler> geefSpelers(){
+		List<Speler> spelerLijst = new ArrayList<>();
+		spelerLijst = sRepo.geefSpelers();
+		return spelerLijst;
+	}
 
 	public DomeinController() {
 		//spelers = new ArrayList<>();
