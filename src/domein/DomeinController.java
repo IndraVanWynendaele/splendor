@@ -7,21 +7,15 @@ import domein.EdeleRepository;
 public class DomeinController {
 
 	private SpelerRepository sRepo;
-	private Spel s;
+	private Spel s ;
 	private EdeleRepository eRepo;
 
 	public void startSpel() {
-		s = new Spel();
+		//s = new Spel();
 	}
 
-	public void meldAan(String gebruikersnaam, int geboortejaar) {
-		Speler sp =sRepo.geefSpeler(gebruikersnaam, geboortejaar);
+	public void meldAan(Speler sp) {
 		s.meldAan(sp);		
-		/*List<Speler> spelers = new ArrayList<>();
-		spelers = sRepo.geefSpelers();
-		for(Speler sp:spelers) {
-			s.meldAan(sp);
-		}*/
 	}
 	
 	public List<Speler> geefSpelers(){
@@ -31,7 +25,7 @@ public class DomeinController {
 	}
 
 	public DomeinController() {
-		//spelers = new ArrayList<>();
+		s = new Spel();
 		sRepo = new SpelerRepository();
 	}
 }
