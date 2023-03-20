@@ -1,6 +1,7 @@
 package cui;
 
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
 
@@ -23,23 +24,11 @@ public class SplendorApp {
 	public SplendorApp(DomeinController dc) {
 		this.dc= dc;
 	}
-	public void start() {
-		sm = new SpelerMapper();
-		sm.geefSpeler(gebruikersnaam, geboortejaar);
-		
+	public void start() {		
 		System.out.println("Maak je keuze: ");
 		keuzeKeuzeMenu = toonKeuzeMenu();
-		while(keuzeKeuzeMenu != 3){
-			if(keuzeKeuzeMenu == 1) {
-				// gebruiker gegevens laten ingeven en checken of ze overeenkomen met geg uit db
-				// als ja -> controleerInvoerGegevens() maken en dan geefSpeler() met parameters=geg van gebruiker??
-				// of
-				// lijst met gebruikers in db tonen en gebruikers laten kiezen
-			}else if(keuzeKeuzeMenu == 2) {
-				// nieuw spel starten met spelers
-			}
-			keuzeKeuzeMenu = toonKeuzeMenu();
-		}
+		
+		
 		
 		
 		
@@ -47,11 +36,14 @@ public class SplendorApp {
 	
 	private int toonKeuzeMenu() {
 		do {
-			System.out.println("1. Een speler aanmelden");
-			System.out.println("2. Stoppen met aanmelden en het spel starten");
-			System.out.println("3. De applicatie stoppen");
-			keuzeKeuzeMenu = input.nextInt();
-			// try catch voor inputmismatch?
+			try {
+				System.out.println("1. Een speler aanmelden");
+				System.out.println("2. Stoppen met aanmelden en het spel starten");
+				System.out.println("3. De applicatie stoppen");
+				keuzeKeuzeMenu = input.nextInt();
+			}catch(InputMismatchException exc) {
+				System.out.println("Keuze moet een nummer zijn!");
+			}
 		}while(keuzeKeuzeMenu < 1 && keuzeKeuzeMenu > 3);
 		return keuzeKeuzeMenu;
 	}
