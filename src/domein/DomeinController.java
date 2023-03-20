@@ -14,20 +14,19 @@ public class DomeinController {
 		s = new Spel();
 	}
 
-	public void meldAan(/*String gebruikersnaam, int geboortejaar*/) {
-		// aanpassing hardcoded spelers
-		/*Speler sp =sRepo.geefSpeler( gebruikersnaam, geboortejaar);
-		s.meldAan(sp);*/ 		
-		List<Speler> spelers = new ArrayList<>();
+	public void meldAan(String gebruikersnaam, int geboortejaar) {
+		Speler sp =sRepo.geefSpeler(gebruikersnaam, geboortejaar);
+		s.meldAan(sp);		
+		/*List<Speler> spelers = new ArrayList<>();
 		spelers = sRepo.geefSpelers();
 		for(Speler sp:spelers) {
 			s.meldAan(sp);
-		}
+		}*/
 	}
 	
 	public List<Speler> geefSpelers(){
 		List<Speler> spelerLijst = new ArrayList<>();
-		spelerLijst = sRepo.geefSpelers();
+		// elke apparte speler aan een lijst toevoegen
 		return spelerLijst;
 	}
 

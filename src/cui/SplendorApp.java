@@ -6,6 +6,7 @@ import java.util.Scanner;
 
 import domein.DomeinController;
 import domein.Speler;
+import persistentie.SpelerMapper;
 
 public class SplendorApp {
 
@@ -14,20 +15,32 @@ public class SplendorApp {
 	//private boolean gebruikerGedaan;
 	
 	private List<Speler> dbSpelers = new ArrayList<>();
-	private int keuze;
 	private int keuzeKeuzeMenu;
+	private SpelerMapper sm;
+	private String gebruikersnaam;
+	private int geboortejaar;
 	
 	public SplendorApp(DomeinController dc) {
 		this.dc= dc;
 	}
 	public void start() {
-		toonKeuzeMenu();
-		do {
-			toonKeuzeMenu();
-			toonSpelers();
-			maakKeuze();
-			// switch voor keuze speler
-		}while(keuzeKeuzeMenu == 1);
+		sm = new SpelerMapper();
+		sm.geefSpeler(gebruikersnaam, geboortejaar);
+		
+		System.out.println("Maak je keuze: ");
+		keuzeKeuzeMenu = toonKeuzeMenu();
+		while(keuzeKeuzeMenu != 3){
+			if(keuzeKeuzeMenu == 1) {
+				// gebruiker gegevens laten ingeven en checken of ze overeenkomen met geg uit db
+				// als ja -> controleerInvoerGegevens() maken en dan geefSpeler() met parameters=geg van gebruiker??
+				// of
+				// lijst met gebruikers in db tonen en gebruikers laten kiezen
+			}else if(keuzeKeuzeMenu == 2) {
+				// nieuw spel starten met spelers
+			}
+			keuzeKeuzeMenu = toonKeuzeMenu();
+		}
+		
 		
 		
 	}
@@ -38,11 +51,11 @@ public class SplendorApp {
 			System.out.println("2. Stoppen met aanmelden en het spel starten");
 			System.out.println("3. De applicatie stoppen");
 			keuzeKeuzeMenu = input.nextInt();
-		}while(keuzeKeuzeMenu < 1 || keuzeKeuzeMenu > 3);
+		}while(keuzeKeuzeMenu < 1 && keuzeKeuzeMenu > 3);
 		return keuzeKeuzeMenu;
 	}
 	
-	public String toonSpelers() {
+	/*public String toonSpelers() {
 		dbSpelers = dc.geefSpelers();
 		String spelerLijst = "";
 		int index = 1;
@@ -59,7 +72,7 @@ public class SplendorApp {
 			keuze = input.nextInt();
 		}while(keuze > dbSpelers.size() + 1);
 		return keuze;
-	}
+	}*/
 		
 		
 		
