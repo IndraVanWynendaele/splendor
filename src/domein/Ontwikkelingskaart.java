@@ -1,10 +1,23 @@
 package domein;
 
+import java.util.List;
+
+import util.EdelsteenSoort;
+
 public class Ontwikkelingskaart {
 
 	private final int niveau;
+	private int prestigePunten; // ook final?
+	private EdelsteenSoort bonus;
+	private List<Kost> kosten;
 
-	public Ontwikkelingskaart(int niveau) {
+	public Ontwikkelingskaart(int niveau, int prestigePunten, EdelsteenSoort bonus) {
 		this.niveau = niveau;
+		this.prestigePunten = prestigePunten;
+		this.bonus = bonus;
 	}
-} // test test test
+	
+	public void voegKostToe(int aantal, EdelsteenSoort soort) {
+		kosten.add(new Kost(aantal, soort));
+	}
+}
