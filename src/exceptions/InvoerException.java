@@ -15,7 +15,4 @@ public class InvoerException extends RuntimeException{
 		public InvoerException(String message, Throwable cause) {
 			super(message,cause);
 		}
-		
-	}
-
-
+}

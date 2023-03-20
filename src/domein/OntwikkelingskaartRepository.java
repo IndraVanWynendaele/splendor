@@ -5,7 +5,6 @@ import java.util.List;
 import persistentie.OntwikkelingskaartMapper;
 
 public class OntwikkelingskaartRepository {
-	
 	private OntwikkelingskaartMapper mapper;
 	
 	public OntwikkelingskaartRepository() {
@@ -16,5 +15,4 @@ public class OntwikkelingskaartRepository {
 		List<Ontwikkelingskaart>lijstKaarten = mapper.lijstKaarten();
 		return lijstKaarten;
 	}
-	
 }

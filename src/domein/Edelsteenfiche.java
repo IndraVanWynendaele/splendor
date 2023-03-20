@@ -10,5 +10,4 @@ public class Edelsteenfiche {
 		// TODO - implement Edelsteenfiche.Edelsteenfiche
 		throw new UnsupportedOperationException();
 	}
-
 }

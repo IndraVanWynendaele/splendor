@@ -7,7 +7,6 @@ import domein.Edele;
 import util.EdelsteenSoort;
 
 public class EdeleMapper {
-	
 	public List<Edele> lijstEdelen(){
 		List<Edele> lijstEdelen = new ArrayList<>();
 		

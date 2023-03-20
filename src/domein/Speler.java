@@ -1,7 +1,6 @@
 package domein;
 
 public class Speler {
-
 	private final String gebruikersnaam;
 	private final int geboortejaar;
 	private final int HUIDIG_JAAR = 2023;

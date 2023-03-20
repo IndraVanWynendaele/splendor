@@ -11,4 +11,3 @@ public class Kost {
 		this.soort = soort;
 	}
 }
-// test

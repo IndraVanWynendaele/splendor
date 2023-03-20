@@ -8,7 +8,6 @@ import domein.Speler;
 import persistentie.SpelerMapper;
 
 public class SplendorApp {
-
 	private DomeinController dc;
 	private Scanner input = new Scanner(System.in);
 	private int keuzeKeuzeMenu;

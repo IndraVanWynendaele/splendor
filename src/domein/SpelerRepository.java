@@ -3,7 +3,6 @@ package domein;
 import persistentie.SpelerMapper;
 
 public class SpelerRepository {
-
 	private final SpelerMapper sm;
 
 	public SpelerRepository() {

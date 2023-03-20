@@ -3,7 +3,6 @@ package domein;
 import java.util.ArrayList;
 import java.util.List;
 
-import domein.EdeleRepository;
 public class DomeinController {
 
 	private SpelerRepository sRepo;

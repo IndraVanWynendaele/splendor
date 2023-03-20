@@ -7,7 +7,6 @@ import domein.Ontwikkelingskaart;
 import util.EdelsteenSoort;
 
 public class OntwikkelingskaartMapper {
-
 	public List<Ontwikkelingskaart> lijstKaarten() {
 		List<Ontwikkelingskaart> lijstKaarten = new ArrayList<>();
 	

@@ -5,9 +5,8 @@ import java.util.List;
 import util.EdelsteenSoort;
 
 public class Ontwikkelingskaart {
-
 	private final int niveau;
-	private int prestigePunten; // ook final?
+	private int prestigePunten;
 	private EdelsteenSoort bonus;
 	private List<Kost> kosten;
 

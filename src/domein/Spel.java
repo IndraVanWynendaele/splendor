@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Spel {
-
 	private List<Speler> spelers;
 	private Speler startSpeler;
 	

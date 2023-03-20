@@ -7,6 +7,7 @@ import util.EdelsteenSoort;
 public class Edele {
 	private int prestigePunten;
 	private List<Kost> kosten;
+	
 
 	public Edele(int prestigePunten) {
 		this.prestigePunten = prestigePunten;

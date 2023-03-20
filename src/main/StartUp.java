@@ -9,7 +9,5 @@ public class StartUp {
 		DomeinController dc = new DomeinController();
 		SplendorApp apl= new SplendorApp(dc);
 		apl.start();
-
 	}
-
 }
