@@ -7,4 +7,4 @@ public class Ontwikkelingskaart {
 	public Ontwikkelingskaart(int niveau) {
 		this.niveau = niveau;
 	}
-}
+} // test test test
