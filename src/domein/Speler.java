@@ -1,7 +1,5 @@
 package domein;
 
-import exceptions.InvoerException;
-
 public class Speler {
 
 	private final String gebruikersnaam;
@@ -28,14 +26,14 @@ public class Speler {
 		String specialeKarakters = "!#$%&'()*+,-./:;<=>?@[]^`{|}";
 		for(int i = 0; i < specialeKarakters.length(); i++)
 			if(gebruikersnaam.contains(Character.toString(specialeKarakters.charAt(i))))
-				throw new InvoerException("gebruikersnaam mag geen speciale tekens buiten spatie en _ bevatten");
+				throw new IllegalArgumentException("gebruikersnaam mag geen speciale tekens buiten spatie en _ bevatten");
 		char c = gebruikersnaam.charAt(0);
 		if(!((c >= 'A' && c <='Z') || (c >= 'a' && c <='z')))
-			throw new InvoerException("Gebruikersnaam moet starten met een letter (klein of groot)!");		
+			throw new IllegalArgumentException("Gebruikersnaam moet starten met een letter (klein of groot)!");		
 	}
 	
 	private void controleerGeboortejaar(int geboortejaar) {
 		if(geboortejaar > MINIMUM_JAAR)
-			throw new InvoerException("Gebruiker moet minimum 6 jaar oud zijn");
+			throw new IllegalArgumentException("Gebruiker moet minimum 6 jaar oud zijn");
 	}
 }

@@ -51,21 +51,30 @@ public class SplendorApp {
 	private void valideerGegevensInput() {
 		String gebruikersnaam="";
 		int geboortejaar=0;
+		boolean finished = false;
 		
-		try{
-			System.out.print("Geef je gebruikersnaam in: ");
-			gebruikersnaam=input.nextLine();
-		}catch(InvoerException exeption) {
-			System.out.print(exeption.getMessage());
-		}
+		do {
+			try{
+				System.out.print("Geef je gebruikersnaam in: ");
+				gebruikersnaam=input.nextLine();
+				finished=true;
+			}catch(IllegalArgumentException exeption) {
+				System.out.print(exeption.getMessage());
+			}
+		}while(!finished);
 		
-		try {
-			System.out.print("Geef je geboortejaar in: ");
-			geboortejaar=input.nextInt();
-		}catch(InvoerException exeption) {
-			System.out.print(exeption.getMessage());
-		}
+		do {
+			try {
+				System.out.print("Geef je geboortejaar in: ");
+				geboortejaar=input.nextInt();
+				finished=true;
+			}catch(InputMismatchException e) {
+				System.out.print("Verkeerde invoer, geboortejaar moet een getal zijn");
+			}
+		}while(!finished);
 		
+		do {
+			try {
 		if(sm.geefSpeler(gebruikersnaam, geboortejaar)==null) {
 			Speler s = new Speler(gebruikersnaam,geboortejaar);
 			sm.voegToe(s);
@@ -74,8 +83,9 @@ public class SplendorApp {
 			Speler s= sm.geefSpeler(gebruikersnaam, geboortejaar);
 			dc.meldAan(s);
 		}
-		
-		
-		
+			}catch(InputMismatchException e) {
+				System.out.print("Verkeerde invoer, geboortejaar moet een getal zijn");
+			}
+		}while(!finished);
 	} 
 }
