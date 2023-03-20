@@ -396,6 +396,120 @@ public class KaartMapper {
 		
 		// niveau 3 -> c
 		
+		Ontwikkelingskaart c1 = new Ontwikkelingskaart(3, 4, EdelsteenSoort.ROBIJN);
+		c1.voegKostToe(3, EdelsteenSoort.SAFFIER);
+		c1.voegKostToe(6,  EdelsteenSoort.SMARAGD);
+		c1.voegKostToe(3,  EdelsteenSoort.ROBIJN);
+		lijstKaarten.add(c1);
+		
+		Ontwikkelingskaart c2 = new Ontwikkelingskaart(3, 5, EdelsteenSoort.ONYX);
+		c2.voegKostToe(7,  EdelsteenSoort.ROBIJN);
+		c2.voegKostToe(3,  EdelsteenSoort.ONYX);
+		lijstKaarten.add(c2);
+
+		
+		Ontwikkelingskaart c3 = new Ontwikkelingskaart(3, 4, EdelsteenSoort.ONYX);
+		c3.voegKostToe(3, EdelsteenSoort.SMARAGD);
+		c3.voegKostToe(6, EdelsteenSoort.ROBIJN);
+		c3.voegKostToe(3, EdelsteenSoort.ONYX);
+		lijstKaarten.add(c3);
+		
+		
+		Ontwikkelingskaart c4 = new Ontwikkelingskaart(3, 4, EdelsteenSoort.SMARAGD);
+		c4.voegKostToe(3, EdelsteenSoort.DIAMANT);
+		c4.voegKostToe(6, EdelsteenSoort.SAFFIER);
+		c4.voegKostToe(3, EdelsteenSoort.SMARAGD);
+		lijstKaarten.add(c4);
+		
+		
+		Ontwikkelingskaart c5 = new Ontwikkelingskaart(3, 5, EdelsteenSoort.DIAMANT);
+		c5.voegKostToe(3,  EdelsteenSoort.DIAMANT);
+		c5.voegKostToe(7, EdelsteenSoort.ONYX);
+		lijstKaarten.add(c5);
+		
+		Ontwikkelingskaart c6 = new Ontwikkelingskaart(3, 3, EdelsteenSoort.DIAMANT);
+		c6.voegKostToe(3, EdelsteenSoort.SAFFIER);
+		c6.voegKostToe(3, EdelsteenSoort.SMARAGD);
+		c6.voegKostToe(5, EdelsteenSoort.ROBIJN);
+		c6.voegKostToe(3, EdelsteenSoort.ONYX);
+		lijstKaarten.add(c6);
+		
+		Ontwikkelingskaart c7 = new Ontwikkelingskaart(3, 5, EdelsteenSoort.ROBIJN);
+		c7.voegKostToe(7,  EdelsteenSoort.SMARAGD);
+		c7.voegKostToe(3,  EdelsteenSoort.ROBIJN);
+		lijstKaarten.add(c7);
+		
+		Ontwikkelingskaart c8 = new Ontwikkelingskaart(3, 3, EdelsteenSoort.SAFFIER);
+		c8.voegKostToe(3,  EdelsteenSoort.DIAMANT);
+		c8.voegKostToe(3,  EdelsteenSoort.SMARAGD);
+		c8.voegKostToe(3,  EdelsteenSoort.ROBIJN);
+		c8.voegKostToe(5,  EdelsteenSoort.ONYX);
+		lijstKaarten.add(c8);
+		
+		Ontwikkelingskaart c9 = new Ontwikkelingskaart(3, 3, EdelsteenSoort.SMARAGD);
+		c9.voegKostToe(5,  EdelsteenSoort.DIAMANT);
+		c9.voegKostToe(3,  EdelsteenSoort.SAFFIER);
+		c9.voegKostToe(3,  EdelsteenSoort.ROBIJN);
+		c9.voegKostToe(3,  EdelsteenSoort.ONYX);
+		lijstKaarten.add(c9);
+		
+		Ontwikkelingskaart c10 = new Ontwikkelingskaart(3, 4, EdelsteenSoort.ROBIJN);
+		c10.voegKostToe(7, EdelsteenSoort.SMARAGD);
+		lijstKaarten.add(c10);
+		
+		Ontwikkelingskaart c11 = new Ontwikkelingskaart(3, 4, EdelsteenSoort.SAFFIER);
+		c11.voegKostToe(7, EdelsteenSoort.DIAMANT);
+		lijstKaarten.add(c11);
+		
+		Ontwikkelingskaart c12 = new Ontwikkelingskaart(3, 4, EdelsteenSoort.ONYX);
+		c12.voegKostToe(7, EdelsteenSoort.ROBIJN);
+		lijstKaarten.add(c12);
+		
+		Ontwikkelingskaart c13 = new Ontwikkelingskaart(3, 4, EdelsteenSoort.DIAMANT);
+		c13.voegKostToe(7,  EdelsteenSoort.ONYX);
+		lijstKaarten.add(c13);
+		
+		Ontwikkelingskaart c14 = new Ontwikkelingskaart(3, 5, EdelsteenSoort.SMARAGD);
+		c14.voegKostToe(7,  EdelsteenSoort.SAFFIER);
+		c14.voegKostToe(3,  EdelsteenSoort.SMARAGD);
+		lijstKaarten.add(c14);
+		
+		Ontwikkelingskaart c15 = new Ontwikkelingskaart(3, 4, EdelsteenSoort.DIAMANT);
+		c15.voegKostToe(3,  EdelsteenSoort.DIAMANT);
+		c15.voegKostToe(3,  EdelsteenSoort.ROBIJN);
+		c15.voegKostToe(6,  EdelsteenSoort.ONYX);
+		lijstKaarten.add(c15);
+		
+		Ontwikkelingskaart c16 = new Ontwikkelingskaart(3, 4, EdelsteenSoort.SAFFIER);
+		c16.voegKostToe(6,  EdelsteenSoort.DIAMANT);
+		c16.voegKostToe(3,  EdelsteenSoort.SAFFIER);
+		c16.voegKostToe(3,  EdelsteenSoort.ONYX);
+		lijstKaarten.add(c16);
+		
+		Ontwikkelingskaart c17 = new Ontwikkelingskaart(3, 4, EdelsteenSoort.SMARAGD);
+		c17.voegKostToe(7,  EdelsteenSoort.SAFFIER);
+		lijstKaarten.add(c17);
+		
+		Ontwikkelingskaart c18 = new Ontwikkelingskaart(3, 3, EdelsteenSoort.ONYX);
+		c18.voegKostToe(3, EdelsteenSoort.DIAMANT);
+		c18.voegKostToe(3, EdelsteenSoort.SAFFIER);
+		c18.voegKostToe(5, EdelsteenSoort.SMARAGD);
+		c18.voegKostToe(3, EdelsteenSoort.ROBIJN);
+		lijstKaarten.add(c18);
+		
+		Ontwikkelingskaart c19 = new Ontwikkelingskaart(1, 3, EdelsteenSoort.ROBIJN);
+		c19.voegKostToe(3,  EdelsteenSoort.DIAMANT);
+		c19.voegKostToe(5,  EdelsteenSoort.SAFFIER);
+		c19.voegKostToe(3,  EdelsteenSoort.SMARAGD);
+		c19.voegKostToe(3,  EdelsteenSoort.ONYX);
+		lijstKaarten.add(c19);
+		
+		Ontwikkelingskaart c20 = new Ontwikkelingskaart(1, 5, EdelsteenSoort.SAFFIER);
+		c20.voegKostToe(7, EdelsteenSoort.DIAMANT);
+		c20.voegKostToe(3, EdelsteenSoort.SAFFIER);
+		lijstKaarten.add(c20);
+			
+		
 		return lijstKaarten;
 	}
 
