@@ -511,6 +511,7 @@ public class KaartMapper {
 			
 		
 		return lijstKaarten;
+		
 	}
 
 }
