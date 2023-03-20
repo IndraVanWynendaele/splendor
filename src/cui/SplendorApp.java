@@ -17,6 +17,7 @@ public class SplendorApp {
 		this.dc = dc;
 		sm = new SpelerMapper();
 	}
+	
 	public void start() {
 		keuzeKeuzeMenu = toonKeuzeMenu();
 		while(keuzeKeuzeMenu != 3) {
