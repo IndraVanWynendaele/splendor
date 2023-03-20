@@ -51,6 +51,7 @@ public class SplendorApp {
 			System.out.println("2. Stoppen met aanmelden en het spel starten");
 			System.out.println("3. De applicatie stoppen");
 			keuzeKeuzeMenu = input.nextInt();
+			// try catch voor inputmismatch?
 		}while(keuzeKeuzeMenu < 1 && keuzeKeuzeMenu > 3);
 		return keuzeKeuzeMenu;
 	}
