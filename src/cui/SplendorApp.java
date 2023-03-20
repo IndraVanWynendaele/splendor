@@ -13,7 +13,7 @@ public class SplendorApp {
 
 	private DomeinController dc;
 	private Scanner input = new Scanner(System.in);
-	//private boolean gebruikerGedaan;
+	//private boolean gebruikerGedaan
 	
 	private List<Speler> dbSpelers = new ArrayList<>();
 	private int keuzeKeuzeMenu;
