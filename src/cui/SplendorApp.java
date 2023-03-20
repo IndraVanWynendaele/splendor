@@ -1,43 +1,41 @@
 package cui;
 
-import java.util.ArrayList;
 import java.util.InputMismatchException;
-import java.util.List;
 import java.util.Scanner;
 
 import domein.DomeinController;
 import domein.Speler;
-import exceptions.InvoerException;
 import persistentie.SpelerMapper;
 
 public class SplendorApp {
 
 	private DomeinController dc;
 	private Scanner input = new Scanner(System.in);
-	//private boolean gebruikerGedaan
-	
-	private List<Speler> dbSpelers = new ArrayList<>();
 	private int keuzeKeuzeMenu;
 	private SpelerMapper sm;
-	private String gebruikersnaam;
-	private int geboortejaar;
 	
 	public SplendorApp(DomeinController dc) {
 		this.dc = dc;
 		sm = new SpelerMapper();
 	}
-	public void start() {		
-		System.out.println("Maak je keuze (1-3): ");
+	public void start() {
 		keuzeKeuzeMenu = toonKeuzeMenu();
-		valideerGegevensInput();
+		while(keuzeKeuzeMenu != 3) {
+			switch(keuzeKeuzeMenu) {
+			case 1 -> valideerGegevensInput();
+			}
+			keuzeKeuzeMenu = toonKeuzeMenu();
+		}
 	}
 	
 	private int toonKeuzeMenu() {
 		do {
 			try {
+				System.out.println("-- Keuzemenu --");
 				System.out.println("1. Een speler aanmelden");
 				System.out.println("2. Stoppen met aanmelden en het spel starten");
 				System.out.println("3. De applicatie stoppen");
+				System.out.print("Maak je keuze (1-3): ");
 				keuzeKeuzeMenu = input.nextInt();
 			}catch(InputMismatchException exc) {
 				System.out.println("Keuze moet een nummer zijn!");
@@ -54,38 +52,33 @@ public class SplendorApp {
 		boolean finished = false;
 		
 		do {
-			try{
+			
+			try {
 				System.out.print("Geef je gebruikersnaam in: ");
 				gebruikersnaam=input.nextLine();
-				finished=true;
-			}catch(IllegalArgumentException exeption) {
-				System.out.print(exeption.getMessage());
-			}
-		}while(!finished);
-		
-		do {
-			try {
+				
 				System.out.print("Geef je geboortejaar in: ");
 				geboortejaar=input.nextInt();
-				finished=true;
+				
+				if(sm.geefSpeler(gebruikersnaam, geboortejaar)==null) {
+					Speler s = new Speler(gebruikersnaam,geboortejaar);
+					sm.voegToe(s);
+					dc.meldAan(s);
+					System.out.printf("Je hebt een nieuwe speler geregistreerd met gebruikersnaam %s geboren in %d%n%n", s.getGebruikersnaam(), s.getGeboortejaar());
+				}
+				else {
+					Speler s= sm.geefSpeler(gebruikersnaam, geboortejaar);
+					dc.meldAan(s);
+					System.out.printf("Je bent aangemeld als %s geboren in %d%n%n", s.getGebruikersnaam(), s.getGeboortejaar());
+				}
+				finished = true;
 			}catch(InputMismatchException e) {
-				System.out.print("Verkeerde invoer, geboortejaar moet een getal zijn");
-			}
-		}while(!finished);
-		
-		do {
-			try {
-		if(sm.geefSpeler(gebruikersnaam, geboortejaar)==null) {
-			Speler s = new Speler(gebruikersnaam,geboortejaar);
-			sm.voegToe(s);
-			dc.meldAan(s);
-		}else {
-			Speler s= sm.geefSpeler(gebruikersnaam, geboortejaar);
-			dc.meldAan(s);
-		}
-			}catch(InputMismatchException e) {
-				System.out.print("Verkeerde invoer, geboortejaar moet een getal zijn");
-			}
+				System.out.println("Verkeerde invoer, geboortejaar moet een getal zijn");
+			}catch(IllegalArgumentException e) {
+				System.out.println(e.getMessage());
+			}finally {
+				input.nextLine();
+			} 
 		}while(!finished);
 	} 
 }

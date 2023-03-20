@@ -7,8 +7,10 @@ import domein.EdeleRepository;
 public class DomeinController {
 
 	private SpelerRepository sRepo;
-	private Spel s ;
 	private EdeleRepository eRepo;
+	private OntwikkelingskaartRepository oRepo;
+	private Spel s ;
+
 
 	public void startSpel() {
 		//s = new Spel();

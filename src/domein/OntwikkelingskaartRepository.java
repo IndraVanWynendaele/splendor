@@ -2,14 +2,14 @@ package domein;
 
 import java.util.List;
 
-import persistentie.KaartMapper;
+import persistentie.OntwikkelingskaartMapper;
 
 public class OntwikkelingskaartRepository {
 	
-	private KaartMapper mapper;
+	private OntwikkelingskaartMapper mapper;
 	
 	public OntwikkelingskaartRepository() {
-		mapper = new KaartMapper();
+		mapper = new OntwikkelingskaartMapper();
 	}
 	
 	public List<Ontwikkelingskaart> geefKaarten(){
