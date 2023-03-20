@@ -18,7 +18,7 @@ public class SpelerMapper {
 	Speler speler = null;
 	try(Connection conn = DriverManager.getConnection(Connectie.JDBC_URL)){
 		
- 		PreparedStatement query = conn.prepareStatement("SELECT * FROM ID399796_g050.Speler WHERE gebruikersnaam = ? AND geboorteDatum = ?");
+ 		PreparedStatement query = conn.prepareStatement("SELECT * FROM ID399796_g050.Speler WHERE gebruikersnaam = ? AND geboortejaar = ?");
  		query.setString(1, gn);
 		query.setInt(2,gj);
 		try (ResultSet rs = query.executeQuery()) {
