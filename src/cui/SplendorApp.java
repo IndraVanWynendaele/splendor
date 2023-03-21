@@ -30,10 +30,13 @@ public class SplendorApp {
 				case 2 -> {
 					if(controleerAantalSpelers()) {
 						dc.startSpel();
-						System.out.println("Spel Gestart");
-					}
+						System.out.println("Spel Gestart");						
+					}				
 				}
+				default	-> toonKeuzeMenu();
 			}
+			if(keuzeKeuzeMenu==2)
+				break;			
 			keuzeKeuzeMenu = toonKeuzeMenu();
 		}
 	}	
@@ -48,7 +51,7 @@ public class SplendorApp {
 				System.out.print("Maak je keuze (1-3): ");
 				keuzeKeuzeMenu = input.nextInt();
 			}catch(InputMismatchException exc) {
-				System.out.println("Keuze moet een nummer zijn!");
+				System.out.println("Keuze moet een nummer zijn!\n");
 			}finally {
 				input.nextLine();
 			}
@@ -77,9 +80,16 @@ public class SplendorApp {
 					System.out.printf("Je hebt een nieuwe speler geregistreerd met gebruikersnaam %s geboren in %d%n%n", sp.getGebruikersnaam(), sp.getGeboortejaar());
 				}
 				else {
-					Speler sp = sm.geefSpeler(gebruikersnaam, geboortejaar);
-					dc.meldAan(sp);
-					System.out.printf("Je bent aangemeld als %s geboren in %d%n%n", sp.getGebruikersnaam(), sp.getGeboortejaar());
+					if(controleerSpelerAlAangemeld()) {
+						Speler sp = sm.geefSpeler(gebruikersnaam, geboortejaar);
+						dc.meldAan(sp);
+						System.out.printf("Je bent aangemeld als %s geboren in %d%n%n", sp.getGebruikersnaam(), sp.getGeboortejaar());	
+					}
+								
+					else{
+						
+										
+					}
 				}
 				finished = true;
 			}catch(InputMismatchException e) {
@@ -92,6 +102,11 @@ public class SplendorApp {
 		}while(!finished);
 	} 
 	
+	private boolean controleerSpelerAlAangemeld() {
+		
+		return false;
+	}
+
 	private boolean controleerAantalSpelers() {
 		List<Speler> spelers = dc.geefSpelers();
 		try{
