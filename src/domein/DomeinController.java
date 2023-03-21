@@ -10,9 +10,13 @@ public class DomeinController {
 	private OntwikkelingskaartRepository oRepo;
 	private Spel s ;
 
-
+	public DomeinController() {
+		startSpel();
+		sRepo = new SpelerRepository();
+	}
+	
 	public void startSpel() {
-		//s = new Spel();
+		s = new Spel();
 	}
 
 	public void meldAan(Speler sp) {
@@ -22,11 +26,8 @@ public class DomeinController {
 	public List<Speler> geefSpelers(){
 		List<Speler> spelerLijst = new ArrayList<>();
 		// elke apparte speler aan een lijst toevoegen
+		spelerLijst =s.getSpelers();
 		return spelerLijst;
 	}
 
-	public DomeinController() {
-		s = new Spel();
-		sRepo = new SpelerRepository();
-	}
 }
