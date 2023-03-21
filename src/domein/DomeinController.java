@@ -26,7 +26,7 @@ public class DomeinController {
 	public List<Speler> geefSpelers(){
 		List<Speler> spelerLijst = new ArrayList<>();
 		// elke apparte speler aan een lijst toevoegen
-		spelerLijst =s.getSpelers();
+		spelerLijst = s.getSpelers();
 		return spelerLijst;
 	}
 

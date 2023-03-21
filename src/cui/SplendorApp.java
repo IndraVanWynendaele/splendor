@@ -15,7 +15,6 @@ public class SplendorApp {
 	private Scanner input = new Scanner(System.in);
 	private int keuzeKeuzeMenu;
 	private SpelerMapper sm;
-	
 	private boolean aantalSpelersInOrde = false;
 	
 	public SplendorApp(DomeinController dc) {
@@ -25,20 +24,15 @@ public class SplendorApp {
 	
 	public void start() {
 		keuzeKeuzeMenu = toonKeuzeMenu();
-		while(keuzeKeuzeMenu == 1) {
+		while(keuzeKeuzeMenu != 3) {
 			switch(keuzeKeuzeMenu) {
 				case 1 -> valideerGegevensInput();
 				case 2 -> {
-					controleerAantalSpelers();
-					if(aantalSpelersInOrde) {
+					if(controleerAantalSpelers()) {
 						dc.startSpel();
 						System.out.println("Spel Gestart");
 					}
-					else {
-						valideerGegevensInput();
-					}
 				}
-				
 			}
 			keuzeKeuzeMenu = toonKeuzeMenu();
 		}
@@ -63,27 +57,27 @@ public class SplendorApp {
 	}
 	
 	private void valideerGegevensInput() {
-		String gebruikersnaam="";
-		int geboortejaar=0;
+		String gebruikersnaam = "";
+		int geboortejaar = 0;
 		boolean finished = false;
 		
 		do {
 			
 			try {
 				System.out.print("Geef je gebruikersnaam in: ");
-				gebruikersnaam=input.nextLine();
+				gebruikersnaam = input.nextLine();
 				
 				System.out.print("Geef je geboortejaar in: ");
-				geboortejaar=input.nextInt();
+				geboortejaar = input.nextInt();
 				
-				if(sm.geefSpeler(gebruikersnaam, geboortejaar)==null) {
+				if(sm.geefSpeler(gebruikersnaam, geboortejaar) == null) {
 					Speler sp = new Speler(gebruikersnaam,geboortejaar);
 					sm.voegToe(sp);
 					dc.meldAan(sp);
 					System.out.printf("Je hebt een nieuwe speler geregistreerd met gebruikersnaam %s geboren in %d%n%n", sp.getGebruikersnaam(), sp.getGeboortejaar());
 				}
 				else {
-					Speler sp= sm.geefSpeler(gebruikersnaam, geboortejaar);
+					Speler sp = sm.geefSpeler(gebruikersnaam, geboortejaar);
 					dc.meldAan(sp);
 					System.out.printf("Je bent aangemeld als %s geboren in %d%n%n", sp.getGebruikersnaam(), sp.getGeboortejaar());
 				}
@@ -98,19 +92,19 @@ public class SplendorApp {
 		}while(!finished);
 	} 
 	
-	private void controleerAantalSpelers() {
+	private boolean controleerAantalSpelers() {
 		List<Speler> spelers = dc.geefSpelers();
 		try{
-			if(spelers.size()<2) {
+			if(spelers.size() < 2) {
 				throw new IllegalArgumentException("Er moeten minstens 2 spelers aangemeld zijn\n");
-			}else if(spelers.size()>4) {
+			}else if(spelers.size() > 4) {
 				spelers.removeAll(spelers);
-				throw new IllegalArgumentException("Er mogen maar 4 spelers aangemeld zijn \n");
+				throw new IllegalArgumentException("Er mogen maar 4 spelers aangemeld zijn \nDe lijst van spelers is verwijderd, begin helemaal opnieuw! :( \n");
 			}
-			aantalSpelersInOrde=true;
+			aantalSpelersInOrde = true;
 		}catch(IllegalArgumentException e) {
 			System.out.println(e.getMessage());
 		}
-		
+		return aantalSpelersInOrde;
 	}
 }
