@@ -4,10 +4,9 @@ import util.EdelsteenSoort;
 
 public class Edelsteenfiche {
 
-	private final EdelsteenSoort kleur;
+	private final EdelsteenSoort soort;
 
-	public Edelsteenfiche(String kleur) {
-		// TODO - implement Edelsteenfiche.Edelsteenfiche
-		throw new UnsupportedOperationException();
+	public Edelsteenfiche(EdelsteenSoort soort) {
+		this.soort = soort;
 	}
 }
