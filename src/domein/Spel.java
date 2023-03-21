@@ -18,4 +18,8 @@ public class Spel {
 	public void meldAan(Speler sp){
 		spelers.add(sp);
 	}
+	
+	private void shuffleKaarten() {
+		
+	}
 }

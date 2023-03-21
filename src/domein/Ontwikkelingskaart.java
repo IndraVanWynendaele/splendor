@@ -19,4 +19,6 @@ public class Ontwikkelingskaart {
 	public void voegKostToe(int aantal, EdelsteenSoort soort) {
 		kosten.add(new Kost(aantal, soort));
 	}
+	
+	
 }

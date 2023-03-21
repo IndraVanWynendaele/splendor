@@ -9,6 +9,7 @@ public class DomeinController {
 	private EdeleRepository eRepo;
 	private OntwikkelingskaartRepository oRepo;
 	private Spel s ;
+	public Speler startSpeler;
 
 	public DomeinController() {
 		startSpel();
@@ -17,6 +18,7 @@ public class DomeinController {
 	
 	public void startSpel() {
 		s = new Spel();
+		bepaalStartSpeler();
 	}
 
 	public void meldAan(Speler sp) {
@@ -25,9 +27,19 @@ public class DomeinController {
 	
 	public List<Speler> geefSpelers(){
 		List<Speler> spelerLijst = new ArrayList<>();
-		// elke apparte speler aan een lijst toevoegen
 		spelerLijst = s.getSpelers();
 		return spelerLijst;
 	}
 
+	private void bepaalStartSpeler() {
+		List<Speler> spelers = geefSpelers();
+		int kleinsteGetal = Integer.MAX_VALUE;
+		
+		for(Speler s : spelers) {
+			if(s.getGeboortejaar() < kleinsteGetal) {
+				kleinsteGetal = s.getGeboortejaar();
+				startSpeler = s;
+			}
+		}
+	}
 }
