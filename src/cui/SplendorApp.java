@@ -35,7 +35,7 @@ public class SplendorApp {
 					if(controleerAantalSpelers()) {
 						dc.startSpel();
 						System.out.println("\n-- Spel gestart --");
-						System.out.printf("De startspeler is %s%n", dc.startSpeler.getGebruikersnaam());
+						//System.out.printf("De startspeler is %s%n", dc.startSpeler.getGebruikersnaam());
 					}	
 				}
 				default	-> keuzeKeuzeMenu = toonKeuzeMenu();

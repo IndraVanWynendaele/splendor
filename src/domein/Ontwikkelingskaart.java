@@ -1,5 +1,6 @@
 package domein;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import util.EdelsteenSoort;
@@ -14,11 +15,13 @@ public class Ontwikkelingskaart {
 		this.niveau = niveau;
 		this.prestigePunten = prestigePunten;
 		this.bonus = bonus;
+		kosten = new ArrayList<>();
 	}
 	
 	public void voegKostToe(int aantal, EdelsteenSoort soort) {
 		kosten.add(new Kost(aantal, soort));
 	}
+	
 	
 	
 }
