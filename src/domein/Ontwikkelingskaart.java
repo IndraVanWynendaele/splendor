@@ -5,7 +5,7 @@ import java.util.List;
 
 import util.EdelsteenSoort;
 
-public class Ontwikkelingskaart {
+public class Ontwikkelingskaart implements Prestige {
 	private final int niveau;
 	private int prestigePunten;
 	private EdelsteenSoort bonus;
@@ -22,6 +22,9 @@ public class Ontwikkelingskaart {
 		kosten.add(new Kost(aantal, soort));
 	}
 	
-	
+	@Override
+	public int getPrestige() {
+		return this.prestigePunten;
+	}
 	
 }

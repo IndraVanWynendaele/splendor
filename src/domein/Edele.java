@@ -5,7 +5,7 @@ import java.util.List;
 
 import util.EdelsteenSoort;
 
-public class Edele {
+public class Edele implements Prestige {
 	private int prestigePunten;
 	private List<Kost> kosten;
 	
@@ -17,5 +17,10 @@ public class Edele {
 	
 	public void voegKostToe(int aantal, EdelsteenSoort soort) { //mapper en repo gebruikt deze methode
 		kosten.add(new Kost(aantal, soort));
+	}	
+	
+	@Override
+	public int getPrestige() {
+		return this.prestigePunten;
 	}
 }
