@@ -34,11 +34,18 @@ public class SplendorApp {
 				case 2 -> {
 					if(controleerAantalSpelers()) {
 						dc.startSpel();
+						String uitvoer = "";
+						for(Speler s: spelers)
+							uitvoer += String.format("%s%n", s.getGebruikersnaam());
 						System.out.println("\n-- Spel gestart --");
+						System.out.printf("Spelers:%n%s%n", uitvoer);
 						//System.out.printf("De startspeler is %s%n", dc.startSpeler.getGebruikersnaam());
 					}	
 				}
-				default	-> keuzeKeuzeMenu = toonKeuzeMenu();
+				default	-> {
+					System.out.println();
+					keuzeKeuzeMenu = toonKeuzeMenu();
+				}
 			}
 			if(keuzeKeuzeMenu==2)
 				break;			
