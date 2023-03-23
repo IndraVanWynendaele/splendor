@@ -1,12 +1,12 @@
 package domein;
 
 import util.EdelsteenSoort;
-
-public class Kost {
+//naam veradneren in edelsteenAantal
+public class EdelsteenAantal {
 	private int aantal;
 	private EdelsteenSoort soort;
 	
-	public Kost(int aantal, EdelsteenSoort soort) {
+	public EdelsteenAantal(int aantal, EdelsteenSoort soort) {
 		this.aantal = aantal;
 		this.soort = soort;
 	}

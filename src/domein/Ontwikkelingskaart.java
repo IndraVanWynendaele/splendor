@@ -1,30 +1,16 @@
 package domein;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import util.EdelsteenSoort;
 
-public class Ontwikkelingskaart implements Prestige {
+public class Ontwikkelingskaart extends Prestige {
 	private final int niveau;
-	private int prestigePunten;
 	private EdelsteenSoort bonus;
-	private List<Kost> kosten;
+	
 
 	public Ontwikkelingskaart(int niveau, int prestigePunten, EdelsteenSoort bonus) {
+		super(prestigePunten);
 		this.niveau = niveau;
-		this.prestigePunten = prestigePunten;
 		this.bonus = bonus;
-		kosten = new ArrayList<>();
-	}
-	
-	public void voegKostToe(int aantal, EdelsteenSoort soort) {
-		kosten.add(new Kost(aantal, soort));
-	}
-	
-	@Override
-	public int getPrestige() {
-		return this.prestigePunten;
 	}
 	
 }

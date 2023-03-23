@@ -2,25 +2,21 @@ package cui;
 
 import java.util.InputMismatchException;
 import java.util.List;
-import java.util.NoSuchElementException;
 import java.util.Scanner;
 
 import domein.DomeinController;
-import domein.Spel;
 import domein.Speler;
+import dtos.SpelerDTO;
 import persistentie.SpelerMapper;
 
 public class SplendorApp {
 	private DomeinController dc;
 	private Scanner input = new Scanner(System.in);
 	private int keuzeKeuzeMenu;
-	private SpelerMapper sm;
-	private boolean aantalSpelersInOrde = false;
-	private List<Speler> spelers;
+	private List<SpelerDTO> spelersDTO;
 	
 	public SplendorApp(DomeinController dc) {
 		this.dc = dc;
-		sm = new SpelerMapper();
 	}
 	
 	public void start() {
@@ -32,14 +28,14 @@ public class SplendorApp {
 					keuzeKeuzeMenu = 0;
 				}
 				case 2 -> {
-					if(controleerAantalSpelers()) {
+					if(dc.controleerAantalSpelers()) {
 						dc.startSpel();
 						String uitvoer = "";
-						for(Speler s: spelers)
-							uitvoer += String.format("%s%n", s.getGebruikersnaam());
+						spelersDTO = dc.geefSpelers();
+						for(SpelerDTO sDTO: spelersDTO)
+							uitvoer += String.format("%s%n", sDTO.gebruikersnaam());
 						System.out.println("\n-- Spel gestart --");
 						System.out.printf("Spelers:%n%s%n", uitvoer);
-						//System.out.printf("De startspeler is %s%n", dc.startSpeler.getGebruikersnaam());
 					}	
 				}
 				default	-> {
@@ -52,6 +48,7 @@ public class SplendorApp {
 			keuzeKeuzeMenu = toonKeuzeMenu();
 		}
 	}	
+	
 	
 	private int toonKeuzeMenu() {
 		do {
@@ -85,22 +82,29 @@ public class SplendorApp {
 				System.out.print("Geef je geboortejaar in: ");
 				geboortejaar = input.nextInt();
 				
-				if(sm.geefSpeler(gebruikersnaam, geboortejaar) == null) {
-					Speler sp = new Speler(gebruikersnaam,geboortejaar);
-					sm.voegToe(sp);
-					dc.meldAan(sp);
-					System.out.printf("Je hebt een nieuwe speler geregistreerd met gebruikersnaam %s geboren in %d%n%n", sp.getGebruikersnaam(), sp.getGeboortejaar());
-				}
-				else {
-					if(!spelerAlAangemeld(gebruikersnaam, geboortejaar)) {
-						Speler sp = sm.geefSpeler(gebruikersnaam, geboortejaar);
-						dc.meldAan(sp);
-						System.out.printf("Je bent aangemeld als %s geboren in %d%n%n", sp.getGebruikersnaam(), sp.getGeboortejaar());	
-					}			
-					else{
-						throw new IllegalArgumentException("Gebruiker is al aangemeld! Kies iemand anders");		
+				Speler sp = new Speler(gebruikersnaam, geboortejaar);
+				if(dc.spelerAlAangemeld(sp)) {
+					if(dc.meldAan(sp)) {
+						System.out.printf("Je bent aangemeld als %s geboren in %d%n%n", sp.getGebruikersnaam(), sp.getGeboortejaar());
 					}
+					else{
+						String antwoord;
+						do {
+						System.out.print("De speler is nog niet geregistreerd, wil je dit doen?");
+						antwoord = input.nextLine().toLowerCase();
+						}while(!(antwoord.equals("ja")||antwoord.equals("nee"))); // testen of dit werkt
+						if(antwoord.equals("ja")) {
+							dc.voegToe(sp);
+							dc.meldAan(sp);
+							System.out.printf("Je hebt een nieuwe speler geregistreerd met gebruikersnaam %s geboren in %d%n%n", sp.getGebruikersnaam(), sp.getGeboortejaar());	
+						}else {
+							valideerGegevensInput();
+						}
+					}
+				}else {
+					throw new IllegalArgumentException("Deze speler is al aangemeld!");
 				}
+				
 				finished = true;
 			}catch(InputMismatchException e) {
 				System.out.println("Verkeerde invoer, geboortejaar moet een getal zijn");
@@ -111,32 +115,5 @@ public class SplendorApp {
 			} 
 		}while(!finished);
 	} 
-	
-	private boolean spelerAlAangemeld(String gebruikersnaam, int geboortejaar) {
-		spelers = dc.geefSpelers();
-	
-		for(Speler s : spelers)
-			if(s.getGebruikersnaam() == gebruikersnaam)
-				if(s.getGeboortejaar() == geboortejaar)
-					return true;
-		
-		return false;
-	}
 
-	private boolean controleerAantalSpelers() {
-		spelers = dc.geefSpelers();
-		
-		try{
-			if(spelers.size() < 2) {
-				throw new IllegalArgumentException("Er moeten minstens 2 spelers aangemeld zijn\n");
-			}else if(spelers.size() > 4) {
-				spelers.removeAll(spelers);
-				throw new IllegalArgumentException("Er mogen maar 4 spelers aangemeld zijn \nDe lijst van spelers is verwijderd, begin helemaal opnieuw! :( \n");
-			}
-			aantalSpelersInOrde = true;
-		}catch(IllegalArgumentException e) {
-			System.out.println(e.getMessage());
-		}
-		return aantalSpelersInOrde;
-	}
 }

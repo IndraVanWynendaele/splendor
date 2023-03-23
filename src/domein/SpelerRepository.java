@@ -13,4 +13,7 @@ public class SpelerRepository {
 		Speler sp = sm.geefSpeler(gn, gj);
 		return sp;
 	}
+	public void voegToe(Speler sp) {
+		sm.voegToe(sp);
+	}
 }

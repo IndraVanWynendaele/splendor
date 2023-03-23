@@ -4,24 +4,22 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import util.EdelsteenSoort;
+
 public class Spel {
 	private List<Speler> spelers;
 	private Speler startSpeler;
 	private OntwikkelingskaartRepository okr;
 	private EdeleRepository er;
-	private EdelsteenficheRepository efr;
+	private EdelsteenAantal diamantAantal, smaragdAantal, saffierAantal, onyxAantal, robijnAantal;
 	
 	private List<Ontwikkelingskaart> niveau1, niveau2, niveau3;
 	private List<Edele> edelen;
 	private Edele[] edeleSpelers;
-	private List<Edelsteenfiche> edelsteenficheDiamant, edelsteenficheSmaragd, edelsteenficheSaffier, edelsteenficheOnyx, edelsteenficheRobijn;
-	private Edelsteenfiche[] edelsteenficheDiamantSpelers, edelsteenficheSmaragdenSpelers, edelsteenficheSaffierenSpelers, edelsteenficheOnyxenSpelers, edelsteenficheRobijnSpelers;
-
 	
 	public Spel() {
 		okr= new OntwikkelingskaartRepository();
 		er= new EdeleRepository();
-		efr= new EdelsteenficheRepository();
 		spelers= new ArrayList<>();
 		shuffleOntwikkelingsKaarten();
 		shuffleEdelen();
@@ -52,70 +50,42 @@ public class Spel {
 		Collections.shuffle(edelen);
 	}
 	
-	private void geefKaartenAantalSpelers() {
-		edelsteenficheDiamant = efr.geefFichesDiamant();
-		edelsteenficheRobijn=efr.geefFichesRobijn();
-		edelsteenficheOnyx= efr.geefFichesOnyx();
-		edelsteenficheSaffier=efr.geefFichesSaffier();
-		edelsteenficheSmaragd=efr.geefFichesSmaragd();
-			
+	private void geefKaartenAantalSpelers() {	
 		if(spelers.size() == 2) {
 			edeleSpelers=new Edele[3];
-			edelsteenficheDiamantSpelers= new Edelsteenfiche[4];
-			edelsteenficheOnyxenSpelers= new Edelsteenfiche[4];
-			edelsteenficheRobijnSpelers=new Edelsteenfiche[4];
-			edelsteenficheSaffierenSpelers=new Edelsteenfiche[4];
-			edelsteenficheSmaragdenSpelers=new Edelsteenfiche[4];
-			
+			diamantAantal = new EdelsteenAantal(4,EdelsteenSoort.DIAMANT);
+			smaragdAantal = new EdelsteenAantal(4,EdelsteenSoort.SMARAGD);
+			robijnAantal = new EdelsteenAantal(4,EdelsteenSoort.ROBIJN);
+			saffierAantal = new EdelsteenAantal(4,EdelsteenSoort.SAFFIER);
+			onyxAantal = new EdelsteenAantal(4,EdelsteenSoort.ONYX);
 			for(int i =0;i<edeleSpelers.length;i++) {
 				edeleSpelers[i]=edelen.get(i);
 			}
-			for(int i=0;i<4;i++) {
-				edelsteenficheDiamantSpelers[i]= edelsteenficheDiamant.get(i);
-				edelsteenficheOnyxenSpelers[i]= edelsteenficheOnyx.get(i);
-				edelsteenficheRobijnSpelers[i]=edelsteenficheRobijn.get(i);
-				edelsteenficheSaffierenSpelers[i]=edelsteenficheSaffier.get(i);
-				edelsteenficheSmaragdenSpelers[i]=edelsteenficheSmaragd.get(i);
+		}
+			
+		if(spelers.size() == 3) {
+			edeleSpelers=new Edele[4];
+			diamantAantal = new EdelsteenAantal(5,EdelsteenSoort.DIAMANT);
+			smaragdAantal = new EdelsteenAantal(5,EdelsteenSoort.SMARAGD);
+			robijnAantal = new EdelsteenAantal(5,EdelsteenSoort.ROBIJN);
+			saffierAantal = new EdelsteenAantal(5,EdelsteenSoort.SAFFIER);
+			onyxAantal = new EdelsteenAantal(5,EdelsteenSoort.ONYX);
+			for(int i =0;i<edeleSpelers.length;i++) {
+				edeleSpelers[i]=edelen.get(i);
 			}
-			if(spelers.size() == 3) {
-				edeleSpelers=new Edele[4];
-				edelsteenficheDiamantSpelers= new Edelsteenfiche[5];
-				edelsteenficheOnyxenSpelers= new Edelsteenfiche[5];
-				edelsteenficheRobijnSpelers=new Edelsteenfiche[5];
-				edelsteenficheSaffierenSpelers=new Edelsteenfiche[5];
-				edelsteenficheSmaragdenSpelers=new Edelsteenfiche[5];
-				
-				for(int i =0;i<edeleSpelers.length;i++) {
-					edeleSpelers[i]=edelen.get(i);
-				}
-				for(int i=0;i<5;i++) {
-					edelsteenficheDiamantSpelers[i]= edelsteenficheDiamant.get(i);
-					edelsteenficheOnyxenSpelers[i]= edelsteenficheOnyx.get(i);
-					edelsteenficheRobijnSpelers[i]=edelsteenficheRobijn.get(i);
-					edelsteenficheSaffierenSpelers[i]=edelsteenficheSaffier.get(i);
-					edelsteenficheSmaragdenSpelers[i]=edelsteenficheSmaragd.get(i);
-				}
-			}
-			if(spelers.size() == 4) {
-				edeleSpelers=new Edele[5];
-				edelsteenficheDiamantSpelers= new Edelsteenfiche[7];
-				edelsteenficheOnyxenSpelers= new Edelsteenfiche[7];
-				edelsteenficheRobijnSpelers=new Edelsteenfiche[7];
-				edelsteenficheSaffierenSpelers=new Edelsteenfiche[7];
-				edelsteenficheSmaragdenSpelers=new Edelsteenfiche[7];
-				
-				for(int i =0;i<edeleSpelers.length;i++) {
-					edeleSpelers[i]=edelen.get(i);
-				}
-				for(int i=0;i<7;i++) {
-					edelsteenficheDiamantSpelers[i]= edelsteenficheDiamant.get(i);
-					edelsteenficheOnyxenSpelers[i]= edelsteenficheOnyx.get(i);
-					edelsteenficheRobijnSpelers[i]=edelsteenficheRobijn.get(i);
-					edelsteenficheSaffierenSpelers[i]=edelsteenficheSaffier.get(i);
-					edelsteenficheSmaragdenSpelers[i]=edelsteenficheSmaragd.get(i);
-				}
+		}
+		
+		if(spelers.size() == 4) {
+			edeleSpelers=new Edele[5];
+			diamantAantal = new EdelsteenAantal(7,EdelsteenSoort.DIAMANT);
+			smaragdAantal = new EdelsteenAantal(7,EdelsteenSoort.SMARAGD);
+			robijnAantal = new EdelsteenAantal(7,EdelsteenSoort.ROBIJN);
+			saffierAantal = new EdelsteenAantal(7,EdelsteenSoort.SAFFIER);
+			onyxAantal = new EdelsteenAantal(7,EdelsteenSoort.ONYX);
+			for(int i =0;i<edeleSpelers.length;i++) {
+				edeleSpelers[i]=edelen.get(i);
 			}
 		}
 	}
-	
 }
+	
