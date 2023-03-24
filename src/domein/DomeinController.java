@@ -18,7 +18,7 @@ public class DomeinController {
 	public DomeinController() {
 		startSpel();
 		sRepo = new SpelerRepository();
-		spelersInSpel = new ArrayList<>();
+		// spelersInSpel = new ArrayList<>();
 	}
 	
 	public void startSpel() {
@@ -34,13 +34,13 @@ public class DomeinController {
 			return false;	
 	}
 	
-	public List<SpelerDTO> geefSpelers(){
-		List<SpelerDTO> spelerLijstDTO = new ArrayList<>();
-		spelersInSpel= s.getSpelers();
+	public List<SpelerDTO> geefSpelerDTOs(){
+		spelersInSpel = s.getSpelers();
+		List<SpelerDTO> spelerDTOs = new ArrayList<>();
 		for(Speler sp : spelersInSpel) {
-			spelerLijstDTO.add(new SpelerDTO(sp.getGebruikersnaam(),sp.getGeboortejaar()));
+			spelerDTOs.add(new SpelerDTO(sp.getGebruikersnaam(),sp.getGeboortejaar()));
 		}
-		return spelerLijstDTO;
+		return spelerDTOs;
 	}
 
 	private void bepaalStartSpeler() {

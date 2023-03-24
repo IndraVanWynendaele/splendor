@@ -32,7 +32,7 @@ public class SplendorApp {
 					if(dc.controleerAantalSpelers()) {
 						dc.startSpel();
 						String uitvoer = "";
-						spelersDTO = dc.geefSpelers();
+						spelersDTO = dc.geefSpelerDTOs();
 						for(SpelerDTO sDTO: spelersDTO)
 							uitvoer += String.format("%s%n", sDTO.gebruikersnaam());
 						System.out.println("\n-- Spel gestart --");
