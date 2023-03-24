@@ -30,13 +30,8 @@ public class SplendorApp {
 				}
 				case 2 -> {
 					if(dc.controleerAantalSpelers()) {
-						String uitvoer = "";
-						spelersDTO = dc.geefSpelerDTOs();
-						for(SpelerDTO sDTO: spelersDTO)
-							uitvoer += String.format("%s%n", sDTO.gebruikersnaam());
-						System.out.println("\n-- Spel gestart --");
-						System.out.printf("Spelers:%n%s%n", uitvoer);
 						dc.startSpel();
+						toonOverzichtSpel();
 					}	
 				}
 				default	-> {
@@ -51,6 +46,46 @@ public class SplendorApp {
 	}	
 	
 	
+	private void toonOverzichtSpel() {
+		System.out.println("\n-- Spel gestart --");
+		spelersDTO = dc.geefSpelerDTOs();
+		String uitvoerGeg = "";
+		System.out.printf("%15s", "");
+		for(SpelerDTO speler: spelersDTO)
+			uitvoerGeg += String.format("%15s", speler.gebruikersnaam());
+		uitvoerGeg += String.format("\n");
+		
+		for(SpelerDTO speler: spelersDTO)
+			uitvoerGeg += String.format("%15s", speler.totaalAantalPrestigepunten());
+		uitvoerGeg += String.format("\n");
+		
+		for(SpelerDTO speler: spelersDTO)
+			uitvoerGeg += String.format("%15s", speler.isAanDeBeurt());
+		uitvoerGeg += String.format("\n");	
+		
+		for(SpelerDTO speler: spelersDTO)
+			uitvoerGeg += String.format("%15s", speler.isStartspeler());
+		uitvoerGeg += String.format("\n");
+		
+		for(SpelerDTO speler: spelersDTO)
+			uitvoerGeg += String.format("%15s", speler.ontwikkelingskaartenInBezit());
+		uitvoerGeg += String.format("\n");
+		
+		for(SpelerDTO speler: spelersDTO)
+			uitvoerGeg += String.format("%15s", speler.edelsteenfichesInBezit());
+		uitvoerGeg += String.format("\n");
+		
+		for(SpelerDTO speler: spelersDTO)
+			uitvoerGeg += String.format("%15s", speler.edelenInBezit());
+		uitvoerGeg += String.format("\n");
+		
+		System.out.printf("Spelers:%n%s%n", uitvoerGeg);
+		// for loop gegevens tonen: (ideetje)
+		// string met geg sp1
+		// string printen
+		// string leegmaken
+	}
+
 	private int toonKeuzeMenu() {
 		do {
 			try {

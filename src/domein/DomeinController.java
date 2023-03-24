@@ -39,7 +39,7 @@ public class DomeinController {
 		spelersInSpel = s.getSpelers();//probleem
 		List<SpelerDTO> spelerDTOs = new ArrayList<>();
 		for(Speler speler : spelersInSpel) {
-			spelerDTOs.add(new SpelerDTO(speler.getGebruikersnaam(),speler.getGeboortejaar()));
+			spelerDTOs.add(new SpelerDTO(speler.getGebruikersnaam(),speler.getGeboortejaar(), speler.getTotaalAantalPrestigePunten(), speler.geefIsAanDeBeurt(), speler.geefisStartSpeler(), speler.getOntwikkelingskaartenInBezit(), speler.getEdelsteenfichesInBezit(), speler.getEdelenInBezit()));
 		}
 		return spelerDTOs;
 	}

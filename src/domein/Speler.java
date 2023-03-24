@@ -8,12 +8,20 @@ public class Speler {
 	private final int HUIDIG_JAAR = 2023;
 	private final int MINIMUM_JAAR = HUIDIG_JAAR - 6;
 
-	private int totaalAantalPrestigePunten;
+	private int totaalAantalPrestigepunten;
 	private boolean isAanDeBeurt;
 	private boolean isStartspeler;
 	private List<Ontwikkelingskaart> ontwikkelingskaartenInBezit;
 	private List<EdelsteenAantal> edelsteenfichesInBezit;
 	private List<Edele> edelenInBezit;
+	
+	public boolean geefIsAanDeBeurt() {
+		return isAanDeBeurt;
+	}
+	
+	public boolean geefisStartSpeler() {
+		return isStartspeler;
+	}
 	
 	public List<Edele> getEdelenInBezit() {
 		return edelenInBezit;
@@ -28,7 +36,7 @@ public class Speler {
 	}
 	
 	public int getTotaalAantalPrestigePunten() {
-		return totaalAantalPrestigePunten;
+		return totaalAantalPrestigepunten;
 	}
 	
 	public String getGebruikersnaam() {

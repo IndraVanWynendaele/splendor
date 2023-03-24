@@ -18,6 +18,8 @@ public class Spel {
 	private Edele[] edeleSpelers;
 	
 	private List<Edele> beschikbareEdelen;
+	private List<EdelsteenAantal> edelsteenFicheVoorraad;
+	private List<Ontwikkelingskaart> beschikbareOntwikkelingskaarten;
 	
 	public Spel() {
 		okr= new OntwikkelingskaartRepository();
@@ -30,6 +32,33 @@ public class Spel {
 	
 	public List<Speler> getSpelers() {
 		return spelers;
+	}
+	
+	public List<Edele> getBeschikbareEdelen() {
+		return beschikbareEdelen;
+	}
+	
+	public List<EdelsteenAantal> getEdelsteenFicheVoorraad() {
+		return edelsteenFicheVoorraad;
+	}
+	
+	public List<Ontwikkelingskaart> getBeschikbareOntwikkelingskaarten() {
+		return beschikbareOntwikkelingskaarten;
+	}
+	
+	public void setBeschikbareEdelen(List<Edele> beschikbareEdelen) {
+		//TODO
+		this.beschikbareEdelen = beschikbareEdelen;
+	}
+	
+	public void setEdelsteenFicheVoorraad(List<EdelsteenAantal> edelsteenFicheVoorraad) {
+		//TODO
+		this.edelsteenFicheVoorraad = edelsteenFicheVoorraad;
+	}
+	
+	public void setBeschikbareOntwikkelingskaarten(List<Ontwikkelingskaart> beschikbareOntwikkelingskaarten) {
+		//TODO
+		this.beschikbareOntwikkelingskaarten = beschikbareOntwikkelingskaarten;
 	}
 	
 	public void meldAan(Speler sp){
