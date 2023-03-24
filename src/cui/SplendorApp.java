@@ -31,6 +31,8 @@ public class SplendorApp {
 				case 2 -> {
 					if(dc.controleerAantalSpelers()) {
 						dc.startSpel();
+						System.out.println("\n-- Spel gestart --");
+						toonOverzichtSpelers();
 						toonOverzichtSpel();
 					}	
 				}
@@ -46,46 +48,48 @@ public class SplendorApp {
 	}	
 	
 	
-	private void toonOverzichtSpel() {
-		System.out.println("\n-- Spel gestart --");
+	private void toonOverzichtSpelers() {
 		spelersDTO = dc.geefSpelerDTOs();
 		String uitvoerGeg = "";
-		System.out.printf("%15s", "");
+		uitvoerGeg+=String.format("%30s", "");
 		for(SpelerDTO speler: spelersDTO)
 			uitvoerGeg += String.format("%15s", speler.gebruikersnaam());
-		uitvoerGeg += String.format("\n");
+		uitvoerGeg += String.format("\nTotaal aantal prestigepunten: ");
 		
 		for(SpelerDTO speler: spelersDTO)
 			uitvoerGeg += String.format("%15s", speler.totaalAantalPrestigepunten());
-		uitvoerGeg += String.format("\n");
+		uitvoerGeg += String.format("\nIs aan de beurt:%14s","");
 		
 		for(SpelerDTO speler: spelersDTO)
 			uitvoerGeg += String.format("%15s", speler.isAanDeBeurt());
-		uitvoerGeg += String.format("\n");	
+		uitvoerGeg += String.format("\nIs startspeler:%15s","");	
 		
 		for(SpelerDTO speler: spelersDTO)
 			uitvoerGeg += String.format("%15s", speler.isStartspeler());
-		uitvoerGeg += String.format("\n");
+		uitvoerGeg += String.format("\nOntwikkelingskaarten in bezit:");
 		
 		for(SpelerDTO speler: spelersDTO)
 			uitvoerGeg += String.format("%15s", speler.ontwikkelingskaartenInBezit());
-		uitvoerGeg += String.format("\n");
+		uitvoerGeg += String.format("\nEdesteenfiche in bezit:%7s","");
 		
 		for(SpelerDTO speler: spelersDTO)
 			uitvoerGeg += String.format("%15s", speler.edelsteenfichesInBezit());
-		uitvoerGeg += String.format("\n");
+		uitvoerGeg += String.format("\nEdelen in bezit:%14s","");
 		
 		for(SpelerDTO speler: spelersDTO)
 			uitvoerGeg += String.format("%15s", speler.edelenInBezit());
 		uitvoerGeg += String.format("\n");
 		
-		System.out.printf("Spelers:%n%s%n", uitvoerGeg);
-		// for loop gegevens tonen: (ideetje)
-		// string met geg sp1
-		// string printen
-		// string leegmaken
+		System.out.printf("%s%n", uitvoerGeg);
+		
 	}
 
+	private void toonOverzichtSpel() {
+		String uitvoerSpel="";
+		uitvoerSpel+=String.format("%30s", "");
+		uitvoerSpel+= String.format("De Beschikbare edele:%9s ", "");
+	}
+	
 	private int toonKeuzeMenu() {
 		do {
 			try {
