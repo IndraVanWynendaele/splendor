@@ -9,7 +9,10 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
+import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 
@@ -18,14 +21,23 @@ public class MenuController extends GridPane{
 	private DomeinController dc;
 	private StartController preScreen;
 	
-    @FXML
-    private Button btnSpelerAanmelden;
-    
+	@FXML
+    private ImageView BGImage;
+
     @FXML
     private Button btnAppStoppen;
-    
+
     @FXML
     private Button btnSpelStarten;
+
+    @FXML
+    private Button btnSpelerAanmelden;
+
+    @FXML
+    private Rectangle kader;
+
+    @FXML
+    private Label titelSpel;
 	
 	public MenuController(StartController preScreen, DomeinController dc) {
 		this.preScreen = preScreen;
