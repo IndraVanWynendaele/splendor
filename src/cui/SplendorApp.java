@@ -30,13 +30,13 @@ public class SplendorApp {
 				}
 				case 2 -> {
 					if(dc.controleerAantalSpelers()) {
-						dc.startSpel();
 						String uitvoer = "";
 						spelersDTO = dc.geefSpelerDTOs();
 						for(SpelerDTO sDTO: spelersDTO)
 							uitvoer += String.format("%s%n", sDTO.gebruikersnaam());
 						System.out.println("\n-- Spel gestart --");
 						System.out.printf("Spelers:%n%s%n", uitvoer);
+						dc.startSpel();
 					}	
 				}
 				default	-> {

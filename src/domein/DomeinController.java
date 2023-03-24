@@ -16,13 +16,14 @@ public class DomeinController {
 	
 
 	public DomeinController() {
+		s = new Spel();
 		startSpel();
 		sRepo = new SpelerRepository();
+		
 		// spelersInSpel = new ArrayList<>();
 	}
 	
 	public void startSpel() {
-		s = new Spel();
 		bepaalStartSpeler();
 	}
 
@@ -35,10 +36,10 @@ public class DomeinController {
 	}
 	
 	public List<SpelerDTO> geefSpelerDTOs(){
-		spelersInSpel = s.getSpelers();
+		spelersInSpel = s.getSpelers();//probleem
 		List<SpelerDTO> spelerDTOs = new ArrayList<>();
-		for(Speler sp : spelersInSpel) {
-			spelerDTOs.add(new SpelerDTO(sp.getGebruikersnaam(),sp.getGeboortejaar()));
+		for(Speler speler : spelersInSpel) {
+			spelerDTOs.add(new SpelerDTO(speler.getGebruikersnaam(),speler.getGeboortejaar()));
 		}
 		return spelerDTOs;
 	}
@@ -46,10 +47,10 @@ public class DomeinController {
 	private void bepaalStartSpeler() {
 		int kleinsteGetal = Integer.MAX_VALUE;
 		spelersInSpel= s.getSpelers();
-		for(Speler s : spelersInSpel) {
-			if(s.getGeboortejaar() < kleinsteGetal) {
-				kleinsteGetal = s.getGeboortejaar();
-				startSpeler = s;
+		for(Speler speler : spelersInSpel) {
+			if(speler.getGeboortejaar() < kleinsteGetal) {
+				kleinsteGetal = speler.getGeboortejaar();
+				startSpeler = speler;
 			}
 		}
 	}
@@ -58,17 +59,17 @@ public class DomeinController {
 	}
 	
 	public boolean spelerAlAangemeld(Speler sp) {
-		spelersInSpel= s.getSpelers();
-		for(Speler s : spelersInSpel)
-			if(s.getGebruikersnaam().equals(sp.getGebruikersnaam()))
-				if(s.getGeboortejaar() == sp.getGeboortejaar())
+		spelersInSpel= s.getSpelers();//klopt
+		for(Speler speler : spelersInSpel)
+			if(speler.getGebruikersnaam().equals(sp.getGebruikersnaam()))
+				if(speler.getGeboortejaar() == sp.getGeboortejaar())
 					return false;
 		return true;
 	}
 	
 	public boolean controleerAantalSpelers() {
 		boolean aantalSpelersInOrde = false;
-		spelersInSpel= s.getSpelers();
+		spelersInSpel= s.getSpelers();//klopt
 		try{
 			if(spelersInSpel.size() < 2) {
 				throw new IllegalArgumentException("Er moeten minstens 2 spelers aangemeld zijn\n");
