@@ -1,5 +1,6 @@
 package domein;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import util.EdelsteenSoort;
@@ -15,6 +16,7 @@ public class Prestige {
 	
 	public Prestige(int prestigepunten) {
 		this.prestigepunten=prestigepunten;
+		kosten = new ArrayList<>();
 	}
 	
 	public int getPrestige() {

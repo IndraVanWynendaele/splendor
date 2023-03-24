@@ -18,7 +18,7 @@ public class DomeinController {
 	public DomeinController() {
 		startSpel();
 		sRepo = new SpelerRepository();
-		spelersInSpel= s.getSpelers();
+		spelersInSpel = new ArrayList<>();
 	}
 	
 	public void startSpel() {
@@ -45,6 +45,7 @@ public class DomeinController {
 
 	private void bepaalStartSpeler() {
 		int kleinsteGetal = Integer.MAX_VALUE;
+		spelersInSpel= s.getSpelers();
 		for(Speler s : spelersInSpel) {
 			if(s.getGeboortejaar() < kleinsteGetal) {
 				kleinsteGetal = s.getGeboortejaar();
@@ -56,7 +57,8 @@ public class DomeinController {
 		sRepo.voegToe(sp);
 	}
 	
-	public boolean spelerAlAangemeld(Speler sp) {	
+	public boolean spelerAlAangemeld(Speler sp) {
+		spelersInSpel= s.getSpelers();
 		for(Speler s : spelersInSpel)
 			if(s.getGebruikersnaam().equals(sp.getGebruikersnaam()))
 				if(s.getGeboortejaar() == sp.getGeboortejaar())
@@ -67,6 +69,7 @@ public class DomeinController {
 	
 	public boolean controleerAantalSpelers() {
 		boolean aantalSpelersInOrde = false;
+		spelersInSpel= s.getSpelers();
 		try{
 			if(spelersInSpel.size() < 2) {
 				throw new IllegalArgumentException("Er moeten minstens 2 spelers aangemeld zijn\n");
