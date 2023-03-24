@@ -3,11 +3,31 @@ package gui;
 import java.io.IOException;
 
 import domein.DomeinController;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.shape.Rectangle;
+import javafx.scene.text.Text;
+import javafx.stage.Stage;
 
 public class StartController extends AnchorPane{
-	private DomeinController dc;
+	private DomeinController dc;	
+
+    @FXML
+    private ImageView BGImage;
+
+    @FXML
+    private Button btnSpelen;
+
+    @FXML
+    private Rectangle kader;
+
+    @FXML
+    private Text titelSpel;
 	
 	public StartController(DomeinController dc) {
 		this.dc = dc;
@@ -22,4 +42,13 @@ public class StartController extends AnchorPane{
 			throw new RuntimeException(ex);
 		}
 	}
+	
+	@FXML
+    void btnSpelenClicked(ActionEvent event) {
+		MenuController ns = new MenuController(this, dc);
+		Scene scene = new Scene(ns);
+		Stage stage = (Stage) this.getScene().getWindow();
+		stage.setScene(scene);
+		stage.show();
+    }
 }
