@@ -1,7 +1,7 @@
 package main;
 
 import domein.DomeinController;
-import gui.MenuController;
+import gui.StartController;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
@@ -11,7 +11,7 @@ public class Main extends Application{
 	public void start(Stage primaryStage) {
 		try {
 			DomeinController dc = new DomeinController();
-			MenuController root = new MenuController(dc);
+			StartController root = new StartController(dc);
 			
 			Scene scene = new Scene(root);
 			primaryStage.setScene(scene);
@@ -21,7 +21,6 @@ public class Main extends Application{
 		}catch(Exception e) {
 			e.printStackTrace();
 		}
-		
 	}
 	
 	public static void main(String[] args) {

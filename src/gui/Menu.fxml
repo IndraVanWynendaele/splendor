@@ -35,17 +35,17 @@
             <Font name="GothicI" size="30.0" />
          </font>
       </Label>
-      <Button fx:id="btnStoppen" disable="true" mnemonicParsing="false" onAction="#btnApplicatieStoppenClicked" prefHeight="26.0" prefWidth="240.0" text="Applicatie stoppen" GridPane.rowIndex="5">
+      <Button fx:id="btnAppStoppen" mnemonicParsing="false" onAction="#btnAppStoppenClicked" prefHeight="26.0" prefWidth="240.0" text="Applicatie stoppen" GridPane.rowIndex="5">
          <GridPane.margin>
             <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
          </GridPane.margin>
       </Button>
-      <Button fx:id="btnAanmelden" disable="true" mnemonicParsing="false" onAction="#btnSpelerAanmeldenClicked" prefHeight="26.0" prefWidth="240.0" text="Speler aanmelden" GridPane.rowIndex="3">
+      <Button fx:id="btnSpelerAanmelden" mnemonicParsing="false" onAction="#btnSpelerAanmeldenClicked" prefHeight="26.0" prefWidth="240.0" text="Speler aanmelden" GridPane.rowIndex="3">
          <GridPane.margin>
             <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
          </GridPane.margin>
       </Button>
-      <Button fx:id="btnStarten" disable="true" mnemonicParsing="false" onAction="#btnSpelStartenClicked" prefHeight="26.0" prefWidth="240.0" text="Spel starten" GridPane.rowIndex="4">
+      <Button fx:id="btnSpelStarten" mnemonicParsing="false" onAction="#btnSpelStartenClicked" prefHeight="26.0" prefWidth="240.0" text="Spel starten" GridPane.rowIndex="4">
          <GridPane.margin>
             <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
          </GridPane.margin>
