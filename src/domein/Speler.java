@@ -1,11 +1,36 @@
 package domein;
 
+import java.util.List;
+
 public class Speler {
 	private final String gebruikersnaam;
 	private final int geboortejaar;
 	private final int HUIDIG_JAAR = 2023;
 	private final int MINIMUM_JAAR = HUIDIG_JAAR - 6;
 
+	private int totaalAantalPrestigePunten;
+	private boolean isAanDeBeurt;
+	private boolean isStartspeler;
+	private List<Ontwikkelingskaart> ontwikkelingskaartenInBezit;
+	private List<EdelsteenAantal> edelsteenfichesInBezit;
+	private List<Edele> edelenInBezit;
+	
+	public List<Edele> getEdelenInBezit() {
+		return edelenInBezit;
+	}
+	
+	public List<EdelsteenAantal> getEdelsteenfichesInBezit() {
+		return edelsteenfichesInBezit;
+	}
+	
+	public List<Ontwikkelingskaart> getOntwikkelingskaartenInBezit() {
+		return ontwikkelingskaartenInBezit;
+	}
+	
+	public int getTotaalAantalPrestigePunten() {
+		return totaalAantalPrestigePunten;
+	}
+	
 	public String getGebruikersnaam() {
 		return this.gebruikersnaam;
 	}

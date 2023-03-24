@@ -17,6 +17,8 @@ public class Spel {
 	private List<Edele> edelen;
 	private Edele[] edeleSpelers;
 	
+	private List<Edele> beschikbareEdelen;
+	
 	public Spel() {
 		okr= new OntwikkelingskaartRepository();
 		er= new EdeleRepository();
