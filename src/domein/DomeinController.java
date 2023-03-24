@@ -37,8 +37,8 @@ public class DomeinController {
 	public List<SpelerDTO> geefSpelers(){
 		List<SpelerDTO> spelerLijstDTO = new ArrayList<>();
 		spelersInSpel= s.getSpelers();
-		for(Speler s : spelersInSpel) {
-			spelerLijstDTO.add(new SpelerDTO(s.getGebruikersnaam(),s.getGeboortejaar()));
+		for(Speler sp : spelersInSpel) {
+			spelerLijstDTO.add(new SpelerDTO(sp.getGebruikersnaam(),sp.getGeboortejaar()));
 		}
 		return spelerLijstDTO;
 	}
@@ -62,9 +62,8 @@ public class DomeinController {
 		for(Speler s : spelersInSpel)
 			if(s.getGebruikersnaam().equals(sp.getGebruikersnaam()))
 				if(s.getGeboortejaar() == sp.getGeboortejaar())
-					return true;
-		
-		return false;
+					return false;
+		return true;
 	}
 	
 	public boolean controleerAantalSpelers() {

@@ -1,5 +1,6 @@
 package cui;
 
+import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
@@ -7,7 +8,6 @@ import java.util.Scanner;
 import domein.DomeinController;
 import domein.Speler;
 import dtos.SpelerDTO;
-import persistentie.SpelerMapper;
 
 public class SplendorApp {
 	private DomeinController dc;
@@ -17,6 +17,7 @@ public class SplendorApp {
 	
 	public SplendorApp(DomeinController dc) {
 		this.dc = dc;
+		spelersDTO = new ArrayList<>();
 	}
 	
 	public void start() {
@@ -102,7 +103,7 @@ public class SplendorApp {
 						}
 					}
 				}else {
-					throw new IllegalArgumentException("Deze speler is al aangemeld!");
+					throw new IllegalArgumentException("Deze speler is al aangemeld!\n");
 				}
 				
 				finished = true;
