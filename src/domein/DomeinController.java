@@ -11,7 +11,7 @@ public class DomeinController {
 	private EdeleRepository eRepo;
 	private OntwikkelingskaartRepository oRepo;
 	private Spel s ;
-	public Speler startSpeler;
+	//public Speler startSpeler;
 	private List<Speler> spelersInSpel;
 	
 
@@ -24,7 +24,7 @@ public class DomeinController {
 	}
 	
 	public void startSpel() {
-		bepaalStartSpeler();
+		s.isStartSpeler();
 	}
 
 	public boolean meldAan(Speler sp) {
@@ -44,16 +44,6 @@ public class DomeinController {
 		return spelerDTOs;
 	}
 
-	private void bepaalStartSpeler() {
-		int kleinsteGetal = Integer.MAX_VALUE;
-		spelersInSpel= s.getSpelers();
-		for(Speler speler : spelersInSpel) {
-			if(speler.getGeboortejaar() < kleinsteGetal) {
-				kleinsteGetal = speler.getGeboortejaar();
-				startSpeler = speler;
-			}
-		}
-	}
 	public void voegToe(Speler sp) {
 		sRepo.voegToe(sp);
 	}
@@ -83,6 +73,4 @@ public class DomeinController {
 		}
 		return aantalSpelersInOrde;
 	}
-
-	
 }

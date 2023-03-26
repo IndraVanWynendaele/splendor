@@ -5,8 +5,8 @@ import java.util.List;
 public class Speler {
 	private final String gebruikersnaam;
 	private final int geboortejaar;
-	private final int HUIDIG_JAAR = 2023;
-	private final int MINIMUM_JAAR = HUIDIG_JAAR - 6;
+	private static final int HUIDIG_JAAR = 2023;
+	private static final int MINIMUM_JAAR = HUIDIG_JAAR - 6;
 
 	private int totaalAantalPrestigepunten;
 	private boolean isAanDeBeurt;
@@ -47,6 +47,10 @@ public class Speler {
 		return this.geboortejaar;
 	}
 
+	public void isStartspeler(boolean i) {
+		isStartspeler=i;
+	}
+	
 	public Speler(String gebruikersnaam, int geboortejaar) {
 		controleerGebruikersnaam(gebruikersnaam);
 		controleerGeboortejaar(geboortejaar);

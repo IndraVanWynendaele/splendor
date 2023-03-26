@@ -118,5 +118,43 @@ public class Spel {
 			}
 		}
 	}
+	
+	public void isStartSpeler() {
+		int jongsteJaar=Integer.MAX_VALUE;
+		startSpeler=spelers.get(0);
+		for(Speler speler:spelers) {
+			if(speler.getGeboortejaar()>jongsteJaar) {
+				jongsteJaar=speler.getGeboortejaar();
+				startSpeler=speler;
+			}
+		}
+		startSpeler.isStartspeler(true);
+	}
+	
+	/*public void isStartspeler() {
+		int jongsteGeboorte=Integer.MAX_VALUE;
+		startSpeler=spelers.get(0);
+		
+		for(Speler speler:spelers) {
+			if(speler.getGeboortejaar()>jongsteGeboorte) {
+				jongsteGeboorte=speler.getGeboortejaar();
+				startSpeler=speler;
+			}
+		}
+		startSpeler.isStartspeler(true);
+	}
+	*/
+	/*private void bepaalStartSpeler() {
+		int kleinsteGetal = Integer.MAX_VALUE;
+		startSpeler=spelersInSpel.get(0);
+		spelersInSpel= s.getSpelers();
+		for(Speler speler : spelersInSpel) {
+			if(speler.getGeboortejaar() < kleinsteGetal) {
+				kleinsteGetal = speler.getGeboortejaar();
+				startSpeler = speler;
+			}
+		}
+		startSpeler.isStartspeler(true);
+	}*/
 }
 	
