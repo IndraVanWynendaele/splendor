@@ -10,4 +10,9 @@ public class EdelsteenAantal {
 		this.aantal = aantal;
 		this.soort = soort;
 	}
+	
+	public int getAantal() {
+		return aantal;
+	}
+	
 }

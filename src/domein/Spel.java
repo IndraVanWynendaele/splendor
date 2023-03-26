@@ -16,56 +16,63 @@ public class Spel {
 	private List<Ontwikkelingskaart> niveau1, niveau2, niveau3;
 	private List<Edele> edelen;
 	private Edele[] edeleSpelers;
-	
+	/*
 	private List<Edele> beschikbareEdelen;
 	private List<EdelsteenAantal> edelsteenFicheVoorraad;
 	private List<Ontwikkelingskaart> beschikbareOntwikkelingskaarten;
-	
+	*/
 	public Spel() {
 		okr= new OntwikkelingskaartRepository();
 		er= new EdeleRepository();
 		spelers= new ArrayList<>();
-		shuffleOntwikkelingsKaarten();
-		shuffleEdelen();
-		geefKaartenAantalSpelers();
+		
 	}
 	
 	public List<Speler> getSpelers() {
 		return spelers;
 	}
 	
-	public List<Edele> getBeschikbareEdelen() {
-		return beschikbareEdelen;
+	public Edele[] getEdeleSpelers() {
+		return edeleSpelers;
 	}
 	
-	public List<EdelsteenAantal> getEdelsteenFicheVoorraad() {
-		return edelsteenFicheVoorraad;
+	public List<Ontwikkelingskaart> getNiveau1() {
+		return niveau1;
 	}
 	
-	public List<Ontwikkelingskaart> getBeschikbareOntwikkelingskaarten() {
-		return beschikbareOntwikkelingskaarten;
+	public List<Ontwikkelingskaart> getNiveau2() {
+		return niveau2;
 	}
 	
-	public void setBeschikbareEdelen(List<Edele> beschikbareEdelen) {
-		//TODO
-		this.beschikbareEdelen = beschikbareEdelen;
+	public List<Ontwikkelingskaart> getNiveau3() {
+		return niveau3;
 	}
 	
-	public void setEdelsteenFicheVoorraad(List<EdelsteenAantal> edelsteenFicheVoorraad) {
-		//TODO
-		this.edelsteenFicheVoorraad = edelsteenFicheVoorraad;
+	public EdelsteenAantal getDiamantAantal() {
+		return diamantAantal;
 	}
 	
-	public void setBeschikbareOntwikkelingskaarten(List<Ontwikkelingskaart> beschikbareOntwikkelingskaarten) {
-		//TODO
-		this.beschikbareOntwikkelingskaarten = beschikbareOntwikkelingskaarten;
+	public EdelsteenAantal getOnyxAantal() {
+		return onyxAantal;
+	}
+	
+	public EdelsteenAantal getRobijnAantal() {
+		return robijnAantal;
+	}
+	
+	public EdelsteenAantal getSaffierAantal() {
+		return saffierAantal;
+	}
+	
+	public EdelsteenAantal getSmaragdAantal() {
+		return smaragdAantal;
 	}
 	
 	public void meldAan(Speler sp){
 		spelers.add(sp);
 	}
 	
-	private void shuffleOntwikkelingsKaarten() {
+	public void shuffleOntwikkelingsKaarten() {
 		niveau1 = okr.geefKaartenNiveau1();
 		Collections.shuffle(niveau1);
 		
@@ -76,12 +83,12 @@ public class Spel {
 		Collections.shuffle(niveau3);
 	}
 	
-	private void shuffleEdelen() {
+	public void shuffleEdelen() {
 		edelen= er.geefEdelen();
 		Collections.shuffle(edelen);
 	}
 	
-	private void geefKaartenAantalSpelers() {	
+	public void geefKaartenAantalSpelers() {	
 		if(spelers.size() == 2) {
 			edeleSpelers=new Edele[3];
 			diamantAantal = new EdelsteenAantal(4,EdelsteenSoort.DIAMANT);
@@ -118,33 +125,5 @@ public class Spel {
 			}
 		}
 	}
-	
-	
-	
-	/*public void isStartspeler() {
-		int jongsteGeboorte=Integer.MAX_VALUE;
-		startSpeler=spelers.get(0);
-		
-		for(Speler speler:spelers) {
-			if(speler.getGeboortejaar()>jongsteGeboorte) {
-				jongsteGeboorte=speler.getGeboortejaar();
-				startSpeler=speler;
-			}
-		}
-		startSpeler.isStartspeler(true);
-	}
-	*/
-	/*private void bepaalStartSpeler() {
-		int kleinsteGetal = Integer.MAX_VALUE;
-		startSpeler=spelersInSpel.get(0);
-		spelersInSpel= s.getSpelers();
-		for(Speler speler : spelersInSpel) {
-			if(speler.getGeboortejaar() < kleinsteGetal) {
-				kleinsteGetal = speler.getGeboortejaar();
-				startSpeler = speler;
-			}
-		}
-		startSpeler.isStartspeler(true);
-	}*/
 }
 	

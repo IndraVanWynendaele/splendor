@@ -8,13 +8,48 @@ import dtos.SpelerDTO;
 public class DomeinController {
 
 	private SpelerRepository sRepo;
-	private EdeleRepository eRepo;
-	private OntwikkelingskaartRepository oRepo;
+	//private EdeleRepository eRepo;
+	//private OntwikkelingskaartRepository oRepo;
 	private Spel s ;
 	public Speler startSpeler;
 	private List<Speler> spelersInSpel;
 	
-
+	public Edele[] getEdeleSpelers() {
+		return s.getEdeleSpelers();
+	}
+	
+	public List<Ontwikkelingskaart> getNiveau1() {
+		return s.getNiveau1();
+	}
+	
+	public List<Ontwikkelingskaart> getNiveau2() {
+		return s.getNiveau2();
+	}
+	
+	public List<Ontwikkelingskaart> getNiveau3() {
+		return s.getNiveau3();
+	}
+	
+	public EdelsteenAantal getDiamantAantal() {
+		return s.getDiamantAantal();
+	}
+	
+	public EdelsteenAantal getOnyxAantal() {
+		return s.getOnyxAantal();
+	}
+	
+	public EdelsteenAantal getRobijnAantal() {
+		return s.getRobijnAantal();
+	}
+	
+	public EdelsteenAantal getSaffierAantal() {
+		return s.getSaffierAantal();
+	}
+	
+	public EdelsteenAantal getSmaragdAantal() {
+		return s.getSmaragdAantal();
+	}
+	
 	public DomeinController() {
 		s = new Spel();
 		startSpel();
@@ -24,7 +59,9 @@ public class DomeinController {
 	}
 	
 	public void startSpel() {
-		// overzicht alle kaarten enz
+		s.shuffleOntwikkelingsKaarten();
+		s.shuffleEdelen();
+		s.geefKaartenAantalSpelers();
 	}
 
 	public boolean meldAan(Speler sp) {

@@ -6,6 +6,8 @@ import java.util.List;
 import java.util.Scanner;
 
 import domein.DomeinController;
+import domein.Edele;
+import domein.Ontwikkelingskaart;
 import domein.Speler;
 import dtos.SpelerDTO;
 
@@ -32,7 +34,9 @@ public class SplendorApp {
 					if(dc.controleerAantalSpelers()) {
 						dc.startSpel();
 						System.out.println("\n-- Spel gestart --");
+						System.out.println("\n-- Overzicht spelers --");
 						toonOverzichtSpelers();
+						System.out.println("\n-- Overzicht spel --");
 						toonOverzichtSpel();
 					}	
 				}
@@ -62,11 +66,11 @@ public class SplendorApp {
 		uitvoerGeg += String.format("\nIs aan de beurt:%14s","");
 		
 		for(SpelerDTO speler: spelersDTO)
-			uitvoerGeg += String.format("%15s", speler.isAanDeBeurt());
+			uitvoerGeg += String.format("%15s", speler.isAanDeBeurt()==true?"ja":"nee");
 		uitvoerGeg += String.format("\nIs startspeler:%15s","");	
 		
 		for(SpelerDTO speler: spelersDTO)
-			uitvoerGeg += String.format("%15s", speler.isStartspeler());
+			uitvoerGeg += String.format("%15s", speler.isStartspeler()==true?"ja":"nee");
 		uitvoerGeg += String.format("\nOntwikkelingskaarten in bezit:");
 		
 		for(SpelerDTO speler: spelersDTO)
@@ -87,8 +91,52 @@ public class SplendorApp {
 
 	private void toonOverzichtSpel() {
 		String uitvoerSpel="";
-		uitvoerSpel+=String.format("%30s", "");
-		uitvoerSpel+= String.format("De Beschikbare edele:%9s ", "");
+		uitvoerSpel+= String.format("De Beschikbare edele:%9s", "");
+		Edele[] beschikbareEdelen = dc.getEdeleSpelers();
+		uitvoerSpel += String.format("%15s", beschikbareEdelen.length);
+		/*for(Edele e : beschikbareEdelen) {
+			uitvoerSpel += String.format("%15s", e);
+		}*/
+		uitvoerSpel += String.format("\n");
+		uitvoerSpel+= String.format("Ontwikkelingskaarten niveau1:", "");
+		List<Ontwikkelingskaart> niveau1 = dc.getNiveau1();
+		for(Ontwikkelingskaart ok1 : niveau1) {
+			uitvoerSpel += String.format("");
+		}
+		uitvoerSpel += String.format("\n");
+		uitvoerSpel+= String.format("Ontwikkelingskaarten niveau2:", "");
+		List<Ontwikkelingskaart> niveau2 = dc.getNiveau2();
+		for(Ontwikkelingskaart ok2 : niveau2) {
+			uitvoerSpel += String.format("");
+		}
+		uitvoerSpel += String.format("\n");
+		uitvoerSpel+= String.format("Ontwikkelingskaarten niveau3:", "");
+		List<Ontwikkelingskaart> niveau3 = dc.getNiveau3();
+		for(Ontwikkelingskaart ok3 : niveau3) {
+			uitvoerSpel += String.format("");
+		}
+		uitvoerSpel += String.format("\n");
+		uitvoerSpel+= String.format("Voorraad Smaragden:%11s", "");
+		uitvoerSpel += String.format("%15d",dc.getSmaragdAantal().getAantal());
+		
+		uitvoerSpel += String.format("\n");
+		uitvoerSpel+= String.format("Voorraad Saffieren:%11s", "");
+		uitvoerSpel += String.format("%15d",dc.getSaffierAantal().getAantal());
+		
+		uitvoerSpel += String.format("\n");
+		uitvoerSpel+= String.format("Voorraad Robijnen:%12s", "");
+		uitvoerSpel += String.format("%15d",dc.getRobijnAantal().getAantal());
+		
+		uitvoerSpel += String.format("\n");
+		uitvoerSpel+= String.format("Voorraad Onyxen:%14s", "");
+		uitvoerSpel += String.format("%15d",dc.getOnyxAantal().getAantal());
+		
+		uitvoerSpel += String.format("\n");
+		uitvoerSpel+= String.format("Voorraad Diamanten:%11s", "");
+		uitvoerSpel += String.format("%15d",dc.getDiamantAantal().getAantal());
+		
+		
+		System.out.printf("%s%n", uitvoerSpel);
 	}
 	
 	private int toonKeuzeMenu() {
