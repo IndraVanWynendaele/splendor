@@ -11,7 +11,7 @@ public class DomeinController {
 	private EdeleRepository eRepo;
 	private OntwikkelingskaartRepository oRepo;
 	private Spel s ;
-	//public Speler startSpeler;
+	public Speler startSpeler;
 	private List<Speler> spelersInSpel;
 	
 
@@ -24,7 +24,7 @@ public class DomeinController {
 	}
 	
 	public void startSpel() {
-		s.isStartSpeler();
+		// overzicht alle kaarten enz
 	}
 
 	public boolean meldAan(Speler sp) {
@@ -36,7 +36,7 @@ public class DomeinController {
 	}
 	
 	public List<SpelerDTO> geefSpelerDTOs(){
-		spelersInSpel = s.getSpelers();//probleem
+		spelersInSpel = s.getSpelers();
 		List<SpelerDTO> spelerDTOs = new ArrayList<>();
 		for(Speler speler : spelersInSpel) {
 			spelerDTOs.add(new SpelerDTO(speler.getGebruikersnaam(),speler.getGeboortejaar(), speler.getTotaalAantalPrestigePunten(), speler.geefIsAanDeBeurt(), speler.geefisStartSpeler(), speler.getOntwikkelingskaartenInBezit(), speler.getEdelsteenfichesInBezit(), speler.getEdelenInBezit()));
@@ -49,7 +49,7 @@ public class DomeinController {
 	}
 	
 	public boolean spelerAlAangemeld(Speler sp) {
-		spelersInSpel= s.getSpelers();//klopt
+		spelersInSpel= s.getSpelers();
 		for(Speler speler : spelersInSpel)
 			if(speler.getGebruikersnaam().equals(sp.getGebruikersnaam()))
 				if(speler.getGeboortejaar() == sp.getGeboortejaar())
@@ -59,7 +59,7 @@ public class DomeinController {
 	
 	public boolean controleerAantalSpelers() {
 		boolean aantalSpelersInOrde = false;
-		spelersInSpel= s.getSpelers();//klopt
+		spelersInSpel= s.getSpelers();
 		try{
 			if(spelersInSpel.size() < 2) {
 				throw new IllegalArgumentException("Er moeten minstens 2 spelers aangemeld zijn\n");
@@ -72,5 +72,35 @@ public class DomeinController {
 			System.out.println(e.getMessage());
 		}
 		return aantalSpelersInOrde;
+	}
+	
+	public void isStartSpeler() {
+		int jongsteJaar=Integer.MIN_VALUE;
+		spelersInSpel = s.getSpelers();
+		startSpeler=spelersInSpel.get(0);
+		for(Speler speler:spelersInSpel) {
+			if(speler.getGeboortejaar() == jongsteJaar) {
+				if(speler.getGebruikersnaam().length() > startSpeler.getGebruikersnaam().length()) {
+					jongsteJaar=speler.getGeboortejaar();
+					startSpeler=speler;
+				}
+				else if(speler.getGebruikersnaam().length() == startSpeler.getGebruikersnaam().length()) {
+					String str1 = speler.getGebruikersnaam();
+					String str2 = startSpeler.getGebruikersnaam();
+					int result;
+					do {
+						result = str1.compareTo(str2);
+						if(result > 0) // 1
+							startSpeler = speler;
+					}while(result <= 0);			        
+				}
+			}
+			else if(speler.getGeboortejaar()>jongsteJaar) {
+					jongsteJaar=speler.getGeboortejaar();
+					startSpeler=speler;
+			}
+			
+		}
+		startSpeler.isStartspeler(true);
 	}
 }

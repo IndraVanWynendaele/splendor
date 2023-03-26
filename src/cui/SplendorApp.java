@@ -49,6 +49,7 @@ public class SplendorApp {
 	
 	
 	private void toonOverzichtSpelers() {
+		dc.isStartSpeler();
 		spelersDTO = dc.geefSpelerDTOs();
 		String uitvoerGeg = "";
 		uitvoerGeg+=String.format("%30s", "");
@@ -119,6 +120,7 @@ public class SplendorApp {
 				System.out.print("Geef je gebruikersnaam in: ");
 				gebruikersnaam = input.nextLine();
 				
+				
 				System.out.print("Geef je geboortejaar in: ");
 				geboortejaar = input.nextInt();
 				
@@ -131,6 +133,7 @@ public class SplendorApp {
 						String antwoord;
 						do {
 						System.out.print("De speler is nog niet geregistreerd, wil je dit doen?");
+						input.nextLine();
 						antwoord = input.nextLine().toLowerCase();
 						}while(!(antwoord.equals("ja")||antwoord.equals("nee"))); // testen of dit werkt
 						if(antwoord.equals("ja")) {
@@ -142,6 +145,7 @@ public class SplendorApp {
 						}
 					}
 				}else {
+					input.nextLine();
 					throw new IllegalArgumentException("Deze speler is al aangemeld!\n");
 				}
 				
@@ -150,9 +154,9 @@ public class SplendorApp {
 				System.out.println("Verkeerde invoer, geboortejaar moet een getal zijn");
 			}catch(IllegalArgumentException e) {
 				System.out.println(e.getMessage());
-			}finally {
+			}/*finally {
 				input.nextLine();
-			} 
+			} */
 		}while(!finished);
 	} 
 

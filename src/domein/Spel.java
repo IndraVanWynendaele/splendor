@@ -119,17 +119,7 @@ public class Spel {
 		}
 	}
 	
-	public void isStartSpeler() {
-		int jongsteJaar=Integer.MAX_VALUE;
-		startSpeler=spelers.get(0);
-		for(Speler speler:spelers) {
-			if(speler.getGeboortejaar()>jongsteJaar) {
-				jongsteJaar=speler.getGeboortejaar();
-				startSpeler=speler;
-			}
-		}
-		startSpeler.isStartspeler(true);
-	}
+	
 	
 	/*public void isStartspeler() {
 		int jongsteGeboorte=Integer.MAX_VALUE;
