@@ -27,12 +27,12 @@
       <ColumnConstraints halignment="CENTER" />
    </columnConstraints>
    <children>
-      <ImageView fitHeight="659.0" fitWidth="602.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="4">
+      <ImageView fx:id="BGImage" fitHeight="659.0" fitWidth="602.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="4">
          <image>
             <Image url="@../../../../../../../../../Desktop/splendor.jpg" />
          </image>
       </ImageView>
-      <Label contentDisplay="CENTER" text="Splendor" textFill="WHITE" GridPane.rowIndex="1">
+      <Label fx:id="titelSpel" contentDisplay="CENTER" text="Splendor" textFill="WHITE" GridPane.rowIndex="1">
          <font>
             <Font name="GothicI" size="60.0" />
          </font>
@@ -64,6 +64,6 @@
             <Font size="25.0" />
          </font>
       </Button>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" blendMode="OVERLAY" fill="#1f93ff00" height="500.0" stroke="#fffbfb" strokeType="INSIDE" strokeWidth="3.0" width="494.0" GridPane.rowIndex="4" />
+      <Rectangle fx:id="kader" arcHeight="5.0" arcWidth="5.0" blendMode="OVERLAY" fill="#1f93ff00" height="500.0" stroke="#fffbfb" strokeType="INSIDE" strokeWidth="3.0" width="494.0" GridPane.rowIndex="4" />
    </children>
 </fx:root>
