@@ -24,6 +24,7 @@ public class SplendorApp {
 		spelersDTO = new ArrayList<>();
 	}
 	
+	
 	public void start() {
 		keuzeKeuzeMenu = toonKeuzeMenu();
 		while(keuzeKeuzeMenu != 3) {
