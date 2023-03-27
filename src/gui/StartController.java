@@ -51,8 +51,8 @@ public class StartController extends AnchorPane{
 	
 	@FXML
     void btnSpelenClicked(ActionEvent event) {
-		MenuController ns = new MenuController(this, dc);
-		Scene scene = new Scene(ns);
+		MenuController mc = new MenuController(this, dc);
+		Scene scene = new Scene(mc);
 		Stage stage = (Stage) this.getScene().getWindow();
 		stage.setScene(scene);
 		stage.show();

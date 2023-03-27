@@ -19,7 +19,7 @@ import javafx.stage.WindowEvent;
 public class MenuController extends GridPane{
 	
 	private DomeinController dc;
-	private StartController preScreen;
+	private StartController preStartScreen;
 	
 	@FXML
     private ImageView BGImage;
@@ -39,8 +39,8 @@ public class MenuController extends GridPane{
     @FXML
     private Label titelSpel;
 	
-	public MenuController(StartController preScreen, DomeinController dc) {
-		this.preScreen = preScreen;
+	public MenuController(StartController preStartScreen, DomeinController dc) {
+		this.preStartScreen = preStartScreen;
 		this.dc = dc;
 		
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("Menu.fxml"));
@@ -56,24 +56,24 @@ public class MenuController extends GridPane{
 	
 	@FXML
     void btnSpelerAanmeldenClicked(ActionEvent event) {
-		AanmeldenController ns = new AanmeldenController(this, dc);
-		Scene scene = new Scene(ns);
-		Stage stage = (Stage) this.getScene().getWindow();
-		stage.setScene(scene);
-		stage.show();
+		AanmeldenController ac = new AanmeldenController(this, dc);
+		Scene scene1 = new Scene(ac);
+		Stage stage1 = (Stage) this.getScene().getWindow();
+		stage1.setScene(scene1);
+		stage1.show();
     }
     
     @FXML
     void btnSpelStartenClicked(ActionEvent event) {
-    	SpelStartenController ns = new SpelStartenController(this, dc);
-		Scene scene = new Scene(ns);
-		Stage stage = (Stage) this.getScene().getWindow();
-		stage.setScene(scene);
-		stage.show();
+    	SpelStartenController ssc = new SpelStartenController(this, dc);
+		Scene scene2 = new Scene(ssc);
+		Stage stage2 = (Stage) this.getScene().getWindow();
+		stage2.setScene(scene2);
+		stage2.show();
     }
 	
     @FXML
-    void btnAppStoppenClicked(WindowEvent event) {
-    	btnAppStoppen.setOnAction(e -> Platform.exit());
+    void btnAppStoppenClicked(ActionEvent event) {
+    	btnAppStoppen.setOnAction( evt -> Platform.exit() );
     }
 }

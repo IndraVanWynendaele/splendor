@@ -4,15 +4,16 @@ import java.io.IOException;
 
 import domein.DomeinController;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 
-public class AanmeldenController extends GridPane{
+public class AanmeldenController extends AnchorPane{
 
 	private DomeinController dc;
-	private MenuController preScreen;
+	private MenuController preMenuScreen;
 	
-	public AanmeldenController(MenuController preScreen, DomeinController dc) {
-		this.preScreen = preScreen;
+	public AanmeldenController(MenuController preMenuScreen, DomeinController dc) {
+		this.preMenuScreen = preMenuScreen;
 		this.dc = dc;
 		
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("Aanmelden.fxml"));

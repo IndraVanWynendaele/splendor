@@ -9,10 +9,10 @@ import javafx.scene.layout.GridPane;
 public class SpelStartenController extends GridPane{
 
 	private DomeinController dc;
-	private MenuController preScreen;
+	private MenuController preMenuScreen;
 	
-	public SpelStartenController(MenuController preScreen, DomeinController dc) {
-		this.preScreen = preScreen;
+	public SpelStartenController(MenuController preMenuScreen, DomeinController dc) {
+		this.preMenuScreen = preMenuScreen;
 		this.dc = dc;
 		
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("SpelStarten.fxml"));

@@ -40,7 +40,7 @@
             <DropShadow />
          </effect>
       </Label>
-      <Button fx:id="btnAppStoppen" mnemonicParsing="false" onAction="#btnAppStoppenClicked" prefHeight="44.0" prefWidth="315.0" text="Applicatie stoppen" GridPane.rowIndex="5">
+      <Button fx:id="btnAppStoppen" focusTraversable="false" mnemonicParsing="false" onAction="#btnAppStoppenClicked" prefHeight="44.0" prefWidth="315.0" text="Applicatie stoppen" GridPane.rowIndex="5">
          <GridPane.margin>
             <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
          </GridPane.margin>
@@ -48,7 +48,7 @@
             <Font size="20.0" />
          </font>
       </Button>
-      <Button fx:id="btnSpelerAanmelden" mnemonicParsing="false" onAction="#btnSpelerAanmeldenClicked" prefHeight="52.0" prefWidth="315.0" text="Speler aanmelden" GridPane.rowIndex="3">
+      <Button fx:id="btnSpelerAanmelden" focusTraversable="false" mnemonicParsing="false" onAction="#btnSpelerAanmeldenClicked" prefHeight="52.0" prefWidth="315.0" text="Speler aanmelden" GridPane.rowIndex="3">
          <GridPane.margin>
             <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
          </GridPane.margin>
@@ -56,7 +56,7 @@
             <Font size="25.0" />
          </font>
       </Button>
-      <Button fx:id="btnSpelStarten" mnemonicParsing="false" onAction="#btnSpelStartenClicked" prefHeight="52.0" prefWidth="315.0" text="Spel starten" GridPane.rowIndex="4">
+      <Button fx:id="btnSpelStarten" focusTraversable="false" mnemonicParsing="false" onAction="#btnSpelStartenClicked" prefHeight="52.0" prefWidth="315.0" text="Spel starten" GridPane.rowIndex="4">
          <GridPane.margin>
             <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
          </GridPane.margin>
