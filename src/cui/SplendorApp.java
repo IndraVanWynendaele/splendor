@@ -7,8 +7,10 @@ import java.util.Scanner;
 
 import domein.DomeinController;
 import domein.Edele;
+import domein.EdelsteenAantal;
 import domein.Ontwikkelingskaart;
 import domein.Speler;
+import dtos.OntwikkelingskaartDTO;
 import dtos.SpelerDTO;
 
 public class SplendorApp {
@@ -77,8 +79,13 @@ public class SplendorApp {
 			uitvoerGeg += String.format("%15s", speler.ontwikkelingskaartenInBezit());
 		uitvoerGeg += String.format("\nEdesteenfiche in bezit:%7s","");
 		
-		for(SpelerDTO speler: spelersDTO)
-			uitvoerGeg += String.format("%15s", speler.edelsteenfichesInBezit());
+		for(SpelerDTO speler: spelersDTO) {
+			List<EdelsteenAantal> edelsteenfichesInBezit=speler.edelsteenfichesInBezit();
+			for(EdelsteenAantal o:edelsteenfichesInBezit) {
+				uitvoerGeg += String.format("%15s:%d", o.getSoort().toString(),o.getAantal());
+			}
+			
+		}
 		uitvoerGeg += String.format("\nEdelen in bezit:%14s","");
 		
 		for(SpelerDTO speler: spelersDTO)
@@ -99,9 +106,10 @@ public class SplendorApp {
 		}*/
 		uitvoerSpel += String.format("\n");
 		uitvoerSpel+= String.format("Ontwikkelingskaarten niveau1:", "");
-		List<Ontwikkelingskaart> niveau1 = dc.getNiveau1();
-		for(Ontwikkelingskaart ok1 : niveau1) {
-			uitvoerSpel += String.format("");
+		List<OntwikkelingskaartDTO> niveau1 = dc.geefOntwikkelingskaartDTO1();
+		int i=1;
+		for(OntwikkelingskaartDTO ok1 : niveau1) {
+			uitvoerSpel += String.format("%15d %s:%s",i++,"Prestigepunten:",ok1.prestigepunten());
 		}
 		uitvoerSpel += String.format("\n");
 		uitvoerSpel+= String.format("Ontwikkelingskaarten niveau2:", "");

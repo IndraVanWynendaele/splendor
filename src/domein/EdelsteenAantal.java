@@ -15,4 +15,7 @@ public class EdelsteenAantal {
 		return aantal;
 	}
 	
+	public EdelsteenSoort getSoort() {
+		return soort;
+	}
 }

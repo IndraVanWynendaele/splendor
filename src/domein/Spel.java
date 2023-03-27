@@ -89,6 +89,10 @@ public class Spel {
 	}
 	
 	public void geefKaartenAantalSpelers() {	
+		niveau1=okr.geefKaartenNiveau1();
+		niveau2=okr.geefKaartenNiveau2();
+		niveau3=okr.geefKaartenNiveau3();
+		
 		if(spelers.size() == 2) {
 			edeleSpelers=new Edele[3];
 			diamantAantal = new EdelsteenAantal(4,EdelsteenSoort.DIAMANT);

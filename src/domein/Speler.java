@@ -1,5 +1,6 @@
 package domein;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Speler {
@@ -12,8 +13,8 @@ public class Speler {
 	private boolean isAanDeBeurt;
 	private boolean isStartspeler;
 	private List<Ontwikkelingskaart> ontwikkelingskaartenInBezit;
-	private List<EdelsteenAantal> edelsteenfichesInBezit;
-	private List<Edele> edelenInBezit;
+	private List<EdelsteenAantal> edelsteenfichesInBezit= new ArrayList<>();
+	private List<Edele> edelenInBezit ;
 	
 	public boolean geefIsAanDeBeurt() {
 		return isAanDeBeurt;

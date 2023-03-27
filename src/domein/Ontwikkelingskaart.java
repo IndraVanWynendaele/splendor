@@ -13,4 +13,12 @@ public class Ontwikkelingskaart extends Prestige {
 		this.bonus = bonus;
 	}
 	
+	public int getNiveau() {
+		return niveau;
+	}
+	
+	public EdelsteenSoort getBonus() {
+		return bonus;
+	}
+	
 }

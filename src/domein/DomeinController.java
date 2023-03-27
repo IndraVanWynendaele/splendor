@@ -3,6 +3,8 @@ package domein;
 import java.util.ArrayList;
 import java.util.List;
 
+import dtos.EdeleDTO;
+import dtos.OntwikkelingskaartDTO;
 import dtos.SpelerDTO;
 
 public class DomeinController {
@@ -80,6 +82,43 @@ public class DomeinController {
 		}
 		return spelerDTOs;
 	}
+	
+	public List<EdeleDTO> geefEdeleDTO(){
+		Edele[] edeleInSpel = s.getEdeleSpelers();
+		List<EdeleDTO> edeleDTO = new ArrayList<>();
+		for(Edele edele:edeleInSpel) {
+			edeleDTO.add(new EdeleDTO(edele.getPrestige(),edele.getKosten()));
+		}
+		return edeleDTO;
+	}
+	
+	public List<OntwikkelingskaartDTO> geefOntwikkelingskaartDTO1(){
+		List<Ontwikkelingskaart> ontwikkelingskaart1 =s.getNiveau1();
+		List<OntwikkelingskaartDTO> ontwikkelingskaartDTO1 = new ArrayList<>();
+		for(Ontwikkelingskaart o1:ontwikkelingskaart1) {
+			ontwikkelingskaartDTO1.add(new OntwikkelingskaartDTO(o1.getPrestige(),o1.getKosten(),o1.getNiveau(),o1.getBonus()));
+		}
+		return ontwikkelingskaartDTO1;
+	}
+
+	public List<OntwikkelingskaartDTO> geefOntwikkelingskaartDTO2(){
+		List<Ontwikkelingskaart> ontwikkelingskaart2 =s.getNiveau2();
+		List<OntwikkelingskaartDTO> ontwikkelingskaartDTO2 = new ArrayList<>();
+		for(Ontwikkelingskaart o2:ontwikkelingskaart2) {
+			ontwikkelingskaartDTO2.add(new OntwikkelingskaartDTO(o2.getPrestige(),o2.getKosten(),o2.getNiveau(),o2.getBonus()));
+		}
+		return ontwikkelingskaartDTO2;
+	}
+	
+	public List<OntwikkelingskaartDTO> geefOntwikkelingskaartDTO3(){
+		List<Ontwikkelingskaart> ontwikkelingskaart3 =s.getNiveau1();
+		List<OntwikkelingskaartDTO> ontwikkelingskaartDTO3 = new ArrayList<>();
+		for(Ontwikkelingskaart o3:ontwikkelingskaart3) {
+			ontwikkelingskaartDTO3.add(new OntwikkelingskaartDTO(o3.getPrestige(),o3.getKosten(),o3.getNiveau(),o3.getBonus()));
+		}
+		return ontwikkelingskaartDTO3;
+	}
+	
 
 	public void voegToe(Speler sp) {
 		sRepo.voegToe(sp);
@@ -139,5 +178,9 @@ public class DomeinController {
 			
 		}
 		startSpeler.isStartspeler(true);
+	}
+	
+	public boolean isEindeSpel() {
+		return true;	
 	}
 }

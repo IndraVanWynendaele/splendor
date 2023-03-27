@@ -5,5 +5,12 @@ public enum EdelsteenSoort {
 	DIAMANT,
 	SAFFIER,
 	ONYX,
-	ROBIJN
+	ROBIJN;
+	
+	public String toString() {
+		String resultaat = this.name();
+		resultaat=resultaat.toLowerCase();
+		
+		return resultaat;
+	}
 }
