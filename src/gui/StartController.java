@@ -8,6 +8,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.shape.Rectangle;
@@ -36,12 +37,17 @@ public class StartController extends AnchorPane{
 		loader.setRoot(this);
 		loader.setController(this);
 		
+		
 		try {
 			loader.load();
 		} catch (IOException ex) {
 			throw new RuntimeException(ex);
 		}
 	}
+	/*
+	public void initialize() {
+		BGImage = new ImageView(new Image(getClass().getResourceAsStream("/images/splendor.jpg")));
+	}*/
 	
 	@FXML
     void btnSpelenClicked(ActionEvent event) {
