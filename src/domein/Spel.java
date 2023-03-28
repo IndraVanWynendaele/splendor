@@ -13,14 +13,22 @@ public class Spel {
 	private EdeleRepository er;
 	private EdelsteenAantal diamantAantal, smaragdAantal, saffierAantal, onyxAantal, robijnAantal;
 	
-	private List<Ontwikkelingskaart> niveau1, niveau2, niveau3;
+	private List<Ontwikkelingskaart> niveau1, niveau2, niveau3, niveau1Zichtbaar, niveau2Zichtbaar, niveau3Zichtbaar;
 	private List<Edele> edelen;
 	private Edele[] edeleSpelers;
-	/*
-	private List<Edele> beschikbareEdelen;
-	private List<EdelsteenAantal> edelsteenFicheVoorraad;
-	private List<Ontwikkelingskaart> beschikbareOntwikkelingskaarten;
-	*/
+	
+	public List<Ontwikkelingskaart> getNiveau1Zichtbaar() {
+		return niveau1Zichtbaar;
+	}
+	
+	public List<Ontwikkelingskaart> getNiveau2Zichtbaar() {
+		return niveau2Zichtbaar;
+	}
+	
+	public List<Ontwikkelingskaart> getNiveau3Zichtbaar() {
+		return niveau3Zichtbaar;
+	}
+	
 	public Spel() {
 		okr= new OntwikkelingskaartRepository();
 		er= new EdeleRepository();
@@ -129,5 +137,20 @@ public class Spel {
 			}
 		}
 	}
+	
+	public void maakZichtbareOntwikkelingskaarten() {
+		niveau1Zichtbaar = new ArrayList<>();
+		niveau2Zichtbaar = new ArrayList<>();
+		niveau3Zichtbaar = new ArrayList<>();
+		
+		for(int i =0;i<4;i++) {
+			niveau1Zichtbaar.add(niveau1.remove(0));
+			
+			niveau2Zichtbaar.add(niveau2.remove(0));
+			
+			niveau3Zichtbaar.add(niveau3.remove(0));
+		}
+	}
+	
 }
 	

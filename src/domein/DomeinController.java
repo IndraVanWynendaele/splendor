@@ -32,6 +32,33 @@ public class DomeinController {
 		return s.getNiveau3();
 	}
 	
+	public List<OntwikkelingskaartDTO> getNiveau1Zichtbaar() {
+		List<Ontwikkelingskaart> ontwikkelingskaart1 = s.getNiveau1Zichtbaar();
+		List<OntwikkelingskaartDTO> ontwikkelingskaartDTO1 = new ArrayList<>();
+		for(Ontwikkelingskaart o1:ontwikkelingskaart1) {
+			ontwikkelingskaartDTO1.add(new OntwikkelingskaartDTO(o1.getPrestige(),o1.getKosten(),o1.getNiveau(),o1.getBonus()));
+		}
+		return ontwikkelingskaartDTO1; 
+	}
+	
+	public List<OntwikkelingskaartDTO> getNiveau2Zichtbaar() {
+		List<Ontwikkelingskaart> ontwikkelingskaart2 =s.getNiveau2Zichtbaar();
+		List<OntwikkelingskaartDTO> ontwikkelingskaartDTO2 = new ArrayList<>();
+		for(Ontwikkelingskaart o2:ontwikkelingskaart2) {
+			ontwikkelingskaartDTO2.add(new OntwikkelingskaartDTO(o2.getPrestige(),o2.getKosten(),o2.getNiveau(),o2.getBonus()));
+		}
+		return ontwikkelingskaartDTO2; 
+	}
+	
+	public List<OntwikkelingskaartDTO> getNiveau3Zichtbaar() {
+		List<Ontwikkelingskaart> ontwikkelingskaart3 =s.getNiveau3Zichtbaar();
+		List<OntwikkelingskaartDTO> ontwikkelingskaartDTO3 = new ArrayList<>();
+		for(Ontwikkelingskaart o3:ontwikkelingskaart3) {
+			ontwikkelingskaartDTO3.add(new OntwikkelingskaartDTO(o3.getPrestige(),o3.getKosten(),o3.getNiveau(),o3.getBonus()));
+		}
+		return ontwikkelingskaartDTO3; 
+	}
+	
 	public EdelsteenAantal getDiamantAantal() {
 		return s.getDiamantAantal();
 	}
@@ -64,6 +91,7 @@ public class DomeinController {
 		s.shuffleOntwikkelingsKaarten();
 		s.shuffleEdelen();
 		s.geefKaartenAantalSpelers();
+		s.maakZichtbareOntwikkelingskaarten();
 	}
 
 	public boolean meldAan(Speler sp) {
@@ -136,7 +164,7 @@ public class DomeinController {
 	public boolean controleerAantalSpelers() {
 		boolean aantalSpelersInOrde = false;
 		spelersInSpel= s.getSpelers();
-		try{
+
 			if(spelersInSpel.size() < 2) {
 				throw new IllegalArgumentException("Er moeten minstens 2 spelers aangemeld zijn\n");
 			}else if(spelersInSpel.size() > 4) {
@@ -144,9 +172,7 @@ public class DomeinController {
 				throw new IllegalArgumentException("Er mogen maar 4 spelers aangemeld zijn \nDe lijst van spelers is verwijderd, begin helemaal opnieuw! :( \n");
 			}
 			aantalSpelersInOrde = true;
-		}catch(IllegalArgumentException e) {
-			System.out.println(e.getMessage());
-		}
+
 		return aantalSpelersInOrde;
 	}
 	
@@ -181,6 +207,38 @@ public class DomeinController {
 	}
 	
 	public boolean isEindeSpel() {
-		return true;	
+		spelersInSpel=s.getSpelers();
+		for(Speler speler: spelersInSpel) {
+			if(speler.getTotaalAantalPrestigePunten()>=15) {
+				return true;
+			}
+		}
+		return false;	
+	}
+	
+	public void bepaalWinnaar() {
+		int maxPrestigepunten=Integer.MIN_VALUE;
+		spelersInSpel = s.getSpelers();
+		List<Speler> winnaar = new ArrayList<>();
+		winnaar.add(spelersInSpel.get(0));
+				
+		for(Speler speler:spelersInSpel) {
+			if(speler.getTotaalAantalPrestigePunten() == maxPrestigepunten) {
+				if(speler.getOntwikkelingskaartenInBezit().size() < startSpeler.getOntwikkelingskaartenInBezit().size()) {
+					maxPrestigepunten=speler.getTotaalAantalPrestigePunten();
+					winnaar.remove(0);
+					winnaar.add(speler);
+				}
+				else if(speler.getOntwikkelingskaartenInBezit().size() == startSpeler.getOntwikkelingskaartenInBezit().size()) {
+					maxPrestigepunten=speler.getTotaalAantalPrestigePunten();
+					winnaar.add(speler);
+				}
+			}
+			else if(speler.getTotaalAantalPrestigePunten()> maxPrestigepunten) {
+				maxPrestigepunten=speler.getTotaalAantalPrestigePunten();
+				winnaar.remove(0);
+				winnaar.add(speler);
+			}
+		}
 	}
 }

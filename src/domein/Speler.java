@@ -16,6 +16,8 @@ public class Speler {
 	private List<EdelsteenAantal> edelsteenfichesInBezit= new ArrayList<>();
 	private List<Edele> edelenInBezit ;
 	
+	private boolean isWinnaar;
+	
 	public boolean geefIsAanDeBeurt() {
 		return isAanDeBeurt;
 	}
