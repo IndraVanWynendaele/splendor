@@ -66,6 +66,7 @@ public class SplendorApp {
 		return false;		
 	}
 	
+	
 	private void toonOverzichtSpelers() {
 		dc.isStartSpeler();
 		spelersDTO = dc.geefSpelerDTOs();
