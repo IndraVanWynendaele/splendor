@@ -74,6 +74,6 @@ public class MenuController extends GridPane{
 	
     @FXML
     void btnAppStoppenClicked(ActionEvent event) {
-    	btnAppStoppen.setOnAction( evt -> Platform.exit() );
+    	((Stage)(((Button)event.getSource()).getScene().getWindow())).close();
     }
 }
