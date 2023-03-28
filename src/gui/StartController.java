@@ -37,17 +37,12 @@ public class StartController extends AnchorPane{
 		loader.setRoot(this);
 		loader.setController(this);
 		
-		
 		try {
 			loader.load();
 		} catch (IOException ex) {
 			throw new RuntimeException(ex);
 		}
 	}
-	/*
-	public void initialize() {
-		BGImage = new ImageView(new Image(getClass().getResourceAsStream("/images/splendor.jpg")));
-	}*/
 	
 	@FXML
     void btnSpelenClicked(ActionEvent event) {

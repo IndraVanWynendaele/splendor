@@ -68,23 +68,17 @@ public class AanmeldenController extends AnchorPane{
 			Speler sp = new Speler(gebruikersnaam, geboortejaar);
 			if(dc.spelerAlAangemeld(sp)) {
 				if(dc.meldAan(sp)) {
-					Alert alert = new Alert(AlertType.INFORMATION);
-					alert.setTitle("Aanmelden gelukt");
-					alert.setContentText(String.format("Speler met naam %s en geboortejaar %d is aangemeld", gebruikersnaam, geboortejaar));
-					alert.show();
+					update(gebruikersnaam, geboortejaar);
 				}
 				else{
 					Alert alert = new Alert(AlertType.CONFIRMATION);
 					alert.setTitle("Nieuwe speler aanmaken?");
 					alert.setContentText("Wil je een nieuwe speler aanmaken?");
 					Optional<ButtonType> result = alert.showAndWait();
-					if(result.get() == ButtonType.YES) {
+					if(result.get() == ButtonType.OK) {
 						dc.voegToe(sp);
 						dc.meldAan(sp);
-						Alert alert1 = new Alert(AlertType.INFORMATION);
-						alert1.setTitle("Aanmelden gelukt");
-						alert1.setContentText(String.format("Speler met naam %s en geboortejaar %d is aangemeld", gebruikersnaam, geboortejaar));
-						alert1.show();
+						update(gebruikersnaam, geboortejaar);
 					}
 				}
 			}else {
@@ -100,6 +94,16 @@ public class AanmeldenController extends AnchorPane{
 			alert.setContentText(ex.getMessage());
 			alert.show();
 		}
+	}
+	
+	private void update(String gebruikersnaam, int geboortejaar) {
+		Alert alert = new Alert(AlertType.INFORMATION);
+		alert.setTitle("Aanmelden gelukt");
+		alert.setContentText(String.format("Speler met naam %s en geboortejaar %d is aangemeld", gebruikersnaam, geboortejaar));
+		alert.show();
+		
+		txfGeboortjaar.clear();
+		txfGebruikersnaam.clear();
 	}
 	
 	@FXML
