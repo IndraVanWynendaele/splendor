@@ -13,7 +13,7 @@
    <children>
       <ImageView fitHeight="602.0" fitWidth="614.0" layoutX="-1.0" layoutY="-8.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../../../../../../../Desktop/splendor.jpg" />
+            <Image url="@../images/splendor.jpg" />
          </image>
       </ImageView>
       <Rectangle fx:id="kader" arcHeight="5.0" arcWidth="5.0" blendMode="OVERLAY" fill="#1f93ff00" height="504.0" layoutX="56.0" layoutY="41.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="5.0" width="488.0" />

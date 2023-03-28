@@ -1,6 +1,7 @@
 package gui;
 
 import java.io.IOException;
+import java.util.Optional;
 
 import domein.DomeinController;
 import domein.Speler;
@@ -8,10 +9,11 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
@@ -59,19 +61,44 @@ public class AanmeldenController extends AnchorPane{
 	
 	@FXML
 	void btnLogInClicked(ActionEvent event) {
-		String gebruikersnaam = txfGebruikersnaam.getText();
-		int geboortejaar = Integer.parseInt(txfGeboortjaar.getText());
-		
-		if(dc.spelerAlAangemeld(new Speler(gebruikersnaam, geboortejaar))) {
-			Alert alert = new Alert(AlertType.INFORMATION);
+		try {
+			String gebruikersnaam = txfGebruikersnaam.getText();
+			int geboortejaar = Integer.parseInt(txfGeboortjaar.getText());
+			
+			Speler sp = new Speler(gebruikersnaam, geboortejaar);
+			if(dc.spelerAlAangemeld(sp)) {
+				if(dc.meldAan(sp)) {
+					Alert alert = new Alert(AlertType.INFORMATION);
+					alert.setTitle("Aanmelden gelukt");
+					alert.setContentText(String.format("Speler met naam %s en geboortejaar %d is aangemeld", gebruikersnaam, geboortejaar));
+					alert.show();
+				}
+				else{
+					Alert alert = new Alert(AlertType.CONFIRMATION);
+					alert.setTitle("Nieuwe speler aanmaken?");
+					alert.setContentText("Wil je een nieuwe speler aanmaken?");
+					Optional<ButtonType> result = alert.showAndWait();
+					if(result.get() == ButtonType.YES) {
+						dc.voegToe(sp);
+						dc.meldAan(sp);
+						Alert alert1 = new Alert(AlertType.INFORMATION);
+						alert1.setTitle("Aanmelden gelukt");
+						alert1.setContentText(String.format("Speler met naam %s en geboortejaar %d is aangemeld", gebruikersnaam, geboortejaar));
+						alert1.show();
+					}
+				}
+			}else {
+				throw new IllegalArgumentException("Deze speler is al aangemeld!\n");
+			}
+		}catch(NumberFormatException ex) {
+			txfGeboortjaar.setText("");
+			txfGeboortjaar.setPromptText("Moet een positief getal zijn");
+			txfGeboortjaar.setStyle("-fx-text-box-border: red");
+		}catch(IllegalArgumentException ex) {
+			Alert alert = new Alert(AlertType.ERROR);
 			alert.setTitle("Aanmelden mislukt");
-			alert.setContentText(String.format("Speler met naam %s en geboortejaar %d is al aangemeld", gebruikersnaam, geboortejaar));
-		}
-		else {
-			dc.voegToe(new Speler(gebruikersnaam, geboortejaar));
-			Alert alert = new Alert(AlertType.INFORMATION);
-			alert.setTitle("Aanmelden gelukt");
-			alert.setContentText(String.format("Speler met naam %s en geboortejaar %d is aangemeld", gebruikersnaam, geboortejaar));
+			alert.setContentText(ex.getMessage());
+			alert.show();
 		}
 	}
 	
