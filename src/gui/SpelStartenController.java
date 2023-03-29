@@ -40,20 +40,21 @@ public class SpelStartenController extends AnchorPane{
 			throw new RuntimeException(ex);
 		}
 		
-		
 		try {
-			dc.controleerAantalSpelers();
+			geefSpelersWeer();
+			if(dc.controleerAantalSpelers()) {
+				dc.startSpel();
+				Alert alert = new Alert(AlertType.INFORMATION);
+				alert.setTitle("Spel gestart");
+				alert.setContentText("Aantal spelers correct & spel is aangemaakt!");
+				alert.show();
+			}
 		}catch(IllegalArgumentException e) {
 			Alert alert = new Alert(AlertType.ERROR);
 			alert.setTitle("Aantal spelers incorrect");
 			alert.setContentText(e.getMessage());
 			alert.show();
-			
-			
 		}
-		
-		geefSpelersWeer();
-		dc.startSpel();
 	}
 	
 	@FXML

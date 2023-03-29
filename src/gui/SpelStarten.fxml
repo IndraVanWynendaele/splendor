@@ -7,6 +7,7 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
 <fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="586.0" prefWidth="600.0" type="AnchorPane" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
@@ -16,6 +17,7 @@
             <Image url="@../images/splendor.jpg" />
          </image>
       </ImageView>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" blendMode="OVERLAY" fill="#1f93ff00" height="512.0" layoutX="41.0" layoutY="37.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="5.0" width="520.0" />
       <Label layoutX="145.0" layoutY="51.0" text="Spel gestart" textFill="WHITE">
          <font>
             <Font name="GothicI" size="47.0" />
