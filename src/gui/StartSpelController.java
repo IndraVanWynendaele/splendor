@@ -10,15 +10,19 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
-public class StartSpelController extends BorderPane{
+public class StartSpelController extends AnchorPane{
 
 	private DomeinController dc;
 	private AanmeldenController preAanmeldenScreen;
 	
 	 @FXML
 	 private ImageView BGImage;
+	 
+	 @FXML
+	 private BorderPane startSpel;
 	
 	 public StartSpelController(AanmeldenController preAanmeldenScreen, DomeinController dc) {
 		 this.dc = dc;

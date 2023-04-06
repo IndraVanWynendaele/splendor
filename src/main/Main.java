@@ -14,6 +14,7 @@ public class Main extends Application{
 			StartController root = new StartController(dc);
 			
 			Scene scene = new Scene(root);
+			scene.getStylesheets().add(getClass().getResource("/css/startSpel.css").toExternalForm());
 			primaryStage.setScene(scene);
 			primaryStage.setTitle("Splendor");
 			
