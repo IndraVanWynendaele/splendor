@@ -119,16 +119,15 @@ public class AanmeldenController extends AnchorPane{
 		try {
 			if(dc.controleerAantalSpelers()) {
 				dc.startSpel();
-				Alert alert = new Alert(AlertType.INFORMATION);
-				alert.setTitle("Spel gestart");
-				alert.setContentText("Aantal spelers correct & spel is aangemaakt!");
-				alert.show();
-			
+				dc.isStartSpeler();
+				dc.isAanDeBeurt();
+				
 				StartSpelController ssc = new StartSpelController(this, dc);
 				Scene scene1 = new Scene(ssc);
 				Stage stage1 = (Stage) this.getScene().getWindow();
 				stage1.setScene(scene1);
 				stage1.show();
+				
 			}
 		}catch(IllegalArgumentException e) {
 			Alert alert = new Alert(AlertType.ERROR);

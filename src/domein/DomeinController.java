@@ -15,12 +15,20 @@ public class DomeinController {
 	private Spel s ;
 	public Speler startSpeler;
 	public Speler huidigeSpeler;
-	private List<Speler> spelersInSpel;
+	public List<Speler> spelersInSpel;
 	
 	public DomeinController() {
 		s = new Spel();
 		startSpel();
 		sRepo = new SpelerRepository();
+	}
+	
+	public List<Speler> getSpelersInSpel() {
+		return spelersInSpel;
+	}
+	
+	public Speler getStartSpeler() {
+		return startSpeler;
 	}
 	
 	public void startSpel() {
@@ -93,16 +101,19 @@ public class DomeinController {
 			}
 		}
 		startSpeler.isStartspeler(true);
-		startSpeler = huidigeSpeler;
+		startSpeler.isAanDeBeurt(true);
+		huidigeSpeler = startSpeler;
+		
 	}
 	
 	public void isAanDeBeurt() {
 		boolean klaar = false;
 		while(!klaar) {
 			for(int i = 0; i < spelersInSpel.size(); i++) {
-				if(huidigeSpeler.getGebruikersnaam().equals(spelersInSpel.get(i).getGebruikersnaam())) {
+				String naam = spelersInSpel.get(i).getGebruikersnaam();
+				if(huidigeSpeler.getGebruikersnaam().equals(naam)) {
 					huidigeSpeler.isAanDeBeurt(false);
-					huidigeSpeler = spelersInSpel.get(i + 1);
+					huidigeSpeler = spelersInSpel.get((i + 1)%spelersInSpel.size());
 					huidigeSpeler.isAanDeBeurt(true);
 					klaar = true;
 				}

@@ -1,9 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
 <fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1400.0" type="AnchorPane" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
    <children>
@@ -14,13 +18,39 @@
       </ImageView>
       <SplitPane blendMode="COLOR_BURN" dividerPositions="0.29797979797979796" prefHeight="102.0" prefWidth="1398.0">
         <items>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0" />
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="193.0" prefWidth="418.0" />
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+               <children>
+                  <TextField fx:id="txfSpelerNaam" alignment="CENTER" editable="false" layoutX="-102.0" layoutY="5.0" style="-fx-background-color: -fx-control-inner-background;">
+                     <font>
+                        <Font name="GothicI" size="49.0" />
+                     </font>
+                  </TextField>
+               </children></AnchorPane>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="193.0" prefWidth="418.0">
+               <children>
+                  <Label fx:id="lblRondeNr" layoutX="33.0" layoutY="18.0" text="Ronde" textFill="#8e0000">
+                     <font>
+                        <Font name="GothicI" size="49.0" />
+                     </font>
+                  </Label>
+               </children></AnchorPane>
         </items>
       </SplitPane>
       <SplitPane blendMode="COLOR_BURN" dividerPositions="0.29797979797979796" layoutY="101.0" prefHeight="666.0" prefWidth="1400.0">
         <items>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0" />
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+               <children>
+                  <Button fx:id="btnVolgende" layoutX="270.0" layoutY="618.0" mnemonicParsing="false" onAction="#btnVolgendeClicked" text="Volgende">
+                     <font>
+                        <Font name="RomanC" size="20.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="btnStart" layoutX="4.0" layoutY="616.0" mnemonicParsing="false" onAction="#btnStartClicked" text="Start">
+                     <font>
+                        <Font name="RomanC" size="20.0" />
+                     </font>
+                  </Button>
+               </children></AnchorPane>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="518.0" prefWidth="541.0" />
         </items>
       </SplitPane>
