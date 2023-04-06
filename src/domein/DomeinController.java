@@ -14,6 +14,7 @@ public class DomeinController {
 	private OntwikkelingskaartRepository oRepo;
 	private Spel s ;
 	public Speler startSpeler;
+	public Speler huidigeSpeler;
 	private List<Speler> spelersInSpel;
 	
 	public DomeinController() {
@@ -92,6 +93,22 @@ public class DomeinController {
 			}
 		}
 		startSpeler.isStartspeler(true);
+		startSpeler = huidigeSpeler;
+	}
+	
+	public void isAanDeBeurt() {
+		boolean klaar = false;
+		while(!klaar) {
+			for(int i = 0; i < spelersInSpel.size(); i++) {
+				if(huidigeSpeler.getGebruikersnaam().equals(spelersInSpel.get(i).getGebruikersnaam())) {
+					huidigeSpeler.isAanDeBeurt(false);
+					huidigeSpeler = spelersInSpel.get(i + 1);
+					huidigeSpeler.isAanDeBeurt(true);
+					klaar = true;
+				}
+			}
+		}
+		
 	}
 	
 	public boolean isEindeSpel() {
@@ -130,7 +147,7 @@ public class DomeinController {
 		}
 	}
 	
-	public int controleerMogelijkheidTotEdelen(Speler huidigeSpeler) {
+	public int controleerMogelijkheidTotEdelen() {
 		if(s.controleerMogelijkheidTotEdelen(huidigeSpeler)) {
 			List<Edele> beschikbareEdelen = s.edelenTeKoop(huidigeSpeler);
 			if(beschikbareEdelen.size() == 1)

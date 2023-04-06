@@ -47,6 +47,10 @@ public class Speler {
 		isStartspeler = i;
 	}
 	
+	public void isAanDeBeurt(boolean i) {
+		isAanDeBeurt = i;
+	}
+	
 	public boolean geefIsAanDeBeurt() {
 		return isAanDeBeurt;
 	}
