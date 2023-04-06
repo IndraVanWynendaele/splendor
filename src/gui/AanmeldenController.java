@@ -8,6 +8,7 @@ import domein.Speler;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
@@ -111,4 +112,33 @@ public class AanmeldenController extends AnchorPane{
 		Stage stage = (Stage) (getScene().getWindow());
 		stage.setScene(preMenuScreen.getScene());
     }
+	
+	@FXML
+	void btnStartSpelClicked(ActionEvent event) {
+		
+		try {
+			if(dc.controleerAantalSpelers()) {
+				dc.startSpel();
+				Alert alert = new Alert(AlertType.INFORMATION);
+				alert.setTitle("Spel gestart");
+				alert.setContentText("Aantal spelers correct & spel is aangemaakt!");
+				alert.show();
+			
+				StartSpelController ssc = new StartSpelController(this, dc);
+				Scene scene1 = new Scene(ssc);
+				Stage stage1 = (Stage) this.getScene().getWindow();
+				stage1.setScene(scene1);
+				stage1.show();
+			}
+		}catch(IllegalArgumentException e) {
+			Alert alert = new Alert(AlertType.ERROR);
+			alert.setTitle("Aantal spelers incorrect");
+			alert.setContentText(e.getMessage());
+			alert.show();
+			
+			//Stage stage = (Stage) (getScene().getWindow());
+			//stage.setScene(this.getScene());
+		}
+	
+	}
 }

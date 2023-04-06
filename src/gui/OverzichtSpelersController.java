@@ -15,7 +15,7 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
-public class SpelStartenController extends AnchorPane{
+public class OverzichtSpelersController extends AnchorPane{
 
 	private DomeinController dc;
 	private MenuController preMenuScreen;
@@ -26,11 +26,11 @@ public class SpelStartenController extends AnchorPane{
 	@FXML
     private Button btnTerug;
 	
-	public SpelStartenController(MenuController preMenuScreen, DomeinController dc) {
+	public OverzichtSpelersController(MenuController preMenuScreen, DomeinController dc) {
 		this.preMenuScreen = preMenuScreen;
 		this.dc = dc;
 		
-		FXMLLoader loader = new FXMLLoader(getClass().getResource("SpelStarten.fxml"));
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("OverzichtSpelers.fxml"));
 		loader.setRoot(this);
 		loader.setController(this);
 		
@@ -64,7 +64,7 @@ public class SpelStartenController extends AnchorPane{
     }
 	
 	private void geefSpelersWeer() {
-		List<SpelerDTO> spelers = dc.geefSpelerDTOs();
+		List<SpelerDTO> spelers = dc.geefSpelerDTO();
 		String uitvoerGeg = "";
 		for(SpelerDTO speler: spelers) {
 			uitvoerGeg += String.format("%s%n", speler.gebruikersnaam());

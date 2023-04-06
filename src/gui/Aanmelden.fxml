@@ -31,5 +31,6 @@
       </Label>
       <Button fx:id="btnLogIn" layoutX="319.0" layoutY="337.0" mnemonicParsing="false" onAction="#btnLogInClicked" prefHeight="26.0" prefWidth="166.0" text="Log in" />
       <Button fx:id="btnTerug" layoutX="133.0" layoutY="337.0" mnemonicParsing="false" onAction="#btnTerugClicked" prefHeight="26.0" prefWidth="166.0" text="Terug" />
+      <Button fx:id="btnStartSpel" layoutX="133.0" layoutY="379.0" mnemonicParsing="false" onAction="#btnStartSpelClicked" prefHeight="26.0" prefWidth="353.0" text="Start spel" />
    </children>
 </fx:root>

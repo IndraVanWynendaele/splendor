@@ -28,7 +28,7 @@ public class MenuController extends GridPane{
     private Button btnAppStoppen;
 
     @FXML
-    private Button btnSpelStarten;
+    private Button btnOverzichtSpelers;
 
     @FXML
     private Button btnSpelerAanmelden;
@@ -64,9 +64,9 @@ public class MenuController extends GridPane{
     }
     
     @FXML
-    void btnSpelStartenClicked(ActionEvent event) {
-    	SpelStartenController ssc = new SpelStartenController(this, dc);
-		Scene scene2 = new Scene(ssc);
+    void btnOverzichtSpelersClicked(ActionEvent event) {
+    	OverzichtSpelersController osc = new OverzichtSpelersController(this, dc);
+		Scene scene2 = new Scene(osc);
 		Stage stage2 = (Stage) this.getScene().getWindow();
 		stage2.setScene(scene2);
 		stage2.show();
