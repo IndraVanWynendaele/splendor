@@ -17,19 +17,19 @@
          </image>
       </ImageView>
       <Rectangle fx:id="kader" arcHeight="5.0" arcWidth="5.0" blendMode="OVERLAY" fill="#1f93ff00" height="504.0" layoutX="56.0" layoutY="41.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="5.0" width="488.0" />
-      <Label fx:id="lblGebruikersnaam" layoutX="160.0" layoutY="156.0" text="Gebruikersnaam" textFill="WHITE">
+      <Label fx:id="lblGebruikersnaam" layoutX="113.0" layoutY="223.0" text="Gebruikersnaam" textFill="WHITE">
          <font>
-            <Font name="RomanC" size="14.0" />
+            <Font name="RomanC" size="19.0" />
          </font>
       </Label>
-      <TextField fx:id="txfGebruikersnaam" layoutX="316.0" layoutY="153.0" />
-      <TextField fx:id="txfGeboortjaar" layoutX="316.0" layoutY="188.0" />
-      <Label fx:id="lblGeboortejaar" layoutX="162.0" layoutY="191.0" prefHeight="20.0" prefWidth="134.0" text="Geboortejaar" textFill="WHITE">
+      <TextField fx:id="txfGebruikersnaam" layoutX="319.0" layoutY="223.0" prefHeight="26.0" prefWidth="166.0" />
+      <TextField fx:id="txfGeboortjaar" layoutX="319.0" layoutY="258.0" prefHeight="26.0" prefWidth="166.0" />
+      <Label fx:id="lblGeboortejaar" layoutX="113.0" layoutY="257.0" prefHeight="26.0" prefWidth="165.0" text="Geboortejaar" textFill="WHITE">
          <font>
-            <Font name="RomanC" size="14.0" />
+            <Font name="RomanC" size="20.0" />
          </font>
       </Label>
-      <Button fx:id="btnLogIn" layoutX="316.0" layoutY="267.0" mnemonicParsing="false" onAction="#btnLogInClicked" prefHeight="25.0" prefWidth="149.0" text="Log in" />
-      <Button fx:id="btnTerug" layoutX="162.0" layoutY="267.0" mnemonicParsing="false" onAction="#btnTerugClicked" prefHeight="26.0" prefWidth="134.0" text="Terug" />
+      <Button fx:id="btnLogIn" layoutX="319.0" layoutY="337.0" mnemonicParsing="false" onAction="#btnLogInClicked" prefHeight="26.0" prefWidth="166.0" text="Log in" />
+      <Button fx:id="btnTerug" layoutX="133.0" layoutY="337.0" mnemonicParsing="false" onAction="#btnTerugClicked" prefHeight="26.0" prefWidth="166.0" text="Terug" />
    </children>
 </fx:root>
