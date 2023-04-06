@@ -69,7 +69,7 @@ public class SplendorApp {
 	
 	private void toonOverzichtSpelers() {
 		dc.isStartSpeler();
-		spelersDTO = dc.geefSpelerDTOs();
+		spelersDTO = dc.geefSpelerDTO();
 		String uitvoerGeg = "";
 		uitvoerGeg+=String.format("%30s", "");
 		for(SpelerDTO speler: spelersDTO)

@@ -102,7 +102,7 @@ public class DomeinController {
 			return false;	
 	}
 	
-	public List<SpelerDTO> geefSpelerDTOs(){
+	public List<SpelerDTO> geefSpelerDTO(){
 		spelersInSpel = s.getSpelers();
 		List<SpelerDTO> spelerDTOs = new ArrayList<>();
 		for(Speler speler : spelersInSpel) {
