@@ -6,11 +6,11 @@ public class SpelerRepository {
 	private final SpelerMapper sm;
 
 	public SpelerRepository() {
-		sm= new SpelerMapper();
+		sm = new SpelerMapper();
 	}
 	
-	public Speler geefSpeler(String gn,int gj) {
-		Speler sp = sm.geefSpeler(gn, gj);
+	public Speler geefSpeler(String gebruikersnaam, int geboortejaar) {
+		Speler sp = sm.geefSpeler(gebruikersnaam,geboortejaar);
 		return sp;
 	}
 	public void voegToe(Speler sp) {

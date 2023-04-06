@@ -5,7 +5,7 @@ import java.util.List;
 import persistentie.EdeleMapper;
 
 public class EdeleRepository {
-	private EdeleMapper mapper;
+	private final EdeleMapper mapper;
 	
 	public EdeleRepository() {
 		mapper = new EdeleMapper();

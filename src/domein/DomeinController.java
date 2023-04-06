@@ -10,81 +10,16 @@ import dtos.SpelerDTO;
 public class DomeinController {
 
 	private SpelerRepository sRepo;
-	//private EdeleRepository eRepo;
-	//private OntwikkelingskaartRepository oRepo;
+	private EdeleRepository eRepo;
+	private OntwikkelingskaartRepository oRepo;
 	private Spel s ;
 	public Speler startSpeler;
 	private List<Speler> spelersInSpel;
-	
-	public Edele[] getEdeleSpelers() {
-		return s.getEdeleSpelers();
-	}
-	
-	public List<Ontwikkelingskaart> getNiveau1() {
-		return s.getNiveau1();
-	}
-	
-	public List<Ontwikkelingskaart> getNiveau2() {
-		return s.getNiveau2();
-	}
-	
-	public List<Ontwikkelingskaart> getNiveau3() {
-		return s.getNiveau3();
-	}
-	
-	public List<OntwikkelingskaartDTO> getNiveau1Zichtbaar() {
-		List<Ontwikkelingskaart> ontwikkelingskaart1 = s.getNiveau1Zichtbaar();
-		List<OntwikkelingskaartDTO> ontwikkelingskaartDTO1 = new ArrayList<>();
-		for(Ontwikkelingskaart o1:ontwikkelingskaart1) {
-			ontwikkelingskaartDTO1.add(new OntwikkelingskaartDTO(o1.getPrestige(),o1.getKosten(),o1.getNiveau(),o1.getBonus()));
-		}
-		return ontwikkelingskaartDTO1; 
-	}
-	
-	public List<OntwikkelingskaartDTO> getNiveau2Zichtbaar() {
-		List<Ontwikkelingskaart> ontwikkelingskaart2 =s.getNiveau2Zichtbaar();
-		List<OntwikkelingskaartDTO> ontwikkelingskaartDTO2 = new ArrayList<>();
-		for(Ontwikkelingskaart o2:ontwikkelingskaart2) {
-			ontwikkelingskaartDTO2.add(new OntwikkelingskaartDTO(o2.getPrestige(),o2.getKosten(),o2.getNiveau(),o2.getBonus()));
-		}
-		return ontwikkelingskaartDTO2; 
-	}
-	
-	public List<OntwikkelingskaartDTO> getNiveau3Zichtbaar() {
-		List<Ontwikkelingskaart> ontwikkelingskaart3 =s.getNiveau3Zichtbaar();
-		List<OntwikkelingskaartDTO> ontwikkelingskaartDTO3 = new ArrayList<>();
-		for(Ontwikkelingskaart o3:ontwikkelingskaart3) {
-			ontwikkelingskaartDTO3.add(new OntwikkelingskaartDTO(o3.getPrestige(),o3.getKosten(),o3.getNiveau(),o3.getBonus()));
-		}
-		return ontwikkelingskaartDTO3; 
-	}
-	
-	public EdelsteenAantal getDiamantAantal() {
-		return s.getDiamantAantal();
-	}
-	
-	public EdelsteenAantal getOnyxAantal() {
-		return s.getOnyxAantal();
-	}
-	
-	public EdelsteenAantal getRobijnAantal() {
-		return s.getRobijnAantal();
-	}
-	
-	public EdelsteenAantal getSaffierAantal() {
-		return s.getSaffierAantal();
-	}
-	
-	public EdelsteenAantal getSmaragdAantal() {
-		return s.getSmaragdAantal();
-	}
 	
 	public DomeinController() {
 		s = new Spel();
 		startSpel();
 		sRepo = new SpelerRepository();
-		
-		// spelersInSpel = new ArrayList<>();
 	}
 	
 	public void startSpel() {
@@ -99,55 +34,9 @@ public class DomeinController {
 			s.meldAan(sp);
 			return true;
 		}
-			return false;	
+		return false;	
 	}
 	
-	public List<SpelerDTO> geefSpelerDTO(){
-		spelersInSpel = s.getSpelers();
-		List<SpelerDTO> spelerDTOs = new ArrayList<>();
-		for(Speler speler : spelersInSpel) {
-			spelerDTOs.add(new SpelerDTO(speler.getGebruikersnaam(),speler.getGeboortejaar(), speler.getTotaalAantalPrestigePunten(), speler.geefIsAanDeBeurt(), speler.geefisStartSpeler(), speler.getOntwikkelingskaartenInBezit(), speler.getEdelsteenfichesInBezit(), speler.getEdelenInBezit()));
-		}
-		return spelerDTOs;
-	}
-	
-	public List<EdeleDTO> geefEdeleDTO(){
-		Edele[] edeleInSpel = s.getEdeleSpelers();
-		List<EdeleDTO> edeleDTO = new ArrayList<>();
-		for(Edele edele:edeleInSpel) {
-			edeleDTO.add(new EdeleDTO(edele.getPrestige(),edele.getKosten()));
-		}
-		return edeleDTO;
-	}
-	
-	public List<OntwikkelingskaartDTO> geefOntwikkelingskaartDTO1(){
-		List<Ontwikkelingskaart> ontwikkelingskaart1 =s.getNiveau1();
-		List<OntwikkelingskaartDTO> ontwikkelingskaartDTO1 = new ArrayList<>();
-		for(Ontwikkelingskaart o1:ontwikkelingskaart1) {
-			ontwikkelingskaartDTO1.add(new OntwikkelingskaartDTO(o1.getPrestige(),o1.getKosten(),o1.getNiveau(),o1.getBonus()));
-		}
-		return ontwikkelingskaartDTO1;
-	}
-
-	public List<OntwikkelingskaartDTO> geefOntwikkelingskaartDTO2(){
-		List<Ontwikkelingskaart> ontwikkelingskaart2 =s.getNiveau2();
-		List<OntwikkelingskaartDTO> ontwikkelingskaartDTO2 = new ArrayList<>();
-		for(Ontwikkelingskaart o2:ontwikkelingskaart2) {
-			ontwikkelingskaartDTO2.add(new OntwikkelingskaartDTO(o2.getPrestige(),o2.getKosten(),o2.getNiveau(),o2.getBonus()));
-		}
-		return ontwikkelingskaartDTO2;
-	}
-	
-	public List<OntwikkelingskaartDTO> geefOntwikkelingskaartDTO3(){
-		List<Ontwikkelingskaart> ontwikkelingskaart3 =s.getNiveau1();
-		List<OntwikkelingskaartDTO> ontwikkelingskaartDTO3 = new ArrayList<>();
-		for(Ontwikkelingskaart o3:ontwikkelingskaart3) {
-			ontwikkelingskaartDTO3.add(new OntwikkelingskaartDTO(o3.getPrestige(),o3.getKosten(),o3.getNiveau(),o3.getBonus()));
-		}
-		return ontwikkelingskaartDTO3;
-	}
-	
-
 	public void voegToe(Speler sp) {
 		sRepo.voegToe(sp);
 	}
@@ -201,7 +90,6 @@ public class DomeinController {
 					jongsteJaar=speler.getGeboortejaar();
 					startSpeler=speler;
 			}
-			
 		}
 		startSpeler.isStartspeler(true);
 	}
@@ -240,5 +128,123 @@ public class DomeinController {
 				winnaar.add(speler);
 			}
 		}
+	}
+	
+	public int controleerMogelijkheidTotEdelen(Speler huidigeSpeler) {
+		if(s.controleerMogelijkheidTotEdelen(huidigeSpeler)) {
+			List<Edele> beschikbareEdelen = s.edelenTeKoop(huidigeSpeler);
+			if(beschikbareEdelen.size() == 1)
+				huidigeSpeler.voegEdeleToe(beschikbareEdelen.get(0));
+			return beschikbareEdelen.size();
+		}
+		return 0;
+	}
+	
+	public List<SpelerDTO> geefSpelerDTO(){
+		spelersInSpel = s.getSpelers();
+		List<SpelerDTO> spelerDTOs = new ArrayList<>();
+		for(Speler speler : spelersInSpel) {
+			spelerDTOs.add(new SpelerDTO(speler.getGebruikersnaam(),speler.getGeboortejaar(), speler.getTotaalAantalPrestigePunten(), speler.geefIsAanDeBeurt(), speler.geefisStartSpeler(), speler.getOntwikkelingskaartenInBezit(), speler.getEdelsteenfichesInBezit(), speler.getEdelenInBezit()));
+		}
+		return spelerDTOs;
+	}
+	
+	public List<EdeleDTO> geefEdeleDTO(){
+		Edele[] edeleInSpel = s.getEdeleSpelers();
+		List<EdeleDTO> edeleDTO = new ArrayList<>();
+		for(Edele edele:edeleInSpel) {
+			edeleDTO.add(new EdeleDTO(edele.getPrestigepunten(),edele.getKosten()));
+		}
+		return edeleDTO;
+	}
+	
+	public List<OntwikkelingskaartDTO> geefOntwikkelingskaartDTO1(){
+		List<Ontwikkelingskaart> ontwikkelingskaart1 =s.getNiveau1();
+		List<OntwikkelingskaartDTO> ontwikkelingskaartDTO1 = new ArrayList<>();
+		for(Ontwikkelingskaart o1:ontwikkelingskaart1) {
+			ontwikkelingskaartDTO1.add(new OntwikkelingskaartDTO(o1.getPrestigepunten(),o1.getKosten(),o1.getNiveau(),o1.getBonus()));
+		}
+		return ontwikkelingskaartDTO1;
+	}
+
+	public List<OntwikkelingskaartDTO> geefOntwikkelingskaartDTO2(){
+		List<Ontwikkelingskaart> ontwikkelingskaart2 =s.getNiveau2();
+		List<OntwikkelingskaartDTO> ontwikkelingskaartDTO2 = new ArrayList<>();
+		for(Ontwikkelingskaart o2:ontwikkelingskaart2) {
+			ontwikkelingskaartDTO2.add(new OntwikkelingskaartDTO(o2.getPrestigepunten(),o2.getKosten(),o2.getNiveau(),o2.getBonus()));
+		}
+		return ontwikkelingskaartDTO2;
+	}
+	
+	public List<OntwikkelingskaartDTO> geefOntwikkelingskaartDTO3(){
+		List<Ontwikkelingskaart> ontwikkelingskaart3 =s.getNiveau1();
+		List<OntwikkelingskaartDTO> ontwikkelingskaartDTO3 = new ArrayList<>();
+		for(Ontwikkelingskaart o3:ontwikkelingskaart3) {
+			ontwikkelingskaartDTO3.add(new OntwikkelingskaartDTO(o3.getPrestigepunten(),o3.getKosten(),o3.getNiveau(),o3.getBonus()));
+		}
+		return ontwikkelingskaartDTO3;
+	}
+	
+	public List<OntwikkelingskaartDTO> getNiveau1Zichtbaar() {
+		List<Ontwikkelingskaart> ontwikkelingskaart1 = s.getNiveau1Zichtbaar();
+		List<OntwikkelingskaartDTO> ontwikkelingskaartDTO1 = new ArrayList<>();
+		for(Ontwikkelingskaart o1:ontwikkelingskaart1) {
+			ontwikkelingskaartDTO1.add(new OntwikkelingskaartDTO(o1.getPrestigepunten(),o1.getKosten(),o1.getNiveau(),o1.getBonus()));
+		}
+		return ontwikkelingskaartDTO1; 
+	}
+	
+	public List<OntwikkelingskaartDTO> getNiveau2Zichtbaar() {
+		List<Ontwikkelingskaart> ontwikkelingskaart2 =s.getNiveau2Zichtbaar();
+		List<OntwikkelingskaartDTO> ontwikkelingskaartDTO2 = new ArrayList<>();
+		for(Ontwikkelingskaart o2:ontwikkelingskaart2) {
+			ontwikkelingskaartDTO2.add(new OntwikkelingskaartDTO(o2.getPrestigepunten(),o2.getKosten(),o2.getNiveau(),o2.getBonus()));
+		}
+		return ontwikkelingskaartDTO2; 
+	}
+	
+	public List<OntwikkelingskaartDTO> getNiveau3Zichtbaar() {
+		List<Ontwikkelingskaart> ontwikkelingskaart3 =s.getNiveau3Zichtbaar();
+		List<OntwikkelingskaartDTO> ontwikkelingskaartDTO3 = new ArrayList<>();
+		for(Ontwikkelingskaart o3:ontwikkelingskaart3) {
+			ontwikkelingskaartDTO3.add(new OntwikkelingskaartDTO(o3.getPrestigepunten(),o3.getKosten(),o3.getNiveau(),o3.getBonus()));
+		}
+		return ontwikkelingskaartDTO3; 
+	}
+	
+	public List<Ontwikkelingskaart> getNiveau1() {
+		return s.getNiveau1();
+	}
+	
+	public List<Ontwikkelingskaart> getNiveau2() {
+		return s.getNiveau2();
+	}
+	
+	public List<Ontwikkelingskaart> getNiveau3() {
+		return s.getNiveau3();
+	}
+	
+	public Edele[] getEdeleSpelers() {
+		return s.getEdeleSpelers();
+	}
+	
+	public EdelsteenAantal getDiamantAantal() {
+		return s.getDiamantAantal();
+	}
+	
+	public EdelsteenAantal getOnyxAantal() {
+		return s.getOnyxAantal();
+	}
+	
+	public EdelsteenAantal getRobijnAantal() {
+		return s.getRobijnAantal();
+	}
+	
+	public EdelsteenAantal getSaffierAantal() {
+		return s.getSaffierAantal();
+	}
+	
+	public EdelsteenAantal getSmaragdAantal() {
+		return s.getSmaragdAantal();
 	}
 }

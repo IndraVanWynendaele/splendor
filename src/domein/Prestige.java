@@ -18,12 +18,12 @@ public class Prestige {
 		this.prestigepunten=prestigepunten;
 		kosten = new ArrayList<>();
 	}
-	
-	public int getPrestige() {
-		return this.prestigepunten;
-	}
-	
+
 	public void voegKostToe(int aantal, EdelsteenSoort soort) {
 		kosten.add(new EdelsteenAantal(aantal, soort));
+	}
+	
+	public int getPrestigepunten() {
+		return this.prestigepunten;
 	}
 }

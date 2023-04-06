@@ -5,10 +5,9 @@ import util.EdelsteenSoort;
 public class Ontwikkelingskaart extends Prestige {
 	private final int niveau;
 	private EdelsteenSoort bonus;
-	
 
-	public Ontwikkelingskaart(int niveau, int prestigePunten, EdelsteenSoort bonus) {
-		super(prestigePunten);
+	public Ontwikkelingskaart(int niveau, int prestigepunten, EdelsteenSoort bonus) {
+		super(prestigepunten);
 		this.niveau = niveau;
 		this.bonus = bonus;
 	}
@@ -20,5 +19,4 @@ public class Ontwikkelingskaart extends Prestige {
 	public EdelsteenSoort getBonus() {
 		return bonus;
 	}
-	
 }
