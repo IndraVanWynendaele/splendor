@@ -120,7 +120,6 @@ public class AanmeldenController extends AnchorPane{
 			if(dc.controleerAantalSpelers()) {
 				dc.startSpel();
 				dc.isStartSpeler();
-				dc.isAanDeBeurt();
 				
 				StartSpelController ssc = new StartSpelController(this, dc);
 				Scene scene1 = new Scene(ssc);

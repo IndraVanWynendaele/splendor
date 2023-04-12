@@ -45,6 +45,7 @@ public class StartSpelController extends AnchorPane{
 	
 	@FXML
 	void btnVolgendeClicked(ActionEvent event) {
+		dc.updateIsAanDeBeurt();
 		geefNaamHuidigeSpeler();
 	}
 	 

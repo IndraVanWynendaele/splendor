@@ -65,6 +65,7 @@ public class DomeinController {
 
 			if(spelersInSpel.size() < 2) {
 				throw new IllegalArgumentException("Er moeten minstens 2 spelers aangemeld zijn\n");
+				// else if weg doen
 			}else if(spelersInSpel.size() > 4) {
 				spelersInSpel.removeAll(spelersInSpel);
 				throw new IllegalArgumentException("Er mogen maar 4 spelers aangemeld zijn \nDe lijst van spelers is verwijderd, begin helemaal opnieuw! :( \n");
@@ -106,14 +107,18 @@ public class DomeinController {
 		
 	}
 	
-	public void isAanDeBeurt() {
+	public void updateIsAanDeBeurt() {
+		// verwijdert dit uit echte lijst?
+		List<Speler> tmpSpelerLijst = s.getSpelers();
 		boolean klaar = false;
-		while(!klaar) {
+		while(klaar) {
 			for(int i = 0; i < spelersInSpel.size(); i++) {
 				String naam = spelersInSpel.get(i).getGebruikersnaam();
 				if(huidigeSpeler.getGebruikersnaam().equals(naam)) {
 					huidigeSpeler.isAanDeBeurt(false);
-					huidigeSpeler = spelersInSpel.get((i + 1)%spelersInSpel.size());
+					tmpSpelerLijst.remove(huidigeSpeler);
+					// moet worden eerste speler in lijst != huidigespeler
+					huidigeSpeler = tmpSpelerLijst.get(0);
 					huidigeSpeler.isAanDeBeurt(true);
 					klaar = true;
 				}
