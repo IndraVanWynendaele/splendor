@@ -1,14 +1,16 @@
-module SceneBuilderVoorbeeld {
+module splendor {
 	exports gui;
 	exports main;
-	
+
+
+	requires java.sql;
 	requires javafx.base;
 	requires javafx.controls;
-	requires javafx.graphics;
 	requires javafx.fxml;
-	requires java.sql;
+	requires transitive javafx.graphics;
 	requires org.junit.jupiter.api;
 	requires org.junit.jupiter.params;
 	
 	opens gui to javafx.graphics, javafx.fxml;
+	//opens main to javafx.graphics, javafx.fxml;
 }
