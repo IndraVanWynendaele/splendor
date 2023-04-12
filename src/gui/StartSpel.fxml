@@ -40,12 +40,12 @@
         <items>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                <children>
-                  <Button fx:id="btnVolgende" layoutX="270.0" layoutY="618.0" mnemonicParsing="false" onAction="#btnVolgendeClicked" text="Volgende">
+                  <Button fx:id="btnVolgende" layoutX="211.0" layoutY="613.0" mnemonicParsing="false" onAction="#btnVolgendeClicked" prefHeight="38.0" prefWidth="198.0" text="Volgende">
                      <font>
                         <Font name="RomanC" size="20.0" />
                      </font>
                   </Button>
-                  <Button fx:id="btnStart" layoutX="4.0" layoutY="616.0" mnemonicParsing="false" onAction="#btnStartClicked" text="Start">
+                  <Button fx:id="btnStartRonde" layoutX="4.0" layoutY="613.0" mnemonicParsing="false" onAction="#btnStartRondeClicked" prefHeight="38.0" prefWidth="198.0" text="Start Ronde">
                      <font>
                         <Font name="RomanC" size="20.0" />
                      </font>

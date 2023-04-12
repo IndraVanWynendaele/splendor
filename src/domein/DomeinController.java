@@ -107,23 +107,22 @@ public class DomeinController {
 		
 	}
 	
-	public void updateIsAanDeBeurt() {
-		// verwijdert dit uit echte lijst?
-		List<Speler> tmpSpelerLijst = s.getSpelers();
+	public List<Speler> updateIsAanDeBeurt(List<Speler> tmpSpelerLijst) {
 		boolean klaar = false;
-		while(klaar) {
+		while(!klaar) {
 			for(int i = 0; i < spelersInSpel.size(); i++) {
 				String naam = spelersInSpel.get(i).getGebruikersnaam();
 				if(huidigeSpeler.getGebruikersnaam().equals(naam)) {
 					huidigeSpeler.isAanDeBeurt(false);
 					tmpSpelerLijst.remove(huidigeSpeler);
-					// moet worden eerste speler in lijst != huidigespeler
 					huidigeSpeler = tmpSpelerLijst.get(0);
 					huidigeSpeler.isAanDeBeurt(true);
 					klaar = true;
 				}
+				if(klaar)break;
 			}
 		}
+		return tmpSpelerLijst;
 		
 	}
 	

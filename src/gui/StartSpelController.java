@@ -1,6 +1,7 @@
 package gui;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import domein.DomeinController;
@@ -16,12 +17,13 @@ public class StartSpelController extends AnchorPane{
 
 	private DomeinController dc;
 	private AanmeldenController preAanmeldenScreen;
+	private List<Speler> tmpSpelerLijst;
 	
     @FXML
     public TextField txfSpelerNaam;
     
     @FXML
-    private Button btnStart;
+    private Button btnStartRonde;
     
     @FXML
     private Button btnVolgende;
@@ -45,8 +47,8 @@ public class StartSpelController extends AnchorPane{
 	
 	@FXML
 	void btnVolgendeClicked(ActionEvent event) {
-		dc.updateIsAanDeBeurt();
 		geefNaamHuidigeSpeler();
+		dc.updateIsAanDeBeurt(tmpSpelerLijst);
 	}
 	 
 	private void geefNaamHuidigeSpeler() {
@@ -61,11 +63,15 @@ public class StartSpelController extends AnchorPane{
 	}
 	
     @FXML
-    void btnStartClicked(ActionEvent event) {
+    void btnStartRondeClicked(ActionEvent event) {
     	txfSpelerNaam.setStyle("-fx-background-color: -fx-control-inner-background");
     	txfSpelerNaam.setText(dc.getStartSpeler().getGebruikersnaam());
-    	txfSpelerNaam.deselect();
-    	btnStart.setVisible(false);
+    	tmpSpelerLijst = new ArrayList<>();
+    	for(int i = 0; i < dc.getSpelersInSpel().size();i++) {
+    		tmpSpelerLijst.add(dc.getSpelersInSpel().get(i));
+    	}
+    	tmpSpelerLijst = dc.updateIsAanDeBeurt(tmpSpelerLijst);
+    	
     }
  }
 	 
