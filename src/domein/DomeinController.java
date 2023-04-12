@@ -108,18 +108,27 @@ public class DomeinController {
 	}
 	
 	public List<Speler> updateIsAanDeBeurt(List<Speler> tmpSpelerLijst) {
-		boolean klaar = false;
-		while(!klaar) {
-			for(int i = 0; i < spelersInSpel.size(); i++) {
-				String naam = spelersInSpel.get(i).getGebruikersnaam();
-				if(huidigeSpeler.getGebruikersnaam().equals(naam)) {
+		if(tmpSpelerLijst.size()!=0) {
+			boolean klaar = false;
+			while(!klaar) {
+				if(tmpSpelerLijst.size()==1) {
 					huidigeSpeler.isAanDeBeurt(false);
 					tmpSpelerLijst.remove(huidigeSpeler);
-					huidigeSpeler = tmpSpelerLijst.get(0);
-					huidigeSpeler.isAanDeBeurt(true);
-					klaar = true;
+					if(klaar)break;
+				}else {
+				for(int i = 0; i < spelersInSpel.size(); i++) {
+					String naam = spelersInSpel.get(i).getGebruikersnaam();
+						if(huidigeSpeler.getGebruikersnaam().equals(naam)) {
+							huidigeSpeler.isAanDeBeurt(false);
+							tmpSpelerLijst.remove(huidigeSpeler);
+							huidigeSpeler = tmpSpelerLijst.get(0);
+							huidigeSpeler.isAanDeBeurt(true);
+							
+							klaar = true;
+						}
+					if(klaar)break;
+					}
 				}
-				if(klaar)break;
 			}
 		}
 		return tmpSpelerLijst;

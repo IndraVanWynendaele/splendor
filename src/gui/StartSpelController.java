@@ -48,7 +48,12 @@ public class StartSpelController extends AnchorPane{
 	@FXML
 	void btnVolgendeClicked(ActionEvent event) {
 		geefNaamHuidigeSpeler();
-		dc.updateIsAanDeBeurt(tmpSpelerLijst);
+		if(tmpSpelerLijst.size()==1) {
+			btnVolgende.setDisable(true);
+	    	btnStartRonde.setDisable(false);
+		}
+		tmpSpelerLijst= dc.updateIsAanDeBeurt(tmpSpelerLijst);
+		
 	}
 	 
 	private void geefNaamHuidigeSpeler() {
@@ -70,8 +75,11 @@ public class StartSpelController extends AnchorPane{
     	for(int i = 0; i < dc.getSpelersInSpel().size();i++) {
     		tmpSpelerLijst.add(dc.getSpelersInSpel().get(i));
     	}
+    	dc.isStartSpeler();
     	tmpSpelerLijst = dc.updateIsAanDeBeurt(tmpSpelerLijst);
     	
+    	btnVolgende.setDisable(false);
+    	btnStartRonde.setDisable(true);
     }
  }
 	 
