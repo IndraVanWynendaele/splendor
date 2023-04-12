@@ -65,10 +65,6 @@ public class DomeinController {
 
 			if(spelersInSpel.size() < 2) {
 				throw new IllegalArgumentException("Er moeten minstens 2 spelers aangemeld zijn\n");
-				// else if weg doen
-			}else if(spelersInSpel.size() > 4) {
-				spelersInSpel.removeAll(spelersInSpel);
-				throw new IllegalArgumentException("Er mogen maar 4 spelers aangemeld zijn \nDe lijst van spelers is verwijderd, begin helemaal opnieuw! :( \n");
 			}
 			aantalSpelersInOrde = true;
 
@@ -111,23 +107,22 @@ public class DomeinController {
 		if(tmpSpelerLijst.size()!=0) {
 			boolean klaar = false;
 			while(!klaar) {
-				if(tmpSpelerLijst.size()==1) {
+				if(tmpSpelerLijst.size()!=1) {
+					for(int i = 0; i < spelersInSpel.size(); i++) {
+						String naam = spelersInSpel.get(i).getGebruikersnaam();
+							if(huidigeSpeler.getGebruikersnaam().equals(naam)) {
+								huidigeSpeler.isAanDeBeurt(false);
+								tmpSpelerLijst.remove(huidigeSpeler);
+								huidigeSpeler = tmpSpelerLijst.get(0);
+								huidigeSpeler.isAanDeBeurt(true);
+								klaar = true;
+							}
+						if(klaar)break;
+					}
+				}else {
 					huidigeSpeler.isAanDeBeurt(false);
 					tmpSpelerLijst.remove(huidigeSpeler);
 					if(klaar)break;
-				}else {
-				for(int i = 0; i < spelersInSpel.size(); i++) {
-					String naam = spelersInSpel.get(i).getGebruikersnaam();
-						if(huidigeSpeler.getGebruikersnaam().equals(naam)) {
-							huidigeSpeler.isAanDeBeurt(false);
-							tmpSpelerLijst.remove(huidigeSpeler);
-							huidigeSpeler = tmpSpelerLijst.get(0);
-							huidigeSpeler.isAanDeBeurt(true);
-							
-							klaar = true;
-						}
-					if(klaar)break;
-					}
 				}
 			}
 		}
