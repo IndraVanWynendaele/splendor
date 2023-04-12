@@ -23,27 +23,31 @@ public class AanmeldenController extends AnchorPane{
 
 	private DomeinController dc;
 	private MenuController preMenuScreen;
+	private int aantalSpelersInSpel = 0;
 	
 	@FXML
-    private Button btnLogIn;
+	private Button btnLogIn;
 
-    @FXML
-    private Button btnTerug;
+	@FXML
+	private Button btnStartSpel;
 
-    @FXML
-    private Rectangle kader;
+	@FXML
+	private Button btnTerug;
 
-    @FXML
-    private Label lblGeboortejaar;
+	@FXML
+	private Rectangle kader;
 
-    @FXML
-    private Label lblGebruikersnaam;
+	@FXML
+	private Label lblGeboortejaar;
 
-    @FXML
-    private TextField txfGeboortjaar;
-
-    @FXML
-    private TextField txfGebruikersnaam;
+	@FXML
+	private Label lblGebruikersnaam;
+	
+	@FXML
+	private TextField txfGeboortjaar;
+	
+	@FXML
+	private TextField txfGebruikersnaam;
 
 	public AanmeldenController(MenuController preMenuScreen, DomeinController dc) {
 		this.preMenuScreen = preMenuScreen;
@@ -69,7 +73,7 @@ public class AanmeldenController extends AnchorPane{
 			Speler sp = new Speler(gebruikersnaam, geboortejaar);
 			if(dc.spelerAlAangemeld(sp)) {
 				if(dc.meldAan(sp)) {
-					update(gebruikersnaam, geboortejaar);
+					aanmeldAlert(gebruikersnaam, geboortejaar);
 				}
 				else{
 					Alert alert = new Alert(AlertType.CONFIRMATION);
@@ -79,12 +83,17 @@ public class AanmeldenController extends AnchorPane{
 					if(result.get() == ButtonType.OK) {
 						dc.voegToe(sp);
 						dc.meldAan(sp);
-						update(gebruikersnaam, geboortejaar);
+						aanmeldAlert(gebruikersnaam, geboortejaar);
 					}
 				}
 			}else {
 				throw new IllegalArgumentException("Deze speler is al aangemeld!\n");
 			}
+			
+			if(aantalSpelersInSpel > 1)
+				btnStartSpel.setDisable(false);
+			if(aantalSpelersInSpel == 4)
+				btnLogIn.setDisable(true);
 		}catch(NumberFormatException ex) {
 			txfGeboortjaar.setText("");
 			txfGeboortjaar.setPromptText("Moet een positief getal zijn");
@@ -97,11 +106,12 @@ public class AanmeldenController extends AnchorPane{
 		}
 	}
 	
-	private void update(String gebruikersnaam, int geboortejaar) {
+	private void aanmeldAlert(String gebruikersnaam, int geboortejaar) {
 		Alert alert = new Alert(AlertType.INFORMATION);
 		alert.setTitle("Aanmelden gelukt");
 		alert.setContentText(String.format("Speler met naam %s en geboortejaar %d is aangemeld", gebruikersnaam, geboortejaar));
 		alert.show();
+		aantalSpelersInSpel++;
 		
 		txfGeboortjaar.clear();
 		txfGebruikersnaam.clear();
@@ -115,7 +125,6 @@ public class AanmeldenController extends AnchorPane{
 	
 	@FXML
 	void btnStartSpelClicked(ActionEvent event) {
-		
 		try {
 			if(dc.controleerAantalSpelers()) {
 				dc.startSpel();
@@ -126,7 +135,6 @@ public class AanmeldenController extends AnchorPane{
 				Stage stage1 = (Stage) this.getScene().getWindow();
 				stage1.setScene(scene1);
 				stage1.show();
-				
 			}
 		}catch(IllegalArgumentException e) {
 			Alert alert = new Alert(AlertType.ERROR);
@@ -137,6 +145,5 @@ public class AanmeldenController extends AnchorPane{
 			//Stage stage = (Stage) (getScene().getWindow());
 			//stage.setScene(this.getScene());
 		}
-	
 	}
 }

@@ -19,12 +19,12 @@ public class SplendorApp {
 	private Scanner input = new Scanner(System.in);
 	private int keuzeKeuzeMenu;
 	private List<SpelerDTO> spelersDTO;
+	private int aantalSpelersAangemeld = 0;
 	
 	public SplendorApp(DomeinController dc) {
 		this.dc = dc;
 		spelersDTO = new ArrayList<>();
 	}
-	
 	
 	public void start() {
 		keuzeKeuzeMenu = toonKeuzeMenu();
@@ -51,9 +51,12 @@ public class SplendorApp {
 					keuzeKeuzeMenu = toonKeuzeMenu();
 				}
 			}
-			if(keuzeKeuzeMenu==2)
-				break;			
-			keuzeKeuzeMenu = toonKeuzeMenu();
+			if(keuzeKeuzeMenu == 2)
+				break;	
+			if(aantalSpelersAangemeld == 4)
+				keuzeKeuzeMenu = 2;
+			else
+				keuzeKeuzeMenu = toonKeuzeMenu();
 		}
 	}	
 	
@@ -65,7 +68,6 @@ public class SplendorApp {
 		}
 		return false;		
 	}
-	
 	
 	private void toonOverzichtSpelers() {
 		dc.isStartSpeler();
@@ -106,7 +108,6 @@ public class SplendorApp {
 		uitvoerGeg += String.format("\n");
 		
 		System.out.printf("%s%n", uitvoerGeg);
-		
 	}
 
 	private void toonOverzichtSpel() {
@@ -119,7 +120,7 @@ public class SplendorApp {
 			uitvoerSpel += String.format("Prestigepunten: %d%nKost: ",eDTO.prestigepunten());
 			for(EdelsteenAantal k: kost) {
 				
-				uitvoerSpel += String.format("%dx %s ",k.getAantal(),k.getSoort().toString());
+				uitvoerSpel += String.format("%dx %s %n",k.getAantal(),k.getSoort().toString());
 			}
 			uitvoerSpel += String.format("\n\n");
 		}
@@ -134,7 +135,7 @@ public class SplendorApp {
 			uitvoerSpel += String.format("Prestigepunten:%d%nBonus: %s%n",okDTO1.prestigepunten(),okDTO1.bonus().toString());
 			List<EdelsteenAantal> kost = okDTO1.kosten();
 			for(EdelsteenAantal k: kost) {
-				uitvoerSpel += String.format("Kost: %dx %s ",k.getAantal(),k.getSoort().toString());
+				uitvoerSpel += String.format("Kost: %dx %s %n",k.getAantal(),k.getSoort().toString());
 			}
 			uitvoerSpel += String.format("\n\n");
 		}
@@ -146,7 +147,7 @@ public class SplendorApp {
 			uitvoerSpel += String.format("Prestigepunten:%d%nBonus: %s%n",okDTO2.prestigepunten(),okDTO2.bonus().toString());
 			List<EdelsteenAantal> kost = okDTO2.kosten();
 			for(EdelsteenAantal k: kost) {
-				uitvoerSpel += String.format("%dx %s ",k.getAantal(),k.getSoort().toString());
+				uitvoerSpel += String.format("%dx %s %n",k.getAantal(),k.getSoort().toString());
 			}
 			uitvoerSpel += String.format("\n\n");
 		}
@@ -158,7 +159,7 @@ public class SplendorApp {
 			uitvoerSpel += String.format("Prestigepunten:%d%nBonus: %s%n",okDTO3.prestigepunten(),okDTO3.bonus().toString());
 			List<EdelsteenAantal> kost = okDTO3.kosten();
 			for(EdelsteenAantal k: kost) {
-				uitvoerSpel += String.format("%dx %s ",k.getAantal(),k.getSoort().toString());
+				uitvoerSpel += String.format("%dx %s %n",k.getAantal(),k.getSoort().toString());
 			}
 			uitvoerSpel += String.format("\n\n");
 		}
@@ -189,7 +190,6 @@ public class SplendorApp {
 		uitvoerSpel += String.format("%d",dc.getDiamantAantal().getAantal());
 		uitvoerSpel += String.format("\n");
 		
-		
 		System.out.printf("%s%n", uitvoerSpel);
 	}
 	
@@ -217,11 +217,9 @@ public class SplendorApp {
 		boolean finished = false;
 		
 		do {
-			
 			try {
 				System.out.print("Geef je gebruikersnaam in: ");
 				gebruikersnaam = input.nextLine();
-				
 				
 				System.out.print("Geef je geboortejaar in: ");
 				geboortejaar = input.nextInt();
@@ -229,6 +227,7 @@ public class SplendorApp {
 				Speler sp = new Speler(gebruikersnaam, geboortejaar);
 				if(dc.spelerAlAangemeld(sp)) {
 					if(dc.meldAan(sp)) {
+						aantalSpelersAangemeld++;
 						System.out.printf("Je bent aangemeld als %s geboren in %d%n%n", sp.getGebruikersnaam(), sp.getGeboortejaar());
 					}
 					else{
@@ -241,6 +240,7 @@ public class SplendorApp {
 						if(antwoord.equals("ja")) {
 							dc.voegToe(sp);
 							dc.meldAan(sp);
+							aantalSpelersAangemeld++;
 							System.out.printf("Je hebt een nieuwe speler geregistreerd met gebruikersnaam %s geboren in %d%n%n", sp.getGebruikersnaam(), sp.getGeboortejaar());	
 						}else {
 							valideerGegevensInput();
@@ -250,7 +250,6 @@ public class SplendorApp {
 					input.nextLine();
 					throw new IllegalArgumentException("Deze speler is al aangemeld!\n");
 				}
-				
 				finished = true;
 			}catch(InputMismatchException e) {
 				System.out.println("Verkeerde invoer, geboortejaar moet een getal zijn");
@@ -261,5 +260,4 @@ public class SplendorApp {
 			} */
 		}while(!finished);
 	} 
-
 }
