@@ -15,7 +15,7 @@
             <Image url="@../images/achtergrondSpelbord.jpg" />
          </image>
       </ImageView>
-      <SplitPane blendMode="COLOR_BURN" dividerPositions="0.29797979797979796" prefHeight="102.0" prefWidth="1462.0">
+      <SplitPane blendMode="COLOR_BURN" dividerPositions="0.40539430449069" prefHeight="102.0" prefWidth="1462.0">
         <items>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="101.0" prefWidth="402.0">
                <children>
@@ -25,7 +25,7 @@
                      </font>
                   </Label>
                </children></AnchorPane>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="193.0" prefWidth="418.0">
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="88.0" prefWidth="866.0">
                <children>
                   <Label fx:id="lblRondeNr" layoutX="33.0" layoutY="18.0" textFill="#8e0000">
                      <font>
@@ -35,7 +35,7 @@
                </children></AnchorPane>
         </items>
       </SplitPane>
-      <SplitPane blendMode="COLOR_BURN" dividerPositions="0.2980821917808219" layoutY="101.0" prefHeight="706.0" prefWidth="1461.0">
+      <SplitPane blendMode="COLOR_BURN" dividerPositions="0.40630136986301374" layoutY="101.0" prefHeight="706.0" prefWidth="1461.0">
         <items>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                <children>
@@ -49,10 +49,7 @@
                         <Font name="RomanC" size="20.0" />
                      </font>
                   </Button>
-               </children></AnchorPane>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="518.0" prefWidth="541.0">
-               <children>
-                  <Button fx:id="robijnEdelsteenFiche" layoutX="375.0" layoutY="25.0" mnemonicParsing="false" prefHeight="69.0" prefWidth="122.0" scaleX="0.8" scaleY="0.8">
+                  <Button fx:id="btnRobijnSpeler" layoutY="120.0" mnemonicParsing="false" prefHeight="69.0" prefWidth="122.0" scaleX="0.6" scaleY="0.6" style="-fx-background-color: nofill;">
                      <graphic>
                         <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -61,7 +58,7 @@
                         </ImageView>
                      </graphic>
                   </Button>
-                  <Button fx:id="saffierEdelsteenFiche" layoutX="685.0" layoutY="25.0" mnemonicParsing="false" prefHeight="77.0" prefWidth="110.0" scaleX="0.8" scaleY="0.8">
+                  <Button fx:id="btnSaffierSpeler" layoutY="360.0" mnemonicParsing="false" prefHeight="77.0" prefWidth="110.0" scaleX="0.6" scaleY="0.6" style="-fx-background-color: nofill;">
                      <graphic>
                         <ImageView blendMode="HARD_LIGHT" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -70,7 +67,7 @@
                         </ImageView>
                      </graphic>
                   </Button>
-                  <Button fx:id="diamantEdelsteenFiche" layoutX="530.0" layoutY="25.0" mnemonicParsing="false" prefHeight="52.0" prefWidth="83.0" scaleX="0.8" scaleY="0.8">
+                  <Button fx:id="btnDiamantSpeler" layoutY="240.0" mnemonicParsing="false" prefHeight="52.0" prefWidth="83.0" scaleX="0.6" scaleY="0.6" style="-fx-background-color: nofill;">
                      <graphic>
                         <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -79,7 +76,7 @@
                         </ImageView>
                      </graphic>
                   </Button>
-                  <Button fx:id="onyxEdelsteenFiche" layoutX="840.0" layoutY="25.0" mnemonicParsing="false" prefHeight="76.0" prefWidth="149.0" scaleX="0.8" scaleY="0.8">
+                  <Button fx:id="btnOnyxSpeler" layoutY="480.0" mnemonicParsing="false" prefHeight="76.0" prefWidth="149.0" scaleX="0.6" scaleY="0.6" style="-fx-background-color: nofill;">
                      <graphic>
                         <ImageView blendMode="DARKEN" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -88,13 +85,212 @@
                         </ImageView>
                      </graphic>
                   </Button>
-                  <Button fx:id="smaragdEdelsteenFiche" layoutX="220.0" layoutY="25.0" mnemonicParsing="false" prefHeight="98.0" prefWidth="92.0" scaleX="0.8" scaleY="0.8">
+                  <Button fx:id="btnSmaragdSpeler" mnemonicParsing="false" prefHeight="98.0" prefWidth="92.0" scaleX="0.6" scaleY="0.6" style="-fx-background-color: nofill;">
                      <graphic>
                         <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../images/Smaragd.png" />
                            </image>
                         </ImageView>
+                     </graphic>
+                  </Button>
+                  <Label fx:id="lblSmaragdSpelerAantal" layoutX="110.0" layoutY="30.0" text="0">
+                     <font>
+                        <Font name="RomanC" size="16.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="lblRobijnSpelerAantal" layoutX="110.0" layoutY="150.0" text="0">
+                     <font>
+                        <Font name="RomanC" size="16.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="lblDiamantSpelerAantal" layoutX="110.0" layoutY="270.0" text="0">
+                     <font>
+                        <Font name="RomanC" size="16.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="lblSaffierSpelerAantal" layoutX="110.0" layoutY="390.0" text="0">
+                     <font>
+                        <Font name="RomanC" size="16.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="lblOnyxSpelerAantal1" layoutX="110.0" layoutY="510.0" text="0">
+                     <font>
+                        <Font name="RomanC" size="16.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="760.0" prefWidth="864.0">
+               <children>
+                  <Button fx:id="btnRobijnSpel" layoutX="180.0" layoutY="-17.0" mnemonicParsing="false" onAction="#btnRobijnSpelClicked" prefHeight="69.0" prefWidth="122.0" scaleX="0.7" scaleY="0.7" style="-fx-background-color: nofill;">
+                     <graphic>
+                        <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/Robijn.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button fx:id="btnSaffierSpel" layoutX="520.0" layoutY="-17.0" mnemonicParsing="false" onAction="#btnSaffierSpelClicked" prefHeight="77.0" prefWidth="110.0" scaleX="0.7" scaleY="0.7" style="-fx-background-color: nofill;">
+                     <graphic>
+                        <ImageView blendMode="HARD_LIGHT" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/Saffier.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button fx:id="btnDiamantSpel" layoutX="350.0" layoutY="-17.0" mnemonicParsing="false" onAction="#btnDiamantSpelClicked" prefHeight="52.0" prefWidth="83.0" scaleX="0.7" scaleY="0.7" style="-fx-background-color: nofill;">
+                     <graphic>
+                        <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/Diamant.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button fx:id="btnOnyxSpel" layoutX="690.0" layoutY="-17.0" mnemonicParsing="false" onAction="#btnOnyxSpelClicked" prefHeight="76.0" prefWidth="149.0" scaleX="0.7" scaleY="0.7" style="-fx-background-color: nofill;">
+                     <graphic>
+                        <ImageView blendMode="DARKEN" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/Onyx.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button layoutX="10.0" layoutY="100.0" mnemonicParsing="false" scaleX="0.7" scaleY="0.7">
+                     <graphic>
+                        <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
+                     </graphic>
+                  </Button>
+                  <Button fx:id="btnSmaragdSpel" layoutX="10.0" layoutY="-17.0" mnemonicParsing="false" onAction="#btnSmaragdSpelClicked" prefHeight="98.0" prefWidth="92.0" scaleX="0.7" scaleY="0.7" style="-fx-background-color: nofill;">
+                     <graphic>
+                        <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/Smaragd.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Label fx:id="lblRobijnSpelAantal" layoutX="295.0" layoutY="10.0" text="0">
+                     <font>
+                        <Font name="RomanC" size="16.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="lblSmaragdSpelAantal" layoutX="125.0" layoutY="10.0" text="0">
+                     <font>
+                        <Font name="RomanC" size="16.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="lblDiamantSpelAantal" layoutX="465.0" layoutY="10.0" text="0">
+                     <font>
+                        <Font name="RomanC" size="16.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="lblSaffierSpelAantal" layoutX="635.0" layoutY="10.0" text="0">
+                     <font>
+                        <Font name="RomanC" size="16.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="lblOnyxSpelAantal" layoutX="805.0" layoutY="10.0" text="0">
+                     <font>
+                        <Font name="RomanC" size="16.0" />
+                     </font>
+                  </Label>
+                  <Button layoutX="180.0" layoutY="100.0" mnemonicParsing="false" scaleX="0.7" scaleY="0.7">
+                     <graphic>
+                        <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
+                     </graphic>
+                  </Button>
+                  <Button layoutX="520.0" layoutY="100.0" mnemonicParsing="false" scaleX="0.7" scaleY="0.7">
+                     <graphic>
+                        <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
+                     </graphic>
+                  </Button>
+                  <Button layoutX="690.0" layoutY="100.0" mnemonicParsing="false" scaleX="0.7" scaleY="0.7">
+                     <graphic>
+                        <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
+                     </graphic>
+                  </Button>
+                  <Button layoutX="350.0" layoutY="100.0" mnemonicParsing="false" scaleX="0.7" scaleY="0.7">
+                     <graphic>
+                        <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
+                     </graphic>
+                  </Button>
+                  <ImageView fitHeight="150.0" fitWidth="111.0" layoutX="40.0" layoutY="240.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/achterkantNiveau1.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="150.0" fitWidth="111.0" layoutX="40.0" layoutY="390.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/achterkantNiveau2.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="150.0" fitWidth="111.0" layoutX="40.0" layoutY="540.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/achterkantNiveau3.png" />
+                     </image>
+                  </ImageView>
+                  <Button layoutX="210.0" layoutY="240.0" mnemonicParsing="false" scaleX="0.9" scaleY="0.9">
+                     <graphic>
+                        <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
+                     </graphic>
+                  </Button>
+                  <Button layoutX="210.0" layoutY="390.0" mnemonicParsing="false" scaleX="0.9" scaleY="0.9">
+                     <graphic>
+                        <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
+                     </graphic>
+                  </Button>
+                  <Button layoutX="210.0" layoutY="540.0" mnemonicParsing="false" scaleX="0.9" scaleY="0.9">
+                     <graphic>
+                        <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
+                     </graphic>
+                  </Button>
+                  <Button layoutX="375.0" layoutY="240.0" mnemonicParsing="false" scaleX="0.9" scaleY="0.9">
+                     <graphic>
+                        <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
+                     </graphic>
+                  </Button>
+                  <Button layoutX="375.0" layoutY="390.0" mnemonicParsing="false" scaleX="0.9" scaleY="0.9">
+                     <graphic>
+                        <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
+                     </graphic>
+                  </Button>
+                  <Button layoutX="375.0" layoutY="540.0" mnemonicParsing="false" scaleX="0.9" scaleY="0.9">
+                     <graphic>
+                        <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
+                     </graphic>
+                  </Button>
+                  <Button layoutX="550.0" layoutY="240.0" mnemonicParsing="false" scaleX="0.9" scaleY="0.9">
+                     <graphic>
+                        <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
+                     </graphic>
+                  </Button>
+                  <Button layoutX="550.0" layoutY="390.0" mnemonicParsing="false" scaleX="0.9" scaleY="0.9">
+                     <graphic>
+                        <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
+                     </graphic>
+                  </Button>
+                  <Button layoutX="720.0" layoutY="240.0" mnemonicParsing="false" scaleX="0.9" scaleY="0.9">
+                     <graphic>
+                        <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
+                     </graphic>
+                  </Button>
+                  <Button layoutX="550.0" layoutY="540.0" mnemonicParsing="false" scaleX="0.9" scaleY="0.9">
+                     <graphic>
+                        <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
+                     </graphic>
+                  </Button>
+                  <Button layoutX="720.0" layoutY="390.0" mnemonicParsing="false" scaleX="0.9" scaleY="0.9">
+                     <graphic>
+                        <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
+                     </graphic>
+                  </Button>
+                  <Button layoutX="720.0" layoutY="540.0" mnemonicParsing="false" scaleX="0.9" scaleY="0.9">
+                     <graphic>
+                        <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
                      </graphic>
                   </Button>
                </children></AnchorPane>

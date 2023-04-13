@@ -20,18 +20,81 @@ public class StartSpelController extends AnchorPane{
 	private List<Speler> tmpSpelerLijst;
 	private int aantalKlik = 0;
 	
+
     @FXML
-    private Label lblSpelerNaam;
-    
+    private Button btnDiamantSpel;
+
+    @FXML
+    private Button btnDiamantSpeler;
+
+    @FXML
+    private Button btnOnyxSpel;
+
+    @FXML
+    private Button btnOnyxSpeler;
+
+    @FXML
+    private Button btnRobijnSpel;
+
+    @FXML
+    private Button btnRobijnSpeler;
+
+    @FXML
+    private Button btnSaffierSpel;
+
+    @FXML
+    private Button btnSaffierSpeler;
+
+    @FXML
+    private Button btnSmaragdSpel;
+
+    @FXML
+    private Button btnSmaragdSpeler;
+
     @FXML
     private Button btnStartRonde;
-    
+
     @FXML
     private Button btnVolgende;
-    
+
+    @FXML
+    private Label lblDiamantSpelAantal;
+
+    @FXML
+    private Label lblDiamantSpelerAantal;
+
+    @FXML
+    private Label lblOnyxSpelAantal;
+
+    @FXML
+    private Label lblOnyxSpelerAantal1;
+
+    @FXML
+    private Label lblRobijnSpelAantal;
+
+    @FXML
+    private Label lblRobijnSpelerAantal;
+
     @FXML
     private Label lblRondeNr;
-	
+
+    @FXML
+    private Label lblSaffierSpelAantal;
+
+    @FXML
+    private Label lblSaffierSpelerAantal;
+
+    @FXML
+    private Label lblSmaragdSpelAantal;
+
+    @FXML
+    private Label lblSmaragdSpelerAantal;
+
+    @FXML
+    private Label lblSpelerNaam;
+
+
+    
 	public StartSpelController(AanmeldenController preAanmeldenScreen, DomeinController dc) {
 		this.dc = dc;
 		this.preAanmeldenScreen=preAanmeldenScreen;
@@ -87,6 +150,33 @@ public class StartSpelController extends AnchorPane{
     	btnVolgende.setDisable(false);
     	btnStartRonde.setDisable(true);
     }
+    
+
+    @FXML
+    void btnDiamantSpelClicked(ActionEvent event) {
+
+    }
+
+    @FXML
+    void btnOnyxSpelClicked(ActionEvent event) {
+
+    }
+
+    @FXML
+    void btnRobijnSpelClicked(ActionEvent event) {
+
+    }
+
+    @FXML
+    void btnSaffierSpelClicked(ActionEvent event) {
+
+    }
+
+    @FXML
+    void btnSmaragdSpelClicked(ActionEvent event) {
+
+    }
+
  }
 	 
 
