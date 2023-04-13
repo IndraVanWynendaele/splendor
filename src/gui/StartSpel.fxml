@@ -35,10 +35,15 @@
                </children></AnchorPane>
         </items>
       </SplitPane>
-      <SplitPane blendMode="COLOR_BURN" dividerPositions="0.40630136986301374" layoutY="101.0" prefHeight="706.0" prefWidth="1461.0">
+      <SplitPane id="pane" fx:id="splitPane2" dividerPositions="0.40630136986301374" layoutY="101.0" prefHeight="706.0" prefWidth="1461.0">
         <items>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                <children>
+                  <ImageView fitHeight="1010.0" fitWidth="1253.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/achtergrondSpelbord.jpg" />
+                     </image>
+                  </ImageView>
                   <Button fx:id="btnVolgende" disable="true" layoutX="219.0" layoutY="651.0" mnemonicParsing="false" onAction="#btnVolgendeClicked" prefHeight="38.0" prefWidth="198.0" text="Volgende">
                      <font>
                         <Font name="RomanC" size="20.0" />
@@ -60,7 +65,7 @@
                   </Button>
                   <Button fx:id="btnSaffierSpeler" layoutY="360.0" mnemonicParsing="false" prefHeight="77.0" prefWidth="110.0" scaleX="0.6" scaleY="0.6" style="-fx-background-color: nofill;">
                      <graphic>
-                        <ImageView blendMode="HARD_LIGHT" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../images/Saffier.png" />
                            </image>
@@ -78,7 +83,7 @@
                   </Button>
                   <Button fx:id="btnOnyxSpeler" layoutY="480.0" mnemonicParsing="false" prefHeight="76.0" prefWidth="149.0" scaleX="0.6" scaleY="0.6" style="-fx-background-color: nofill;">
                      <graphic>
-                        <ImageView blendMode="DARKEN" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../images/Onyx.png" />
                            </image>
@@ -123,6 +128,11 @@
             </AnchorPane>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="760.0" prefWidth="864.0">
                <children>
+                  <ImageView fitHeight="911.0" fitWidth="1253.0" layoutX="-350.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/achtergrondSpelbord.jpg" />
+                     </image>
+                  </ImageView>
                   <Button fx:id="btnRobijnSpel" layoutX="180.0" layoutY="-17.0" mnemonicParsing="false" onAction="#btnRobijnSpelClicked" prefHeight="69.0" prefWidth="122.0" scaleX="0.7" scaleY="0.7" style="-fx-background-color: nofill;">
                      <graphic>
                         <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
@@ -134,7 +144,7 @@
                   </Button>
                   <Button fx:id="btnSaffierSpel" layoutX="520.0" layoutY="-17.0" mnemonicParsing="false" onAction="#btnSaffierSpelClicked" prefHeight="77.0" prefWidth="110.0" scaleX="0.7" scaleY="0.7" style="-fx-background-color: nofill;">
                      <graphic>
-                        <ImageView blendMode="HARD_LIGHT" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../images/Saffier.png" />
                            </image>
@@ -152,14 +162,14 @@
                   </Button>
                   <Button fx:id="btnOnyxSpel" layoutX="690.0" layoutY="-17.0" mnemonicParsing="false" onAction="#btnOnyxSpelClicked" prefHeight="76.0" prefWidth="149.0" scaleX="0.7" scaleY="0.7" style="-fx-background-color: nofill;">
                      <graphic>
-                        <ImageView blendMode="DARKEN" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../images/Onyx.png" />
                            </image>
                         </ImageView>
                      </graphic>
                   </Button>
-                  <Button layoutX="10.0" layoutY="100.0" mnemonicParsing="false" scaleX="0.7" scaleY="0.7">
+                  <Button fx:id="btnEdele5" layoutX="10.0" layoutY="100.0" mnemonicParsing="false" onAction="#btnEdele5Clicked" scaleX="0.7" scaleY="0.7">
                      <graphic>
                         <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
                      </graphic>
@@ -198,22 +208,22 @@
                         <Font name="RomanC" size="16.0" />
                      </font>
                   </Label>
-                  <Button layoutX="180.0" layoutY="100.0" mnemonicParsing="false" scaleX="0.7" scaleY="0.7">
+                  <Button fx:id="btnEdele1" layoutX="180.0" layoutY="100.0" mnemonicParsing="false" onAction="#btnEdele1Clicked" scaleX="0.7" scaleY="0.7">
                      <graphic>
                         <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
                      </graphic>
                   </Button>
-                  <Button layoutX="520.0" layoutY="100.0" mnemonicParsing="false" scaleX="0.7" scaleY="0.7">
+                  <Button fx:id="btnEdele3" layoutX="520.0" layoutY="100.0" mnemonicParsing="false" onAction="#btnEdele3Clicked" scaleX="0.7" scaleY="0.7">
                      <graphic>
                         <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
                      </graphic>
                   </Button>
-                  <Button layoutX="690.0" layoutY="100.0" mnemonicParsing="false" scaleX="0.7" scaleY="0.7">
+                  <Button fx:id="btnEdele4" layoutX="690.0" layoutY="100.0" mnemonicParsing="false" onAction="#btnEdele4Clicked" scaleX="0.7" scaleY="0.7">
                      <graphic>
                         <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
                      </graphic>
                   </Button>
-                  <Button layoutX="350.0" layoutY="100.0" mnemonicParsing="false" scaleX="0.7" scaleY="0.7">
+                  <Button fx:id="btnEdele2" layoutX="350.0" layoutY="100.0" mnemonicParsing="false" onAction="#btnEdele2Clicked" scaleX="0.7" scaleY="0.7">
                      <graphic>
                         <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
                      </graphic>
@@ -233,62 +243,62 @@
                         <Image url="@../images/achterkantNiveau3.png" />
                      </image>
                   </ImageView>
-                  <Button layoutX="210.0" layoutY="240.0" mnemonicParsing="false" scaleX="0.9" scaleY="0.9">
+                  <Button fx:id="btnN1Owk1" layoutX="210.0" layoutY="240.0" mnemonicParsing="false" onAction="#btnN1Owk1Clicked" scaleX="0.9" scaleY="0.9">
                      <graphic>
                         <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
                      </graphic>
                   </Button>
-                  <Button layoutX="210.0" layoutY="390.0" mnemonicParsing="false" scaleX="0.9" scaleY="0.9">
+                  <Button fx:id="btnN2Owk1" layoutX="210.0" layoutY="390.0" mnemonicParsing="false" onAction="#btnN2Owk1Clicked" scaleX="0.9" scaleY="0.9">
                      <graphic>
                         <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
                      </graphic>
                   </Button>
-                  <Button layoutX="210.0" layoutY="540.0" mnemonicParsing="false" scaleX="0.9" scaleY="0.9">
+                  <Button fx:id="btnN3Owk1" layoutX="210.0" layoutY="540.0" mnemonicParsing="false" onAction="#btnN3Owk1Clicked" scaleX="0.9" scaleY="0.9">
                      <graphic>
                         <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
                      </graphic>
                   </Button>
-                  <Button layoutX="375.0" layoutY="240.0" mnemonicParsing="false" scaleX="0.9" scaleY="0.9">
+                  <Button fx:id="btnN1Owk2" layoutX="375.0" layoutY="240.0" mnemonicParsing="false" onAction="#btnN1Owk2Clicked" scaleX="0.9" scaleY="0.9">
                      <graphic>
                         <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
                      </graphic>
                   </Button>
-                  <Button layoutX="375.0" layoutY="390.0" mnemonicParsing="false" scaleX="0.9" scaleY="0.9">
+                  <Button fx:id="btnN2Owk2" layoutX="375.0" layoutY="390.0" mnemonicParsing="false" onAction="#btnN2Owk2Clicked" scaleX="0.9" scaleY="0.9">
                      <graphic>
                         <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
                      </graphic>
                   </Button>
-                  <Button layoutX="375.0" layoutY="540.0" mnemonicParsing="false" scaleX="0.9" scaleY="0.9">
+                  <Button fx:id="btnN3Owk2" layoutX="375.0" layoutY="540.0" mnemonicParsing="false" onAction="#btnN3Owk2Clicked" scaleX="0.9" scaleY="0.9">
                      <graphic>
                         <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
                      </graphic>
                   </Button>
-                  <Button layoutX="550.0" layoutY="240.0" mnemonicParsing="false" scaleX="0.9" scaleY="0.9">
+                  <Button fx:id="btnN1Owk3" layoutX="550.0" layoutY="240.0" mnemonicParsing="false" onAction="#btnN1Owk3Clicked" scaleX="0.9" scaleY="0.9">
                      <graphic>
                         <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
                      </graphic>
                   </Button>
-                  <Button layoutX="550.0" layoutY="390.0" mnemonicParsing="false" scaleX="0.9" scaleY="0.9">
+                  <Button fx:id="btnN2Owk3" layoutX="550.0" layoutY="390.0" mnemonicParsing="false" onAction="#btnN2Owk3Clicked" scaleX="0.9" scaleY="0.9">
                      <graphic>
                         <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
                      </graphic>
                   </Button>
-                  <Button layoutX="720.0" layoutY="240.0" mnemonicParsing="false" scaleX="0.9" scaleY="0.9">
+                  <Button fx:id="btnN1Owk4" layoutX="720.0" layoutY="240.0" mnemonicParsing="false" onAction="#btnN1Owk4Clicked" scaleX="0.9" scaleY="0.9">
                      <graphic>
                         <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
                      </graphic>
                   </Button>
-                  <Button layoutX="550.0" layoutY="540.0" mnemonicParsing="false" scaleX="0.9" scaleY="0.9">
+                  <Button fx:id="btnN3Owk3" layoutX="550.0" layoutY="540.0" mnemonicParsing="false" onAction="#btnN3Owk3Clicked" scaleX="0.9" scaleY="0.9">
                      <graphic>
                         <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
                      </graphic>
                   </Button>
-                  <Button layoutX="720.0" layoutY="390.0" mnemonicParsing="false" scaleX="0.9" scaleY="0.9">
+                  <Button fx:id="btnN2Owk4" layoutX="720.0" layoutY="390.0" mnemonicParsing="false" onAction="#btnN2Owk4Clicked" scaleX="0.9" scaleY="0.9">
                      <graphic>
                         <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
                      </graphic>
                   </Button>
-                  <Button layoutX="720.0" layoutY="540.0" mnemonicParsing="false" scaleX="0.9" scaleY="0.9">
+                  <Button fx:id="btnN3Owk4" layoutX="720.0" layoutY="540.0" mnemonicParsing="false" onAction="#btnN3Owk4Clicked" scaleX="0.9" scaleY="0.9">
                      <graphic>
                         <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
                      </graphic>

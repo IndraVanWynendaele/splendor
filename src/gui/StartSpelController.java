@@ -11,6 +11,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.SplitPane;
 import javafx.scene.layout.AnchorPane;
 
 public class StartSpelController extends AnchorPane{
@@ -93,17 +94,71 @@ public class StartSpelController extends AnchorPane{
     @FXML
     private Label lblSpelerNaam;
 
+    @FXML
+    private SplitPane splitPane2;
+    
+    @FXML
+    private Button btnEdele1;
 
+    @FXML
+    private Button btnEdele2;
+
+    @FXML
+    private Button btnEdele3;
+
+    @FXML
+    private Button btnEdele4;
+
+    @FXML
+    private Button btnEdele5;
+
+    @FXML
+    private Button btnN1Owk1;
+
+    @FXML
+    private Button btnN1Owk2;
+
+    @FXML
+    private Button btnN1Owk3;
+
+    @FXML
+    private Button btnN1Owk4;
+
+    @FXML
+    private Button btnN2Owk1;
+
+    @FXML
+    private Button btnN2Owk2;
+
+    @FXML
+    private Button btnN2Owk3;
+
+    @FXML
+    private Button btnN2Owk4;
+
+    @FXML
+    private Button btnN3Owk1;
+
+    @FXML
+    private Button btnN3Owk2;
+
+    @FXML
+    private Button btnN3Owk3;
+
+    @FXML
+    private Button btnN3Owk4;
     
 	public StartSpelController(AanmeldenController preAanmeldenScreen, DomeinController dc) {
 		this.dc = dc;
 		this.preAanmeldenScreen=preAanmeldenScreen;
-		
 			
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("StartSpel.fxml"));//SpelStarten
 		loader.setRoot(this);
 		loader.setController(this);
+		splitPane2 = new SplitPane();
 		
+		splitPane2.setStyle("-fx-background-color: #8e0000");
+        
 		try {
 			loader.load();
 		} catch (IOException ex) {
@@ -176,7 +231,92 @@ public class StartSpelController extends AnchorPane{
     void btnSmaragdSpelClicked(ActionEvent event) {
 
     }
+ 
+    @FXML
+    void btnEdele1Clicked(ActionEvent event) {
 
+    }
+
+    @FXML
+    void btnEdele2Clicked(ActionEvent event) {
+
+    }
+
+    @FXML
+    void btnEdele3Clicked(ActionEvent event) {
+
+    }
+
+    @FXML
+    void btnEdele4Clicked(ActionEvent event) {
+
+    }
+
+    @FXML
+    void btnEdele5Clicked(ActionEvent event) {
+
+    }
+
+    @FXML
+    void btnN1Owk1Clicked(ActionEvent event) {
+
+    }
+
+    @FXML
+    void btnN1Owk2Clicked(ActionEvent event) {
+
+    }
+
+    @FXML
+    void btnN1Owk3Clicked(ActionEvent event) {
+
+    }
+
+    @FXML
+    void btnN1Owk4Clicked(ActionEvent event) {
+
+    }
+
+    @FXML
+    void btnN2Owk1Clicked(ActionEvent event) {
+
+    }
+
+    @FXML
+    void btnN2Owk2Clicked(ActionEvent event) {
+
+    }
+
+    @FXML
+    void btnN2Owk3Clicked(ActionEvent event) {
+
+    }
+
+    @FXML
+    void btnN2Owk4Clicked(ActionEvent event) {
+
+    }
+
+    @FXML
+    void btnN3Owk1Clicked(ActionEvent event) {
+
+    }
+
+    @FXML
+    void btnN3Owk2Clicked(ActionEvent event) {
+
+    }
+
+    @FXML
+    void btnN3Owk3Clicked(ActionEvent event) {
+
+    }
+
+    @FXML
+    void btnN3Owk4Clicked(ActionEvent event) {
+
+    }
+
+    
  }
 	 
-
