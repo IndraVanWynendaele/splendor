@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import domein.DomeinController;
+import domein.Edele;
 import domein.Speler;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -12,6 +13,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.SplitPane;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 
 public class StartSpelController extends AnchorPane{
@@ -147,7 +150,23 @@ public class StartSpelController extends AnchorPane{
 
     @FXML
     private Button btnN3Owk4;
+
+    @FXML
+    private ImageView imvEdele1;
+
+    @FXML
+    private ImageView imvEdele2;
+
+    @FXML
+    private ImageView imvEdele3;
+
+    @FXML
+    private ImageView imvEdele4;   
     
+    @FXML
+    private ImageView imvEdele5;
+    
+
 	public StartSpelController(AanmeldenController preAanmeldenScreen, DomeinController dc) {
 		this.dc = dc;
 		this.preAanmeldenScreen=preAanmeldenScreen;
@@ -155,9 +174,8 @@ public class StartSpelController extends AnchorPane{
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("StartSpel.fxml"));//SpelStarten
 		loader.setRoot(this);
 		loader.setController(this);
-		splitPane2 = new SplitPane();
 		
-		splitPane2.setStyle("-fx-background-color: #8e0000");
+		toonStartSpelbord();
         
 		try {
 			loader.load();
@@ -166,17 +184,31 @@ public class StartSpelController extends AnchorPane{
 		}
 	}
 	
-	@FXML
-	void btnVolgendeClicked(ActionEvent event) {
-		geefNaamHuidigeSpeler();
-		if(tmpSpelerLijst.size()==1) {
-			btnVolgende.setDisable(true);
-	    	btnStartRonde.setDisable(false);
-		}
-		tmpSpelerLijst= dc.updateIsAanDeBeurt(tmpSpelerLijst);
+	private void toonStartSpelbord() {
+		List<Edele> zichtbareEdelen = new ArrayList<>();
+		zichtbareEdelen = dc.geefEdelenZichtbaar();
+		List<ImageView> imageViewEdele = new ArrayList<>();
 		
+		imvEdele1 = new ImageView(new Image(getClass().getResourceAsStream("/images/Edelekaart1.png")));
+		imvEdele2 = new ImageView();
+		imvEdele3 = new ImageView();
+		imvEdele4 = new ImageView();
+		imvEdele5 = new ImageView();
+		
+		imageViewEdele.add(imvEdele1);
+		imageViewEdele.add(imvEdele2);
+		imageViewEdele.add(imvEdele3);
+		imageViewEdele.add(imvEdele4);
+		imageViewEdele.add(imvEdele5);
+		
+//		for(int i=0; i<zichtbareEdelen.size(); i++) {
+//			imageViewEdele.get(i).setImage();
+//			
+//		}
+		// btnEdele1.setGraphic(imvEdele1);
+		// this.getChildren().add(imvEdele1);
 	}
-	 
+	
 	private void geefNaamHuidigeSpeler() {
 		List<Speler> spelers = dc.getSpelersInSpel();
 		String spelerNaam = "";
@@ -186,6 +218,17 @@ public class StartSpelController extends AnchorPane{
 			}
 		}
 		lblSpelerNaam.setText(spelerNaam);
+	}
+
+	@FXML
+	void btnVolgendeClicked(ActionEvent event) {
+		geefNaamHuidigeSpeler();
+		if(tmpSpelerLijst.size()==1) {
+			btnVolgende.setDisable(true);
+	    	btnStartRonde.setDisable(false);
+		}
+		tmpSpelerLijst= dc.updateIsAanDeBeurt(tmpSpelerLijst);
+		
 	}
 	
     @FXML

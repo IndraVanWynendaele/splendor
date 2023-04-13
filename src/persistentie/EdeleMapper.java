@@ -61,7 +61,7 @@ public class EdeleMapper {
 		e9.voegKostToe(4, EdelsteenSoort.DIAMANT);
 		lijstEdelen.add(e9);
 		
-		Edele e10 = new Edele(3, new Image(getClass().getResourceAsStream("/images/Edelekaart9.png")));
+		Edele e10 = new Edele(3, new Image(getClass().getResourceAsStream("/images/Edelekaart10.png")));
 		e10.voegKostToe(4, EdelsteenSoort.ROBIJN);
 		e10.voegKostToe(4, EdelsteenSoort.SMARAGD);
 		lijstEdelen.add(e10);

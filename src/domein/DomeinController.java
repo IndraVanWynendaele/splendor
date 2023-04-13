@@ -176,6 +176,15 @@ public class DomeinController {
 		return 0;
 	}
 	
+	public List<Edele> geefEdelenZichtbaar(){
+		List<Edele> edelenZichtbaar = new ArrayList<>();
+		Edele[] edelen = s.getEdeleSpelers();
+		for(Edele e: edelen) {
+			edelenZichtbaar.add(e);
+		}
+		return edelenZichtbaar;
+	}
+	
 	public List<SpelerDTO> geefSpelerDTO(){
 		spelersInSpel = s.getSpelers();
 		List<SpelerDTO> spelerDTOs = new ArrayList<>();
@@ -189,7 +198,7 @@ public class DomeinController {
 		Edele[] edeleInSpel = s.getEdeleSpelers();
 		List<EdeleDTO> edeleDTO = new ArrayList<>();
 		for(Edele edele:edeleInSpel) {
-			edeleDTO.add(new EdeleDTO(edele.getPrestigepunten(),edele.getKosten()));
+			edeleDTO.add(new EdeleDTO(edele.getPrestigepunten(),edele.getKosten(), edele.getImage()));
 		}
 		return edeleDTO;
 	}

@@ -171,7 +171,7 @@
                   </Button>
                   <Button fx:id="btnEdele5" layoutX="10.0" layoutY="100.0" mnemonicParsing="false" onAction="#btnEdele5Clicked" scaleX="0.7" scaleY="0.7">
                      <graphic>
-                        <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
+                        <ImageView fx:id="imvEdele5" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
                      </graphic>
                   </Button>
                   <Button fx:id="btnSmaragdSpel" layoutX="10.0" layoutY="-17.0" mnemonicParsing="false" onAction="#btnSmaragdSpelClicked" prefHeight="98.0" prefWidth="92.0" scaleX="0.7" scaleY="0.7" style="-fx-background-color: nofill;">
@@ -210,22 +210,22 @@
                   </Label>
                   <Button fx:id="btnEdele1" layoutX="180.0" layoutY="100.0" mnemonicParsing="false" onAction="#btnEdele1Clicked" scaleX="0.7" scaleY="0.7">
                      <graphic>
-                        <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
+                        <ImageView fx:id="imvEdele1" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
                      </graphic>
                   </Button>
                   <Button fx:id="btnEdele3" layoutX="520.0" layoutY="100.0" mnemonicParsing="false" onAction="#btnEdele3Clicked" scaleX="0.7" scaleY="0.7">
                      <graphic>
-                        <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
+                        <ImageView fx:id="imvEdele3" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
                      </graphic>
                   </Button>
                   <Button fx:id="btnEdele4" layoutX="690.0" layoutY="100.0" mnemonicParsing="false" onAction="#btnEdele4Clicked" scaleX="0.7" scaleY="0.7">
                      <graphic>
-                        <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
+                        <ImageView fx:id="imvEdele4" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
                      </graphic>
                   </Button>
                   <Button fx:id="btnEdele2" layoutX="350.0" layoutY="100.0" mnemonicParsing="false" onAction="#btnEdele2Clicked" scaleX="0.7" scaleY="0.7">
                      <graphic>
-                        <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
+                        <ImageView fx:id="imvEdele2" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
                      </graphic>
                   </Button>
                   <ImageView fitHeight="150.0" fitWidth="111.0" layoutX="40.0" layoutY="240.0" pickOnBounds="true" preserveRatio="true">
