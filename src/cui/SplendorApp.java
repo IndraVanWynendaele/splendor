@@ -14,6 +14,7 @@ import dtos.EdeleDTO;
 import dtos.OntwikkelingskaartDTO;
 import dtos.SpelerDTO;
 
+
 public class SplendorApp {
 	private DomeinController dc;
 	private Scanner input = new Scanner(System.in);
