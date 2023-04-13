@@ -35,7 +35,7 @@
                </children></AnchorPane>
         </items>
       </SplitPane>
-      <SplitPane blendMode="COLOR_BURN" dividerPositions="0.29797979797979796" layoutY="101.0" prefHeight="706.0" prefWidth="1461.0">
+      <SplitPane blendMode="COLOR_BURN" dividerPositions="0.2980821917808219" layoutY="101.0" prefHeight="706.0" prefWidth="1461.0">
         <items>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                <children>
@@ -50,7 +50,54 @@
                      </font>
                   </Button>
                </children></AnchorPane>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="518.0" prefWidth="541.0" />
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="518.0" prefWidth="541.0">
+               <children>
+                  <Button fx:id="robijnEdelsteenFiche" layoutX="375.0" layoutY="25.0" mnemonicParsing="false" prefHeight="69.0" prefWidth="122.0" scaleX="0.8" scaleY="0.8">
+                     <graphic>
+                        <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/Robijn.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button fx:id="saffierEdelsteenFiche" layoutX="685.0" layoutY="25.0" mnemonicParsing="false" prefHeight="77.0" prefWidth="110.0" scaleX="0.8" scaleY="0.8">
+                     <graphic>
+                        <ImageView blendMode="HARD_LIGHT" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/Saffier.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button fx:id="diamantEdelsteenFiche" layoutX="530.0" layoutY="25.0" mnemonicParsing="false" prefHeight="52.0" prefWidth="83.0" scaleX="0.8" scaleY="0.8">
+                     <graphic>
+                        <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/Diamant.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button fx:id="onyxEdelsteenFiche" layoutX="840.0" layoutY="25.0" mnemonicParsing="false" prefHeight="76.0" prefWidth="149.0" scaleX="0.8" scaleY="0.8">
+                     <graphic>
+                        <ImageView blendMode="DARKEN" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/Onyx.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button fx:id="smaragdEdelsteenFiche" layoutX="220.0" layoutY="25.0" mnemonicParsing="false" prefHeight="98.0" prefWidth="92.0" scaleX="0.8" scaleY="0.8">
+                     <graphic>
+                        <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/Smaragd.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+               </children></AnchorPane>
         </items>
       </SplitPane>
    </children>
