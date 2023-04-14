@@ -134,6 +134,7 @@ public class AanmeldenController extends AnchorPane{
 				Scene scene1 = new Scene(ssc);
 				Stage stage1 = (Stage) this.getScene().getWindow();
 				stage1.setScene(scene1);
+				stage1.setFullScreen(true);
 				stage1.show();
 			}
 		}catch(IllegalArgumentException e) {
