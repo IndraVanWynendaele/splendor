@@ -17,7 +17,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 
-public class StartSpelController extends AnchorPane{
+public class StartSpelController extends AnchorPane {
 
 	private DomeinController dc;
 	private AanmeldenController preAanmeldenScreen;
@@ -188,8 +188,21 @@ public class StartSpelController extends AnchorPane{
 		List<Edele> zichtbareEdelen = new ArrayList<>();
 		zichtbareEdelen = dc.geefEdelenZichtbaar();
 		List<ImageView> imageViewEdele = new ArrayList<>();
+		List<Button> edeleButtons = new ArrayList<>();
 		
-		imvEdele1 = new ImageView(new Image(getClass().getResourceAsStream("/images/Edelekaart1.png")));
+		btnEdele1 = new Button();
+		btnEdele2 = new Button();
+		btnEdele3 = new Button();
+		btnEdele4 = new Button();
+		btnEdele5 = new Button();
+		
+		edeleButtons.add(btnEdele1);
+		edeleButtons.add(btnEdele2);
+		edeleButtons.add(btnEdele3);
+		edeleButtons.add(btnEdele4);
+		edeleButtons.add(btnEdele5);
+		
+		imvEdele1 = new ImageView();
 		imvEdele2 = new ImageView();
 		imvEdele3 = new ImageView();
 		imvEdele4 = new ImageView();
@@ -201,6 +214,21 @@ public class StartSpelController extends AnchorPane{
 		imageViewEdele.add(imvEdele4);
 		imageViewEdele.add(imvEdele5);
 		
+		// for-loop om voor zichtbareEdelen bijhorende kaart in een lijst te zetten (imageViewEdele)
+		for(int i=0; i<zichtbareEdelen.size(); i++) {
+			Image img = zichtbareEdelen.get(i).getImage();
+			imageViewEdele.get(i).setImage(img);
+//			ImageView imgv = new ImageView(img);
+//			imageViewEdele.add(imgv);
+		}
+		// voor elk element uit imageViewEdele de graphic zetten op bijhorende button via String.format
+		for(int i=0; i<imageViewEdele.size(); i++) {
+			ImageView imageview = imageViewEdele.get(i);
+			for(int j=0; j<imageViewEdele.size(); j++) {
+				edeleButtons.get(j).setGraphic(imageview);
+			}
+		}
+		
 //		for(int i=0; i<zichtbareEdelen.size(); i++) {
 //			imageViewEdele.get(i).setImage();
 //			
@@ -208,6 +236,8 @@ public class StartSpelController extends AnchorPane{
 		// btnEdele1.setGraphic(imvEdele1);
 		// this.getChildren().add(imvEdele1);
 	}
+	
+
 	
 	private void geefNaamHuidigeSpeler() {
 		List<Speler> spelers = dc.getSpelersInSpel();
@@ -227,6 +257,7 @@ public class StartSpelController extends AnchorPane{
 			btnVolgende.setDisable(true);
 	    	btnStartRonde.setDisable(false);
 		}
+		// geeft indexoutofboundsexception
 		tmpSpelerLijst= dc.updateIsAanDeBeurt(tmpSpelerLijst);
 		
 	}
