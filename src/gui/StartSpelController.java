@@ -1,6 +1,8 @@
 package gui;
 
 import java.io.IOException;
+import java.net.MalformedURLException;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,6 +18,7 @@ import javafx.scene.control.SplitPane;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.shape.Path;
 
 public class StartSpelController extends AnchorPane {
 
@@ -176,7 +179,7 @@ public class StartSpelController extends AnchorPane {
 		loader.setController(this);
 		
 		toonStartSpelbord();
-        
+		
 		try {
 			loader.load();
 		} catch (IOException ex) {

@@ -17,7 +17,12 @@
          </image>
       </ImageView>
       <Rectangle fx:id="kader" arcHeight="5.0" arcWidth="5.0" blendMode="OVERLAY" fill="#1f93ff00" height="525.0" layoutX="33.0" layoutY="26.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="5.0" width="541.0" />
-      <Button fx:id="btnSpelen" blendMode="SCREEN" focusTraversable="false" layoutX="188.0" layoutY="363.0" mnemonicParsing="false" onAction="#btnSpelenClicked" prefHeight="55.0" prefWidth="233.0" text="Spelen">
+      <Button fx:id="btnSpelen" blendMode="SCREEN" focusTraversable="false" layoutX="63.0" layoutY="361.0" mnemonicParsing="false" onAction="#btnSpelenClicked" prefHeight="55.0" prefWidth="233.0" text="Spelen">
+         <font>
+            <Font size="30.0" />
+         </font>
+      </Button>
+      <Button fx:id="btnPlay" blendMode="SCREEN" focusTraversable="false" layoutX="310.0" layoutY="361.0" mnemonicParsing="false" onAction="#btnSpelenClicked" prefHeight="55.0" prefWidth="233.0" text="Play">
          <font>
             <Font size="30.0" />
          </font>
