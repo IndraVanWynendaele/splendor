@@ -128,7 +128,6 @@ public class DomeinController {
 			}
 		}
 		return tmpSpelerLijst;
-		
 	}
 	
 	public boolean isEindeSpel() {
