@@ -12,6 +12,7 @@ import domein.Speler;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Insets;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.SplitPane;
@@ -189,11 +190,6 @@ public class StartSpelController extends AnchorPane {
 	
 	private void toonStartSpelbord() {
 		
-	     imvEdele1 = new ImageView();
-//		 ImageView imageView = (ImageView) this.lookup("imvEdele1");
-		 Image image = new Image("/images/a1.png");
-		 imvEdele1.setImage(image);
-		
 		List<Edele> zichtbareEdelen = new ArrayList<>();
 		zichtbareEdelen = dc.geefEdelenZichtbaar();
 		List<ImageView> imageViewEdele = new ArrayList<>();
@@ -223,27 +219,29 @@ public class StartSpelController extends AnchorPane {
 		imageViewEdele.add(imvEdele4);
 		imageViewEdele.add(imvEdele5);
 		
-		// for-loop om voor zichtbareEdelen bijhorende kaart in een lijst te zetten (imageViewEdele)
-		for(int i=0; i<zichtbareEdelen.size(); i++) {
-			Image img = zichtbareEdelen.get(i).getImage();
-			imageViewEdele.get(i).setImage(img);
-			ImageView imgv = new ImageView(img);
-			imageViewEdele.add(imgv);
-		}
-		// voor elk element uit imageViewEdele de graphic zetten op bijhorende button via String.format
-		for(int i=0; i<imageViewEdele.size(); i++) {
-			ImageView imageview = imageViewEdele.get(i);
-			for(int j=0; j<imageViewEdele.size(); j++) {
-				edeleButtons.get(j).setGraphic(imageview);
-			}
-		}
 		
-		for(int i=0; i<zichtbareEdelen.size(); i++) {
-			imageViewEdele.get(i).setImage();
-			
-		}
+		
+		imvEdele1.setImage(new Image(getClass().getResourceAsStream("/images/Edelekaart2.png")));		
+		btnEdele1.setGraphic(imvEdele1);
+		
+//		// for-loop om voor zichtbareEdelen bijhorende kaart in een lijst te zetten (imageViewEdele)
+//		for(int i=0; i<zichtbareEdelen.size(); i++) {
+//			Image img = zichtbareEdelen.get(i).getImage();
+//			imageViewEdele.get(i).setImage(img);
+//		}
+//		// voor elk element uit imageViewEdele de graphic zetten op bijhorende button via String.format
+//		for(int i=0; i<imageViewEdele.size(); i++) {
+//			ImageView imageview = imageViewEdele.get(i);
+//			edeleButtons.get(i).setGraphic(imageview);
+//		}		
+		
+		//this.getChildren().addAll(imvEdele1, imvEdele2,imvEdele3,imvEdele4,imvEdele5,btnEdele1,btnEdele2,btnEdele3,btnEdele4,btnEdele5);
+//		for(int i=0; i<zichtbareEdelen.size(); i++) {
+//			imageViewEdele.get(i).setImage();
+//			
+//		}
 		// btnEdele1.setGraphic(imvEdele1);
-		// this.getChildren().add(imvEdele1);
+		 this.getChildren().addAll(imvEdele1, btnEdele1);
 	}
 	
 
