@@ -123,7 +123,7 @@ public class DomeinController {
 				}else {
 					huidigeSpeler.isAanDeBeurt(false);
 					tmpSpelerLijst.remove(huidigeSpeler);
-					if(klaar)break;
+					klaar = true;
 				}
 			}
 		}

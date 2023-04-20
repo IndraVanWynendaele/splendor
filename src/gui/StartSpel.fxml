@@ -39,7 +39,7 @@
         <items>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                <children>
-                  <ImageView fitHeight="787.0" fitWidth="1695.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="787.0" fitWidth="627.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../images/achtergrondSpelbord.jpg" />
                      </image>
@@ -124,11 +124,12 @@
                         <Font name="RomanC" size="16.0" />
                      </font>
                   </Label>
+                  <ImageView fx:id="vb" fitHeight="150.0" fitWidth="200.0" layoutX="279.0" layoutY="278.0" pickOnBounds="true" preserveRatio="true" />
                </children>
             </AnchorPane>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="760.0" prefWidth="864.0">
                <children>
-                  <ImageView fitHeight="775.0" fitWidth="1367.0" layoutX="-350.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="571.0" fitWidth="921.0" layoutX="-4.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../images/achtergrondSpelbord.jpg" />
                      </image>
@@ -208,11 +209,7 @@
                         <Font name="RomanC" size="16.0" />
                      </font>
                   </Label>
-                  <Button fx:id="btnEdele1" layoutX="180.0" layoutY="100.0" mnemonicParsing="false" onAction="#btnEdele1Clicked" scaleX="0.7" scaleY="0.7">
-                     <graphic>
-                        <ImageView fx:id="imvEdele1" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
-                     </graphic>
-                  </Button>
+                  <Button fx:id="btnEdele1" layoutX="180.0" layoutY="100.0" mnemonicParsing="false" onAction="#btnEdele1Clicked" scaleX="0.7" scaleY="0.7" />
                   <Button fx:id="btnEdele3" layoutX="520.0" layoutY="100.0" mnemonicParsing="false" onAction="#btnEdele3Clicked" scaleX="0.7" scaleY="0.7">
                      <graphic>
                         <ImageView fx:id="imvEdele3" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />

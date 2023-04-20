@@ -207,7 +207,7 @@ public class StartSpelController extends AnchorPane {
 		edeleButtons.add(btnEdele4);
 		edeleButtons.add(btnEdele5);
 		
-		imvEdele1 = new ImageView();
+		ImageView imvEdele1 = new ImageView();
 		imvEdele2 = new ImageView();
 		imvEdele3 = new ImageView();
 		imvEdele4 = new ImageView();
@@ -221,8 +221,11 @@ public class StartSpelController extends AnchorPane {
 		
 		
 		
-		imvEdele1.setImage(new Image(getClass().getResourceAsStream("/images/Edelekaart2.png")));		
+		imvEdele1.setImage(new Image(getClass().getResourceAsStream("/images/EdeleKaart2.png")));	
+		imvEdele1.setFitHeight(200);
+		imvEdele1.setFitWidth(150);
 		btnEdele1.setGraphic(imvEdele1);
+	
 		
 //		// for-loop om voor zichtbareEdelen bijhorende kaart in een lijst te zetten (imageViewEdele)
 //		for(int i=0; i<zichtbareEdelen.size(); i++) {
