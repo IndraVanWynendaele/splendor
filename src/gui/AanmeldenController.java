@@ -130,7 +130,7 @@ public class AanmeldenController extends AnchorPane{
 				dc.startSpel();
 				dc.isStartSpeler();
 				
-				StartSpelController ssc = new StartSpelController(this, dc);
+				BliebController ssc = new BliebController(this, dc);
 				Scene scene1 = new Scene(ssc);
 				Stage stage1 = (Stage) this.getScene().getWindow();
 				stage1.setScene(scene1);
