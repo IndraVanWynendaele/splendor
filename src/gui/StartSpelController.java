@@ -155,22 +155,6 @@ public class StartSpelController extends AnchorPane {
     @FXML
     private Button btnN3Owk4;
 
-    @FXML
-    private ImageView imvEdele1;
-
-    @FXML
-    private ImageView imvEdele2;
-
-    @FXML
-    private ImageView imvEdele3;
-
-    @FXML
-    private ImageView imvEdele4;   
-    
-    @FXML
-    private ImageView imvEdele5;
-    
-
 	public StartSpelController(AanmeldenController preAanmeldenScreen, DomeinController dc) {
 		this.dc = dc;
 		this.preAanmeldenScreen=preAanmeldenScreen;
@@ -179,10 +163,9 @@ public class StartSpelController extends AnchorPane {
 		loader.setRoot(this);
 		loader.setController(this);
 		
-		toonStartSpelbord();
-		
 		try {
 			loader.load();
+			toonStartSpelbord();
 		} catch (IOException ex) {
 			throw new RuntimeException(ex);
 		}
@@ -192,62 +175,25 @@ public class StartSpelController extends AnchorPane {
 		
 		List<Edele> zichtbareEdelen = new ArrayList<>();
 		zichtbareEdelen = dc.geefEdelenZichtbaar();
-		List<ImageView> imageViewEdele = new ArrayList<>();
 		List<Button> edeleButtons = new ArrayList<>();
-		
-		btnEdele1 = new Button();
-		btnEdele2 = new Button();
-		btnEdele3 = new Button();
-		btnEdele4 = new Button();
-		btnEdele5 = new Button();
 		
 		edeleButtons.add(btnEdele1);
 		edeleButtons.add(btnEdele2);
 		edeleButtons.add(btnEdele3);
 		edeleButtons.add(btnEdele4);
 		edeleButtons.add(btnEdele5);
-		
-		ImageView imvEdele1 = new ImageView();
-		imvEdele2 = new ImageView();
-		imvEdele3 = new ImageView();
-		imvEdele4 = new ImageView();
-		imvEdele5 = new ImageView();
-		
-		imageViewEdele.add(imvEdele1);
-		imageViewEdele.add(imvEdele2);
-		imageViewEdele.add(imvEdele3);
-		imageViewEdele.add(imvEdele4);
-		imageViewEdele.add(imvEdele5);
-		
-		
-		
-		imvEdele1.setImage(new Image(getClass().getResourceAsStream("/images/EdeleKaart2.png")));	
-		imvEdele1.setFitHeight(200);
-		imvEdele1.setFitWidth(150);
-		btnEdele1.setGraphic(imvEdele1);
 	
-		
-//		// for-loop om voor zichtbareEdelen bijhorende kaart in een lijst te zetten (imageViewEdele)
-//		for(int i=0; i<zichtbareEdelen.size(); i++) {
-//			Image img = zichtbareEdelen.get(i).getImage();
-//			imageViewEdele.get(i).setImage(img);
-//		}
-//		// voor elk element uit imageViewEdele de graphic zetten op bijhorende button via String.format
-//		for(int i=0; i<imageViewEdele.size(); i++) {
-//			ImageView imageview = imageViewEdele.get(i);
-//			edeleButtons.get(i).setGraphic(imageview);
-//		}		
-		
-		//this.getChildren().addAll(imvEdele1, imvEdele2,imvEdele3,imvEdele4,imvEdele5,btnEdele1,btnEdele2,btnEdele3,btnEdele4,btnEdele5);
-//		for(int i=0; i<zichtbareEdelen.size(); i++) {
-//			imageViewEdele.get(i).setImage();
-//			
-//		}
-		// btnEdele1.setGraphic(imvEdele1);
-		 this.getChildren().addAll(imvEdele1, btnEdele1);
-	}
-	
+		for (int i = 0; i < zichtbareEdelen.size(); i++) {
+			ImageView imv = new ImageView();
+			
+			imv.setImage(new Image(getClass().getResourceAsStream("/images/EdeleKaart2.png")));	
+			imv.setFitHeight(200);
+			imv.setFitWidth(150);
+			edeleButtons.get(i).setGraphic(imv);
 
+		}
+
+	}
 	
 	private void geefNaamHuidigeSpeler() {
 		List<Speler> spelers = dc.getSpelersInSpel();
