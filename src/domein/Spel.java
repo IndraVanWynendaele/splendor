@@ -7,12 +7,12 @@ import java.util.List;
 import util.EdelsteenSoort;
 
 public class Spel {
-	private List<Speler> spelers;
+	private List<Speler> spelers,tmpSpelerLijst;
 	private Speler startSpeler;
 	private OntwikkelingskaartRepository okr;
 	private EdeleRepository er;
 	private EdelsteenAantal diamantAantal, smaragdAantal, saffierAantal, onyxAantal, robijnAantal;
-	
+	public Speler huidigeSpeler;
 	private List<Ontwikkelingskaart> niveau1, niveau2, niveau3, niveau1Zichtbaar, niveau2Zichtbaar, niveau3Zichtbaar;
 	private List<Edele> edelen;
 	private Edele[] edeleInSpel;
@@ -113,6 +113,7 @@ public class Spel {
 		for(Edele ed : edeleInSpel)
 			for(Ontwikkelingskaart otw : aantalHuidigeOntwikkelingskaarten)
 				if(ed.getKosten().equals(otw.getKosten()))
+					//als het niet werkt gebruik dan contains
 					beschikbareEdelen.add(ed);
 		
 		return beschikbareEdelen;
@@ -148,8 +149,7 @@ public class Spel {
 	
 	public List<Ontwikkelingskaart> getNiveau3() {
 		return niveau3;
-	}
-	
+	}	
 	
 	public EdelsteenAantal getDiamantAantal() {
 		return diamantAantal;
@@ -172,5 +172,105 @@ public class Spel {
 	}
 	
 	
+//	public void speelRonde() {
+//		maakTemplijst();
+//		for(Speler s : spelers) {
+//			s.speelBeurt();
+//			tmpSpelerLijst=updateIsAanDeBeurt(tmpSpelerLijst);
+//		}
+//		isEindeSpel();
+//	}
+	
+	public boolean isEindeSpel() {
+		for(Speler speler: spelers) {
+			if(speler.getTotaalAantalPrestigePunten()>=15) {
+				bepaalWinnaar();
+				return true;
+			}
+		}
+		return false;	
+	}
+	
+	public void bepaalWinnaar() {
+		int maxPrestigepunten=Integer.MIN_VALUE;
+		List<Speler> winnaar = new ArrayList<>();
+		winnaar.add(spelers.get(0));
+				
+		for(Speler speler:spelers) {
+			if(speler.getTotaalAantalPrestigePunten() == maxPrestigepunten) {
+				if(speler.getOntwikkelingskaartenInBezit().size() < startSpeler.getOntwikkelingskaartenInBezit().size()) {
+					maxPrestigepunten=speler.getTotaalAantalPrestigePunten();
+					winnaar.remove(0);
+					winnaar.add(speler);
+				}
+				else if(speler.getOntwikkelingskaartenInBezit().size() == startSpeler.getOntwikkelingskaartenInBezit().size()) {
+					maxPrestigepunten=speler.getTotaalAantalPrestigePunten();
+					winnaar.add(speler);
+				}
+			}
+			else if(speler.getTotaalAantalPrestigePunten()> maxPrestigepunten) {
+				maxPrestigepunten=speler.getTotaalAantalPrestigePunten();
+				winnaar.remove(0);
+				winnaar.add(speler);
+			}
+		}
+	}
+	
+	public void isStartSpeler() {
+		int jongsteJaar=Integer.MIN_VALUE;
+		startSpeler=spelers.get(0);
+		for(Speler speler:spelers) {
+			if(speler.getGeboortejaar() == jongsteJaar) {
+				if(speler.getGebruikersnaam().length() > startSpeler.getGebruikersnaam().length()) {
+					jongsteJaar=speler.getGeboortejaar();
+					startSpeler=speler;
+				}
+				else if(speler.getGebruikersnaam().length() == startSpeler.getGebruikersnaam().length()) {
+					String str1 = speler.getGebruikersnaam();
+					String str2 = startSpeler.getGebruikersnaam();
+					int result;
+					do {
+						result = str1.compareTo(str2);
+						if(result > 0) // 1
+							startSpeler = speler;
+					}while(result <= 0);			        
+				}
+			}
+			else if(speler.getGeboortejaar()>jongsteJaar) {
+					jongsteJaar=speler.getGeboortejaar();
+					startSpeler=speler;
+			}
+		}
+		startSpeler.isStartspeler(true);
+		startSpeler.isAanDeBeurt(true);
+		huidigeSpeler = startSpeler;
+		
+	}
+	
+	public List<Speler> updateIsAanDeBeurt(List<Speler> tmpSpelerLijst) {
+		if(tmpSpelerLijst.size()!=0) {
+			boolean klaar = false;
+			while(!klaar) {
+				if(tmpSpelerLijst.size()!=1) {
+					for(int i = 0; i < spelers.size(); i++) {
+						String naam = spelers.get(i).getGebruikersnaam();
+							if(huidigeSpeler.getGebruikersnaam().equals(naam)) {
+								huidigeSpeler.isAanDeBeurt(false);
+								tmpSpelerLijst.remove(huidigeSpeler);
+								huidigeSpeler = tmpSpelerLijst.get(0);
+								huidigeSpeler.isAanDeBeurt(true);
+								klaar = true;
+							}
+						if(klaar)break;
+					}
+				}else {
+					huidigeSpeler.isAanDeBeurt(false);
+					tmpSpelerLijst.remove(huidigeSpeler);
+					klaar = true;
+				}
+			}
+		}
+		return tmpSpelerLijst;
+	}
 	
 }

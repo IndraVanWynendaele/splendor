@@ -72,97 +72,11 @@ public class DomeinController {
 	}
 	
 	public void isStartSpeler() {
-		int jongsteJaar=Integer.MIN_VALUE;
-		spelersInSpel = s.getSpelers();
-		startSpeler=spelersInSpel.get(0);
-		for(Speler speler:spelersInSpel) {
-			if(speler.getGeboortejaar() == jongsteJaar) {
-				if(speler.getGebruikersnaam().length() > startSpeler.getGebruikersnaam().length()) {
-					jongsteJaar=speler.getGeboortejaar();
-					startSpeler=speler;
-				}
-				else if(speler.getGebruikersnaam().length() == startSpeler.getGebruikersnaam().length()) {
-					String str1 = speler.getGebruikersnaam();
-					String str2 = startSpeler.getGebruikersnaam();
-					int result;
-					do {
-						result = str1.compareTo(str2);
-						if(result > 0) // 1
-							startSpeler = speler;
-					}while(result <= 0);			        
-				}
-			}
-			else if(speler.getGeboortejaar()>jongsteJaar) {
-					jongsteJaar=speler.getGeboortejaar();
-					startSpeler=speler;
-			}
-		}
-		startSpeler.isStartspeler(true);
-		startSpeler.isAanDeBeurt(true);
-		huidigeSpeler = startSpeler;
-		
+		s.isStartSpeler();
 	}
 	
 	public List<Speler> updateIsAanDeBeurt(List<Speler> tmpSpelerLijst) {
-		if(tmpSpelerLijst.size()!=0) {
-			boolean klaar = false;
-			while(!klaar) {
-				if(tmpSpelerLijst.size()!=1) {
-					for(int i = 0; i < spelersInSpel.size(); i++) {
-						String naam = spelersInSpel.get(i).getGebruikersnaam();
-							if(huidigeSpeler.getGebruikersnaam().equals(naam)) {
-								huidigeSpeler.isAanDeBeurt(false);
-								tmpSpelerLijst.remove(huidigeSpeler);
-								huidigeSpeler = tmpSpelerLijst.get(0);
-								huidigeSpeler.isAanDeBeurt(true);
-								klaar = true;
-							}
-						if(klaar)break;
-					}
-				}else {
-					huidigeSpeler.isAanDeBeurt(false);
-					tmpSpelerLijst.remove(huidigeSpeler);
-					klaar = true;
-				}
-			}
-		}
-		return tmpSpelerLijst;
-	}
-	
-	public boolean isEindeSpel() {
-		spelersInSpel=s.getSpelers();
-		for(Speler speler: spelersInSpel) {
-			if(speler.getTotaalAantalPrestigePunten()>=15) {
-				return true;
-			}
-		}
-		return false;	
-	}
-	
-	public void bepaalWinnaar() {
-		int maxPrestigepunten=Integer.MIN_VALUE;
-		spelersInSpel = s.getSpelers();
-		List<Speler> winnaar = new ArrayList<>();
-		winnaar.add(spelersInSpel.get(0));
-				
-		for(Speler speler:spelersInSpel) {
-			if(speler.getTotaalAantalPrestigePunten() == maxPrestigepunten) {
-				if(speler.getOntwikkelingskaartenInBezit().size() < startSpeler.getOntwikkelingskaartenInBezit().size()) {
-					maxPrestigepunten=speler.getTotaalAantalPrestigePunten();
-					winnaar.remove(0);
-					winnaar.add(speler);
-				}
-				else if(speler.getOntwikkelingskaartenInBezit().size() == startSpeler.getOntwikkelingskaartenInBezit().size()) {
-					maxPrestigepunten=speler.getTotaalAantalPrestigePunten();
-					winnaar.add(speler);
-				}
-			}
-			else if(speler.getTotaalAantalPrestigePunten()> maxPrestigepunten) {
-				maxPrestigepunten=speler.getTotaalAantalPrestigePunten();
-				winnaar.remove(0);
-				winnaar.add(speler);
-			}
-		}
+		return s.updateIsAanDeBeurt(tmpSpelerLijst);
 	}
 	
 	public int controleerMogelijkheidTotEdelen() {
@@ -183,7 +97,6 @@ public class DomeinController {
 		}
 		return edelenZichtbaar;
 	}
-	
 	
 	public List<Ontwikkelingskaart> geefOWK1Zichtbaar(){
 		return s.getNiveau1Zichtbaar();
