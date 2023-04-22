@@ -184,6 +184,7 @@ public class DomeinController {
 		return edelenZichtbaar;
 	}
 	
+	
 	public List<Ontwikkelingskaart> geefOWK1Zichtbaar(){
 		return s.getNiveau1Zichtbaar();
 	}
