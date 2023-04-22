@@ -15,9 +15,9 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.SplitPane;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.StackPane;
 
-public class StartSpelController extends AnchorPane {
+public class StartSpelController extends StackPane {
 
 	private DomeinController dc;
 	private AanmeldenController preAanmeldenScreen;
@@ -233,7 +233,7 @@ public class StartSpelController extends AnchorPane {
 		// niveau 3
 		for (int i = 0; i < niveau3.size(); i++) {
 			ImageView imv = new ImageView();
-			imv.setImage(niveau2.get(i).getImage());	
+			imv.setImage(niveau3.get(i).getImage());	
 			imv.setFitHeight(160);
 			imv.setFitWidth(125);
 			niveau3Buttons.get(i).setGraphic(imv);
@@ -268,7 +268,7 @@ public class StartSpelController extends AnchorPane {
     	aantalKlik++;
         lblRondeNr.setText(String.format("Ronde: %d", aantalKlik));
     	
-    	lblSpelerNaam.setStyle("-fx-background-color: -fx-control-inner-background; -fx-text-fill: #8e0000");
+//    	lblSpelerNaam.setStyle("-fx-background-color: -fx-control-inner-background; -fx-text-fill: #8e0000");
     	lblSpelerNaam.setText(dc.getStartSpeler().getGebruikersnaam());
     	tmpSpelerLijst = new ArrayList<>();
     	for(int i = 0; i < dc.getSpelersInSpel().size();i++) {
