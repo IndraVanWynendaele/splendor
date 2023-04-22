@@ -1,25 +1,21 @@
 package gui;
 
 import java.io.IOException;
-import java.net.MalformedURLException;
-import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
 import domein.DomeinController;
 import domein.Edele;
+import domein.Ontwikkelingskaart;
 import domein.Speler;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.geometry.Insets;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.SplitPane;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.shape.Path;
 
 public class StartSpelController extends AnchorPane {
 
@@ -172,27 +168,76 @@ public class StartSpelController extends AnchorPane {
 	}
 	
 	private void toonStartSpelbord() {
-		
 		List<Edele> zichtbareEdelen = new ArrayList<>();
 		zichtbareEdelen = dc.geefEdelenZichtbaar();
-		List<Button> edeleButtons = new ArrayList<>();
+		List<Ontwikkelingskaart> niveau1 = new ArrayList<>();
+		niveau1 = dc.geefOWK1Zichtbaar();
+		List<Ontwikkelingskaart> niveau2 = new ArrayList<>();
+		niveau2 = dc.geefOWK2Zichtbaar();
+		List<Ontwikkelingskaart> niveau3 = new ArrayList<>();
+		niveau3 = dc.geefOWK3Zichtbaar();
 		
+		List<Button> edeleButtons = new ArrayList<>();
 		edeleButtons.add(btnEdele1);
 		edeleButtons.add(btnEdele2);
 		edeleButtons.add(btnEdele3);
 		edeleButtons.add(btnEdele4);
 		edeleButtons.add(btnEdele5);
+		
+		List<Button> niveau1Buttons = new ArrayList<>();
+		niveau1Buttons.add(btnN1Owk1);
+		niveau1Buttons.add(btnN1Owk2);
+		niveau1Buttons.add(btnN1Owk3);
+		niveau1Buttons.add(btnN1Owk4);
+		
+		List<Button> niveau2Buttons = new ArrayList<>();
+		niveau2Buttons.add(btnN2Owk1);
+		niveau2Buttons.add(btnN2Owk2);
+		niveau2Buttons.add(btnN2Owk3);
+		niveau2Buttons.add(btnN2Owk4);
+		
+		List<Button> niveau3Buttons = new ArrayList<>();
+		niveau3Buttons.add(btnN3Owk1);
+		niveau3Buttons.add(btnN3Owk2);
+		niveau3Buttons.add(btnN3Owk3);
+		niveau3Buttons.add(btnN3Owk4);
+		
 	
+		// edelen op bord tonen
 		for (int i = 0; i < zichtbareEdelen.size(); i++) {
 			ImageView imv = new ImageView();
-			
-			imv.setImage(new Image(getClass().getResourceAsStream("/images/EdeleKaart2.png")));	
-			imv.setFitHeight(200);
+			imv.setImage(zichtbareEdelen.get(i).getImage());	
+			imv.setFitHeight(150);
 			imv.setFitWidth(150);
 			edeleButtons.get(i).setGraphic(imv);
-
 		}
-
+		
+		// niveau 1
+		for (int i = 0; i < niveau1.size(); i++) {
+			ImageView imv = new ImageView();
+			imv.setImage(niveau1.get(i).getImage());	
+			imv.setFitHeight(160);
+			imv.setFitWidth(125);
+			niveau1Buttons.get(i).setGraphic(imv);
+		}
+		
+		// niveau 2
+		for (int i = 0; i < niveau2.size(); i++) {
+			ImageView imv = new ImageView();
+			imv.setImage(niveau2.get(i).getImage());	
+			imv.setFitHeight(160);
+			imv.setFitWidth(125);
+			niveau2Buttons.get(i).setGraphic(imv);
+		}
+		
+		// niveau 3
+		for (int i = 0; i < niveau3.size(); i++) {
+			ImageView imv = new ImageView();
+			imv.setImage(niveau2.get(i).getImage());	
+			imv.setFitHeight(160);
+			imv.setFitWidth(125);
+			niveau3Buttons.get(i).setGraphic(imv);
+		}
 	}
 	
 	private void geefNaamHuidigeSpeler() {
