@@ -6,7 +6,6 @@ import java.util.List;
 import dtos.EdeleDTO;
 import dtos.OntwikkelingskaartDTO;
 import dtos.SpelerDTO;
-import javafx.scene.image.Image;
 
 public class DomeinController {
 
@@ -183,6 +182,16 @@ public class DomeinController {
 			edelenZichtbaar.add(e);
 		}
 		return edelenZichtbaar;
+	}
+	
+	public List<Ontwikkelingskaart> geefOWK1Zichtbaar(){
+		return s.getNiveau1Zichtbaar();
+	}
+	public List<Ontwikkelingskaart> geefOWK2Zichtbaar(){
+		return s.getNiveau2Zichtbaar();
+	}
+	public List<Ontwikkelingskaart> geefOWK3Zichtbaar(){
+		return s.getNiveau3Zichtbaar();
 	}
 	
 	public List<SpelerDTO> geefSpelerDTO(){

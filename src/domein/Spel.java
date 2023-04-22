@@ -169,4 +169,7 @@ public class Spel {
 	public EdelsteenAantal getSmaragdAantal() {
 		return smaragdAantal;
 	}
+	
+	
+	
 }
