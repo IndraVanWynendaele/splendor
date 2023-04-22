@@ -15,11 +15,11 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.StackPane;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 
-public class AanmeldenController extends AnchorPane{
+public class AanmeldenController extends StackPane{
 
 	private DomeinController dc;
 	private MenuController preMenuScreen;
@@ -134,6 +134,7 @@ public class AanmeldenController extends AnchorPane{
 				Scene scene1 = new Scene(ssc);
 				Stage stage1 = (Stage) this.getScene().getWindow();
 				stage1.setScene(scene1);
+//				stage1.setMaximized(true);
 				stage1.setFullScreen(true);
 				stage1.show();
 			}
@@ -142,9 +143,6 @@ public class AanmeldenController extends AnchorPane{
 			alert.setTitle("Aantal spelers incorrect");
 			alert.setContentText(e.getMessage());
 			alert.show();
-			
-			//Stage stage = (Stage) (getScene().getWindow());
-			//stage.setScene(this.getScene());
 		}
 	}
 }
