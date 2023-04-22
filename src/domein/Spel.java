@@ -14,8 +14,21 @@ public class Spel {
 	private EdelsteenAantal diamantAantal, smaragdAantal, saffierAantal, onyxAantal, robijnAantal;
 	public Speler huidigeSpeler;
 	private List<Ontwikkelingskaart> niveau1, niveau2, niveau3, niveau1Zichtbaar, niveau2Zichtbaar, niveau3Zichtbaar;
-	private List<Edele> edelen;
+	private List<Edele> edelen, beschikbareEdelenSpeler;
 	private Edele[] edeleInSpel;
+	private List<Speler> winnaars;
+	
+	public Speler getStartSpeler() {
+		return startSpeler;
+	}
+	
+	public List<Speler> getWinnaars() {
+		return winnaars;
+	}
+	
+	public List<Edele> getBeschikbareEdelenSpeler() {
+		return beschikbareEdelenSpeler;
+	}
 	
 	public Spel() {
 		okr= new OntwikkelingskaartRepository();
@@ -108,15 +121,15 @@ public class Spel {
 	
 	public List<Edele> edelenTeKoop(Speler huidigeSpeler){
 		List<Ontwikkelingskaart> aantalHuidigeOntwikkelingskaarten = huidigeSpeler.getOntwikkelingskaartenInBezit();
-		List<Edele> beschikbareEdelen = new ArrayList<>();
+		beschikbareEdelenSpeler = new ArrayList<>();
 		
 		for(Edele ed : edeleInSpel)
 			for(Ontwikkelingskaart otw : aantalHuidigeOntwikkelingskaarten)
-				if(ed.getKosten().equals(otw.getKosten()))
-					//als het niet werkt gebruik dan contains
-					beschikbareEdelen.add(ed);
+				if(otw.getKosten().containsAll(ed.getKosten()))
+					// ed.getKosten().equals(otw.getKosten()
+					beschikbareEdelenSpeler.add(ed);
 		
-		return beschikbareEdelen;
+		return beschikbareEdelenSpeler;
 	}
 	
 	public List<Ontwikkelingskaart> getNiveau1Zichtbaar() {
@@ -191,27 +204,27 @@ public class Spel {
 		return false;	
 	}
 	
-	public void bepaalWinnaar() {
+	private void bepaalWinnaar() {
 		int maxPrestigepunten=Integer.MIN_VALUE;
-		List<Speler> winnaar = new ArrayList<>();
-		winnaar.add(spelers.get(0));
+		winnaars = new ArrayList<>();
+		winnaars.add(spelers.get(0));
 				
 		for(Speler speler:spelers) {
 			if(speler.getTotaalAantalPrestigePunten() == maxPrestigepunten) {
 				if(speler.getOntwikkelingskaartenInBezit().size() < startSpeler.getOntwikkelingskaartenInBezit().size()) {
 					maxPrestigepunten=speler.getTotaalAantalPrestigePunten();
-					winnaar.remove(0);
-					winnaar.add(speler);
+					winnaars.remove(0);
+					winnaars.add(speler);
 				}
 				else if(speler.getOntwikkelingskaartenInBezit().size() == startSpeler.getOntwikkelingskaartenInBezit().size()) {
 					maxPrestigepunten=speler.getTotaalAantalPrestigePunten();
-					winnaar.add(speler);
+					winnaars.add(speler);
 				}
 			}
 			else if(speler.getTotaalAantalPrestigePunten()> maxPrestigepunten) {
 				maxPrestigepunten=speler.getTotaalAantalPrestigePunten();
-				winnaar.remove(0);
-				winnaar.add(speler);
+				winnaars.remove(0);
+				winnaars.add(speler);
 			}
 		}
 	}

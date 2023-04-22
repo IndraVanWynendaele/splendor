@@ -23,14 +23,6 @@ public class DomeinController {
 		sRepo = new SpelerRepository();
 	}
 	
-	public List<Speler> getSpelersInSpel() {
-		return spelersInSpel;
-	}
-	
-	public Speler getStartSpeler() {
-		return startSpeler;
-	}
-	
 	public void startSpel() {
 		s.shuffleOntwikkelingsKaarten();
 		s.shuffleEdelen();
@@ -87,6 +79,14 @@ public class DomeinController {
 			return beschikbareEdelen.size();
 		}
 		return 0;
+	}
+	
+	public List<Speler> getSpelersInSpel() {
+		return spelersInSpel;
+	}
+	
+	public Speler getStartSpeler() {
+		return s.getStartSpeler();
 	}
 	
 	public List<Edele> geefEdelenZichtbaar(){
