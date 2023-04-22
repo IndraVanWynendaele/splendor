@@ -150,6 +150,7 @@ public class Spel {
 		return niveau3;
 	}
 	
+	
 	public EdelsteenAantal getDiamantAantal() {
 		return diamantAantal;
 	}
