@@ -18,6 +18,10 @@ public class Spel {
 	private Edele[] edeleInSpel;
 	private List<Speler> winnaars;
 	
+	public Speler getHuidigeSpeler() {
+		return huidigeSpeler;
+	}
+	
 	public Speler getStartSpeler() {
 		return startSpeler;
 	}
@@ -182,14 +186,35 @@ public class Spel {
 	
 	
 //	public void speelRonde() {
-//		maakTemplijst();
-//		for(Speler s : spelers) {
-//			s.speelBeurt();
+//		for(Speler sp : spelers) {
+//			sp.speelBeurt();
 //			tmpSpelerLijst=updateIsAanDeBeurt(tmpSpelerLijst);
 //		}
 //		isEindeSpel();
 //	}
+
+	private void koopOntwikkelingskaart(int rij, int kolom) {
+		Ontwikkelingskaart o ;
+		switch(rij) {
+		case 1 ->{ 
+			o=niveau1Zichtbaar.get(kolom-1);
+			controleerOntwikkelingskaartKopen(o);
+			}
+		case 2 ->{ o=niveau2Zichtbaar.remove(kolom-1);}
+		case 3 ->{ o=niveau3Zichtbaar.remove(kolom-1);}
+		}
+		
+	}
+
+	private boolean controleerOntwikkelingskaartKopen(Ontwikkelingskaart o) {
+//		TODO huidigeSpeler
+		return false;
+	}
 	
+	private void kiesEdelsteenfiches() {
+		
+	}
+
 	public boolean isEindeSpel() {
 		for(Speler speler: spelers) {
 			if(speler.getTotaalAantalPrestigePunten()>=15) {
