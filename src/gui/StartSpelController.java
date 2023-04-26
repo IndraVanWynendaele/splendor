@@ -6,8 +6,10 @@ import java.util.List;
 
 import domein.DomeinController;
 import domein.Edele;
+import domein.EdelsteenAantal;
 import domein.Ontwikkelingskaart;
 import domein.Speler;
+import dtos.SpelerDTO;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -23,8 +25,184 @@ public class StartSpelController extends StackPane {
 	private AanmeldenController preAanmeldenScreen;
 	private List<Speler> tmpSpelerLijst;
 	private int aantalKlik = 0;
+	private List<Edele> zichtbareEdelen;
+	private List<Ontwikkelingskaart> niveau1, niveau2, niveau3, niveau1Zichtbaar, niveau2Zichtbaar, niveau3Zichtbaar;
 	
+    public StartSpelController(AanmeldenController preAanmeldenScreen, DomeinController dc) {
+		this.dc = dc;
+		this.preAanmeldenScreen=preAanmeldenScreen;
+			
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("StartSpel.fxml"));
+		loader.setRoot(this);
+		loader.setController(this);
+		
+		try {
+			loader.load();
+			toonStartSpelbord();
+		} catch (IOException ex) {
+			throw new RuntimeException(ex);
+		}
+	}
+	
+	private void toonStartSpelbord() {
+		zichtbareEdelen = dc.geefEdelenZichtbaar();
+		niveau1Zichtbaar = dc.geefOWK1Zichtbaar();
+		niveau2Zichtbaar = dc.geefOWK2Zichtbaar();
+		niveau3Zichtbaar = dc.geefOWK3Zichtbaar();
+		niveau1 = dc.getNiveau1();
+		niveau2 = dc.getNiveau2();
+		niveau3 = dc.getNiveau3();
+		
+		List<Button> edeleButtons = new ArrayList<>();
+		edeleButtons.add(btnEdele1);
+		edeleButtons.add(btnEdele2);
+		edeleButtons.add(btnEdele3);
+		edeleButtons.add(btnEdele4);
+		edeleButtons.add(btnEdele5);
+		
+		List<Button> niveau1Buttons = new ArrayList<>();
+		niveau1Buttons.add(btnN1Owk1);
+		niveau1Buttons.add(btnN1Owk2);
+		niveau1Buttons.add(btnN1Owk3);
+		niveau1Buttons.add(btnN1Owk4);
+		
+		List<Button> niveau2Buttons = new ArrayList<>();
+		niveau2Buttons.add(btnN2Owk1);
+		niveau2Buttons.add(btnN2Owk2);
+		niveau2Buttons.add(btnN2Owk3);
+		niveau2Buttons.add(btnN2Owk4);
+		
+		List<Button> niveau3Buttons = new ArrayList<>();
+		niveau3Buttons.add(btnN3Owk1);
+		niveau3Buttons.add(btnN3Owk2);
+		niveau3Buttons.add(btnN3Owk3);
+		niveau3Buttons.add(btnN3Owk4);
+	
+		// edelen op bord tonen
+		for (int i = 0; i < zichtbareEdelen.size(); i++) {
+			ImageView imv = new ImageView();
+			imv.setImage(zichtbareEdelen.get(i).getImage());	
+			imv.setFitHeight(150);
+			imv.setFitWidth(150);
+			edeleButtons.get(i).setGraphic(imv);
+		}
+		
+		// niveau 1
+		for (int i = 0; i < niveau1Buttons.size(); i++) {
+			ImageView imv = new ImageView();
+			imv.setImage(niveau1Zichtbaar.get(i).getImage());	
+			imv.setFitHeight(160);
+			imv.setFitWidth(125);
+			niveau1Buttons.get(i).setGraphic(imv);
+		}
+		
+		// niveau 2
+		for (int i = 0; i < niveau2Buttons.size(); i++) {
+			ImageView imv = new ImageView();
+			imv.setImage(niveau2Zichtbaar.get(i).getImage());	
+			imv.setFitHeight(160);
+			imv.setFitWidth(125);
+			niveau2Buttons.get(i).setGraphic(imv);
+		}
+		
+		// niveau 3
+		for (int i = 0; i < niveau3Buttons.size(); i++) {
+			ImageView imv = new ImageView();
+			imv.setImage(niveau3Zichtbaar.get(i).getImage());	
+			imv.setFitHeight(160);
+			imv.setFitWidth(125);
+			niveau3Buttons.get(i).setGraphic(imv);
+		}
+		
+		lblDiamantSpelAantal.setText(toString(dc.getDiamantAantal().getAantal()));		
+		lblOnyxSpelAantal.setText(toString(dc.getOnyxAantal().getAantal()));
+	    lblRobijnSpelAantal.setText(toString(dc.getRobijnAantal().getAantal()));
+	    lblSmaragdSpelAantal.setText(toString(dc.getSmaragdAantal().getAantal()));
+	    lblSaffierSpelAantal.setText(toString(dc.getSaffierAantal().getAantal()));
+	}
+	
+	
+	private String toString(int aantal) {
+		return String.format("%d", aantal);
+	}
+	
+	private void geefHuidigeSpeler() {
+		List<Speler> spelers = dc.getSpelersInSpel();
+		List<ImageView> edeleBezitImv = new ArrayList<>();
+		edeleBezitImv.add(imgEdeleSpeler1);
+		edeleBezitImv.add(imgEdeleSpeler2);
+		edeleBezitImv.add(imgEdeleSpeler3);
+		edeleBezitImv.add(imgEdeleSpeler4);
+		edeleBezitImv.add(imgEdeleSpeler5);
+		List<ImageView> niveauBezitImv = new ArrayList<>();
+		//imv in
+		
+		for(Speler s: spelers) {
+			List<Ontwikkelingskaart> ok = s.getOntwikkelingskaartenInBezit();
+			List<Edele> e = s.getEdelenInBezit();
+			if(s.geefIsAanDeBeurt()) {
+				lblSpelerNaam.setText(s.getGebruikersnaam());
+				aantalPrestigePunten.setText(String.format("Prestigepunten: %s",s.getTotaalAantalPrestigePunten()));
+				for(EdelsteenAantal ea : s.getEdelsteenfichesInBezit()) {
+					switch(ea.getSoort()) {
+					case DIAMANT -> lblDiamantSpelerAantal.setText(toString(ea.getAantal()));
+					case ONYX -> lblOnyxSpelerAantal.setText(toString(ea.getAantal()));
+					case ROBIJN -> lblRobijnSpelerAantal.setText(toString(ea.getAantal()));
+					case SAFFIER -> lblSaffierSpelerAantal.setText(toString(ea.getAantal()));
+					case SMARAGD -> lblSmaragdSpelerAantal.setText(toString(ea.getAantal()));
+					}				    
+				}
+				// hier kaarten en edelen tonen
+				for(int i = 0; i < e.size(); i++) {
+					edeleBezitImv.get(i).setImage(e.get(i).getImage());	
+//					edeleBezitImv.get(i).setFitHeight(150);
+//					edeleBezitImv.get(i).setFitWidth(150);
+				}
+				
+				for(int i = 0; i < ok.size(); i++) {
+					niveauBezitImv.get(i).setImage(ok.get(i).getImage());	
+//					niveauBezitImv.get(i).setFitHeight(160);
+//					niveauBezitImv.get(i).setFitWidth(125);
+				}
+			}
+		}
+	}
+	
+	private void updateAantalKaarten() {
+		if(niveau1.isEmpty())
+			stapelNiveau1.setOpacity(0.50);
+		if(niveau2.isEmpty())
+			stapelNiveau2.setOpacity(0.50);
+		if(niveau3.isEmpty())
+			stapelNiveau3.setOpacity(0.50);
+	}
 
+	@FXML
+	void btnVolgendeClicked(ActionEvent event) {
+		geefHuidigeSpeler();
+		if(tmpSpelerLijst.size()==1) {
+			btnVolgende.setDisable(true);
+	    	btnStartRonde.setDisable(false);
+		}
+		tmpSpelerLijst= dc.updateIsAanDeBeurt(tmpSpelerLijst);
+	}
+	
+    @FXML
+    void btnStartRondeClicked(ActionEvent event) {
+    	aantalKlik++;
+        lblRondeNr.setText(String.format("Ronde: %d", aantalKlik));
+    	lblSpelerNaam.setText(dc.getStartSpeler().getGebruikersnaam());
+    	tmpSpelerLijst = new ArrayList<>();
+    	for(int i = 0; i < dc.getSpelersInSpel().size();i++) {
+    		tmpSpelerLijst.add(dc.getSpelersInSpel().get(i));
+    	}
+    	dc.isStartSpeler();
+    	tmpSpelerLijst = dc.updateIsAanDeBeurt(tmpSpelerLijst);
+    	
+    	btnVolgende.setDisable(false);
+    	btnStartRonde.setDisable(true);
+    }
+    
     @FXML
     private Button btnDiamantSpel;
 
@@ -71,7 +249,7 @@ public class StartSpelController extends StackPane {
     private Label lblOnyxSpelAantal;
 
     @FXML
-    private Label lblOnyxSpelerAantal1;
+    private Label lblOnyxSpelerAantal;
 
     @FXML
     private Label lblRobijnSpelAantal;
@@ -150,163 +328,39 @@ public class StartSpelController extends StackPane {
 
     @FXML
     private Button btnN3Owk4;
-
-	public StartSpelController(AanmeldenController preAanmeldenScreen, DomeinController dc) {
-		this.dc = dc;
-		this.preAanmeldenScreen=preAanmeldenScreen;
-			
-		FXMLLoader loader = new FXMLLoader(getClass().getResource("StartSpel.fxml"));
-		loader.setRoot(this);
-		loader.setController(this);
-		
-		try {
-			loader.load();
-			toonStartSpelbord();
-		} catch (IOException ex) {
-			throw new RuntimeException(ex);
-		}
-	}
-	
-	private void toonStartSpelbord() {
-		List<Edele> zichtbareEdelen = new ArrayList<>();
-		zichtbareEdelen = dc.geefEdelenZichtbaar();
-		List<Ontwikkelingskaart> niveau1 = new ArrayList<>();
-		niveau1 = dc.geefOWK1Zichtbaar();
-		List<Ontwikkelingskaart> niveau2 = new ArrayList<>();
-		niveau2 = dc.geefOWK2Zichtbaar();
-		List<Ontwikkelingskaart> niveau3 = new ArrayList<>();
-		niveau3 = dc.geefOWK3Zichtbaar();
-		
-		List<Button> edeleButtons = new ArrayList<>();
-		edeleButtons.add(btnEdele1);
-		edeleButtons.add(btnEdele2);
-		edeleButtons.add(btnEdele3);
-		edeleButtons.add(btnEdele4);
-		edeleButtons.add(btnEdele5);
-		
-		List<Button> niveau1Buttons = new ArrayList<>();
-		niveau1Buttons.add(btnN1Owk1);
-		niveau1Buttons.add(btnN1Owk2);
-		niveau1Buttons.add(btnN1Owk3);
-		niveau1Buttons.add(btnN1Owk4);
-		
-		List<Button> niveau2Buttons = new ArrayList<>();
-		niveau2Buttons.add(btnN2Owk1);
-		niveau2Buttons.add(btnN2Owk2);
-		niveau2Buttons.add(btnN2Owk3);
-		niveau2Buttons.add(btnN2Owk4);
-		
-		List<Button> niveau3Buttons = new ArrayList<>();
-		niveau3Buttons.add(btnN3Owk1);
-		niveau3Buttons.add(btnN3Owk2);
-		niveau3Buttons.add(btnN3Owk3);
-		niveau3Buttons.add(btnN3Owk4);
-		
-	
-		// edelen op bord tonen
-		for (int i = 0; i < zichtbareEdelen.size(); i++) {
-			ImageView imv = new ImageView();
-			imv.setImage(zichtbareEdelen.get(i).getImage());	
-			imv.setFitHeight(150);
-			imv.setFitWidth(150);
-			edeleButtons.get(i).setGraphic(imv);
-		}
-		
-		// niveau 1
-		for (int i = 0; i < niveau1.size(); i++) {
-			ImageView imv = new ImageView();
-			imv.setImage(niveau1.get(i).getImage());	
-			imv.setFitHeight(160);
-			imv.setFitWidth(125);
-			niveau1Buttons.get(i).setGraphic(imv);
-		}
-		
-		// niveau 2
-		for (int i = 0; i < niveau2.size(); i++) {
-			ImageView imv = new ImageView();
-			imv.setImage(niveau2.get(i).getImage());	
-			imv.setFitHeight(160);
-			imv.setFitWidth(125);
-			niveau2Buttons.get(i).setGraphic(imv);
-		}
-		
-		// niveau 3
-		for (int i = 0; i < niveau3.size(); i++) {
-			ImageView imv = new ImageView();
-			imv.setImage(niveau3.get(i).getImage());	
-			imv.setFitHeight(160);
-			imv.setFitWidth(125);
-			niveau3Buttons.get(i).setGraphic(imv);
-		}
-	}
-	
-	private void geefNaamHuidigeSpeler() {
-		List<Speler> spelers = dc.getSpelersInSpel();
-		String spelerNaam = "";
-		for(Speler s: spelers) {
-			if(s.geefIsAanDeBeurt()) {
-				spelerNaam = s.getGebruikersnaam();
-			}
-		}
-		lblSpelerNaam.setText(spelerNaam);
-	}
-
-	@FXML
-	void btnVolgendeClicked(ActionEvent event) {
-		geefNaamHuidigeSpeler();
-		if(tmpSpelerLijst.size()==1) {
-			btnVolgende.setDisable(true);
-	    	btnStartRonde.setDisable(false);
-		}
-		// geeft indexoutofboundsexception
-		tmpSpelerLijst= dc.updateIsAanDeBeurt(tmpSpelerLijst);
-		
-	}
-	
-    @FXML
-    void btnStartRondeClicked(ActionEvent event) {
-    	aantalKlik++;
-        lblRondeNr.setText(String.format("Ronde: %d", aantalKlik));
-    	
-//    	lblSpelerNaam.setStyle("-fx-background-color: -fx-control-inner-background; -fx-text-fill: #8e0000");
-    	lblSpelerNaam.setText(dc.getStartSpeler().getGebruikersnaam());
-    	tmpSpelerLijst = new ArrayList<>();
-    	for(int i = 0; i < dc.getSpelersInSpel().size();i++) {
-    		tmpSpelerLijst.add(dc.getSpelersInSpel().get(i));
-    	}
-    	dc.isStartSpeler();
-    	tmpSpelerLijst = dc.updateIsAanDeBeurt(tmpSpelerLijst);
-    	
-    	btnVolgende.setDisable(false);
-    	btnStartRonde.setDisable(true);
-    }
     
+    @FXML
+    private ImageView stapelNiveau1;
 
+    @FXML
+    private ImageView stapelNiveau2;
+
+    @FXML
+    private ImageView stapelNiveau3;
+    
+    @FXML
+    private Label aantalPrestigePunten;
+    
+    @FXML
+    private ImageView imgEdeleSpeler1;
+
+    @FXML
+    private ImageView imgEdeleSpeler2;
+
+    @FXML
+    private ImageView imgEdeleSpeler3;
+
+    @FXML
+    private ImageView imgEdeleSpeler4;
+
+    @FXML
+    private ImageView imgEdeleSpeler5;
+    
     @FXML
     void btnDiamantSpelClicked(ActionEvent event) {
 
     }
 
-    @FXML
-    void btnOnyxSpelClicked(ActionEvent event) {
-
-    }
-
-    @FXML
-    void btnRobijnSpelClicked(ActionEvent event) {
-
-    }
-
-    @FXML
-    void btnSaffierSpelClicked(ActionEvent event) {
-
-    }
-
-    @FXML
-    void btnSmaragdSpelClicked(ActionEvent event) {
-
-    }
- 
     @FXML
     void btnEdele1Clicked(ActionEvent event) {
 
@@ -392,6 +446,23 @@ public class StartSpelController extends StackPane {
 
     }
 
-    
- }
-	 
+    @FXML
+    void btnOnyxSpelClicked(ActionEvent event) {
+
+    }
+
+    @FXML
+    void btnRobijnSpelClicked(ActionEvent event) {
+
+    }
+
+    @FXML
+    void btnSaffierSpelClicked(ActionEvent event) {
+
+    }
+
+    @FXML
+    void btnSmaragdSpelClicked(ActionEvent event) {
+
+    }
+}
