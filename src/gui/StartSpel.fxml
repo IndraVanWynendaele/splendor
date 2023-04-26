@@ -40,7 +40,7 @@
                         <Font size="20.0" />
                      </font>
                   </Label>
-                  <Label fx:id="aantalPrestigePunten" text="0">
+                  <Label fx:id="aantalPrestigePunten">
                      <font>
                         <Font size="25.0" />
                      </font>
@@ -62,10 +62,11 @@
                <children>
                   <GridPane alignment="CENTER" prefHeight="924.0" prefWidth="634.0">
                      <columnConstraints>
-                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="317.36688232421875" minWidth="10.0" prefWidth="153.28878784179688" />
-                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="357.3739013671875" minWidth="10.0" prefWidth="27.85919189453125" />
-                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="357.3739013671875" minWidth="10.0" prefWidth="228.7183837890625" />
-                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="357.3739013671875" minWidth="10.0" prefWidth="237.7816162109375" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="317.36688232421875" minWidth="10.0" prefWidth="142.28591918945312" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="357.3739013671875" minWidth="10.0" prefWidth="32.71980285644531" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="357.3739013671875" minWidth="10.0" prefWidth="177.50286865234375" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="357.3739013671875" minWidth="10.0" prefWidth="142.85772705078125" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="357.3739013671875" minWidth="10.0" prefWidth="140.64227294921875" />
                      </columnConstraints>
                      <rowConstraints>
                         <RowConstraints maxHeight="492.3739013671875" minHeight="10.0" prefHeight="480.5394287109375" vgrow="SOMETIMES" />
@@ -76,7 +77,7 @@
                         <RowConstraints maxHeight="530.5323486328125" minHeight="10.0" prefHeight="478.4605712890625" vgrow="SOMETIMES" />
                      </rowConstraints>
                      <children>
-                        <Button fx:id="btnVolgende" disable="true" mnemonicParsing="false" onAction="#btnVolgendeClicked" prefHeight="38.0" prefWidth="100.0" text="Volgende" GridPane.rowIndex="5">
+                        <Button fx:id="btnVolgende" disable="true" mnemonicParsing="false" onAction="#btnVolgendeClicked" prefHeight="38.0" prefWidth="158.0" text="Volgende speler" wrapText="true" GridPane.columnIndex="2" GridPane.rowIndex="5">
                            <font>
                               <Font name="RomanC" size="12.0" />
                            </font>
@@ -84,7 +85,7 @@
                               <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                            </GridPane.margin>
                         </Button>
-                        <Button fx:id="btnStartRonde" mnemonicParsing="false" onAction="#btnStartRondeClicked" prefHeight="38.0" prefWidth="198.0" text="Start Ronde" GridPane.columnIndex="2" GridPane.rowIndex="5">
+                        <Button fx:id="btnStartRonde" mnemonicParsing="false" onAction="#btnStartRondeClicked" prefHeight="38.0" prefWidth="198.0" text="Start Ronde" GridPane.columnIndex="3" GridPane.rowIndex="5">
                            <font>
                               <Font name="RomanC" size="12.0" />
                            </font>
@@ -94,7 +95,7 @@
                         </Button>
                         <Button fx:id="btnRobijnSpeler" mnemonicParsing="false" prefHeight="69.0" prefWidth="122.0" scaleX="0.6" scaleY="0.6" style="-fx-background-color: nofill;" GridPane.rowIndex="4">
                            <graphic>
-                              <ImageView fitHeight="150.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fitHeight="150.0" fitWidth="120.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@../images/Robijn.png" />
                                  </image>
@@ -108,7 +109,7 @@
                               <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                            </GridPane.margin>
                            <graphic>
-                              <ImageView fitHeight="150.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fitHeight="150.0" fitWidth="120.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@../images/Saffier.png" />
                                  </image>
@@ -117,7 +118,7 @@
                         </Button>
                         <Button fx:id="btnDiamantSpeler" mnemonicParsing="false" prefHeight="52.0" prefWidth="83.0" scaleX="0.6" scaleY="0.6" style="-fx-background-color: nofill;" GridPane.rowIndex="2">
                            <graphic>
-                              <ImageView fitHeight="150.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fitHeight="150.0" fitWidth="120.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@../images/Diamant.png" />
                                  </image>
@@ -129,7 +130,7 @@
                         </Button>
                         <Button fx:id="btnOnyxSpeler" mnemonicParsing="false" prefHeight="76.0" prefWidth="149.0" scaleX="0.6" scaleY="0.6" style="-fx-background-color: nofill;" GridPane.rowIndex="1">
                            <graphic>
-                              <ImageView fitHeight="150.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fitHeight="150.0" fitWidth="120.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@../images/Onyx.png" />
                                  </image>
@@ -140,7 +141,7 @@
                            </GridPane.margin></Button>
                         <Button fx:id="btnSmaragdSpeler" mnemonicParsing="false" prefHeight="109.0" prefWidth="120.0" scaleX="0.6" scaleY="0.6" style="-fx-background-color: nofill;">
                            <graphic>
-                              <ImageView fitHeight="150.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fitHeight="150.0" fitWidth="120.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@../images/Smaragd.png" />
                                  </image>
