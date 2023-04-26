@@ -21,6 +21,7 @@ public class Spel {
 	public Speler getHuidigeSpeler() {
 		return huidigeSpeler;
 	}
+	//
 	
 	public Speler getStartSpeler() {
 		return startSpeler;
