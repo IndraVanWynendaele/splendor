@@ -5,7 +5,7 @@ import java.util.Collections;
 import java.util.List;
 
 import util.EdelsteenSoort;
-//
+
 public class Spel {
 	private List<Speler> spelers,tmpSpelerLijst;
 	private Speler startSpeler;
@@ -21,7 +21,6 @@ public class Spel {
 	public Speler getHuidigeSpeler() {
 		return huidigeSpeler;
 	}
-	//
 	
 	public Speler getStartSpeler() {
 		return startSpeler;
@@ -212,8 +211,18 @@ public class Spel {
 		return false;
 	}
 	
-	private void kiesEdelsteenfiches() {
-		
+	private void kiesEdelsteenfiches(int kolom) {
+		List<EdelsteenAantal> edelsteenfichesInBezit=huidigeSpeler.getEdelsteenfichesInBezit();
+		switch(kolom) {
+		case 1 -> {
+			edelsteenfichesInBezit.get(kolom);
+			smaragdAantal.setAantal(smaragdAantal.getAantal()-1);
+		}
+		case 2 ->null;
+		case 3 ->null;
+		case 4 ->null;
+		case 5 ->null;
+		}
 	}
 
 	public boolean isEindeSpel() {

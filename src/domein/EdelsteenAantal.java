@@ -4,7 +4,7 @@ import util.EdelsteenSoort;
 
 public class EdelsteenAantal {
 	private int aantal;
-	private EdelsteenSoort soort;
+	private final EdelsteenSoort soort;
 	
 	public EdelsteenAantal(int aantal, EdelsteenSoort soort) {
 		this.aantal = aantal;
@@ -17,5 +17,8 @@ public class EdelsteenAantal {
 	
 	public EdelsteenSoort getSoort() {
 		return soort;
+	}
+	public void setAantal(int aantal) {
+		this.aantal = aantal;
 	}
 }
