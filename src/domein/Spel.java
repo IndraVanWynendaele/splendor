@@ -5,7 +5,7 @@ import java.util.Collections;
 import java.util.List;
 
 import util.EdelsteenSoort;
-
+//
 public class Spel {
 	private List<Speler> spelers,tmpSpelerLijst;
 	private Speler startSpeler;
