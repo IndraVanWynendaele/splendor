@@ -27,7 +27,7 @@
          <children>
             <HBox alignment="CENTER" prefHeight="118.0" prefWidth="2183.0">
                <children>
-                  <Label fx:id="lblSpelerNaam" prefHeight="61.0" prefWidth="382.0" text="Lange naam" textFill="#8e0000">
+                  <Label fx:id="lblSpelerNaam" prefHeight="61.0" prefWidth="382.0" textFill="#8e0000">
                      <font>
                         <Font name="GothicI" size="49.0" />
                      </font>
@@ -45,7 +45,7 @@
                         <Font size="25.0" />
                      </font>
                   </Label>
-                  <Label fx:id="lblRondeNr" alignment="CENTER_RIGHT" prefHeight="61.0" prefWidth="1207.0" text="Ronde test" textFill="#8e0000">
+                  <Label fx:id="lblRondeNr" alignment="CENTER_RIGHT" prefHeight="61.0" prefWidth="1207.0" textFill="#8e0000">
                      <font>
                         <Font name="GothicI" size="49.0" />
                      </font>
