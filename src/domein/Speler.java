@@ -82,8 +82,4 @@ public class Speler {
 	public int getGeboortejaar() {
 		return this.geboortejaar;
 	}
-	
-	public void speelBeurt() {
-		
-	}
 }
