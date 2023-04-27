@@ -3,6 +3,8 @@ package domein;
 import java.util.ArrayList;
 import java.util.List;
 
+import util.EdelsteenSoort;
+
 public class Speler {
 	private final String gebruikersnaam;
 	private final int geboortejaar;
@@ -21,8 +23,17 @@ public class Speler {
 	public Speler(String gebruikersnaam, int geboortejaar) {
 		controleerGebruikersnaam(gebruikersnaam);
 		controleerGeboortejaar(geboortejaar);
+		ficheBegin();
 		this.gebruikersnaam = gebruikersnaam;
 		this.geboortejaar = geboortejaar;
+	}
+	
+	private void ficheBegin() {
+		edelsteenfichesInBezit.add(new EdelsteenAantal(0,EdelsteenSoort.DIAMANT));
+		edelsteenfichesInBezit.add(new EdelsteenAantal(0,EdelsteenSoort.ONYX));
+		edelsteenfichesInBezit.add(new EdelsteenAantal(0,EdelsteenSoort.ROBIJN));
+		edelsteenfichesInBezit.add(new EdelsteenAantal(0,EdelsteenSoort.SAFFIER));
+		edelsteenfichesInBezit.add(new EdelsteenAantal(0,EdelsteenSoort.SMARAGD));
 	}
 	
 	private void controleerGebruikersnaam(String gebruikersnaam) {
@@ -44,6 +55,15 @@ public class Speler {
 	
 	public void voegEdeleToe(Edele edele) {
 		edelenInBezit.add(edele);
+	}
+	
+	public void voegEdelsteenficheToe(EdelsteenAantal fiche) {
+		for(int i = 0; i < edelsteenfichesInBezit.size(); i++) {
+			EdelsteenAantal huidige = edelsteenfichesInBezit.get(i);
+			if(huidige.getSoort() == fiche.getSoort()) {
+				huidige.setAantal(huidige.getAantal() + fiche.getAantal());
+			}
+		}
 	}
 	
 	public void isStartspeler(boolean i) {

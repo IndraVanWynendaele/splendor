@@ -119,7 +119,7 @@
                         <ImageView fx:id="imgEdeleSpeler3" fitHeight="120.0" fitWidth="120.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.rowIndex="2" />
                         <ImageView fx:id="imgEdeleSpeler4" fitHeight="120.0" fitWidth="120.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.rowIndex="3" />
                         <ImageView fx:id="imgEdeleSpeler5" fitHeight="120.0" fitWidth="120.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.rowIndex="4" />
-                        <Button fx:id="btnFicheKiezen" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#btnFicheKiezenClicked" prefHeight="55.0" prefWidth="185.0" text="Edelsteenfiches kiezen" textAlignment="CENTER" wrapText="true" GridPane.halignment="CENTER" GridPane.rowIndex="6" GridPane.valignment="TOP">
+                        <Button fx:id="btnFicheKiezen" alignment="CENTER" contentDisplay="CENTER" disable="true" mnemonicParsing="false" onAction="#btnFicheKiezenClicked" prefHeight="55.0" prefWidth="185.0" text="Edelsteenfiches kiezen" textAlignment="CENTER" wrapText="true" GridPane.halignment="CENTER" GridPane.rowIndex="6" GridPane.valignment="TOP">
                            <font>
                               <Font name="RomanC" size="11.0" />
                            </font>
@@ -127,7 +127,7 @@
                               <Insets top="10.0" />
                            </GridPane.margin>
                         </Button>
-                        <Button fx:id="btnKaartKopen" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#btnKaartKopenClicked" prefHeight="55.0" prefWidth="185.0" text="Ontwikkelingskaart kopen" textAlignment="CENTER" wrapText="true" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="6" GridPane.valignment="TOP">
+                        <Button fx:id="btnKaartKopen" alignment="CENTER" contentDisplay="CENTER" disable="true" mnemonicParsing="false" onAction="#btnKaartKopenClicked" prefHeight="55.0" prefWidth="185.0" text="Ontwikkelingskaart kopen" textAlignment="CENTER" wrapText="true" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="6" GridPane.valignment="TOP">
                            <font>
                               <Font name="RomanC" size="11.0" />
                            </font>

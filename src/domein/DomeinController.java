@@ -227,4 +227,8 @@ public class DomeinController {
 	public EdelsteenAantal getSmaragdAantal() {
 		return s.getSmaragdAantal();
 	}
+	
+	public void neemEdelsteenaantal(EdelsteenAantal fiche) {
+		s.neemEdelsteenAantal(fiche);
+	}
 }

@@ -19,6 +19,7 @@ import javafx.scene.control.SplitPane;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
+import util.EdelsteenSoort;
 
 public class StartSpelController extends StackPane {
 
@@ -110,7 +111,10 @@ public class StartSpelController extends StackPane {
 			niveau3Buttons.get(i).setGraphic(imv);
 			niveau3Buttons.get(i).setOnAction(this::btnNiveau3Clicked);
 		}
-		
+		updateAantalFichesSpel();
+	}
+	
+	private void updateAantalFichesSpel() {
 		lblDiamantSpelAantal.setText(toString(dc.getDiamantAantal().getAantal()));		
 		lblOnyxSpelAantal.setText(toString(dc.getOnyxAantal().getAantal()));
 	    lblRobijnSpelAantal.setText(toString(dc.getRobijnAantal().getAantal()));
@@ -118,7 +122,23 @@ public class StartSpelController extends StackPane {
 	    lblSaffierSpelAantal.setText(toString(dc.getSaffierAantal().getAantal()));
 	}
 	
-	
+	private void updateAantalFichesSpeler() {
+		List<Speler> spelers = dc.getSpelersInSpel();
+		for(Speler s: spelers) {
+			if(s.geefIsAanDeBeurt()) {
+				for(EdelsteenAantal ea : s.getEdelsteenfichesInBezit()) {
+					switch(ea.getSoort()) {
+					case DIAMANT -> lblDiamantSpelerAantal.setText(toString(ea.getAantal()));
+					case ONYX -> lblOnyxSpelerAantal.setText(toString(ea.getAantal()));
+					case ROBIJN -> lblRobijnSpelerAantal.setText(toString(ea.getAantal()));
+					case SAFFIER -> lblSaffierSpelerAantal.setText(toString(ea.getAantal()));
+					case SMARAGD -> lblSmaragdSpelerAantal.setText(toString(ea.getAantal()));
+					}				    
+				}
+			}
+		}
+	}
+		
 	private String toString(int aantal) {
 		return String.format("%d", aantal);
 	}
@@ -149,35 +169,35 @@ public class StartSpelController extends StackPane {
 					case SMARAGD -> lblSmaragdSpelerAantal.setText(toString(ea.getAantal()));
 					}				    
 				}
-				List<ImageView> ontwikkelingsKaartenSpeler = new ArrayList<>();
-				ontwikkelingsKaartenSpeler.add(imgKaartSpeler1);
-				ontwikkelingsKaartenSpeler.add(imgKaartSpeler2);
-				ontwikkelingsKaartenSpeler.add(imgKaartSpeler3);
-				ontwikkelingsKaartenSpeler.add(imgKaartSpeler4);
-				ontwikkelingsKaartenSpeler.add(imgKaartSpeler5);
-				ontwikkelingsKaartenSpeler.add(imgKaartSpeler6);
-				ontwikkelingsKaartenSpeler.add(imgKaartSpeler7);
-				ontwikkelingsKaartenSpeler.add(imgKaartSpeler8);
-				ontwikkelingsKaartenSpeler.add(imgKaartSpeler9);
-				ontwikkelingsKaartenSpeler.add(imgKaartSpeler10);
-				ontwikkelingsKaartenSpeler.add(imgKaartSpeler11);
-				ontwikkelingsKaartenSpeler.add(imgKaartSpeler12);
-				ontwikkelingsKaartenSpeler.add(imgKaartSpeler13);
-				ontwikkelingsKaartenSpeler.add(imgKaartSpeler14);
-				
-//				// hier kaarten en edelen tonen
-//				 for(int i = 0; i < e.size(); i++) {
-//					edeleBezitImv.get(i).setImage(e.get(i).getImage());	
-//					edeleBezitImv.get(i).setFitHeight(150);
-//					edeleBezitImv.get(i).setFitWidth(150);
-//				}
-				
-//				for(int i = 0; i < ok.size(); i++) {
-//					ontwikkelingsKaartenSpeler.get(i).setImage(ok.get(i).getImage());	
-//					ontwikkelingsKaartenSpeler.get(i).setFitHeight(160);
-//					ontwikkelingsKaartenSpeler.get(i).setFitWidth(125);
-//				}
 			}
+			List<ImageView> ontwikkelingsKaartenSpeler = new ArrayList<>();
+			ontwikkelingsKaartenSpeler.add(imgKaartSpeler1);
+			ontwikkelingsKaartenSpeler.add(imgKaartSpeler2);
+			ontwikkelingsKaartenSpeler.add(imgKaartSpeler3);
+			ontwikkelingsKaartenSpeler.add(imgKaartSpeler4);
+			ontwikkelingsKaartenSpeler.add(imgKaartSpeler5);
+			ontwikkelingsKaartenSpeler.add(imgKaartSpeler6);
+			ontwikkelingsKaartenSpeler.add(imgKaartSpeler7);
+			ontwikkelingsKaartenSpeler.add(imgKaartSpeler8);
+			ontwikkelingsKaartenSpeler.add(imgKaartSpeler9);
+			ontwikkelingsKaartenSpeler.add(imgKaartSpeler10);
+			ontwikkelingsKaartenSpeler.add(imgKaartSpeler11);
+			ontwikkelingsKaartenSpeler.add(imgKaartSpeler12);
+			ontwikkelingsKaartenSpeler.add(imgKaartSpeler13);
+			ontwikkelingsKaartenSpeler.add(imgKaartSpeler14);
+			
+//			// hier kaarten en edelen tonen
+//			 for(int i = 0; i < e.size(); i++) {
+//				edeleBezitImv.get(i).setImage(e.get(i).getImage());	
+//				edeleBezitImv.get(i).setFitHeight(150);
+//				edeleBezitImv.get(i).setFitWidth(150);
+//			}
+//		
+//			for(int i = 0; i < ok.size(); i++) {
+//				ontwikkelingsKaartenSpeler.get(i).setImage(ok.get(i).getImage());	
+//				ontwikkelingsKaartenSpeler.get(i).setFitHeight(160);
+//				ontwikkelingsKaartenSpeler.get(i).setFitWidth(125);
+//			}
 		}
 	}
 	
@@ -189,6 +209,14 @@ public class StartSpelController extends StackPane {
 		if(niveau3.isEmpty())
 			stapelNiveau3.setOpacity(0.50);
 	}
+	
+	private void knoppenDisable() {
+		btnDiamantSpel.setDisable(true);	
+    	btnOnyxSpel.setDisable(true);   	
+    	btnRobijnSpel.setDisable(true);    	
+    	btnSaffierSpel.setDisable(true);
+    	btnSmaragdSpel.setDisable(true);
+	}
 
 	@FXML
 	void btnVolgendeClicked(ActionEvent event) {
@@ -197,7 +225,13 @@ public class StartSpelController extends StackPane {
 			btnVolgende.setDisable(true);
 	    	btnStartRonde.setDisable(false);
 		}
-		tmpSpelerLijst= dc.updateIsAanDeBeurt(tmpSpelerLijst);
+		
+		btnFicheKiezen.setDisable(false);
+    	if(aantalKlik > 1)
+    		btnKaartKopen.setDisable(false);
+		
+		knoppenDisable();
+		updateAantalFichesSpeler();
 	}
 	
     @FXML
@@ -213,8 +247,72 @@ public class StartSpelController extends StackPane {
     	dc.isStartSpeler();
     	tmpSpelerLijst = dc.updateIsAanDeBeurt(tmpSpelerLijst);
     	
+    	btnFicheKiezen.setDisable(false);
+    	if(aantalKlik > 1)
+    		btnKaartKopen.setDisable(false);
+    	
     	btnVolgende.setDisable(false);
     	btnStartRonde.setDisable(true);
+    	knoppenDisable();
+    	updateAantalFichesSpeler();
+    }
+    
+    @FXML
+    void btnFicheKiezenClicked(ActionEvent event) {   	
+    	btnDiamantSpel.setDisable(false);
+    	btnDiamantSpel.setOnAction(this::btnFicheClicked);
+    	
+    	btnOnyxSpel.setDisable(false);
+    	btnOnyxSpel.setOnAction(this::btnFicheClicked);
+    	
+    	btnRobijnSpel.setDisable(false);
+    	btnRobijnSpel.setOnAction(this::btnFicheClicked);;
+    	
+    	btnSaffierSpel.setDisable(false);
+    	btnSaffierSpel.setOnAction(this::btnFicheClicked);
+    	
+    	btnSmaragdSpel.setDisable(false);
+    	btnSmaragdSpel.setOnAction(this::btnFicheClicked);
+    }
+    
+    void btnFicheClicked(ActionEvent event) {
+    	int kolom;
+    	Button b = (Button) event.getSource();
+    	
+    	if(GridPane.getColumnIndex(b) == null)
+    		kolom = 0;
+    	else
+    		kolom = GridPane.getColumnIndex(b);
+    	
+    	switch(kolom) {
+    	case 0 ->{
+    		dc.neemEdelsteenaantal(new EdelsteenAantal(1, EdelsteenSoort.SMARAGD));
+    		dc.getSmaragdAantal().setAantal(dc.getSmaragdAantal().getAantal() - 1);
+    	}
+    	case 1 -> {
+    		dc.neemEdelsteenaantal(new EdelsteenAantal(1, EdelsteenSoort.ONYX));
+    		dc.getOnyxAantal().setAantal(dc.getOnyxAantal().getAantal() - 1);
+    	}
+    	case 2 -> {
+    		dc.neemEdelsteenaantal(new EdelsteenAantal(1, EdelsteenSoort.DIAMANT));
+    		dc.getDiamantAantal().setAantal(dc.getDiamantAantal().getAantal() - 1);
+    	}
+    	case 3 -> {
+    		dc.neemEdelsteenaantal(new EdelsteenAantal(1, EdelsteenSoort.SAFFIER));
+    		dc.getSaffierAantal().setAantal(dc.getSaffierAantal().getAantal() - 1);
+    	}
+    	case 4 -> {
+    		dc.neemEdelsteenaantal(new EdelsteenAantal(1, EdelsteenSoort.ROBIJN));
+    		dc.getRobijnAantal().setAantal(dc.getRobijnAantal().getAantal() - 1);
+    	}
+    	}
+    	updateAantalFichesSpel();
+    	updateAantalFichesSpeler();
+    }
+
+    @FXML
+    void btnKaartKopenClicked(ActionEvent event) {
+
     }
     
     void btnNiveau1Clicked(ActionEvent event) {
@@ -244,15 +342,6 @@ public class StartSpelController extends StackPane {
     	}
     }
     
-    @FXML
-    void btnFicheKiezenClicked(ActionEvent event) {
-
-    }
-
-    @FXML
-    void btnKaartKopenClicked(ActionEvent event) {
-
-    }
     @FXML
     private Button btnDiamantSpel;
 

@@ -162,6 +162,14 @@ public class Spel {
 //		} --> werkt niet
 	}
 	
+	public void neemEdelsteenAantal(EdelsteenAantal fiche) {
+//		EdelsteenSoort vorigeSoort = null;
+//		if(vorigeSoort == fiche.getSoort())
+//			switch(vorigeSoort) {
+//			case DIAMANT -> 
+//			}
+		huidigeSpeler.voegEdelsteenficheToe(fiche);
+	}
 	
 	public List<Ontwikkelingskaart> getNiveau1Zichtbaar() {
 		return niveau1Zichtbaar;
