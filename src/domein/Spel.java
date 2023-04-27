@@ -136,22 +136,30 @@ public class Spel {
 		// krijgt index binnen van kaartnummer
 		// index kaart uit lijst zichtbare kaarten halen
 		// deze kaart in huidigeSpeler.ontwikkelingskaartenInBezit
-		huidigeSpeler.getOntwikkelingskaartenInBezit().add(niveau1Zichtbaar.remove(index));
-		
-		// zichtbare kaarten aanvullen met eerstvolgende ontwikkelingskaart uit lijst
-		niveau1Zichtbaar.add(niveau1.remove(0));
-		
-		
+		if(niveau1.size()!=0) {
+			huidigeSpeler.getOntwikkelingskaartenInBezit().add(niveau1Zichtbaar.remove(index));
+			niveau1Zichtbaar.add(index,niveau1.remove(0));
+		}//else {
+//			huidigeSpeler.getOntwikkelingskaartenInBezit().add(niveau1Zichtbaar.remove(index));
+//		} --> werkt niet
 	}
 	
 	public void koopKaartNiveau2(int index) {
-		huidigeSpeler.getOntwikkelingskaartenInBezit().add(niveau2Zichtbaar.remove(index));
-		niveau2Zichtbaar.add(niveau2.remove(0));
+		if(niveau2.size()!=0) {
+			huidigeSpeler.getOntwikkelingskaartenInBezit().add(niveau2Zichtbaar.remove(index));
+			niveau2Zichtbaar.add(index,niveau2.remove(0));
+		}//else {
+//			huidigeSpeler.getOntwikkelingskaartenInBezit().add(niveau2Zichtbaar.remove(index));
+//		} --> werkt niet
 	}
 
 	public void koopKaartNiveau3(int index) {
-		huidigeSpeler.getOntwikkelingskaartenInBezit().add(niveau3Zichtbaar.remove(index));
-		niveau3Zichtbaar.add(niveau3.remove(0));
+		if(niveau3.size()!=0) {
+			huidigeSpeler.getOntwikkelingskaartenInBezit().add(niveau3Zichtbaar.remove(index));
+			niveau3Zichtbaar.add(index,niveau3.remove(0));
+		}//else {
+//			huidigeSpeler.getOntwikkelingskaartenInBezit().add(niveau3Zichtbaar.remove(index));
+//		} --> werkt niet
 	}
 	
 	

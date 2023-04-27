@@ -51,6 +51,18 @@ public class DomeinController {
 		return true;
 	}
 	
+	public void koopKaartNiveau1(int index) {
+		s.koopKaartNiveau1(index);
+	}
+	
+	public void koopKaartNiveau2(int index) {
+		s.koopKaartNiveau2(index);
+	}
+
+	public void koopKaartNiveau3(int index) {
+		s.koopKaartNiveau3(index);
+	}
+	
 	public boolean controleerAantalSpelers() {
 		boolean aantalSpelersInOrde = false;
 		spelersInSpel= s.getSpelers();

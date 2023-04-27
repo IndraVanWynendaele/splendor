@@ -17,6 +17,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.SplitPane;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
 
 public class StartSpelController extends StackPane {
@@ -49,16 +50,6 @@ public class StartSpelController extends StackPane {
 		niveau1Zichtbaar = dc.geefOWK1Zichtbaar();
 		niveau2Zichtbaar = dc.geefOWK2Zichtbaar();
 		niveau3Zichtbaar = dc.geefOWK3Zichtbaar();
-		niveau1 = dc.getNiveau1();
-		niveau2 = dc.getNiveau2();
-		niveau3 = dc.getNiveau3();
-		
-		List<Button> edeleButtons = new ArrayList<>();
-		edeleButtons.add(btnEdele1);
-		edeleButtons.add(btnEdele2);
-		edeleButtons.add(btnEdele3);
-		edeleButtons.add(btnEdele4);
-		edeleButtons.add(btnEdele5);
 		
 		List<Button> niveau1Buttons = new ArrayList<>();
 		niveau1Buttons.add(btnN1Owk1);
@@ -77,15 +68,6 @@ public class StartSpelController extends StackPane {
 		niveau3Buttons.add(btnN3Owk2);
 		niveau3Buttons.add(btnN3Owk3);
 		niveau3Buttons.add(btnN3Owk4);
-	
-		// edelen op bord tonen
-		for (int i = 0; i < zichtbareEdelen.size(); i++) {
-			ImageView imv = new ImageView();
-			imv.setImage(zichtbareEdelen.get(i).getImage());	
-			imv.setFitHeight(150);
-			imv.setFitWidth(150);
-			edeleButtons.get(i).setGraphic(imv);
-		}
 		
 		// niveau 1
 		for (int i = 0; i < niveau1Buttons.size(); i++) {
@@ -94,6 +76,7 @@ public class StartSpelController extends StackPane {
 			imv.setFitHeight(160);
 			imv.setFitWidth(125);
 			niveau1Buttons.get(i).setGraphic(imv);
+			niveau1Buttons.get(i).setOnAction(this::btnNiveau1Clicked);
 		}
 		
 		// niveau 2
@@ -103,6 +86,7 @@ public class StartSpelController extends StackPane {
 			imv.setFitHeight(160);
 			imv.setFitWidth(125);
 			niveau2Buttons.get(i).setGraphic(imv);
+			niveau2Buttons.get(i).setOnAction(this::btnNiveau2Clicked);
 		}
 		
 		// niveau 3
@@ -112,6 +96,7 @@ public class StartSpelController extends StackPane {
 			imv.setFitHeight(160);
 			imv.setFitWidth(125);
 			niveau3Buttons.get(i).setGraphic(imv);
+			niveau3Buttons.get(i).setOnAction(this::btnNiveau3Clicked);
 		}
 		
 		lblDiamantSpelAantal.setText(toString(dc.getDiamantAantal().getAantal()));		
@@ -128,12 +113,12 @@ public class StartSpelController extends StackPane {
 	
 	private void geefHuidigeSpeler() {
 		List<Speler> spelers = dc.getSpelersInSpel();
-		List<ImageView> edeleBezitImv = new ArrayList<>();
-		edeleBezitImv.add(imgEdeleSpeler1);
-		edeleBezitImv.add(imgEdeleSpeler2);
-		edeleBezitImv.add(imgEdeleSpeler3);
-		edeleBezitImv.add(imgEdeleSpeler4);
-		edeleBezitImv.add(imgEdeleSpeler5);
+//		List<ImageView> edeleBezitImv = new ArrayList<>();
+//		edeleBezitImv.add(imgEdeleSpeler1);
+//		edeleBezitImv.add(imgEdeleSpeler2);
+//		edeleBezitImv.add(imgEdeleSpeler3);
+//		edeleBezitImv.add(imgEdeleSpeler4);
+//		edeleBezitImv.add(imgEdeleSpeler5);
 		List<ImageView> niveauBezitImv = new ArrayList<>();
 		//imv in
 		
@@ -152,17 +137,33 @@ public class StartSpelController extends StackPane {
 					case SMARAGD -> lblSmaragdSpelerAantal.setText(toString(ea.getAantal()));
 					}				    
 				}
-				// hier kaarten en edelen tonen
-				// for(int i = 0; i < e.size(); i++) {
-				//	edeleBezitImv.get(i).setImage(e.get(i).getImage());	
+				List<ImageView> ontwikkelingsKaartenSpeler = new ArrayList<>();
+				ontwikkelingsKaartenSpeler.add(imgKaartSpeler1);
+				ontwikkelingsKaartenSpeler.add(imgKaartSpeler2);
+				ontwikkelingsKaartenSpeler.add(imgKaartSpeler3);
+				ontwikkelingsKaartenSpeler.add(imgKaartSpeler4);
+				ontwikkelingsKaartenSpeler.add(imgKaartSpeler5);
+				ontwikkelingsKaartenSpeler.add(imgKaartSpeler6);
+				ontwikkelingsKaartenSpeler.add(imgKaartSpeler7);
+				ontwikkelingsKaartenSpeler.add(imgKaartSpeler8);
+				ontwikkelingsKaartenSpeler.add(imgKaartSpeler9);
+				ontwikkelingsKaartenSpeler.add(imgKaartSpeler10);
+				ontwikkelingsKaartenSpeler.add(imgKaartSpeler11);
+				ontwikkelingsKaartenSpeler.add(imgKaartSpeler12);
+				ontwikkelingsKaartenSpeler.add(imgKaartSpeler13);
+				ontwikkelingsKaartenSpeler.add(imgKaartSpeler14);
+				
+//				// hier kaarten en edelen tonen
+//				 for(int i = 0; i < e.size(); i++) {
+//					edeleBezitImv.get(i).setImage(e.get(i).getImage());	
 //					edeleBezitImv.get(i).setFitHeight(150);
 //					edeleBezitImv.get(i).setFitWidth(150);
-				//}
+//				}
 				
 //				for(int i = 0; i < ok.size(); i++) {
-//					niveauBezitImv.get(i).setImage(ok.get(i).getImage());	
-//					niveauBezitImv.get(i).setFitHeight(160);
-//					niveauBezitImv.get(i).setFitWidth(125);
+//					ontwikkelingsKaartenSpeler.get(i).setImage(ok.get(i).getImage());	
+//					ontwikkelingsKaartenSpeler.get(i).setFitHeight(160);
+//					ontwikkelingsKaartenSpeler.get(i).setFitWidth(125);
 //				}
 			}
 		}
@@ -204,20 +205,32 @@ public class StartSpelController extends StackPane {
     	btnStartRonde.setDisable(true);
     }
     
-//    private void btnNiveau1Clicked() {
-//    	int rij,kolom;
-//    	List<Button> niveau1Buttons = new ArrayList<>();
-//		niveau1Buttons.add(btnN1Owk1);
-//		niveau1Buttons.add(btnN1Owk2);
-//		niveau1Buttons.add(btnN1Owk3);
-//		niveau1Buttons.add(btnN1Owk4);
-//		
-//		for(Button b: niveau1Buttons) {
-//			rij=b.setOnAction().getSource().getRowIndex();
-//			kolom=b.setOnAction().getSource().getColumnIndex();
-//		}
-//		
-//    }
+    void btnNiveau1Clicked(ActionEvent event) {
+    	Button b = (Button) event.getSource();
+    	dc.koopKaartNiveau1(GridPane.getColumnIndex(b)-1);
+    	toonStartSpelbord();
+    	if(dc.getNiveau1().size()==0) {
+    		stapelNiveau1.setImage(null);
+    	}
+    }
+    
+    void btnNiveau2Clicked(ActionEvent event) {
+    	Button b = (Button) event.getSource();
+    	dc.koopKaartNiveau2(GridPane.getColumnIndex(b)-1);
+    	toonStartSpelbord();
+    	if(dc.getNiveau2().size()==0) {
+    		stapelNiveau2.setImage(null);
+    	}
+    }
+    
+    void btnNiveau3Clicked(ActionEvent event) {
+    	Button b = (Button) event.getSource();
+    	dc.koopKaartNiveau3(GridPane.getColumnIndex(b)-1);
+    	toonStartSpelbord();
+    	if(dc.getNiveau3().size()==0) {
+    		stapelNiveau3.setImage(null);
+    	}
+    }
     
     @FXML
     void btnFicheKiezenClicked(ActionEvent event) {
@@ -228,6 +241,47 @@ public class StartSpelController extends StackPane {
     void btnKaartKopenClicked(ActionEvent event) {
 
     }
+    @FXML
+    private ImageView imgKaartSpeler1;
+
+    @FXML
+    private ImageView imgKaartSpeler10;
+
+    @FXML
+    private ImageView imgKaartSpeler11;
+
+    @FXML
+    private ImageView imgKaartSpeler12;
+
+    @FXML
+    private ImageView imgKaartSpeler13;
+
+    @FXML
+    private ImageView imgKaartSpeler14;
+
+    @FXML
+    private ImageView imgKaartSpeler2;
+
+    @FXML
+    private ImageView imgKaartSpeler3;
+
+    @FXML
+    private ImageView imgKaartSpeler4;
+
+    @FXML
+    private ImageView imgKaartSpeler5;
+
+    @FXML
+    private ImageView imgKaartSpeler6;
+
+    @FXML
+    private ImageView imgKaartSpeler7;
+
+    @FXML
+    private ImageView imgKaartSpeler8;
+
+    @FXML
+    private ImageView imgKaartSpeler9;
     
     @FXML
     private Button btnDiamantSpel;

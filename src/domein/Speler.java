@@ -14,9 +14,9 @@ public class Speler {
 	private boolean isAanDeBeurt;
 	private boolean isStartspeler;
 	private boolean isWinnaar;
-	private List<Ontwikkelingskaart> ontwikkelingskaartenInBezit;
+	private List<Ontwikkelingskaart> ontwikkelingskaartenInBezit= new ArrayList<>();
 	private List<EdelsteenAantal> edelsteenfichesInBezit = new ArrayList<>();
-	private List<Edele> edelenInBezit ;
+	private List<Edele> edelenInBezit = new ArrayList<>();
 	
 	public Speler(String gebruikersnaam, int geboortejaar) {
 		controleerGebruikersnaam(gebruikersnaam);
