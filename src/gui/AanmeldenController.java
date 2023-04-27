@@ -94,6 +94,8 @@ public class AanmeldenController extends StackPane{
 				btnStartSpel.setDisable(false);
 			if(aantalSpelersInSpel == 4)
 				btnLogIn.setDisable(true);
+			txfGeboortjaar.setStyle("-fx-text-box-border: white");
+			txfGeboortjaar.setPromptText("");
 		}catch(NumberFormatException ex) {
 			txfGeboortjaar.setText("");
 			txfGeboortjaar.setPromptText("Moet een positief getal zijn");
@@ -134,8 +136,7 @@ public class AanmeldenController extends StackPane{
 				Scene scene1 = new Scene(ssc);
 				Stage stage1 = (Stage) this.getScene().getWindow();
 				stage1.setScene(scene1);
-//				stage1.setMaximized(true);
-				stage1.setFullScreen(true);
+				stage1.setMaximized(true);
 				stage1.show();
 			}
 		}catch(IllegalArgumentException e) {

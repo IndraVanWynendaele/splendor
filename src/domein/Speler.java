@@ -8,6 +8,7 @@ public class Speler {
 	private final int geboortejaar;
 	private static final int HUIDIG_JAAR = 2023;
 	private static final int MINIMUM_JAAR = HUIDIG_JAAR - 6;
+	private static final int MAXIMUM_JAAR = HUIDIG_JAAR - 99;
 
 	private int totaalAantalPrestigepunten;
 	private boolean isAanDeBeurt;
@@ -35,8 +36,10 @@ public class Speler {
 	}
 	
 	private void controleerGeboortejaar(int geboortejaar) {
-		if(geboortejaar > MINIMUM_JAAR)
-			throw new IllegalArgumentException("Gebruiker moet minimum 6 jaar oud zijn");
+		if(geboortejaar < 0)
+			throw new IllegalArgumentException("Vul positief getal in");
+		if(geboortejaar > MINIMUM_JAAR || geboortejaar < MAXIMUM_JAAR)
+			throw new IllegalArgumentException("Gebruiker moet minimum 6 en maximum 99 jaar oud zijn");
 	}
 	
 	public void voegEdeleToe(Edele edele) {
