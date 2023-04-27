@@ -218,10 +218,10 @@ public class Spel {
 			edelsteenfichesInBezit.get(kolom);
 			smaragdAantal.setAantal(smaragdAantal.getAantal()-1);
 		}
-		case 2 ->null;
-		case 3 ->null;
-		case 4 ->null;
-		case 5 ->null;
+//		case 2 ->null;
+//		case 3 ->null;
+//		case 4 ->null;
+//		case 5 ->null;
 		}
 	}
 
