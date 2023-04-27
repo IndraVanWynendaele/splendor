@@ -199,7 +199,7 @@
                         <RowConstraints maxHeight="191.90625" minHeight="10.0" prefHeight="173.938720703125" vgrow="SOMETIMES" />
                      </rowConstraints>
                      <children>
-                        <Button fx:id="btnRobijnSpel" mnemonicParsing="false" prefHeight="69.0" prefWidth="122.0" scaleX="0.7" scaleY="0.7" style="-fx-background-color: null;" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+                        <Button fx:id="btnRobijnSpel" disable="true" mnemonicParsing="false" prefHeight="69.0" prefWidth="122.0" scaleX="0.7" scaleY="0.7" style="-fx-background-color: null;" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
                            <graphic>
                               <ImageView fitHeight="130.0" fitWidth="130.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -208,7 +208,7 @@
                               </ImageView>
                            </graphic>
                         </Button>
-                        <Button fx:id="btnSaffierSpel" mnemonicParsing="false" prefHeight="77.0" prefWidth="110.0" scaleX="0.7" scaleY="0.7" style="-fx-background-color: null;" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+                        <Button fx:id="btnSaffierSpel" disable="true" mnemonicParsing="false" prefHeight="77.0" prefWidth="110.0" scaleX="0.7" scaleY="0.7" style="-fx-background-color: null;" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
                            <graphic>
                               <ImageView fitHeight="130.0" fitWidth="130.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -217,7 +217,7 @@
                               </ImageView>
                            </graphic>
                         </Button>
-                        <Button fx:id="btnDiamantSpel" mnemonicParsing="false" prefHeight="52.0" prefWidth="83.0" scaleX="0.7" scaleY="0.7" style="-fx-background-color: null;" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+                        <Button fx:id="btnDiamantSpel" disable="true" mnemonicParsing="false" prefHeight="52.0" prefWidth="83.0" scaleX="0.7" scaleY="0.7" style="-fx-background-color: null;" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
                            <graphic>
                               <ImageView fitHeight="130.0" fitWidth="130.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -226,7 +226,7 @@
                               </ImageView>
                            </graphic>
                         </Button>
-                        <Button fx:id="btnOnyxSpel" mnemonicParsing="false" prefHeight="76.0" prefWidth="149.0" scaleX="0.7" scaleY="0.7" style="-fx-background-color: null;" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+                        <Button fx:id="btnOnyxSpel" disable="true" mnemonicParsing="false" prefHeight="76.0" prefWidth="149.0" scaleX="0.7" scaleY="0.7" style="-fx-background-color: null;" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
                            <graphic>
                               <ImageView fitHeight="130.0" fitWidth="130.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -235,7 +235,7 @@
                               </ImageView>
                            </graphic>
                         </Button>
-                        <Button fx:id="btnSmaragdSpel" mnemonicParsing="false" prefHeight="98.0" prefWidth="92.0" scaleX="0.7" scaleY="0.7" style="-fx-background-color: null;" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+                        <Button fx:id="btnSmaragdSpel" disable="true" mnemonicParsing="false" prefHeight="98.0" prefWidth="92.0" scaleX="0.7" scaleY="0.7" style="-fx-background-color: null;" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
                            <graphic>
                               <ImageView fitHeight="130.0" fitWidth="130.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
