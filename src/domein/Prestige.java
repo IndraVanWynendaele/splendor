@@ -7,7 +7,7 @@ import javafx.fxml.FXML;
 import javafx.scene.image.Image;
 import util.EdelsteenSoort;
 
-public abstract class Prestige {
+public class Prestige {
 
 	private int prestigepunten;
 	private List<EdelsteenAantal> kosten;
@@ -35,6 +35,4 @@ public abstract class Prestige {
 	public Image getImage() {
 		return image;
 	}
-	
-//	private String getImagePath();
 }

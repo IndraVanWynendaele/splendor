@@ -204,6 +204,21 @@ public class StartSpelController extends StackPane {
     	btnStartRonde.setDisable(true);
     }
     
+//    private void btnNiveau1Clicked() {
+//    	int rij,kolom;
+//    	List<Button> niveau1Buttons = new ArrayList<>();
+//		niveau1Buttons.add(btnN1Owk1);
+//		niveau1Buttons.add(btnN1Owk2);
+//		niveau1Buttons.add(btnN1Owk3);
+//		niveau1Buttons.add(btnN1Owk4);
+//		
+//		for(Button b: niveau1Buttons) {
+//			rij=b.setOnAction().getSource().getRowIndex();
+//			kolom=b.setOnAction().getSource().getColumnIndex();
+//		}
+//		
+//    }
+    
     @FXML
     void btnFicheKiezenClicked(ActionEvent event) {
 
