@@ -51,6 +51,13 @@ public class StartSpelController extends StackPane {
 		niveau2Zichtbaar = dc.geefOWK2Zichtbaar();
 		niveau3Zichtbaar = dc.geefOWK3Zichtbaar();
 		
+		List<ImageView> edeleImv = new ArrayList<>();
+		edeleImv.add(imvEdele1);
+		edeleImv.add(imvEdele2);
+		edeleImv.add(imvEdele3);
+		edeleImv.add(imvEdele4);
+		edeleImv.add(imvEdele5);
+		
 		List<Button> niveau1Buttons = new ArrayList<>();
 		niveau1Buttons.add(btnN1Owk1);
 		niveau1Buttons.add(btnN1Owk2);
@@ -68,6 +75,11 @@ public class StartSpelController extends StackPane {
 		niveau3Buttons.add(btnN3Owk2);
 		niveau3Buttons.add(btnN3Owk3);
 		niveau3Buttons.add(btnN3Owk4);
+		
+		// edele
+		for (int i = 0; i < zichtbareEdelen.size(); i++) {
+            edeleImv.get(i).setImage(zichtbareEdelen.get(i).getImage());
+        }
 		
 		// niveau 1
 		for (int i = 0; i < niveau1Buttons.size(); i++) {
@@ -242,6 +254,84 @@ public class StartSpelController extends StackPane {
 
     }
     @FXML
+    private Button btnDiamantSpel;
+
+    @FXML
+    private Button btnFicheKiezen;
+
+    @FXML
+    private Button btnKaartKopen;
+
+    @FXML
+    private Button btnN1Owk1;
+
+    @FXML
+    private Button btnN1Owk2;
+
+    @FXML
+    private Button btnN1Owk3;
+
+    @FXML
+    private Button btnN1Owk4;
+
+    @FXML
+    private Button btnN2Owk1;
+
+    @FXML
+    private Button btnN2Owk2;
+
+    @FXML
+    private Button btnN2Owk3;
+
+    @FXML
+    private Button btnN2Owk4;
+
+    @FXML
+    private Button btnN3Owk1;
+
+    @FXML
+    private Button btnN3Owk2;
+
+    @FXML
+    private Button btnN3Owk3;
+
+    @FXML
+    private Button btnN3Owk4;
+
+    @FXML
+    private Button btnOnyxSpel;
+
+    @FXML
+    private Button btnRobijnSpel;
+
+    @FXML
+    private Button btnSaffierSpel;
+
+    @FXML
+    private Button btnSmaragdSpel;
+
+    @FXML
+    private Button btnStartRonde;
+
+    @FXML
+    private Button btnVolgende;
+
+    @FXML
+    private ImageView imgEdeleSpeler1;
+
+    @FXML
+    private ImageView imgEdeleSpeler2;
+
+    @FXML
+    private ImageView imgEdeleSpeler3;
+
+    @FXML
+    private ImageView imgEdeleSpeler4;
+
+    @FXML
+    private ImageView imgEdeleSpeler5;
+
+    @FXML
     private ImageView imgKaartSpeler1;
 
     @FXML
@@ -282,43 +372,21 @@ public class StartSpelController extends StackPane {
 
     @FXML
     private ImageView imgKaartSpeler9;
-    
-    @FXML
-    private Button btnDiamantSpel;
 
     @FXML
-    private Button btnDiamantSpeler;
+    private ImageView imvEdele1;
 
     @FXML
-    private Button btnOnyxSpel;
+    private ImageView imvEdele2;
 
     @FXML
-    private Button btnOnyxSpeler;
+    private ImageView imvEdele3;
 
     @FXML
-    private Button btnRobijnSpel;
+    private ImageView imvEdele4;
 
     @FXML
-    private Button btnRobijnSpeler;
-
-    @FXML
-    private Button btnSaffierSpel;
-
-    @FXML
-    private Button btnSaffierSpeler;
-
-    @FXML
-    private Button btnSmaragdSpel;
-
-    @FXML
-    private Button btnSmaragdSpeler;
-
-    
-    @FXML
-    private Button btnStartRonde;
-
-    @FXML
-    private Button btnVolgende;
+    private ImageView imvEdele5;
 
     @FXML
     private Label lblDiamantSpelAantal;
@@ -331,6 +399,9 @@ public class StartSpelController extends StackPane {
 
     @FXML
     private Label lblOnyxSpelerAantal;
+
+    @FXML
+    private Label lblPrestigepunten;
 
     @FXML
     private Label lblRobijnSpelAantal;
@@ -357,60 +428,6 @@ public class StartSpelController extends StackPane {
     private Label lblSpelerNaam;
 
     @FXML
-    private SplitPane splitPane2;
-    
-    @FXML
-    private Button btnEdele1;
-
-    @FXML
-    private Button btnEdele2;
-
-    @FXML
-    private Button btnEdele3;
-
-    @FXML
-    private Button btnEdele4;
-
-    @FXML
-    private Button btnEdele5;
-
-    @FXML
-    private Button btnN1Owk1;
-
-    @FXML
-    private Button btnN1Owk2;
-
-    @FXML
-    private Button btnN1Owk3;
-
-    @FXML
-    private Button btnN1Owk4;
-
-    @FXML
-    private Button btnN2Owk1;
-
-    @FXML
-    private Button btnN2Owk2;
-
-    @FXML
-    private Button btnN2Owk3;
-
-    @FXML
-    private Button btnN2Owk4;
-
-    @FXML
-    private Button btnN3Owk1;
-
-    @FXML
-    private Button btnN3Owk2;
-
-    @FXML
-    private Button btnN3Owk3;
-
-    @FXML
-    private Button btnN3Owk4;
-    
-    @FXML
     private ImageView stapelNiveau1;
 
     @FXML
@@ -418,30 +435,6 @@ public class StartSpelController extends StackPane {
 
     @FXML
     private ImageView stapelNiveau3;
-    
-    @FXML
-    private Label lblPrestigepunten;
-    
-    @FXML
-    private ImageView imgEdeleSpeler1;
-
-    @FXML
-    private ImageView imgEdeleSpeler2;
-
-    @FXML
-    private ImageView imgEdeleSpeler3;
-
-    @FXML
-    private ImageView imgEdeleSpeler4;
-
-    @FXML
-    private ImageView imgEdeleSpeler5;
-    
-    @FXML
-    private Button btnFicheKiezen;
-
-    @FXML
-    private Button btnKaartKopen;
 
  
     

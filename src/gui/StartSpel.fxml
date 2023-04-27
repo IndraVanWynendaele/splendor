@@ -89,84 +89,27 @@
                               <Insets top="80.0" />
                            </GridPane.margin>
                         </Button>
-                        <Button fx:id="btnRobijnSpeler" mnemonicParsing="false" prefHeight="69.0" prefWidth="122.0" scaleX="0.6" scaleY="0.6" style="-fx-background-color: null;" GridPane.rowIndex="4">
-                           <graphic>
-                              <ImageView fitHeight="150.0" fitWidth="120.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../images/Robijn.png" />
-                                 </image>
-                              </ImageView>
-                           </graphic>
-                           <GridPane.margin>
-                              <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                           </GridPane.margin></Button>
-                        <Button fx:id="btnSaffierSpeler" mnemonicParsing="false" prefHeight="77.0" prefWidth="110.0" scaleX="0.6" scaleY="0.6" style="-fx-background-color: null;" GridPane.rowIndex="3">
-                           <GridPane.margin>
-                              <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                           </GridPane.margin>
-                           <graphic>
-                              <ImageView fitHeight="150.0" fitWidth="120.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../images/Saffier.png" />
-                                 </image>
-                              </ImageView>
-                           </graphic>
-                        </Button>
-                        <Button fx:id="btnDiamantSpeler" mnemonicParsing="false" prefHeight="52.0" prefWidth="83.0" scaleX="0.6" scaleY="0.6" style="-fx-background-color: null;" GridPane.rowIndex="2">
-                           <graphic>
-                              <ImageView fitHeight="150.0" fitWidth="120.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../images/Diamant.png" />
-                                 </image>
-                              </ImageView>
-                           </graphic>
-                           <GridPane.margin>
-                              <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                           </GridPane.margin>
-                        </Button>
-                        <Button fx:id="btnOnyxSpeler" mnemonicParsing="false" prefHeight="76.0" prefWidth="149.0" scaleX="0.6" scaleY="0.6" style="-fx-background-color: null;" GridPane.rowIndex="1">
-                           <graphic>
-                              <ImageView fitHeight="150.0" fitWidth="120.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../images/Onyx.png" />
-                                 </image>
-                              </ImageView>
-                           </graphic>
-                           <GridPane.margin>
-                              <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                           </GridPane.margin></Button>
-                        <Button fx:id="btnSmaragdSpeler" mnemonicParsing="false" prefHeight="109.0" prefWidth="120.0" scaleX="0.6" scaleY="0.6" style="-fx-background-color: null;">
-                           <graphic>
-                              <ImageView fitHeight="150.0" fitWidth="120.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../images/Smaragd.png" />
-                                 </image>
-                              </ImageView>
-                           </graphic>
-                           <GridPane.margin>
-                              <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                           </GridPane.margin></Button>
-                        <Label fx:id="lblSmaragdSpelerAantal" GridPane.columnIndex="1">
+                        <Label fx:id="lblSmaragdSpelerAantal" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
                            <font>
                               <Font name="RomanC" size="16.0" />
                            </font>
                         </Label>
-                        <Label fx:id="lblRobijnSpelerAantal" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                        <Label fx:id="lblRobijnSpelerAantal" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER">
                            <font>
                               <Font name="RomanC" size="16.0" />
                            </font>
                         </Label>
-                        <Label fx:id="lblDiamantSpelerAantal" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                        <Label fx:id="lblDiamantSpelerAantal" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
                            <font>
                               <Font name="RomanC" size="16.0" />
                            </font>
                         </Label>
-                        <Label fx:id="lblSaffierSpelerAantal" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                        <Label fx:id="lblSaffierSpelerAantal" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER">
                            <font>
                               <Font name="RomanC" size="16.0" />
                            </font>
                         </Label>
-                        <Label fx:id="lblOnyxSpelerAantal" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                        <Label fx:id="lblOnyxSpelerAantal" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
                            <font>
                               <Font name="RomanC" size="16.0" />
                            </font>
@@ -206,6 +149,34 @@
                         <ImageView fx:id="imgKaartSpeler12" fitHeight="120.0" fitWidth="120.0" layoutX="470.0" layoutY="675.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="4" GridPane.rowIndex="5" />
                         <ImageView fx:id="imgKaartSpeler13" fitHeight="120.0" fitWidth="120.0" layoutX="637.0" layoutY="675.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.rowIndex="6" />
                         <ImageView fx:id="imgKaartSpeler14" fitHeight="120.0" fitWidth="120.0" layoutX="470.0" layoutY="805.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="4" GridPane.rowIndex="6" />
+                        <ImageView fitHeight="70.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true" GridPane.halignment="RIGHT" GridPane.valignment="CENTER">
+                           <image>
+                              <Image url="@../images/Smaragd.png" />
+                           </image>
+                           <GridPane.margin>
+                              <Insets />
+                           </GridPane.margin>
+                        </ImageView>
+                        <ImageView fitHeight="70.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true" GridPane.halignment="RIGHT" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+                           <image>
+                              <Image url="@../images/Onyx.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fitHeight="70.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true" GridPane.halignment="RIGHT" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+                           <image>
+                              <Image url="@../images/Diamant.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fitHeight="70.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true" GridPane.halignment="RIGHT" GridPane.rowIndex="3" GridPane.valignment="CENTER">
+                           <image>
+                              <Image url="@../images/Saffier.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fitHeight="70.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true" GridPane.halignment="RIGHT" GridPane.rowIndex="4" GridPane.valignment="CENTER">
+                           <image>
+                              <Image url="@../images/Robijn.png" />
+                           </image>
+                        </ImageView>
                      </children>
                      <HBox.margin>
                         <Insets />
@@ -264,7 +235,6 @@
                               </ImageView>
                            </graphic>
                         </Button>
-                        <Button fx:id="btnEdele5" mnemonicParsing="false" scaleX="0.7" scaleY="0.7" style="-fx-background-color: null;" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
                         <Button fx:id="btnSmaragdSpel" mnemonicParsing="false" prefHeight="98.0" prefWidth="92.0" scaleX="0.7" scaleY="0.7" style="-fx-background-color: null;" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
                            <graphic>
                               <ImageView fitHeight="130.0" fitWidth="130.0" pickOnBounds="true" preserveRatio="true">
@@ -299,10 +269,6 @@
                               <Font name="RomanC" size="16.0" />
                            </font>
                         </Label>
-                        <Button fx:id="btnEdele1" mnemonicParsing="false" scaleX="0.7" scaleY="0.7" style="-fx-background-color: null;" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
-                        <Button fx:id="btnEdele3" mnemonicParsing="false" scaleX="0.7" scaleY="0.7" style="-fx-background-color: null;" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
-                        <Button fx:id="btnEdele4" mnemonicParsing="false" scaleX="0.7" scaleY="0.7" style="-fx-background-color: null;" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
-                        <Button fx:id="btnEdele2" mnemonicParsing="false" scaleX="0.7" scaleY="0.7" style="-fx-background-color: null;" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
                         <ImageView fx:id="stapelNiveau1" fitHeight="150.0" fitWidth="111.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="3">
                            <image>
                               <Image url="@../images/achterkantNiveau1.png" />
@@ -330,6 +296,11 @@
                         <Button fx:id="btnN3Owk3" mnemonicParsing="false" scaleX="0.9" scaleY="0.9" style="-fx-background-color: null;" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="5" GridPane.valignment="CENTER" />
                         <Button fx:id="btnN2Owk4" mnemonicParsing="false" scaleX="0.9" scaleY="0.9" style="-fx-background-color: null;" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER" />
                         <Button fx:id="btnN3Owk4" mnemonicParsing="false" scaleX="0.9" scaleY="0.9" style="-fx-background-color: null;" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="5" GridPane.valignment="CENTER" />
+                        <ImageView fx:id="imvEdele5" fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
+                        <ImageView fx:id="imvEdele1" fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
+                        <ImageView fx:id="imvEdele3" fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
+                        <ImageView fx:id="imvEdele4" fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
+                        <ImageView fx:id="imvEdele2" fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
                      </children>
                   </GridPane>
                </children>
