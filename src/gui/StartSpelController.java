@@ -142,7 +142,7 @@ public class StartSpelController extends StackPane {
 			List<Edele> e = s.getEdelenInBezit();
 			if(s.geefIsAanDeBeurt()) {
 				lblSpelerNaam.setText(s.getGebruikersnaam());
-				aantalPrestigePunten.setText(String.format("Prestigepunten: %s",s.getTotaalAantalPrestigePunten()));
+				lblPrestigepunten.setText(String.format("Prestigepunten: %s",s.getTotaalAantalPrestigePunten()));
 				for(EdelsteenAantal ea : s.getEdelsteenfichesInBezit()) {
 					switch(ea.getSoort()) {
 					case DIAMANT -> lblDiamantSpelerAantal.setText(toString(ea.getAantal()));
@@ -153,17 +153,17 @@ public class StartSpelController extends StackPane {
 					}				    
 				}
 				// hier kaarten en edelen tonen
-				for(int i = 0; i < e.size(); i++) {
-					edeleBezitImv.get(i).setImage(e.get(i).getImage());	
+				// for(int i = 0; i < e.size(); i++) {
+				//	edeleBezitImv.get(i).setImage(e.get(i).getImage());	
 //					edeleBezitImv.get(i).setFitHeight(150);
 //					edeleBezitImv.get(i).setFitWidth(150);
-				}
+				//}
 				
-				for(int i = 0; i < ok.size(); i++) {
-					niveauBezitImv.get(i).setImage(ok.get(i).getImage());	
+//				for(int i = 0; i < ok.size(); i++) {
+//					niveauBezitImv.get(i).setImage(ok.get(i).getImage());	
 //					niveauBezitImv.get(i).setFitHeight(160);
 //					niveauBezitImv.get(i).setFitWidth(125);
-				}
+//				}
 			}
 		}
 	}
@@ -189,6 +189,7 @@ public class StartSpelController extends StackPane {
 	
     @FXML
     void btnStartRondeClicked(ActionEvent event) {
+    	geefHuidigeSpeler();
     	aantalKlik++;
         lblRondeNr.setText(String.format("Ronde: %d", aantalKlik));
     	lblSpelerNaam.setText(dc.getStartSpeler().getGebruikersnaam());
@@ -201,6 +202,16 @@ public class StartSpelController extends StackPane {
     	
     	btnVolgende.setDisable(false);
     	btnStartRonde.setDisable(true);
+    }
+    
+    @FXML
+    void btnFicheKiezenClicked(ActionEvent event) {
+
+    }
+
+    @FXML
+    void btnKaartKopenClicked(ActionEvent event) {
+
     }
     
     @FXML
@@ -339,7 +350,7 @@ public class StartSpelController extends StackPane {
     private ImageView stapelNiveau3;
     
     @FXML
-    private Label aantalPrestigePunten;
+    private Label lblPrestigepunten;
     
     @FXML
     private ImageView imgEdeleSpeler1;
@@ -355,6 +366,14 @@ public class StartSpelController extends StackPane {
 
     @FXML
     private ImageView imgEdeleSpeler5;
+    
+    @FXML
+    private Button btnFicheKiezen;
+
+    @FXML
+    private Button btnKaartKopen;
+
+ 
     
     @FXML
     void btnDiamantSpelClicked(ActionEvent event) {

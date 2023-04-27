@@ -35,17 +35,12 @@
                         <Insets bottom="30.0" left="30.0" right="30.0" top="30.0" />
                      </HBox.margin>
                   </Label>
-                  <Label fx:id="lblPrestigepunten" prefHeight="92.0" prefWidth="229.0" text="Prestigepunten:" wrapText="true">
+                  <Label fx:id="lblPrestigepunten" prefHeight="92.0" prefWidth="492.0">
                      <font>
-                        <Font size="16.0" />
+                        <Font name="RomanC" size="18.0" />
                      </font>
                   </Label>
-                  <Label fx:id="aantalPrestigePunten" prefHeight="30.0" prefWidth="55.0">
-                     <font>
-                        <Font size="25.0" />
-                     </font>
-                  </Label>
-                  <Label fx:id="lblRondeNr" alignment="CENTER_RIGHT" prefHeight="61.0" prefWidth="1207.0" textFill="#8e0000">
+                  <Label fx:id="lblRondeNr" alignment="CENTER_RIGHT" prefHeight="61.0" prefWidth="854.0" textFill="#8e0000">
                      <font>
                         <Font name="GothicI" size="49.0" />
                      </font>
@@ -60,10 +55,10 @@
             </HBox>
             <HBox alignment="CENTER_LEFT" prefHeight="1080.0" prefWidth="1920.0">
                <children>
-                  <GridPane alignment="CENTER" prefHeight="924.0" prefWidth="634.0">
+                  <GridPane alignment="CENTER" prefHeight="908.0" prefWidth="859.0">
                      <columnConstraints>
-                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="317.36688232421875" minWidth="10.0" prefWidth="142.28591918945312" />
-                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="357.3739013671875" minWidth="10.0" prefWidth="32.71980285644531" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="317.36688232421875" minWidth="10.0" prefWidth="179.12164306640625" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="357.3739013671875" minWidth="10.0" prefWidth="30.37835693359375" />
                         <ColumnConstraints hgrow="SOMETIMES" maxWidth="357.3739013671875" minWidth="10.0" prefWidth="177.50286865234375" />
                         <ColumnConstraints hgrow="SOMETIMES" maxWidth="357.3739013671875" minWidth="10.0" prefWidth="142.85772705078125" />
                         <ColumnConstraints hgrow="SOMETIMES" maxWidth="357.3739013671875" minWidth="10.0" prefWidth="140.64227294921875" />
@@ -75,23 +70,23 @@
                         <RowConstraints maxHeight="492.3739013671875" minHeight="10.0" prefHeight="480.5394287109375" vgrow="SOMETIMES" />
                         <RowConstraints maxHeight="492.3739013671875" minHeight="10.0" prefHeight="480.5394287109375" vgrow="SOMETIMES" />
                         <RowConstraints maxHeight="530.5323486328125" minHeight="10.0" prefHeight="478.4605712890625" vgrow="SOMETIMES" />
-                        <RowConstraints maxHeight="530.5323486328125" minHeight="10.0" prefHeight="478.4605712890625" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="530.5323486328125" minHeight="10.0" prefHeight="478.4605712890625" valignment="CENTER" vgrow="SOMETIMES" />
                      </rowConstraints>
                      <children>
-                        <Button fx:id="btnVolgende" disable="true" mnemonicParsing="false" onAction="#btnVolgendeClicked" prefHeight="38.0" prefWidth="158.0" text="Volgende speler" wrapText="true" GridPane.columnIndex="2" GridPane.rowIndex="5">
+                        <Button fx:id="btnVolgende" disable="true" mnemonicParsing="false" onAction="#btnVolgendeClicked" prefHeight="53.0" prefWidth="190.0" text="Volgende speler" wrapText="true" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="5" GridPane.valignment="CENTER">
                            <font>
                               <Font name="RomanC" size="12.0" />
                            </font>
                            <GridPane.margin>
-                              <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                              <Insets top="80.0" />
                            </GridPane.margin>
                         </Button>
-                        <Button fx:id="btnStartRonde" mnemonicParsing="false" onAction="#btnStartRondeClicked" prefHeight="38.0" prefWidth="198.0" text="Start Ronde" GridPane.rowIndex="5">
+                        <Button fx:id="btnStartRonde" mnemonicParsing="false" onAction="#btnStartRondeClicked" prefHeight="45.0" prefWidth="185.0" text="Start Ronde" GridPane.halignment="CENTER" GridPane.rowIndex="5" GridPane.valignment="CENTER">
                            <font>
                               <Font name="RomanC" size="12.0" />
                            </font>
                            <GridPane.margin>
-                              <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                              <Insets top="80.0" />
                            </GridPane.margin>
                         </Button>
                         <Button fx:id="btnRobijnSpeler" mnemonicParsing="false" prefHeight="69.0" prefWidth="122.0" scaleX="0.6" scaleY="0.6" style="-fx-background-color: nofill;" GridPane.rowIndex="4">
@@ -181,18 +176,34 @@
                         <ImageView fx:id="imgEdeleSpeler3" fitHeight="120.0" fitWidth="120.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.rowIndex="2" />
                         <ImageView fx:id="imgEdeleSpeler4" fitHeight="120.0" fitWidth="120.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.rowIndex="3" />
                         <ImageView fx:id="imgEdeleSpeler5" fitHeight="120.0" fitWidth="120.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.rowIndex="4" />
+                        <Button fx:id="btnFicheKiezen" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#btnFicheKiezenClicked" prefHeight="55.0" prefWidth="185.0" text="Edelsteenfiches kiezen" textAlignment="CENTER" wrapText="true" GridPane.halignment="CENTER" GridPane.rowIndex="6" GridPane.valignment="TOP">
+                           <font>
+                              <Font name="RomanC" size="11.0" />
+                           </font>
+                           <GridPane.margin>
+                              <Insets top="10.0" />
+                           </GridPane.margin>
+                        </Button>
+                        <Button fx:id="btnKaartKopen" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#btnKaartKopenClicked" prefHeight="55.0" prefWidth="185.0" text="Ontwikkelingskaart kopen" textAlignment="CENTER" wrapText="true" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="6" GridPane.valignment="TOP">
+                           <font>
+                              <Font name="RomanC" size="11.0" />
+                           </font>
+                           <GridPane.margin>
+                              <Insets top="10.0" />
+                           </GridPane.margin>
+                        </Button>
                      </children>
                      <HBox.margin>
                         <Insets />
                      </HBox.margin>
                   </GridPane>
-                  <GridPane alignment="CENTER" prefHeight="919.0" prefWidth="1195.0">
+                  <GridPane alignment="CENTER" prefHeight="919.0" prefWidth="1156.0">
                      <columnConstraints>
-                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="240.70135498046875" minWidth="10.0" prefWidth="231.2337646484375" />
-                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="354.8773193359375" minWidth="10.0" prefWidth="219.2662353515625" />
-                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="342.78369140625" minWidth="10.0" prefWidth="260.931640625" />
-                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="259.9422607421875" minWidth="10.0" prefWidth="241.568359375" />
-                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="217.1724853515625" minWidth="0.0" prefWidth="217.1724853515625" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="-Infinity" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="-Infinity" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="-Infinity" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="-Infinity" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="-Infinity" />
                      </columnConstraints>
                      <rowConstraints>
                         <RowConstraints maxHeight="171.40980529785156" minHeight="10.0" prefHeight="43.8634033203125" vgrow="SOMETIMES" />
@@ -203,12 +214,47 @@
                         <RowConstraints maxHeight="191.90625" minHeight="10.0" prefHeight="173.938720703125" vgrow="SOMETIMES" />
                      </rowConstraints>
                      <children>
-                        <Button fx:id="btnRobijnSpel" mnemonicParsing="false" onAction="#btnRobijnSpelClicked" prefHeight="69.0" prefWidth="122.0" scaleX="0.7" scaleY="0.7" style="-fx-background-color: nofill;" GridPane.columnIndex="4" />
-                        <Button fx:id="btnSaffierSpel" mnemonicParsing="false" onAction="#btnSaffierSpelClicked" prefHeight="77.0" prefWidth="110.0" scaleX="0.7" scaleY="0.7" style="-fx-background-color: nofill;" GridPane.columnIndex="3" />
-                        <Button fx:id="btnDiamantSpel" mnemonicParsing="false" onAction="#btnDiamantSpelClicked" prefHeight="52.0" prefWidth="83.0" scaleX="0.7" scaleY="0.7" style="-fx-background-color: nofill;" GridPane.columnIndex="2" />
-                        <Button fx:id="btnOnyxSpel" mnemonicParsing="false" onAction="#btnOnyxSpelClicked" prefHeight="76.0" prefWidth="149.0" scaleX="0.7" scaleY="0.7" style="-fx-background-color: nofill;" GridPane.columnIndex="1" />
+                        <Button fx:id="btnRobijnSpel" mnemonicParsing="false" onAction="#btnRobijnSpelClicked" prefHeight="69.0" prefWidth="122.0" scaleX="0.7" scaleY="0.7" style="-fx-background-color: nofill;" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+                           <graphic>
+                              <ImageView fitHeight="130.0" fitWidth="130.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../images/Robijn.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic></Button>
+                        <Button fx:id="btnSaffierSpel" mnemonicParsing="false" onAction="#btnSaffierSpelClicked" prefHeight="77.0" prefWidth="110.0" scaleX="0.7" scaleY="0.7" style="-fx-background-color: nofill;" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+                           <graphic>
+                              <ImageView fitHeight="130.0" fitWidth="130.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../images/Saffier.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic></Button>
+                        <Button fx:id="btnDiamantSpel" mnemonicParsing="false" onAction="#btnDiamantSpelClicked" prefHeight="52.0" prefWidth="83.0" scaleX="0.7" scaleY="0.7" style="-fx-background-color: nofill;" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+                           <graphic>
+                              <ImageView fitHeight="130.0" fitWidth="130.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../images/Diamant.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic></Button>
+                        <Button fx:id="btnOnyxSpel" mnemonicParsing="false" onAction="#btnOnyxSpelClicked" prefHeight="76.0" prefWidth="149.0" scaleX="0.7" scaleY="0.7" style="-fx-background-color: nofill;" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+                           <graphic>
+                              <ImageView fitHeight="130.0" fitWidth="130.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../images/Onyx.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic></Button>
                         <Button fx:id="btnEdele5" mnemonicParsing="false" onAction="#btnEdele5Clicked" scaleX="0.7" scaleY="0.7" style="-fx-background-color: nofill;" GridPane.rowIndex="2" />
-                        <Button fx:id="btnSmaragdSpel" mnemonicParsing="false" onAction="#btnSmaragdSpelClicked" prefHeight="98.0" prefWidth="92.0" scaleX="0.7" scaleY="0.7" style="-fx-background-color: nofill;" GridPane.rowIndex="1" />
+                        <Button fx:id="btnSmaragdSpel" mnemonicParsing="false" onAction="#btnSmaragdSpelClicked" prefHeight="98.0" prefWidth="92.0" scaleX="0.7" scaleY="0.7" style="-fx-background-color: nofill;" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+                           <graphic>
+                              <ImageView fitHeight="130.0" fitWidth="130.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../images/Smaragd.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic></Button>
                         <Label fx:id="lblRobijnSpelAantal" GridPane.columnIndex="4">
                            <font>
                               <Font name="RomanC" size="16.0" />
@@ -234,10 +280,10 @@
                               <Font name="RomanC" size="16.0" />
                            </font>
                         </Label>
-                        <Button fx:id="btnEdele1" mnemonicParsing="false" onAction="#btnEdele1Clicked" scaleX="0.7" scaleY="0.7" style="-fx-background-color: nofill;" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                        <Button fx:id="btnEdele3" mnemonicParsing="false" onAction="#btnEdele3Clicked" scaleX="0.7" scaleY="0.7" style="-fx-background-color: nofill;" GridPane.columnIndex="3" GridPane.rowIndex="2" />
-                        <Button fx:id="btnEdele4" mnemonicParsing="false" onAction="#btnEdele4Clicked" scaleX="0.7" scaleY="0.7" style="-fx-background-color: nofill;" GridPane.columnIndex="4" GridPane.rowIndex="2" />
-                        <Button fx:id="btnEdele2" mnemonicParsing="false" onAction="#btnEdele2Clicked" scaleX="0.7" scaleY="0.7" style="-fx-background-color: nofill;" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+                        <Button fx:id="btnEdele1" mnemonicParsing="false" onAction="#btnEdele1Clicked" scaleX="0.7" scaleY="0.7" style="-fx-background-color: nofill;" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
+                        <Button fx:id="btnEdele3" mnemonicParsing="false" onAction="#btnEdele3Clicked" scaleX="0.7" scaleY="0.7" style="-fx-background-color: nofill;" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
+                        <Button fx:id="btnEdele4" mnemonicParsing="false" onAction="#btnEdele4Clicked" scaleX="0.7" scaleY="0.7" style="-fx-background-color: nofill;" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
+                        <Button fx:id="btnEdele2" mnemonicParsing="false" onAction="#btnEdele2Clicked" scaleX="0.7" scaleY="0.7" style="-fx-background-color: nofill;" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
                         <ImageView fx:id="stapelNiveau1" fitHeight="150.0" fitWidth="111.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="3">
                            <image>
                               <Image url="@../images/achterkantNiveau1.png" />
@@ -253,43 +299,18 @@
                               <Image url="@../images/achterkantNiveau3.png" />
                            </image>
                         </ImageView>
-                        <Button fx:id="btnN1Owk1" mnemonicParsing="false" onAction="#btnN1Owk1Clicked" scaleX="0.9" scaleY="0.9" style="-fx-background-color: nofill;" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                        <Button fx:id="btnN2Owk1" mnemonicParsing="false" onAction="#btnN2Owk1Clicked" scaleX="0.9" scaleY="0.9" style="-fx-background-color: nofill;" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-                        <Button fx:id="btnN3Owk1" mnemonicParsing="false" onAction="#btnN3Owk1Clicked" scaleX="0.9" scaleY="0.9" style="-fx-background-color: nofill;" GridPane.columnIndex="1" GridPane.rowIndex="5" />
-                        <Button fx:id="btnN1Owk2" mnemonicParsing="false" onAction="#btnN1Owk2Clicked" scaleX="0.9" scaleY="0.9" style="-fx-background-color: nofill;" GridPane.columnIndex="2" GridPane.rowIndex="3" />
-                        <Button fx:id="btnN2Owk2" mnemonicParsing="false" onAction="#btnN2Owk2Clicked" scaleX="0.9" scaleY="0.9" style="-fx-background-color: nofill;" GridPane.columnIndex="2" GridPane.rowIndex="4" />
-                        <Button fx:id="btnN3Owk2" mnemonicParsing="false" onAction="#btnN3Owk2Clicked" scaleX="0.9" scaleY="0.9" style="-fx-background-color: nofill;" GridPane.columnIndex="2" GridPane.rowIndex="5" />
-                        <Button fx:id="btnN1Owk3" mnemonicParsing="false" onAction="#btnN1Owk3Clicked" scaleX="0.9" scaleY="0.9" style="-fx-background-color: nofill;" GridPane.columnIndex="3" GridPane.rowIndex="3" />
-                        <Button fx:id="btnN2Owk3" mnemonicParsing="false" onAction="#btnN2Owk3Clicked" scaleX="0.9" scaleY="0.9" style="-fx-background-color: nofill;" GridPane.columnIndex="3" GridPane.rowIndex="4" />
-                        <Button fx:id="btnN1Owk4" mnemonicParsing="false" onAction="#btnN1Owk4Clicked" scaleX="0.9" scaleY="0.9" style="-fx-background-color: nofill;" GridPane.columnIndex="4" GridPane.rowIndex="3" />
-                        <Button fx:id="btnN3Owk3" mnemonicParsing="false" onAction="#btnN3Owk3Clicked" scaleX="0.9" scaleY="0.9" style="-fx-background-color: nofill;" GridPane.columnIndex="3" GridPane.rowIndex="5" />
-                        <Button fx:id="btnN2Owk4" mnemonicParsing="false" onAction="#btnN2Owk4Clicked" scaleX="0.9" scaleY="0.9" style="-fx-background-color: nofill;" GridPane.columnIndex="4" GridPane.rowIndex="4" />
-                        <Button fx:id="btnN3Owk4" mnemonicParsing="false" onAction="#btnN3Owk4Clicked" scaleX="0.9" scaleY="0.9" style="-fx-background-color: nofill;" GridPane.columnIndex="4" GridPane.rowIndex="5" />
-                        <ImageView fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="1">
-                           <image>
-                              <Image url="@../images/Smaragd.png" />
-                           </image>
-                        </ImageView>
-                        <ImageView fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="1">
-                           <image>
-                              <Image url="@../images/Onyx.png" />
-                           </image>
-                        </ImageView>
-                        <ImageView fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.rowIndex="1">
-                           <image>
-                              <Image url="@../images/Diamant.png" />
-                           </image>
-                        </ImageView>
-                        <ImageView fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.rowIndex="1">
-                           <image>
-                              <Image url="@../images/Saffier.png" />
-                           </image>
-                        </ImageView>
-                        <ImageView fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="4" GridPane.rowIndex="1">
-                           <image>
-                              <Image url="@../images/Robijn.png" />
-                           </image>
-                        </ImageView>
+                        <Button fx:id="btnN1Owk1" mnemonicParsing="false" onAction="#btnN1Owk1Clicked" scaleX="0.9" scaleY="0.9" style="-fx-background-color: nofill;" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER" />
+                        <Button fx:id="btnN2Owk1" mnemonicParsing="false" onAction="#btnN2Owk1Clicked" scaleX="0.9" scaleY="0.9" style="-fx-background-color: nofill;" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER" />
+                        <Button fx:id="btnN3Owk1" mnemonicParsing="false" onAction="#btnN3Owk1Clicked" scaleX="0.9" scaleY="0.9" style="-fx-background-color: nofill;" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="5" GridPane.valignment="CENTER" />
+                        <Button fx:id="btnN1Owk2" mnemonicParsing="false" onAction="#btnN1Owk2Clicked" scaleX="0.9" scaleY="0.9" style="-fx-background-color: nofill;" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER" />
+                        <Button fx:id="btnN2Owk2" mnemonicParsing="false" onAction="#btnN2Owk2Clicked" scaleX="0.9" scaleY="0.9" style="-fx-background-color: nofill;" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER" />
+                        <Button fx:id="btnN3Owk2" mnemonicParsing="false" onAction="#btnN3Owk2Clicked" scaleX="0.9" scaleY="0.9" style="-fx-background-color: nofill;" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="5" GridPane.valignment="CENTER" />
+                        <Button fx:id="btnN1Owk3" mnemonicParsing="false" onAction="#btnN1Owk3Clicked" scaleX="0.9" scaleY="0.9" style="-fx-background-color: nofill;" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER" />
+                        <Button fx:id="btnN2Owk3" mnemonicParsing="false" onAction="#btnN2Owk3Clicked" scaleX="0.9" scaleY="0.9" style="-fx-background-color: nofill;" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER" />
+                        <Button fx:id="btnN1Owk4" mnemonicParsing="false" onAction="#btnN1Owk4Clicked" scaleX="0.9" scaleY="0.9" style="-fx-background-color: nofill;" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER" />
+                        <Button fx:id="btnN3Owk3" mnemonicParsing="false" onAction="#btnN3Owk3Clicked" scaleX="0.9" scaleY="0.9" style="-fx-background-color: nofill;" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="5" GridPane.valignment="CENTER" />
+                        <Button fx:id="btnN2Owk4" mnemonicParsing="false" onAction="#btnN2Owk4Clicked" scaleX="0.9" scaleY="0.9" style="-fx-background-color: nofill;" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER" />
+                        <Button fx:id="btnN3Owk4" mnemonicParsing="false" onAction="#btnN3Owk4Clicked" scaleX="0.9" scaleY="0.9" style="-fx-background-color: nofill;" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="5" GridPane.valignment="CENTER" />
                      </children>
                   </GridPane>
                </children>
