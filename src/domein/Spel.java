@@ -132,6 +132,28 @@ public class Spel {
 		return beschikbareEdelenSpeler;
 	}
 	
+	public void koopKaartNiveau1(int index) {
+		// krijgt index binnen van kaartnummer
+		// index kaart uit lijst zichtbare kaarten halen
+		// deze kaart in huidigeSpeler.ontwikkelingskaartenInBezit
+		huidigeSpeler.getOntwikkelingskaartenInBezit().add(niveau1Zichtbaar.remove(index));
+		
+		// zichtbare kaarten aanvullen met eerstvolgende ontwikkelingskaart uit lijst
+		niveau1Zichtbaar.add(niveau1.remove(0));
+		
+		
+	}
+	
+	public void koopKaartNiveau2(int index) {
+		huidigeSpeler.getOntwikkelingskaartenInBezit().add(niveau2Zichtbaar.remove(index));
+		niveau2Zichtbaar.add(niveau2.remove(0));
+	}
+
+	public void koopKaartNiveau3(int index) {
+		huidigeSpeler.getOntwikkelingskaartenInBezit().add(niveau3Zichtbaar.remove(index));
+		niveau3Zichtbaar.add(niveau3.remove(0));
+	}
+	
 	public List<Ontwikkelingskaart> getNiveau1Zichtbaar() {
 		return niveau1Zichtbaar;
 	}
