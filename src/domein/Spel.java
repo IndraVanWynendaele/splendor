@@ -154,6 +154,7 @@ public class Spel {
 		niveau3Zichtbaar.add(niveau3.remove(0));
 	}
 	
+	
 	public List<Ontwikkelingskaart> getNiveau1Zichtbaar() {
 		return niveau1Zichtbaar;
 	}
