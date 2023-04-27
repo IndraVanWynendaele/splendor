@@ -313,6 +313,7 @@ public class StartSpelController extends StackPane {
     @FXML
     private Button btnSmaragdSpeler;
 
+    
     @FXML
     private Button btnStartRonde;
 
