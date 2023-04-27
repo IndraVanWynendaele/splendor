@@ -192,6 +192,20 @@
                               <Insets top="10.0" />
                            </GridPane.margin>
                         </Button>
+                        <ImageView fx:id="imgKaartSpeler1" fitHeight="120.0" fitWidth="120.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" />
+                        <ImageView fx:id="imgKaartSpeler3" fitHeight="120.0" fitWidth="120.0" layoutX="470.0" layoutY="16.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+                        <ImageView fx:id="imgKaartSpeler2" fitHeight="120.0" fitWidth="120.0" layoutX="637.0" layoutY="16.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="4" />
+                        <ImageView fx:id="imgKaartSpeler4" fitHeight="120.0" fitWidth="120.0" layoutX="470.0" layoutY="148.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="4" GridPane.rowIndex="1" />
+                        <ImageView fx:id="imgKaartSpeler5" fitHeight="120.0" fitWidth="120.0" layoutX="637.0" layoutY="148.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.rowIndex="2" />
+                        <ImageView fx:id="imgKaartSpeler6" fitHeight="120.0" fitWidth="120.0" layoutX="470.0" layoutY="280.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="4" GridPane.rowIndex="2" />
+                        <ImageView fx:id="imgKaartSpeler7" fitHeight="120.0" fitWidth="120.0" layoutX="637.0" layoutY="280.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.rowIndex="3" />
+                        <ImageView fx:id="imgKaartSpeler8" fitHeight="120.0" fitWidth="120.0" layoutX="470.0" layoutY="412.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="4" GridPane.rowIndex="3" />
+                        <ImageView fx:id="imgKaartSpeler9" fitHeight="120.0" fitWidth="120.0" layoutX="637.0" layoutY="412.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.rowIndex="4" />
+                        <ImageView fx:id="imgKaartSpeler10" fitHeight="120.0" fitWidth="120.0" layoutX="470.0" layoutY="544.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="4" GridPane.rowIndex="4" />
+                        <ImageView fx:id="imgKaartSpeler11" fitHeight="120.0" fitWidth="120.0" layoutX="637.0" layoutY="544.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.rowIndex="5" />
+                        <ImageView fx:id="imgKaartSpeler12" fitHeight="120.0" fitWidth="120.0" layoutX="470.0" layoutY="675.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="4" GridPane.rowIndex="5" />
+                        <ImageView fx:id="imgKaartSpeler13" fitHeight="120.0" fitWidth="120.0" layoutX="637.0" layoutY="675.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.rowIndex="6" />
+                        <ImageView fx:id="imgKaartSpeler14" fitHeight="120.0" fitWidth="120.0" layoutX="470.0" layoutY="805.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="4" GridPane.rowIndex="6" />
                      </children>
                      <HBox.margin>
                         <Insets />
@@ -221,7 +235,8 @@
                                     <Image url="@../images/Robijn.png" />
                                  </image>
                               </ImageView>
-                           </graphic></Button>
+                           </graphic>
+                        </Button>
                         <Button fx:id="btnSaffierSpel" mnemonicParsing="false" prefHeight="77.0" prefWidth="110.0" scaleX="0.7" scaleY="0.7" style="-fx-background-color: null;" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
                            <graphic>
                               <ImageView fitHeight="130.0" fitWidth="130.0" pickOnBounds="true" preserveRatio="true">
@@ -229,7 +244,8 @@
                                     <Image url="@../images/Saffier.png" />
                                  </image>
                               </ImageView>
-                           </graphic></Button>
+                           </graphic>
+                        </Button>
                         <Button fx:id="btnDiamantSpel" mnemonicParsing="false" prefHeight="52.0" prefWidth="83.0" scaleX="0.7" scaleY="0.7" style="-fx-background-color: null;" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
                            <graphic>
                               <ImageView fitHeight="130.0" fitWidth="130.0" pickOnBounds="true" preserveRatio="true">
@@ -237,7 +253,8 @@
                                     <Image url="@../images/Diamant.png" />
                                  </image>
                               </ImageView>
-                           </graphic></Button>
+                           </graphic>
+                        </Button>
                         <Button fx:id="btnOnyxSpel" mnemonicParsing="false" prefHeight="76.0" prefWidth="149.0" scaleX="0.7" scaleY="0.7" style="-fx-background-color: null;" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
                            <graphic>
                               <ImageView fitHeight="130.0" fitWidth="130.0" pickOnBounds="true" preserveRatio="true">
@@ -245,7 +262,8 @@
                                     <Image url="@../images/Onyx.png" />
                                  </image>
                               </ImageView>
-                           </graphic></Button>
+                           </graphic>
+                        </Button>
                         <Button fx:id="btnEdele5" mnemonicParsing="false" scaleX="0.7" scaleY="0.7" style="-fx-background-color: null;" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
                         <Button fx:id="btnSmaragdSpel" mnemonicParsing="false" prefHeight="98.0" prefWidth="92.0" scaleX="0.7" scaleY="0.7" style="-fx-background-color: null;" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
                            <graphic>
@@ -254,7 +272,8 @@
                                     <Image url="@../images/Smaragd.png" />
                                  </image>
                               </ImageView>
-                           </graphic></Button>
+                           </graphic>
+                        </Button>
                         <Label fx:id="lblRobijnSpelAantal" GridPane.columnIndex="4">
                            <font>
                               <Font name="RomanC" size="16.0" />
