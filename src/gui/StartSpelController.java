@@ -90,7 +90,13 @@ public class StartSpelController extends StackPane {
 			imv.setImage(niveau1Zichtbaar.get(i).getImage());	
 			imv.setFitHeight(160);
 			imv.setFitWidth(125);
-			niveau1Buttons.get(i).setGraphic(imv);
+			if(dc.getNiveau1().size()==0) {
+				if(stapelNiveau1.getImage() == null)
+					if(niveau1Buttons.get(i).getGraphic() == null)
+						niveau1Buttons.get(i).setGraphic(null);
+			}
+			else
+				niveau1Buttons.get(i).setGraphic(imv);
 		}
 		
 		// niveau 2
@@ -99,7 +105,13 @@ public class StartSpelController extends StackPane {
 			imv.setImage(niveau2Zichtbaar.get(i).getImage());	
 			imv.setFitHeight(160);
 			imv.setFitWidth(125);
-			niveau2Buttons.get(i).setGraphic(imv);
+			if(dc.getNiveau2().size()==0) {
+				if(stapelNiveau2.getImage() == null)
+					if(niveau2Buttons.get(i).getGraphic() == null)
+						niveau2Buttons.get(i).setGraphic(null);
+			}
+			else
+				niveau2Buttons.get(i).setGraphic(imv);
 		}
 		
 		// niveau 3
@@ -108,7 +120,13 @@ public class StartSpelController extends StackPane {
 			imv.setImage(niveau3Zichtbaar.get(i).getImage());	
 			imv.setFitHeight(160);
 			imv.setFitWidth(125);
-			niveau3Buttons.get(i).setGraphic(imv);
+			if(dc.getNiveau3().size()==0) {
+				if(stapelNiveau3.getImage() == null)
+					if(niveau3Buttons.get(i).getGraphic() == null)
+						niveau3Buttons.get(i).setGraphic(null);
+			}
+			else
+				niveau3Buttons.get(i).setGraphic(imv);
 		}
 		updateAantalFichesSpel();
 	}
@@ -144,14 +162,29 @@ public class StartSpelController extends StackPane {
 	
 	private void geefHuidigeSpeler() {
 		List<Speler> spelers = dc.getSpelersInSpel();
-//		List<ImageView> edeleBezitImv = new ArrayList<>();
-//		edeleBezitImv.add(imgEdeleSpeler1);
-//		edeleBezitImv.add(imgEdeleSpeler2);
-//		edeleBezitImv.add(imgEdeleSpeler3);
-//		edeleBezitImv.add(imgEdeleSpeler4);
-//		edeleBezitImv.add(imgEdeleSpeler5);
+		
+		List<ImageView> edeleBezitImv = new ArrayList<>();
+		edeleBezitImv.add(imgEdeleSpeler1);
+		edeleBezitImv.add(imgEdeleSpeler2);
+		edeleBezitImv.add(imgEdeleSpeler3);
+		edeleBezitImv.add(imgEdeleSpeler4);
+		edeleBezitImv.add(imgEdeleSpeler5);
+		
 		List<ImageView> niveauBezitImv = new ArrayList<>();
-		//imv in
+		niveauBezitImv.add(imgKaartSpeler1);
+		niveauBezitImv.add(imgKaartSpeler2);
+		niveauBezitImv.add(imgKaartSpeler3);
+		niveauBezitImv.add(imgKaartSpeler4);
+		niveauBezitImv.add(imgKaartSpeler5);
+		niveauBezitImv.add(imgKaartSpeler6);
+		niveauBezitImv.add(imgKaartSpeler7);
+		niveauBezitImv.add(imgKaartSpeler8);
+		niveauBezitImv.add(imgKaartSpeler9);
+		niveauBezitImv.add(imgKaartSpeler10);
+		niveauBezitImv.add(imgKaartSpeler11);
+		niveauBezitImv.add(imgKaartSpeler12);
+		niveauBezitImv.add(imgKaartSpeler13);
+		niveauBezitImv.add(imgKaartSpeler14);
 		
 		for(Speler s: spelers) {
 			List<Ontwikkelingskaart> ok = s.getOntwikkelingskaartenInBezit();
@@ -185,30 +218,21 @@ public class StartSpelController extends StackPane {
 			ontwikkelingsKaartenSpeler.add(imgKaartSpeler13);
 			ontwikkelingsKaartenSpeler.add(imgKaartSpeler14);
 			
-//			// hier kaarten en edelen tonen
-//			 for(int i = 0; i < e.size(); i++) {
-//				edeleBezitImv.get(i).setImage(e.get(i).getImage());	
-//				edeleBezitImv.get(i).setFitHeight(150);
-//				edeleBezitImv.get(i).setFitWidth(150);
-//			}
-//		
-//			for(int i = 0; i < ok.size(); i++) {
-//				ontwikkelingsKaartenSpeler.get(i).setImage(ok.get(i).getImage());	
-//				ontwikkelingsKaartenSpeler.get(i).setFitHeight(160);
-//				ontwikkelingsKaartenSpeler.get(i).setFitWidth(125);
-//			}
+			// hier kaarten en edelen tonen
+			 for(int i = 0; i < e.size(); i++) {
+				edeleBezitImv.get(i).setImage(e.get(i).getImage());	
+				edeleBezitImv.get(i).setFitHeight(150);
+				edeleBezitImv.get(i).setFitWidth(150);
+			}
+		
+			for(int i = 0; i < ok.size(); i++) {
+				ontwikkelingsKaartenSpeler.get(i).setImage(ok.get(i).getImage());	
+				ontwikkelingsKaartenSpeler.get(i).setFitHeight(160);
+				ontwikkelingsKaartenSpeler.get(i).setFitWidth(125);
+			}
 		}
 	}
-	
-	private void updateAantalKaarten() {
-		if(niveau1.isEmpty())
-			stapelNiveau1.setOpacity(0.50);
-		if(niveau2.isEmpty())
-			stapelNiveau2.setOpacity(0.50);
-		if(niveau3.isEmpty())
-			stapelNiveau3.setOpacity(0.50);
-	}
-	
+		
 	private void knoppenDisable() {
 		//edelsteenfiches
 		btnDiamantSpel.setDisable(true);	
@@ -289,17 +313,13 @@ public class StartSpelController extends StackPane {
     	btnKaartKopen.setDisable(true);
     	
     	btnDiamantSpel.setDisable(false);
-    	btnDiamantSpel.setOnAction(this::btnFicheClicked);
-    	
+    	btnDiamantSpel.setOnAction(this::btnFicheClicked);    	
     	btnOnyxSpel.setDisable(false);
-    	btnOnyxSpel.setOnAction(this::btnFicheClicked);
-    	
+    	btnOnyxSpel.setOnAction(this::btnFicheClicked);    	
     	btnRobijnSpel.setDisable(false);
-    	btnRobijnSpel.setOnAction(this::btnFicheClicked);;
-    	
+    	btnRobijnSpel.setOnAction(this::btnFicheClicked);    	
     	btnSaffierSpel.setDisable(false);
-    	btnSaffierSpel.setOnAction(this::btnFicheClicked);
-    	
+    	btnSaffierSpel.setOnAction(this::btnFicheClicked);    	
     	btnSmaragdSpel.setDisable(false);
     	btnSmaragdSpel.setOnAction(this::btnFicheClicked);
     }
@@ -384,6 +404,8 @@ public class StartSpelController extends StackPane {
     		dc.koopKaartNiveau1(GridPane.getColumnIndex(b)-1);
         	toonStartSpelbord();
         	if(dc.getNiveau1().size()==0) {
+        		if(stapelNiveau1.getImage() == null)
+        			b.setGraphic(null);
         		stapelNiveau1.setImage(null);
         	}
     	}catch(IllegalArgumentException e) {
@@ -400,6 +422,8 @@ public class StartSpelController extends StackPane {
     		dc.koopKaartNiveau2(GridPane.getColumnIndex(b)-1);
         	toonStartSpelbord();
         	if(dc.getNiveau2().size()==0) {
+        		if(stapelNiveau2.getImage() == null)
+        			b.setGraphic(null);
         		stapelNiveau2.setImage(null);
         	}
     	}catch(IllegalArgumentException e) {
@@ -417,6 +441,8 @@ public class StartSpelController extends StackPane {
     		dc.koopKaartNiveau3(GridPane.getColumnIndex(b)-1);
         	toonStartSpelbord();
         	if(dc.getNiveau3().size()==0) {
+        		if(stapelNiveau3.getImage() == null)
+        			b.setGraphic(null);
         		stapelNiveau3.setImage(null);
         	}
     	}catch(IllegalArgumentException e) {
