@@ -91,7 +91,6 @@ public class StartSpelController extends StackPane {
 			imv.setFitHeight(160);
 			imv.setFitWidth(125);
 			niveau1Buttons.get(i).setGraphic(imv);
-			niveau1Buttons.get(i).setOnAction(this::btnNiveau1Clicked);
 		}
 		
 		// niveau 2
@@ -101,7 +100,6 @@ public class StartSpelController extends StackPane {
 			imv.setFitHeight(160);
 			imv.setFitWidth(125);
 			niveau2Buttons.get(i).setGraphic(imv);
-			niveau2Buttons.get(i).setOnAction(this::btnNiveau2Clicked);
 		}
 		
 		// niveau 3
@@ -111,7 +109,6 @@ public class StartSpelController extends StackPane {
 			imv.setFitHeight(160);
 			imv.setFitWidth(125);
 			niveau3Buttons.get(i).setGraphic(imv);
-			niveau3Buttons.get(i).setOnAction(this::btnNiveau3Clicked);
 		}
 		updateAantalFichesSpel();
 	}
@@ -213,11 +210,26 @@ public class StartSpelController extends StackPane {
 	}
 	
 	private void knoppenDisable() {
+		//edelsteenfiches
 		btnDiamantSpel.setDisable(true);	
     	btnOnyxSpel.setDisable(true);   	
     	btnRobijnSpel.setDisable(true);    	
     	btnSaffierSpel.setDisable(true);
     	btnSmaragdSpel.setDisable(true);
+    	
+    	//ontwikkelingskaarten
+    	btnN1Owk1.setDisable(true);
+        btnN1Owk2.setDisable(true);
+        btnN1Owk3.setDisable(true);
+        btnN1Owk4.setDisable(true);
+        btnN2Owk1.setDisable(true);
+        btnN2Owk2.setDisable(true);
+        btnN2Owk3.setDisable(true);
+        btnN2Owk4.setDisable(true);
+        btnN3Owk1.setDisable(true);
+        btnN3Owk2.setDisable(true);
+        btnN3Owk3.setDisable(true);
+        btnN3Owk4.setDisable(true);
 	}
 
 	@FXML
@@ -228,9 +240,11 @@ public class StartSpelController extends StackPane {
 	    	btnStartRonde.setDisable(false);
 		}
 		
-		tmpSpelerLijst= dc.updateIsAanDeBeurt(tmpSpelerLijst);
+		tmpSpelerLijst = dc.updateIsAanDeBeurt(tmpSpelerLijst);
 		btnFicheKiezen.setDisable(false);
-	
+		if(aantalKlik > 1)
+    		btnKaartKopen.setDisable(false);
+			
 		knoppenDisable();
 		updateAantalFichesSpeler();// dit staat op de juiste plek AFBLIJVEN
 	}
@@ -260,10 +274,9 @@ public class StartSpelController extends StackPane {
     	tmpSpelerLijst = dc.updateIsAanDeBeurt(tmpSpelerLijst);
     	
     	btnFicheKiezen.setDisable(false);
-    	if(aantalKlik > 1) {
+    	if(aantalKlik > 1)
     		btnKaartKopen.setDisable(false);
-    		
-    	}
+
     	
     	btnVolgende.setDisable(false);
     	btnStartRonde.setDisable(true);
@@ -272,7 +285,9 @@ public class StartSpelController extends StackPane {
     }
     
     @FXML
-    void btnFicheKiezenClicked(ActionEvent event) {   	
+    void btnFicheKiezenClicked(ActionEvent event) {
+    	btnKaartKopen.setDisable(true);
+    	
     	btnDiamantSpel.setDisable(false);
     	btnDiamantSpel.setOnAction(this::btnFicheClicked);
     	
@@ -333,34 +348,84 @@ public class StartSpelController extends StackPane {
 
     @FXML
     void btnKaartKopenClicked(ActionEvent event) {
-
+    	btnFicheKiezen.setDisable(true);
+    	
+    	btnN1Owk1.setDisable(false);
+    	btnN1Owk1.setOnAction(this::btnNiveau1Clicked);
+        btnN1Owk2.setDisable(false);
+        btnN1Owk2.setOnAction(this::btnNiveau1Clicked);
+        btnN1Owk3.setDisable(false);
+        btnN1Owk3.setOnAction(this::btnNiveau1Clicked);
+        btnN1Owk4.setDisable(false);
+        btnN1Owk4.setOnAction(this::btnNiveau1Clicked);
+        
+        btnN2Owk1.setDisable(false);
+        btnN2Owk1.setOnAction(this::btnNiveau2Clicked);
+        btnN2Owk2.setDisable(false);
+        btnN2Owk2.setOnAction(this::btnNiveau2Clicked);
+        btnN2Owk3.setDisable(false);
+        btnN2Owk3.setOnAction(this::btnNiveau2Clicked);
+        btnN2Owk4.setDisable(false);
+        btnN2Owk4.setOnAction(this::btnNiveau2Clicked);
+        
+        btnN3Owk1.setDisable(false);
+        btnN3Owk1.setOnAction(this::btnNiveau3Clicked);
+        btnN3Owk2.setDisable(false);
+        btnN3Owk2.setOnAction(this::btnNiveau3Clicked);
+        btnN3Owk3.setDisable(false);
+        btnN3Owk3.setOnAction(this::btnNiveau3Clicked);
+        btnN3Owk4.setDisable(false);
+        btnN3Owk4.setOnAction(this::btnNiveau3Clicked);
     }
     
     void btnNiveau1Clicked(ActionEvent event) {
     	Button b = (Button) event.getSource();
-    	dc.koopKaartNiveau1(GridPane.getColumnIndex(b)-1);
-    	toonStartSpelbord();
-    	if(dc.getNiveau1().size()==0) {
-    		stapelNiveau1.setImage(null);
+    	try {
+    		dc.koopKaartNiveau1(GridPane.getColumnIndex(b)-1);
+        	toonStartSpelbord();
+        	if(dc.getNiveau1().size()==0) {
+        		stapelNiveau1.setImage(null);
+        	}
+    	}catch(IllegalArgumentException e) {
+    		Alert alert = new Alert(AlertType.ERROR);
+			alert.setTitle("Niet genoeg edelsteenfiches!");
+			alert.setContentText(e.getMessage());
+			alert.show();
     	}
     }
     
     void btnNiveau2Clicked(ActionEvent event) {
     	Button b = (Button) event.getSource();
-    	dc.koopKaartNiveau2(GridPane.getColumnIndex(b)-1);
-    	toonStartSpelbord();
-    	if(dc.getNiveau2().size()==0) {
-    		stapelNiveau2.setImage(null);
+    	try {
+    		dc.koopKaartNiveau2(GridPane.getColumnIndex(b)-1);
+        	toonStartSpelbord();
+        	if(dc.getNiveau2().size()==0) {
+        		stapelNiveau2.setImage(null);
+        	}
+    	}catch(IllegalArgumentException e) {
+    		Alert alert = new Alert(AlertType.ERROR);
+			alert.setTitle("Niet genoeg edelsteenfiches!");
+			alert.setContentText(e.getMessage());
+			alert.show();
     	}
+    	
     }
     
     void btnNiveau3Clicked(ActionEvent event) {
     	Button b = (Button) event.getSource();
-    	dc.koopKaartNiveau3(GridPane.getColumnIndex(b)-1);
-    	toonStartSpelbord();
-    	if(dc.getNiveau3().size()==0) {
-    		stapelNiveau3.setImage(null);
+    	try {
+    		dc.koopKaartNiveau3(GridPane.getColumnIndex(b)-1);
+        	toonStartSpelbord();
+        	if(dc.getNiveau3().size()==0) {
+        		stapelNiveau3.setImage(null);
+        	}
+    	}catch(IllegalArgumentException e) {
+    		Alert alert = new Alert(AlertType.ERROR);
+			alert.setTitle("Niet genoeg edelsteenfiches!");
+			alert.setContentText(e.getMessage());
+			alert.show();
     	}
+    	
     }
     
     @FXML
@@ -545,116 +610,4 @@ public class StartSpelController extends StackPane {
 
     @FXML
     private ImageView stapelNiveau3;
-
- 
-    
-    @FXML
-    void btnDiamantSpelClicked(ActionEvent event) {
-
-    }
-
-    @FXML
-    void btnEdele1Clicked(ActionEvent event) {
-
-    }
-
-    @FXML
-    void btnEdele2Clicked(ActionEvent event) {
-
-    }
-
-    @FXML
-    void btnEdele3Clicked(ActionEvent event) {
-
-    }
-
-    @FXML
-    void btnEdele4Clicked(ActionEvent event) {
-
-    }
-
-    @FXML
-    void btnEdele5Clicked(ActionEvent event) {
-
-    }
-
-    @FXML
-    void btnN1Owk1Clicked(ActionEvent event) {
-
-    }
-
-    @FXML
-    void btnN1Owk2Clicked(ActionEvent event) {
-
-    }
-
-    @FXML
-    void btnN1Owk3Clicked(ActionEvent event) {
-
-    }
-
-    @FXML
-    void btnN1Owk4Clicked(ActionEvent event) {
-
-    }
-
-    @FXML
-    void btnN2Owk1Clicked(ActionEvent event) {
-
-    }
-
-    @FXML
-    void btnN2Owk2Clicked(ActionEvent event) {
-
-    }
-
-    @FXML
-    void btnN2Owk3Clicked(ActionEvent event) {
-
-    }
-
-    @FXML
-    void btnN2Owk4Clicked(ActionEvent event) {
-
-    }
-
-    @FXML
-    void btnN3Owk1Clicked(ActionEvent event) {
-
-    }
-
-    @FXML
-    void btnN3Owk2Clicked(ActionEvent event) {
-
-    }
-
-    @FXML
-    void btnN3Owk3Clicked(ActionEvent event) {
-
-    }
-
-    @FXML
-    void btnN3Owk4Clicked(ActionEvent event) {
-
-    }
-
-    @FXML
-    void btnOnyxSpelClicked(ActionEvent event) {
-
-    }
-
-    @FXML
-    void btnRobijnSpelClicked(ActionEvent event) {
-
-    }
-
-    @FXML
-    void btnSaffierSpelClicked(ActionEvent event) {
-
-    }
-
-    @FXML
-    void btnSmaragdSpelClicked(ActionEvent event) {
-
-    }
 }

@@ -14,10 +14,6 @@ public class Prestige {
 	@FXML
 	private Image image;
 	
-	public List<EdelsteenAantal> getKosten() {
-		return kosten;
-	}
-	
 	public Prestige(int prestigepunten, Image image) {
 		this.prestigepunten=prestigepunten;
 		this.image = image;
@@ -30,6 +26,10 @@ public class Prestige {
 	
 	public int getPrestigepunten() {
 		return this.prestigepunten;
+	}
+	
+	public List<EdelsteenAantal> getKosten() {
+		return kosten;
 	}
 	
 	public Image getImage() {

@@ -136,10 +136,16 @@ public class Spel {
 		// krijgt index binnen van kaartnummer
 		// index kaart uit lijst zichtbare kaarten halen
 		// deze kaart in huidigeSpeler.ontwikkelingskaartenInBezit
-		if(niveau1.size()!=0) {
-			huidigeSpeler.getOntwikkelingskaartenInBezit().add(niveau1Zichtbaar.remove(index));
-			niveau1Zichtbaar.add(index,niveau1.remove(0));
-		}//else {
+		if(kanKaartGekochtWorden(niveau1Zichtbaar.get(index))) {
+			if(niveau1.size()!=0) {
+				huidigeSpeler.getOntwikkelingskaartenInBezit().add(niveau1Zichtbaar.remove(index));
+				niveau1Zichtbaar.add(index,niveau1.remove(0));
+			}
+		}
+		else {
+			throw new IllegalArgumentException("Deze kaart kan niet gekocht worden, je hebt niet genoeg edelsteenfiches!");
+		}
+//		else {
 //			huidigeSpeler.getOntwikkelingskaartenInBezit().add(niveau1Zichtbaar.remove(index));
 //		} --> werkt niet
 	}
@@ -160,6 +166,19 @@ public class Spel {
 		}//else {
 //			huidigeSpeler.getOntwikkelingskaartenInBezit().add(niveau3Zichtbaar.remove(index));
 //		} --> werkt niet
+	}
+	
+	private boolean kanKaartGekochtWorden(Ontwikkelingskaart k) {
+		int aantalSoortenEdelstenen = k.getKosten().size();
+		int aantalGoed = 0;
+		for(EdelsteenAantal kost : k.getKosten())
+			for(EdelsteenAantal inBezit : huidigeSpeler.getEdelsteenfichesInBezit())
+				if(kost.getSoort() == inBezit.getSoort())
+					if(kost.getAantal() == inBezit.getAantal())
+						aantalGoed++;
+		if(aantalGoed == aantalSoortenEdelstenen)
+			return true;
+		return false;
 	}
 	
 	public void neemEdelsteenAantal(EdelsteenAantal fiche) {
