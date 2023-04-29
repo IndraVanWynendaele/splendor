@@ -168,7 +168,19 @@ public class Spel {
 //			switch(vorigeSoort) {
 //			case DIAMANT -> 
 //			}
+		switch(fiche.getSoort()) {
+		case DIAMANT ->	controleerAantal(diamantAantal.getAantal(), fiche.getSoort());
+		case ONYX -> controleerAantal(onyxAantal.getAantal(), fiche.getSoort());
+		case ROBIJN -> controleerAantal(robijnAantal.getAantal(), fiche.getSoort());
+		case SAFFIER -> controleerAantal(saffierAantal.getAantal(), fiche.getSoort());
+		case SMARAGD -> controleerAantal(smaragdAantal.getAantal(), fiche.getSoort());
+		}
 		huidigeSpeler.voegEdelsteenficheToe(fiche);
+	}
+	
+	private void controleerAantal(int aantal, EdelsteenSoort soort) {
+		if(aantal == 0)
+			throw new IllegalArgumentException(String.format("Er zijn geen fiches meer van het soort %s", soort.name().toLowerCase()));
 	}
 	
 	public List<Ontwikkelingskaart> getNiveau1Zichtbaar() {

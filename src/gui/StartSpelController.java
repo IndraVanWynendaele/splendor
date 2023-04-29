@@ -13,9 +13,11 @@ import dtos.SpelerDTO;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.SplitPane;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
@@ -290,34 +292,41 @@ public class StartSpelController extends StackPane {
     void btnFicheClicked(ActionEvent event) {
     	int kolom;
     	Button b = (Button) event.getSource();
+    	try {
+    		if(GridPane.getColumnIndex(b) == null)
+        		kolom = 0;
+        	else
+        		kolom = GridPane.getColumnIndex(b);
+        	
+        	switch(kolom) {
+        	case 0 ->{
+        		dc.neemEdelsteenaantal(new EdelsteenAantal(1, EdelsteenSoort.SMARAGD));
+        		dc.getSmaragdAantal().setAantal(dc.getSmaragdAantal().getAantal() - 1);
+        	}
+        	case 1 -> {
+        		dc.neemEdelsteenaantal(new EdelsteenAantal(1, EdelsteenSoort.ONYX));
+        		dc.getOnyxAantal().setAantal(dc.getOnyxAantal().getAantal() - 1);
+        	}
+        	case 2 -> {
+        		dc.neemEdelsteenaantal(new EdelsteenAantal(1, EdelsteenSoort.DIAMANT));
+        		dc.getDiamantAantal().setAantal(dc.getDiamantAantal().getAantal() - 1);
+        	}
+        	case 3 -> {
+        		dc.neemEdelsteenaantal(new EdelsteenAantal(1, EdelsteenSoort.SAFFIER));
+        		dc.getSaffierAantal().setAantal(dc.getSaffierAantal().getAantal() - 1);
+        	}
+        	case 4 -> {
+        		dc.neemEdelsteenaantal(new EdelsteenAantal(1, EdelsteenSoort.ROBIJN));
+        		dc.getRobijnAantal().setAantal(dc.getRobijnAantal().getAantal() - 1);
+        	}
+        	}
+    	}catch(IllegalArgumentException e) {
+    		Alert alert = new Alert(AlertType.ERROR);
+			alert.setTitle("Geen edelsteenfiches meer!");
+			alert.setContentText(e.getMessage());
+			alert.show();
+    	}
     	
-    	if(GridPane.getColumnIndex(b) == null)
-    		kolom = 0;
-    	else
-    		kolom = GridPane.getColumnIndex(b);
-    	
-    	switch(kolom) {
-    	case 0 ->{
-    		dc.neemEdelsteenaantal(new EdelsteenAantal(1, EdelsteenSoort.SMARAGD));
-    		dc.getSmaragdAantal().setAantal(dc.getSmaragdAantal().getAantal() - 1);
-    	}
-    	case 1 -> {
-    		dc.neemEdelsteenaantal(new EdelsteenAantal(1, EdelsteenSoort.ONYX));
-    		dc.getOnyxAantal().setAantal(dc.getOnyxAantal().getAantal() - 1);
-    	}
-    	case 2 -> {
-    		dc.neemEdelsteenaantal(new EdelsteenAantal(1, EdelsteenSoort.DIAMANT));
-    		dc.getDiamantAantal().setAantal(dc.getDiamantAantal().getAantal() - 1);
-    	}
-    	case 3 -> {
-    		dc.neemEdelsteenaantal(new EdelsteenAantal(1, EdelsteenSoort.SAFFIER));
-    		dc.getSaffierAantal().setAantal(dc.getSaffierAantal().getAantal() - 1);
-    	}
-    	case 4 -> {
-    		dc.neemEdelsteenaantal(new EdelsteenAantal(1, EdelsteenSoort.ROBIJN));
-    		dc.getRobijnAantal().setAantal(dc.getRobijnAantal().getAantal() - 1);
-    	}
-    	}
     	updateAantalFichesSpel();
     	updateAantalFichesSpeler();
     }
