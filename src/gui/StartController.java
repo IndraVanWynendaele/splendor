@@ -52,6 +52,8 @@ public class StartController extends StackPane{
 		Scene scene = new Scene(mc);
 		Stage stage = (Stage) this.getScene().getWindow();
 		stage.setScene(scene);
+		stage.setMinWidth(600);
+	    stage.setMinHeight(586);
 		stage.show();
     }
 }

@@ -17,6 +17,8 @@ public class Main extends Application{
 			
 			primaryStage.setScene(scene);
 			primaryStage.setTitle("Splendor");
+			primaryStage.setMinWidth(626);
+		    primaryStage.setMinHeight(612);
 			
 			primaryStage.show();
 		}catch(Exception e) {

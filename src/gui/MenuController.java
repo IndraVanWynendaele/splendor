@@ -60,6 +60,8 @@ public class MenuController extends GridPane{
 		Scene scene1 = new Scene(ac);
 		Stage stage1 = (Stage) this.getScene().getWindow();
 		stage1.setScene(scene1);
+		stage1.setMinWidth(614);
+	    stage1.setMinHeight(602);
 		stage1.show();
     }
     
@@ -69,6 +71,8 @@ public class MenuController extends GridPane{
 		Scene scene2 = new Scene(osc);
 		Stage stage2 = (Stage) this.getScene().getWindow();
 		stage2.setScene(scene2);
+		stage2.setMinWidth(606);
+	    stage2.setMinHeight(603);
 		stage2.show();
     }
 	

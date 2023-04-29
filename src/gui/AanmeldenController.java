@@ -136,6 +136,8 @@ public class AanmeldenController extends StackPane{
 				Scene scene1 = new Scene(ssc);
 				Stage stage1 = (Stage) this.getScene().getWindow();
 				stage1.setScene(scene1);
+				stage1.setMinWidth(1200);
+			    stage1.setMinHeight(800);
 				stage1.setMaximized(true);
 				stage1.show();
 			}
