@@ -79,6 +79,10 @@ public class DomeinController {
 		s.isStartSpeler();
 	}
 	
+	public void resetSpelers() {
+		s.resetSpelers();
+	}
+	
 	public List<Speler> updateIsAanDeBeurt(List<Speler> tmpSpelerLijst) {
 		return s.updateIsAanDeBeurt(tmpSpelerLijst);
 	}
@@ -99,6 +103,10 @@ public class DomeinController {
 	
 	public Speler getStartSpeler() {
 		return s.getStartSpeler();
+	}
+	
+	public Speler getHuisdigeSpeler() {
+		return s.getHuidigeSpeler();
 	}
 	
 	public List<Edele> geefEdelenZichtbaar(){

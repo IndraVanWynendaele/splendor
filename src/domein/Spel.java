@@ -389,13 +389,17 @@ public class Spel {
 	}
 	
 	public List<Speler> updateIsAanDeBeurt(List<Speler> tmpSpelerLijst) {
-		if(tmpSpelerLijst.size()!=0) {
+		if(tmpSpelerLijst.contains(startSpeler)) {
+			tmpSpelerLijst.remove(huidigeSpeler);
+			return tmpSpelerLijst;
+		}
 			boolean klaar = false;
 			while(!klaar) {
 				if(tmpSpelerLijst.size()!=1) {
+					
 					for(int i = 0; i < spelers.size(); i++) {
 						String naam = spelers.get(i).getGebruikersnaam();
-							if(huidigeSpeler.getGebruikersnaam().equals(naam)) {
+							if(tmpSpelerLijst.get(0).getGebruikersnaam().equals(naam)) {
 								huidigeSpeler.isAanDeBeurt(false);
 								tmpSpelerLijst.remove(huidigeSpeler);
 								huidigeSpeler = tmpSpelerLijst.get(0);
@@ -404,14 +408,23 @@ public class Spel {
 							}
 						if(klaar)break;
 					}
-				}else {
-					huidigeSpeler.isAanDeBeurt(false);
-					tmpSpelerLijst.remove(huidigeSpeler);
-					klaar = true;
-				}
+				}//else {
+//					huidigeSpeler.isAanDeBeurt(false);
+//					tmpSpelerLijst.remove(huidigeSpeler);
+//					klaar = true;
+//					
+//				}
+			}
+		return tmpSpelerLijst;
+	}
+
+	public void resetSpelers() {
+		isStartSpeler();
+		for(Speler s : spelers) {
+			if(!s.geefisStartSpeler()) {
+				s.isAanDeBeurt(false);
 			}
 		}
-		return tmpSpelerLijst;
 	}
 	
 }

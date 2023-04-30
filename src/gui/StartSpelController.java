@@ -139,7 +139,7 @@ public class StartSpelController extends StackPane {
 	    lblSaffierSpelAantal.setText(toString(dc.getSaffierAantal().getAantal()));
 	}
 	
-	private void updateAantalFichesSpeler() {//dit werkt well!!
+	private void updateAantalFichesSpeler() {
 		List<Speler> spelers = dc.getSpelersInSpel();
 		for(Speler s: spelers) {
 			if(s.geefIsAanDeBeurt()) {
@@ -152,6 +152,15 @@ public class StartSpelController extends StackPane {
 					case SMARAGD -> lblSmaragdSpelerAantal.setText(toString(ea.getAantal()));
 					}				    
 				}
+			}
+		}
+	}
+	
+	private void updateSpelerOntwikkelingskaarten() {
+		List<Speler> spelers = dc.getSpelersInSpel();
+		for(Speler s: spelers) {
+			if(s.geefIsAanDeBeurt()) {
+				// ik zou ook een update maken voor de kaarten van de spelers
 			}
 		}
 	}
@@ -258,19 +267,19 @@ public class StartSpelController extends StackPane {
 
 	@FXML
 	void btnVolgendeClicked(ActionEvent event) {
+		tmpSpelerLijst = dc.updateIsAanDeBeurt(tmpSpelerLijst);
 		geefHuidigeSpeler();
 		if(tmpSpelerLijst.size()==1) {
 			btnVolgende.setDisable(true);
 	    	btnStartRonde.setDisable(false);
 		}
-		
-		tmpSpelerLijst = dc.updateIsAanDeBeurt(tmpSpelerLijst);
 		btnFicheKiezen.setDisable(false);
 		if(aantalKlik > 1)
     		btnKaartKopen.setDisable(false);
 			
 		knoppenDisable();
-		updateAantalFichesSpeler();// dit staat op de juiste plek AFBLIJVEN
+		updateAantalFichesSpeler();
+		updateSpelerOntwikkelingskaarten();// dit staat op de juiste plek AFBLIJVEN
 	}
 	
     @FXML
@@ -281,20 +290,9 @@ public class StartSpelController extends StackPane {
     	lblSpelerNaam.setText(dc.getStartSpeler().getGebruikersnaam());
     	tmpSpelerLijst = new ArrayList<>();
     	for(int i = 0; i < dc.getSpelersInSpel().size();i++) {
-//    		/**/if(dc.getSpelersInSpel().get(i).getGebruikersnaam()==dc.getStartSpeler().getGebruikersnaam())break;
     		tmpSpelerLijst.add(dc.getSpelersInSpel().get(i));
-    		// Het probleem is dat we hier (lijn 247) al runnen waardoor dat Indra uit de lijst is
-    		// (dat is goed) maar waardoor Anke al achter de schermen de huidigspeler is
-    		// met andere woorden, we moeten dus heel dit ding opnieuw maken
-    		
-    		// indra --> ziet anke haar spelerbord (je voegd fiches toe als het op indra staat)
-    		// anke --> ziet youna haar spelerbord (je voegd fiches toe als het op anke staat)
-    		// youna --> ziet lara haar spelerbord (je voegd fiches toe als het op youna staat)
-    		// en lara --> ziet haar eige spelerbord (je voegd fiches toe als het op lara staat)
-    		
-    		// indra heeft geen speelerbord
     	}
-    	dc.isStartSpeler();
+    	dc.resetSpelers();
     	tmpSpelerLijst = dc.updateIsAanDeBeurt(tmpSpelerLijst);
     	
     	btnFicheKiezen.setDisable(false);
