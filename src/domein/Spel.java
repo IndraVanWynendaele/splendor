@@ -138,8 +138,16 @@ public class Spel {
 		// deze kaart in huidigeSpeler.ontwikkelingskaartenInBezit
 		if(kanKaartGekochtWorden(niveau1Zichtbaar.get(index))) {
 			if(niveau1.size()!=0) {
+				// fiches uit bezit speler halen
+				for(EdelsteenAantal kost:niveau1Zichtbaar.get(index).getKosten()) {
+					for(EdelsteenAantal inBezit:huidigeSpeler.getEdelsteenfichesInBezit()) {
+						if(kost.getSoort() == inBezit.getSoort()) {
+							int nieuwAantal = kost.getAantal() - inBezit.getAantal();
+							huidigeSpeler.getEdelsteenfichesInBezit().get(index).setAantal(nieuwAantal);						}
+					}
+				}
 				huidigeSpeler.getOntwikkelingskaartenInBezit().add(niveau1Zichtbaar.remove(index));
-				niveau1Zichtbaar.add(index,niveau1.remove(0));
+				niveau1Zichtbaar.add(index,niveau1.remove(0));				
 			}
 		}
 		else {
@@ -152,6 +160,14 @@ public class Spel {
 	
 	public void koopKaartNiveau2(int index) {
 		if(niveau2.size()!=0) {
+			for(EdelsteenAantal kost:niveau1Zichtbaar.get(index).getKosten()) {
+				for(EdelsteenAantal inBezit:huidigeSpeler.getEdelsteenfichesInBezit()) {
+					if(kost.getSoort() == inBezit.getSoort()) {
+						int nieuwAantal = kost.getAantal() - inBezit.getAantal();
+						huidigeSpeler.getEdelsteenfichesInBezit().get(index).setAantal(nieuwAantal);
+					}
+				}
+			}
 			huidigeSpeler.getOntwikkelingskaartenInBezit().add(niveau2Zichtbaar.remove(index));
 			niveau2Zichtbaar.add(index,niveau2.remove(0));
 		}//else {
@@ -161,6 +177,14 @@ public class Spel {
 
 	public void koopKaartNiveau3(int index) {
 		if(niveau3.size()!=0) {
+			for(EdelsteenAantal kost:niveau1Zichtbaar.get(index).getKosten()) {
+				for(EdelsteenAantal inBezit:huidigeSpeler.getEdelsteenfichesInBezit()) {
+					if(kost.getSoort() == inBezit.getSoort()) {
+						int nieuwAantal = kost.getAantal() - inBezit.getAantal();
+						huidigeSpeler.getEdelsteenfichesInBezit().get(index).setAantal(nieuwAantal);
+					}
+				}
+			}
 			huidigeSpeler.getOntwikkelingskaartenInBezit().add(niveau3Zichtbaar.remove(index));
 			niveau3Zichtbaar.add(index,niveau3.remove(0));
 		}//else {

@@ -403,6 +403,7 @@ public class StartSpelController extends StackPane {
     	try {
     		dc.koopKaartNiveau1(GridPane.getColumnIndex(b)-1);
         	toonStartSpelbord();
+        	updateAantalFichesSpeler();
         	if(dc.getNiveau1().size()==0) {
         		if(stapelNiveau1.getImage() == null)
         			b.setGraphic(null);
@@ -421,6 +422,7 @@ public class StartSpelController extends StackPane {
     	try {
     		dc.koopKaartNiveau2(GridPane.getColumnIndex(b)-1);
         	toonStartSpelbord();
+        	updateAantalFichesSpeler();
         	if(dc.getNiveau2().size()==0) {
         		if(stapelNiveau2.getImage() == null)
         			b.setGraphic(null);
@@ -440,6 +442,7 @@ public class StartSpelController extends StackPane {
     	try {
     		dc.koopKaartNiveau3(GridPane.getColumnIndex(b)-1);
         	toonStartSpelbord();
+        	updateAantalFichesSpeler();
         	if(dc.getNiveau3().size()==0) {
         		if(stapelNiveau3.getImage() == null)
         			b.setGraphic(null);
