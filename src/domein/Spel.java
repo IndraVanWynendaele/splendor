@@ -119,6 +119,7 @@ public class Spel {
 		return false;
 	}
 	
+	
 	public List<Edele> edelenTeKoop(Speler huidigeSpeler){
 		List<Ontwikkelingskaart> aantalHuidigeOntwikkelingskaarten = huidigeSpeler.getOntwikkelingskaartenInBezit();
 		beschikbareEdelenSpeler = new ArrayList<>();
