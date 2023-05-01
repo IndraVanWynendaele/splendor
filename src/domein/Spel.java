@@ -409,12 +409,14 @@ public class Spel {
 							}
 						if(klaar)break;
 					}
-				}//else {
-//					huidigeSpeler.isAanDeBeurt(false);
-//					tmpSpelerLijst.remove(huidigeSpeler);
-//					klaar = true;
-//					
-//				}
+				}
+				else if(tmpSpelerLijst.size() == 1) {
+					huidigeSpeler.isAanDeBeurt(false);
+					tmpSpelerLijst.remove(huidigeSpeler);
+					huidigeSpeler = tmpSpelerLijst.get(0);
+					huidigeSpeler.isAanDeBeurt(true);
+					klaar = true;
+				}
 			}
 		return tmpSpelerLijst;
 	}
