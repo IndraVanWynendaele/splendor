@@ -301,6 +301,28 @@ public class StartSpelController extends StackPane {
 	void btnVolgendeClicked(ActionEvent event) {
 		tmpSpelerLijst = dc.updateIsAanDeBeurt(tmpSpelerLijst);
 		geefHuidigeSpeler();
+//		if(tmpSpelerLijst.size()==1) {
+//			btnVolgende.setDisable(true);
+//	    	btnStartRonde.setDisable(false);
+//	    	if(dc.isEindeSpel()) {
+//	    		WinnaarsOverzichtController woc = new WinnaarsOverzichtController(this, dc);
+//	    		Scene scene1 = new Scene(woc);
+//	    		Stage stage1 = (Stage) this.getScene().getWindow();
+//	    		stage1.setScene(scene1);
+//	    		stage1.setMinHeight(600);
+//	    		stage1.setMinWidth(600);
+//	    		stage1.setMaxHeight(600);
+//	    		stage1.setMaxWidth(600);
+//	    		stage1.show();
+//	    	}
+//		}
+		btnFicheKiezen.setDisable(false);
+		if(aantalKlik > 1)
+    		btnKaartKopen.setDisable(false);
+			
+		knoppenDisable();
+		updateAantalFichesSpeler();
+		updateSpelerOntwikkelingskaarten();// dit staat op de juiste plek AFBLIJVEN
 		if(tmpSpelerLijst.size()==1) {
 			btnVolgende.setDisable(true);
 	    	btnStartRonde.setDisable(false);
@@ -316,13 +338,6 @@ public class StartSpelController extends StackPane {
 	    		stage1.show();
 	    	}
 		}
-		btnFicheKiezen.setDisable(false);
-		if(aantalKlik > 1)
-    		btnKaartKopen.setDisable(false);
-			
-		knoppenDisable();
-		updateAantalFichesSpeler();
-		updateSpelerOntwikkelingskaarten();// dit staat op de juiste plek AFBLIJVEN
 	}
 	
     @FXML

@@ -1,8 +1,14 @@
 package gui;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Comparator;
+import java.util.List;
+import java.util.stream.Collectors;
 
 import domein.DomeinController;
+import domein.Speler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
@@ -12,6 +18,7 @@ public class WinnaarsOverzichtController extends StackPane{
 
 	private DomeinController dc;
 	private StartSpelController preStartSpelScreen;
+	private List<Speler> winnaars;
 	
 	@FXML
     private Label prestSpeler1;
@@ -47,9 +54,43 @@ public class WinnaarsOverzichtController extends StackPane{
     	
     	try {
     		loader.load();
+    		toonWinnaars();
     	}catch (IOException ex) {
     		throw new RuntimeException(ex);
     	}
+	}
+
+	private void toonWinnaars() {
+		List<Label> spelerLabels = new ArrayList<>();
+		spelerLabels.add(speler1);	
+		spelerLabels.add(speler2);
+		spelerLabels.add(speler3);
+		spelerLabels.add(speler4);
+		
+		List<Label> prestLabels = new ArrayList<>();
+		prestLabels.add(prestSpeler1);	
+		prestLabels.add(prestSpeler2);
+		prestLabels.add(prestSpeler3);
+		prestLabels.add(prestSpeler4);
+		
+		sorteerWinnaarsOpPrestigepunten();
+		int i = 0;
+		for(Speler w: winnaars) {
+			spelerLabels.get(i).setText(w.getGebruikersnaam());
+			prestLabels.get(i++).setText(toString(w.getTotaalAantalPrestigePunten()));
+		}
+		
+	}
+	
+	private String toString(int aantal) {
+		return String.format("%d", aantal);
+	}
+	
+	private Collection<Speler> sorteerWinnaarsOpPrestigepunten(){
+		winnaars = dc.getWinnaars();
+		return winnaars.stream()
+				.sorted(Comparator.comparing(Speler::getTotaalAantalPrestigePunten))
+				.collect(Collectors.toList());
 	}
 	
 }
