@@ -72,6 +72,14 @@ public class Speler {
 		totaalAantalPrestigepunten += kaart.getPrestigepunten();
 	}
 	
+	public void verwijderEdelsteenfiches(EdelsteenSoort soort, int aantal) {
+		for(int i = 0; i < edelsteenfichesInBezit.size(); i++) {
+			if(edelsteenfichesInBezit.get(i).getSoort().equals(soort)) {
+				edelsteenfichesInBezit.get(i).setAantal(edelsteenfichesInBezit.get(i).getAantal() - aantal);
+			}
+		}
+	}
+	
 	public void isStartspeler(boolean i) {
 		isStartspeler = i;
 	}

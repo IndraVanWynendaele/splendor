@@ -256,11 +256,16 @@ public class StartSpelController extends StackPane {
 				edeleBezitImv.get(i).setFitHeight(150);
 				edeleBezitImv.get(i).setFitWidth(150);
 			}
-		
-			for(int i = 0; i < ok.size(); i++) {
-				ontwikkelingsKaartenSpeler.get(i).setImage(ok.get(i).getImage());	
-				ontwikkelingsKaartenSpeler.get(i).setFitHeight(160);
-				ontwikkelingsKaartenSpeler.get(i).setFitWidth(125);
+			 
+			if(ok.size() == 0) 
+				for(ImageView kaart: ontwikkelingsKaartenSpeler)
+					kaart.setImage(null);
+			else {
+				for(int i = 0; i < ok.size(); i++) {
+					ontwikkelingsKaartenSpeler.get(i).setImage(ok.get(i).getImage());	
+					ontwikkelingsKaartenSpeler.get(i).setFitHeight(160);
+					ontwikkelingsKaartenSpeler.get(i).setFitWidth(125);
+				}
 			}
 		}
 	}
@@ -468,7 +473,6 @@ public class StartSpelController extends StackPane {
 			alert.setContentText(e.getMessage());
 			alert.show();
     	}
-    	
     }
     
     void btnNiveau3Clicked(ActionEvent event) {
@@ -489,7 +493,6 @@ public class StartSpelController extends StackPane {
 			alert.setContentText(e.getMessage());
 			alert.show();
     	}
-    	
     }
     
     @FXML

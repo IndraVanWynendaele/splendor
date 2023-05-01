@@ -140,12 +140,9 @@ public class Spel {
 		if(kanKaartGekochtWorden(niveau1Zichtbaar.get(index))) {
 			if(niveau1.size()!=0) {
 				// fiches uit bezit speler halen
-				for(EdelsteenAantal kost:niveau1Zichtbaar.get(index).getKosten()) {
-					for(EdelsteenAantal inBezit:huidigeSpeler.getEdelsteenfichesInBezit()) {
-						if(kost.getSoort() == inBezit.getSoort()) {
-							int nieuwAantal = kost.getAantal() - inBezit.getAantal();
-							huidigeSpeler.getEdelsteenfichesInBezit().get(index).setAantal(nieuwAantal);						}
-					}
+				for(EdelsteenAantal kost : niveau1Zichtbaar.get(index).getKosten()) {
+					huidigeSpeler.verwijderEdelsteenfiches(kost.getSoort(), kost.getAantal());
+					fichesTerugSpel(kost);
 				}
 				huidigeSpeler.voegOntwikkelingskaartToe(niveau1Zichtbaar.remove(index));
 				niveau1Zichtbaar.add(index,niveau1.remove(0));				
@@ -159,13 +156,9 @@ public class Spel {
 	public void koopKaartNiveau2(int index) {
 		if(kanKaartGekochtWorden(niveau2Zichtbaar.get(index))) {
 			if(niveau2.size()!=0) {
-				for(EdelsteenAantal kost:niveau2Zichtbaar.get(index).getKosten()) {
-					for(EdelsteenAantal inBezit:huidigeSpeler.getEdelsteenfichesInBezit()) {
-						if(kost.getSoort() == inBezit.getSoort()) {
-							int nieuwAantal = kost.getAantal() - inBezit.getAantal();
-							huidigeSpeler.getEdelsteenfichesInBezit().get(index).setAantal(nieuwAantal);
-						}
-					}
+				for(EdelsteenAantal kost : niveau2Zichtbaar.get(index).getKosten()) {
+					huidigeSpeler.verwijderEdelsteenfiches(kost.getSoort(), kost.getAantal());
+					fichesTerugSpel(kost);
 				}
 				huidigeSpeler.voegOntwikkelingskaartToe(niveau2Zichtbaar.remove(index));
 				niveau2Zichtbaar.add(index,niveau2.remove(0));
@@ -179,13 +172,9 @@ public class Spel {
 	public void koopKaartNiveau3(int index) {
 		if(kanKaartGekochtWorden(niveau3Zichtbaar.get(index))) {
 			if(niveau3.size()!=0) {
-				for(EdelsteenAantal kost:niveau3Zichtbaar.get(index).getKosten()) {
-					for(EdelsteenAantal inBezit:huidigeSpeler.getEdelsteenfichesInBezit()) {
-						if(kost.getSoort() == inBezit.getSoort()) {
-							int nieuwAantal = kost.getAantal() - inBezit.getAantal();
-							huidigeSpeler.getEdelsteenfichesInBezit().get(index).setAantal(nieuwAantal);
-						}
-					}
+				for(EdelsteenAantal kost : niveau3Zichtbaar.get(index).getKosten()) {
+					huidigeSpeler.verwijderEdelsteenfiches(kost.getSoort(), kost.getAantal());
+					fichesTerugSpel(kost);
 				}
 				huidigeSpeler.voegOntwikkelingskaartToe(niveau3Zichtbaar.remove(index));
 				niveau3Zichtbaar.add(index,niveau3.remove(0));
@@ -196,13 +185,23 @@ public class Spel {
 //		} --> werkt niet
 	}
 	
+	private void fichesTerugSpel(EdelsteenAantal fiche) {
+		switch(fiche.getSoort()) {
+		case DIAMANT ->	diamantAantal.setAantal(diamantAantal.getAantal() + fiche.getAantal());
+		case ONYX -> onyxAantal.setAantal(onyxAantal.getAantal() + fiche.getAantal());
+		case ROBIJN -> robijnAantal.setAantal(robijnAantal.getAantal() + fiche.getAantal());
+		case SAFFIER -> saffierAantal.setAantal(saffierAantal.getAantal() + fiche.getAantal());
+		case SMARAGD -> smaragdAantal.setAantal(smaragdAantal.getAantal() + fiche.getAantal());
+		}
+	}
+	
 	private boolean kanKaartGekochtWorden(Ontwikkelingskaart k) {
 		int aantalSoortenEdelstenen = k.getKosten().size();
 		int aantalGoed = 0;
 		for(EdelsteenAantal kost : k.getKosten())
 			for(EdelsteenAantal inBezit : huidigeSpeler.getEdelsteenfichesInBezit())
-				if(kost.getSoort() == inBezit.getSoort())
-					if(kost.getAantal() == inBezit.getAantal())
+				if(kost.getSoort().equals(inBezit.getSoort()))
+					if(kost.getAantal() <= inBezit.getAantal())
 						aantalGoed++;
 		if(aantalGoed == aantalSoortenEdelstenen)
 			return true;
@@ -325,7 +324,7 @@ public class Spel {
 
 	public boolean isEindeSpel() {
 		for(Speler speler: spelers) {
-			if(speler.getTotaalAantalPrestigePunten()>=0) {
+			if(speler.getTotaalAantalPrestigePunten()>=15) {
 				bepaalWinnaar();
 				return true;
 			}
