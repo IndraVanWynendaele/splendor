@@ -179,6 +179,10 @@ public class StartSpelController extends StackPane {
 			if(s.geefIsAanDeBeurt()) {
 				lblPrestigepunten.setText(String.format("Prestigepunten: %s",s.getTotaalAantalPrestigePunten()));
 				List<Ontwikkelingskaart> ok = s.getOntwikkelingskaartenInBezit();
+				for(int i= 0; i < ontwikkelingsKaartenSpeler.size(); i++) {
+					ontwikkelingsKaartenSpeler.get(i).setImage(null);
+				}
+				
 				for(int i = 0; i < ok.size(); i++) {
 					ontwikkelingsKaartenSpeler.get(i).setImage(ok.get(i).getImage());	
 					ontwikkelingsKaartenSpeler.get(i).setFitHeight(160);
@@ -323,7 +327,6 @@ public class StartSpelController extends StackPane {
 	
     @FXML
     void btnStartRondeClicked(ActionEvent event) {
-    	geefHuidigeSpeler();
     	aantalKlik++;
         lblRondeNr.setText(String.format("Ronde: %d", aantalKlik));
     	lblSpelerNaam.setText(dc.getStartSpeler().getGebruikersnaam());
@@ -338,7 +341,7 @@ public class StartSpelController extends StackPane {
     	if(aantalKlik > 1)
     		btnKaartKopen.setDisable(false);
 
-    	
+    	geefHuidigeSpeler();
     	btnVolgende.setDisable(false);
     	btnStartRonde.setDisable(true);
     	knoppenDisable();
