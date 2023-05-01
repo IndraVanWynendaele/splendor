@@ -9,18 +9,18 @@ import domein.Edele;
 import domein.EdelsteenAantal;
 import domein.Ontwikkelingskaart;
 import domein.Speler;
-import dtos.SpelerDTO;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.SplitPane;
-import javafx.scene.control.Alert.AlertType;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
+import javafx.stage.Stage;
 import util.EdelsteenSoort;
 
 public class StartSpelController extends StackPane {
@@ -295,6 +295,17 @@ public class StartSpelController extends StackPane {
 		if(tmpSpelerLijst.size()==1) {
 			btnVolgende.setDisable(true);
 	    	btnStartRonde.setDisable(false);
+	    	if(dc.isEindeSpel()) {
+	    		WinnaarsOverzichtController woc = new WinnaarsOverzichtController(this, dc);
+	    		Scene scene1 = new Scene(woc);
+	    		Stage stage1 = (Stage) this.getScene().getWindow();
+	    		stage1.setScene(scene1);
+	    		stage1.setMinHeight(600);
+	    		stage1.setMinWidth(600);
+	    		stage1.setMaxHeight(600);
+	    		stage1.setMaxWidth(600);
+	    		stage1.show();
+	    	}
 		}
 		btnFicheKiezen.setDisable(false);
 		if(aantalKlik > 1)

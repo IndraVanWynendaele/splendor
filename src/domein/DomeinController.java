@@ -51,6 +51,10 @@ public class DomeinController {
 		return true;
 	}
 	
+	public boolean isEindeSpel() {
+		return s.isEindeSpel();
+	}
+	
 	public void koopKaartNiveau1(int index) {
 		s.koopKaartNiveau1(index);
 	}
@@ -107,6 +111,10 @@ public class DomeinController {
 	
 	public Speler getHuisdigeSpeler() {
 		return s.getHuidigeSpeler();
+	}
+	
+	public List<Speler> getWinnaars(){
+		return s.getWinnaars();
 	}
 	
 	public List<Edele> geefEdelenZichtbaar(){
