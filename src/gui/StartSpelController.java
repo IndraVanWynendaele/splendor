@@ -17,12 +17,10 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.RadioButton;
-import javafx.scene.control.ToggleGroup;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
-import javafx.scene.layout.TilePane;
+import javafx.stage.Popup;
 import javafx.stage.Stage;
 import util.EdelsteenSoort;
 
@@ -474,8 +472,12 @@ public class StartSpelController extends StackPane {
         		alert.show();
         	}
         	else if(dc.controleerMogelijkheidTotEdelen() > 1) {
-
-               
+        		Popup popup = new Popup();
+        		for(Edele edele : dc.geefBeschikbareEdelen()) {
+        			ImageView imv = new ImageView();
+        			imv.setImage(edele.getImage());
+        			popup.getContent().addAll(imv);
+        		}
         	}
     	}catch(IllegalArgumentException e) {
     		Alert alert = new Alert(AlertType.ERROR);
@@ -484,8 +486,8 @@ public class StartSpelController extends StackPane {
 			alert.show();
     	}
     }
-    
-    void btnNiveau2Clicked(ActionEvent event) {
+
+	void btnNiveau2Clicked(ActionEvent event) {
     	Button b = (Button) event.getSource();
     	try {
     		dc.koopKaartNiveau2(GridPane.getColumnIndex(b)-1);

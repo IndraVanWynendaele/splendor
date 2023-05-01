@@ -101,6 +101,10 @@ public class DomeinController {
 		return 0;
 	}
 	
+	public List<Edele> geefBeschikbareEdelen() {
+		return s.edelenOpBezoek(huidigeSpeler);
+	}
+	
 	public List<Speler> getSpelersInSpel() {
 		return spelersInSpel;
 	}
