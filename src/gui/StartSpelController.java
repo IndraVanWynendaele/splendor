@@ -143,6 +143,7 @@ public class StartSpelController extends StackPane {
 		List<Speler> spelers = dc.getSpelersInSpel();
 		for(Speler s: spelers) {
 			if(s.geefIsAanDeBeurt()) {
+				lblPrestigepunten.setText(String.format("Prestigepunten: %s",s.getTotaalAantalPrestigePunten()));
 				for(EdelsteenAantal ea : s.getEdelsteenfichesInBezit()) {
 					switch(ea.getSoort()) {
 					case DIAMANT -> lblDiamantSpelerAantal.setText(toString(ea.getAantal()));
@@ -157,10 +158,32 @@ public class StartSpelController extends StackPane {
 	}
 	
 	private void updateSpelerOntwikkelingskaarten() {
+		List<ImageView> ontwikkelingsKaartenSpeler = new ArrayList<>();
+		ontwikkelingsKaartenSpeler.add(imgKaartSpeler1);
+		ontwikkelingsKaartenSpeler.add(imgKaartSpeler2);
+		ontwikkelingsKaartenSpeler.add(imgKaartSpeler3);
+		ontwikkelingsKaartenSpeler.add(imgKaartSpeler4);
+		ontwikkelingsKaartenSpeler.add(imgKaartSpeler5);
+		ontwikkelingsKaartenSpeler.add(imgKaartSpeler6);
+		ontwikkelingsKaartenSpeler.add(imgKaartSpeler7);
+		ontwikkelingsKaartenSpeler.add(imgKaartSpeler8);
+		ontwikkelingsKaartenSpeler.add(imgKaartSpeler9);
+		ontwikkelingsKaartenSpeler.add(imgKaartSpeler10);
+		ontwikkelingsKaartenSpeler.add(imgKaartSpeler11);
+		ontwikkelingsKaartenSpeler.add(imgKaartSpeler12);
+		ontwikkelingsKaartenSpeler.add(imgKaartSpeler13);
+		ontwikkelingsKaartenSpeler.add(imgKaartSpeler14);
+		
 		List<Speler> spelers = dc.getSpelersInSpel();
 		for(Speler s: spelers) {
 			if(s.geefIsAanDeBeurt()) {
-				// ik zou ook een update maken voor de kaarten van de spelers
+				lblPrestigepunten.setText(String.format("Prestigepunten: %s",s.getTotaalAantalPrestigePunten()));
+				List<Ontwikkelingskaart> ok = s.getOntwikkelingskaartenInBezit();
+				for(int i = 0; i < ok.size(); i++) {
+					ontwikkelingsKaartenSpeler.get(i).setImage(ok.get(i).getImage());	
+					ontwikkelingsKaartenSpeler.get(i).setFitHeight(160);
+					ontwikkelingsKaartenSpeler.get(i).setFitWidth(125);
+				}
 			}
 		}
 	}
@@ -402,6 +425,7 @@ public class StartSpelController extends StackPane {
     		dc.koopKaartNiveau1(GridPane.getColumnIndex(b)-1);
         	toonStartSpelbord();
         	updateAantalFichesSpeler();
+        	updateSpelerOntwikkelingskaarten();
         	if(dc.getNiveau1().size()==0) {
         		if(stapelNiveau1.getImage() == null)
         			b.setGraphic(null);
@@ -421,6 +445,7 @@ public class StartSpelController extends StackPane {
     		dc.koopKaartNiveau2(GridPane.getColumnIndex(b)-1);
         	toonStartSpelbord();
         	updateAantalFichesSpeler();
+        	updateSpelerOntwikkelingskaarten();
         	if(dc.getNiveau2().size()==0) {
         		if(stapelNiveau2.getImage() == null)
         			b.setGraphic(null);
@@ -441,6 +466,7 @@ public class StartSpelController extends StackPane {
     		dc.koopKaartNiveau3(GridPane.getColumnIndex(b)-1);
         	toonStartSpelbord();
         	updateAantalFichesSpeler();
+        	updateSpelerOntwikkelingskaarten();
         	if(dc.getNiveau3().size()==0) {
         		if(stapelNiveau3.getImage() == null)
         			b.setGraphic(null);

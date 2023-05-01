@@ -55,6 +55,7 @@ public class Speler {
 	
 	public void voegEdeleToe(Edele edele) {
 		edelenInBezit.add(edele);
+		totaalAantalPrestigepunten += edele.getPrestigepunten();
 	}
 	
 	public void voegEdelsteenficheToe(EdelsteenAantal fiche) {
@@ -64,6 +65,11 @@ public class Speler {
 				huidige.setAantal(huidige.getAantal() + fiche.getAantal());
 			}
 		}
+	}
+	
+	public void voegOntwikkelingskaartToe(Ontwikkelingskaart kaart) {
+		ontwikkelingskaartenInBezit.add(kaart);
+		totaalAantalPrestigepunten += kaart.getPrestigepunten();
 	}
 	
 	public void isStartspeler(boolean i) {

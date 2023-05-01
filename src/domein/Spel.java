@@ -147,7 +147,7 @@ public class Spel {
 							huidigeSpeler.getEdelsteenfichesInBezit().get(index).setAantal(nieuwAantal);						}
 					}
 				}
-				huidigeSpeler.getOntwikkelingskaartenInBezit().add(niveau1Zichtbaar.remove(index));
+				huidigeSpeler.voegOntwikkelingskaartToe(niveau1Zichtbaar.remove(index));
 				niveau1Zichtbaar.add(index,niveau1.remove(0));				
 			}
 		}
@@ -167,7 +167,7 @@ public class Spel {
 						}
 					}
 				}
-				huidigeSpeler.getOntwikkelingskaartenInBezit().add(niveau2Zichtbaar.remove(index));
+				huidigeSpeler.voegOntwikkelingskaartToe(niveau2Zichtbaar.remove(index));
 				niveau2Zichtbaar.add(index,niveau2.remove(0));
 			}
 		}
@@ -187,7 +187,7 @@ public class Spel {
 						}
 					}
 				}
-				huidigeSpeler.getOntwikkelingskaartenInBezit().add(niveau3Zichtbaar.remove(index));
+				huidigeSpeler.voegOntwikkelingskaartToe(niveau3Zichtbaar.remove(index));
 				niveau3Zichtbaar.add(index,niveau3.remove(0));
 			}
 		}
