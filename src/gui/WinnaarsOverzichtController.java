@@ -20,6 +20,16 @@ public class WinnaarsOverzichtController extends StackPane{
 	private StartSpelController preStartSpelScreen;
 	private List<Speler> winnaars;
 	
+
+    @FXML
+    private Label lblPrestigepunten;
+
+    @FXML
+    private Label lblSpeler;
+
+    @FXML
+    private Label lblWinnaar;
+	
 	@FXML
     private Label prestSpeler1;
 

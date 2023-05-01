@@ -12,7 +12,6 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-
 <fx:root type="StackPane" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <ImageView fitHeight="603.0" fitWidth="606.0" pickOnBounds="true" preserveRatio="true">
@@ -23,7 +22,7 @@
       <Rectangle arcHeight="5.0" arcWidth="5.0" blendMode="OVERLAY" fill="#1f93ff00" height="512.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="5.0" width="520.0" />
       <VBox alignment="CENTER" spacing="30.0">
          <children>
-            <Label alignment="CENTER" text="Overzicht Spelers" textFill="WHITE">
+            <Label fx:id="lblOverzicht" alignment="CENTER" text="Overzicht Spelers" textFill="WHITE">
                <font>
                   <Font name="GothicI" size="47.0" />
                </font>
