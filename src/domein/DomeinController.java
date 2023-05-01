@@ -93,7 +93,7 @@ public class DomeinController {
 	
 	public int controleerMogelijkheidTotEdelen() {
 		if(s.controleerMogelijkheidTotEdelen(huidigeSpeler)) {
-			List<Edele> beschikbareEdelen = s.edelenTeKoop(huidigeSpeler);
+			List<Edele> beschikbareEdelen = s.edelenOpBezoek(huidigeSpeler);
 			if(beschikbareEdelen.size() == 1)
 				huidigeSpeler.voegEdeleToe(beschikbareEdelen.get(0));
 			return beschikbareEdelen.size();

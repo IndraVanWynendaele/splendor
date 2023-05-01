@@ -112,15 +112,13 @@ public class Spel {
 	
 	public boolean controleerMogelijkheidTotEdelen(Speler huidigeSpeler) {
 		// lijst aanmaken met edelsteen aantal van huidigeSpeler zijn huidige voorraad ontwikkelingskaarten
-		List<Edele> beschikbareEdelen = edelenTeKoop(huidigeSpeler);
-				
+		List<Edele> beschikbareEdelen = edelenOpBezoek(huidigeSpeler);		
 		if(beschikbareEdelen.size() > 0)
 			return true;
 		return false;
-	}
+	}	
 	
-	
-	public List<Edele> edelenTeKoop(Speler huidigeSpeler){
+	public List<Edele> edelenOpBezoek(Speler huidigeSpeler){
 		List<Ontwikkelingskaart> aantalHuidigeOntwikkelingskaarten = huidigeSpeler.getOntwikkelingskaartenInBezit();
 		beschikbareEdelenSpeler = new ArrayList<>();
 		
@@ -324,7 +322,7 @@ public class Spel {
 
 	public boolean isEindeSpel() {
 		for(Speler speler: spelers) {
-			if(speler.getTotaalAantalPrestigePunten()>=3) {
+			if(speler.getTotaalAantalPrestigePunten()>=15) {
 				bepaalWinnaar();
 				return true;
 			}

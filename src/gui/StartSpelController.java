@@ -17,9 +17,12 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.RadioButton;
+import javafx.scene.control.ToggleGroup;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
+import javafx.scene.layout.TilePane;
 import javafx.stage.Stage;
 import util.EdelsteenSoort;
 
@@ -464,6 +467,15 @@ public class StartSpelController extends StackPane {
         		if(stapelNiveau1.getImage() == null)
         			b.setGraphic(null);
         		stapelNiveau1.setImage(null);
+        	}
+        	if(dc.controleerMogelijkheidTotEdelen() == 1) {
+        		Alert alert = new Alert(AlertType.INFORMATION);
+        		alert.setTitle("Je hebt een edele op bezoek!");
+        		alert.show();
+        	}
+        	else if(dc.controleerMogelijkheidTotEdelen() > 1) {
+
+               
         	}
     	}catch(IllegalArgumentException e) {
     		Alert alert = new Alert(AlertType.ERROR);
