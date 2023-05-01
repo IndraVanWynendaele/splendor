@@ -383,6 +383,7 @@ public class StartSpelController extends StackPane {
     void btnFicheClicked(ActionEvent event) {
     	int kolom;
     	Button b = (Button) event.getSource();
+    	// steek in tijdelijke lijst
     	try {
     		if(GridPane.getColumnIndex(b) == null)
         		kolom = 0;
@@ -392,23 +393,23 @@ public class StartSpelController extends StackPane {
         	switch(kolom) {
         	case 0 ->{
         		dc.neemEdelsteenaantal(new EdelsteenAantal(1, EdelsteenSoort.SMARAGD));
-        		dc.getSmaragdAantal().setAantal(dc.getSmaragdAantal().getAantal() - 1);
+        		// dc.getSmaragdAantal().setAantal(dc.getSmaragdAantal().getAantal() - 1);
         	}
         	case 1 -> {
         		dc.neemEdelsteenaantal(new EdelsteenAantal(1, EdelsteenSoort.ONYX));
-        		dc.getOnyxAantal().setAantal(dc.getOnyxAantal().getAantal() - 1);
+        		// dc.getOnyxAantal().setAantal(dc.getOnyxAantal().getAantal() - 1);
         	}
         	case 2 -> {
         		dc.neemEdelsteenaantal(new EdelsteenAantal(1, EdelsteenSoort.DIAMANT));
-        		dc.getDiamantAantal().setAantal(dc.getDiamantAantal().getAantal() - 1);
+        		 //dc.getDiamantAantal().setAantal(dc.getDiamantAantal().getAantal() - 1);
         	}
         	case 3 -> {
         		dc.neemEdelsteenaantal(new EdelsteenAantal(1, EdelsteenSoort.SAFFIER));
-        		dc.getSaffierAantal().setAantal(dc.getSaffierAantal().getAantal() - 1);
+        		// dc.getSaffierAantal().setAantal(dc.getSaffierAantal().getAantal() - 1);
         	}
         	case 4 -> {
         		dc.neemEdelsteenaantal(new EdelsteenAantal(1, EdelsteenSoort.ROBIJN));
-        		dc.getRobijnAantal().setAantal(dc.getRobijnAantal().getAantal() - 1);
+        		// dc.getRobijnAantal().setAantal(dc.getRobijnAantal().getAantal() - 1);
         	}
         	}
     	}catch(IllegalArgumentException e) {
@@ -417,7 +418,9 @@ public class StartSpelController extends StackPane {
 			alert.setContentText(e.getMessage());
 			alert.show();
     	}
-    	
+    	// if controleer keuze fiches
+    	// -> voeg toe aan permanente lijst
+    	// -> verwijder fiches spel?
     	updateAantalFichesSpel();
     	updateAantalFichesSpeler();
     }
@@ -471,14 +474,14 @@ public class StartSpelController extends StackPane {
         		alert.setTitle("Je hebt een edele op bezoek!");
         		alert.show();
         	}
-        	else if(dc.controleerMogelijkheidTotEdelen() > 1) {
-        		Popup popup = new Popup();
-        		for(Edele edele : dc.geefBeschikbareEdelen()) {
-        			ImageView imv = new ImageView();
-        			imv.setImage(edele.getImage());
-        			popup.getContent().addAll(imv);
-        		}
-        	}
+//        	else if(dc.controleerMogelijkheidTotEdelen() > 1) {
+//        		Popup popup = new Popup();
+//        		for(Edele edele : dc.geefBeschikbareEdelen()) {
+//        			ImageView imv = new ImageView();
+//        			imv.setImage(edele.getImage());
+//        			popup.getContent().addAll(imv);
+//        		}
+//        	}
     	}catch(IllegalArgumentException e) {
     		Alert alert = new Alert(AlertType.ERROR);
 			alert.setTitle("Niet genoeg edelsteenfiches!");

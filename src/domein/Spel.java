@@ -219,8 +219,13 @@ public class Spel {
 		case SAFFIER -> controleerAantal(saffierAantal.getAantal(), fiche.getSoort());
 		case SMARAGD -> controleerAantal(smaragdAantal.getAantal(), fiche.getSoort());
 		}
+		// ipv dit fiche in tijdelijke lijst steken?
 		huidigeSpeler.voegEdelsteenficheToe(fiche);
 	}
+	
+	// private void voeg tijdelijke lijst toe aan permanente lijst fiches
+	
+	// private boolean keuze fiches is correct?
 	
 	private void controleerAantal(int aantal, EdelsteenSoort soort) {
 		if(aantal == 0)
@@ -306,18 +311,15 @@ public class Spel {
 		return false;
 	}
 	
-	private void kiesEdelsteenfiches(int kolom) {
+	private void controleerKeuzeEdelsteenfiches(int kolom) {
 		List<EdelsteenAantal> edelsteenfichesInBezit=huidigeSpeler.getEdelsteenfichesInBezit();
 		switch(kolom) {
-		case 1 -> {
+			case 1 -> {
 			edelsteenfichesInBezit.get(kolom);
 			smaragdAantal.setAantal(smaragdAantal.getAantal()-1);
+			}
 		}
-//		case 2 ->null;
-//		case 3 ->null;
-//		case 4 ->null;
-//		case 5 ->null;
-		}
+		
 	}
 
 	public boolean isEindeSpel() {
