@@ -267,7 +267,7 @@ public class OntwikkelingskaartMapper {
 		b4.voegKostToe(2, EdelsteenSoort.ONYX);
 		lijstKaartenNiveau2.add(b4);
 		
-		Ontwikkelingskaart b5 = new Ontwikkelingskaart(2, 1, EdelsteenSoort.DIAMANT, new Image(getClass().getResourceAsStream("/images/b5.png")));
+		Ontwikkelingskaart b5 = new Ontwikkelingskaart(2, 2, EdelsteenSoort.DIAMANT, new Image(getClass().getResourceAsStream("/images/b5.png")));
 		b5.voegKostToe(1, EdelsteenSoort.SMARAGD);
 		b5.voegKostToe(4, EdelsteenSoort.ROBIJN);
 		b5.voegKostToe(2, EdelsteenSoort.ONYX);
@@ -387,7 +387,7 @@ public class OntwikkelingskaartMapper {
 		b27.voegKostToe(3, EdelsteenSoort.ONYX);
 		lijstKaartenNiveau2.add(b27);
 		
-		Ontwikkelingskaart b28 = new Ontwikkelingskaart(2, 3, EdelsteenSoort.ONYX, new Image(getClass().getResourceAsStream("/images/b28.png")));
+		Ontwikkelingskaart b28 = new Ontwikkelingskaart(2, 1, EdelsteenSoort.ONYX, new Image(getClass().getResourceAsStream("/images/b28.png")));
 		b28.voegKostToe(6, EdelsteenSoort.ONYX);
 		lijstKaartenNiveau2.add(b28);
 		
