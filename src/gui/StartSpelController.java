@@ -7,6 +7,7 @@ import java.util.List;
 import domein.DomeinController;
 import domein.Edele;
 import domein.EdelsteenAantal;
+import domein.MyResourceBundle_en;
 import domein.Ontwikkelingskaart;
 import domein.Speler;
 import javafx.event.ActionEvent;
@@ -32,10 +33,12 @@ public class StartSpelController extends StackPane {
 	private int aantalKlik = 0;
 	private List<Edele> zichtbareEdelen;
 	private List<Ontwikkelingskaart> niveau1, niveau2, niveau3, niveau1Zichtbaar, niveau2Zichtbaar, niveau3Zichtbaar;
+	private MyResourceBundle_en rb_en;
 	
     public StartSpelController(AanmeldenController preAanmeldenScreen, DomeinController dc) {
 		this.dc = dc;
 		this.preAanmeldenScreen=preAanmeldenScreen;
+		rb_en = new MyResourceBundle_en();
 			
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("StartSpel.fxml"));
 		loader.setRoot(this);
@@ -44,6 +47,13 @@ public class StartSpelController extends StackPane {
 		try {
 			loader.load();
 			toonStartSpelbord();
+			if(dc.geefWordtVertaald()) {
+				btnFicheKiezen.setText(rb_en.getString("btnFicheKiezen"));
+				btnKaartKopen.setText(rb_en.getString("btnKaartKopen"));
+				btnStartRonde.setText(rb_en.getString("btnStartRonde"));
+				btnVolgende.setText(rb_en.getString("btnVolgende"));
+				lblPrestigepunten.setText(rb_en.getString("lblPrestigepunten"));
+			}
 		} catch (IOException ex) {
 			throw new RuntimeException(ex);
 		}

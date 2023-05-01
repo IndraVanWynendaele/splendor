@@ -56,4 +56,10 @@ public class StartController extends StackPane{
 	    stage.setMinHeight(586);
 		stage.show();
     }
+	
+	@FXML
+    void btnPlayClicked(ActionEvent event) {
+		dc.setWordtVertaald(true);
+		btnSpelenClicked(event);
+    }
 }

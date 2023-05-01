@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.List;
 
 import domein.DomeinController;
+import domein.MyResourceBundle_en;
 import dtos.SpelerDTO;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -20,6 +21,7 @@ public class OverzichtSpelersController extends StackPane{
 
 	private DomeinController dc;
 	private MenuController preMenuScreen;
+	private MyResourceBundle_en rb_en;
 
     @FXML
     private Label lblOverzicht;
@@ -33,6 +35,7 @@ public class OverzichtSpelersController extends StackPane{
 	public OverzichtSpelersController(MenuController preMenuScreen, DomeinController dc) {
 		this.preMenuScreen = preMenuScreen;
 		this.dc = dc;
+		rb_en = new MyResourceBundle_en();
 		
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("OverzichtSpelers.fxml"));
 		loader.setRoot(this);
@@ -40,6 +43,10 @@ public class OverzichtSpelersController extends StackPane{
 		
 		try {
 			loader.load();
+			if(dc.geefWordtVertaald()) {
+				lblOverzicht.setText(rb_en.getString("lblOverzicht"));
+				btnTerug.setText(rb_en.getString("btnTerug"));
+			}
 		} catch (IOException ex) {
 			throw new RuntimeException(ex);
 		}

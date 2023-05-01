@@ -16,6 +16,7 @@ public class DomeinController {
 	public Speler startSpeler;
 	public Speler huidigeSpeler;
 	public List<Speler> spelersInSpel;
+	private boolean wordtVertaald;
 	
 	public DomeinController() {
 		s = new Spel();
@@ -30,6 +31,14 @@ public class DomeinController {
 		s.maakZichtbareOntwikkelingskaarten();
 	}
 
+	public boolean geefWordtVertaald() {
+		return wordtVertaald;
+	}
+	
+	public void setWordtVertaald(boolean wordtVertaald) {
+		this.wordtVertaald = wordtVertaald;
+	}
+	
 	public boolean meldAan(Speler sp) {
 		if(sRepo.geefSpeler(sp.getGebruikersnaam(), sp.getGeboortejaar())!= null) {
 			s.meldAan(sp);

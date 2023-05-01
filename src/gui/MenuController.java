@@ -3,6 +3,7 @@ package gui;
 import java.io.IOException;
 
 import domein.DomeinController;
+import domein.MyResourceBundle_en;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -20,6 +21,7 @@ public class MenuController extends GridPane{
 	
 	private DomeinController dc;
 	private StartController preStartScreen;
+	private MyResourceBundle_en rb_en;
 	
 	@FXML
     private ImageView BGImage;
@@ -42,13 +44,19 @@ public class MenuController extends GridPane{
 	public MenuController(StartController preStartScreen, DomeinController dc) {
 		this.preStartScreen = preStartScreen;
 		this.dc = dc;
+		rb_en = new MyResourceBundle_en();
 		
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("Menu.fxml"));
 		loader.setRoot(this);
 		loader.setController(this);
-		
+			
 		try {
 			loader.load();
+			if(dc.geefWordtVertaald()) {
+				btnAppStoppen.setText(rb_en.getString("btnAppStoppen"));
+				btnOverzichtSpelers.setText(rb_en.getString("btnOverzichtSpelers"));
+				btnSpelerAanmelden.setText(rb_en.getString("btnSpelerAanmelden"));
+			}
 		} catch (IOException ex) {
 			throw new RuntimeException(ex);
 		}
