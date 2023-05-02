@@ -52,7 +52,6 @@ public class StartSpelController extends StackPane {
 				btnKaartKopen.setText(rb_en.getString("btnKaartKopen"));
 				btnStartRonde.setText(rb_en.getString("btnStartRonde"));
 				btnVolgende.setText(rb_en.getString("btnVolgende"));
-				lblPrestigepunten.setText(rb_en.getString("lblPrestigepunten"));
 			}
 		} catch (IOException ex) {
 			throw new RuntimeException(ex);
@@ -154,7 +153,7 @@ public class StartSpelController extends StackPane {
 		List<Speler> spelers = dc.getSpelersInSpel();
 		for(Speler s: spelers) {
 			if(s.geefIsAanDeBeurt()) {
-				lblPrestigepunten.setText(String.format("Prestigepunten: %s",s.getTotaalAantalPrestigePunten()));
+				lblPrestigepunten.setText(String.format("%s: %s", dc.geefWordtVertaald()?rb_en.getString("lblPrestigepunten"):"Prestigepunten", s.getTotaalAantalPrestigePunten()));
 				for(EdelsteenAantal ea : s.getEdelsteenfichesInBezit()) {
 					switch(ea.getSoort()) {
 					case DIAMANT -> lblDiamantSpelerAantal.setText(toString(ea.getAantal()));
@@ -188,7 +187,7 @@ public class StartSpelController extends StackPane {
 		List<Speler> spelers = dc.getSpelersInSpel();
 		for(Speler s: spelers) {
 			if(s.geefIsAanDeBeurt()) {
-				lblPrestigepunten.setText(String.format("Prestigepunten: %s",s.getTotaalAantalPrestigePunten()));
+				lblPrestigepunten.setText(String.format("%s: %s", dc.geefWordtVertaald()?rb_en.getString("lblPrestigepunten"):"Prestigepunten", s.getTotaalAantalPrestigePunten()));
 				List<Ontwikkelingskaart> ok = s.getOntwikkelingskaartenInBezit();
 				for(int i= 0; i < ontwikkelingsKaartenSpeler.size(); i++) {
 					ontwikkelingsKaartenSpeler.get(i).setImage(null);
@@ -238,7 +237,7 @@ public class StartSpelController extends StackPane {
 			List<Edele> e = s.getEdelenInBezit();
 			if(s.geefIsAanDeBeurt()) {
 				lblSpelerNaam.setText(s.getGebruikersnaam());
-				lblPrestigepunten.setText(String.format("Prestigepunten: %s",s.getTotaalAantalPrestigePunten()));
+				lblPrestigepunten.setText(String.format("%s: %s", dc.geefWordtVertaald()?rb_en.getString("lblPrestigepunten"):"Prestigepunten", s.getTotaalAantalPrestigePunten()));
 				for(EdelsteenAantal ea : s.getEdelsteenfichesInBezit()) {
 					switch(ea.getSoort()) {
 					case DIAMANT -> lblDiamantSpelerAantal.setText(toString(ea.getAantal()));
@@ -353,8 +352,8 @@ public class StartSpelController extends StackPane {
 	
     @FXML
     void btnStartRondeClicked(ActionEvent event) {
-    	aantalKlik++;
-        lblRondeNr.setText(String.format("Ronde: %d", aantalKlik));
+    	aantalKlik++; 
+		lblRondeNr.setText(String.format("%s: %d", dc.geefWordtVertaald()?rb_en.getString("lblRondeNr"):"Ronde", aantalKlik));
     	lblSpelerNaam.setText(dc.getStartSpeler().getGebruikersnaam());
     	tmpSpelerLijst = new ArrayList<>();
     	for(int i = 0; i < dc.getSpelersInSpel().size();i++) {
