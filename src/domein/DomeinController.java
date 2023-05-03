@@ -20,7 +20,7 @@ public class DomeinController {
 	
 	public DomeinController() {
 		s = new Spel();
-		startSpel();
+		startSpel();	
 		sRepo = new SpelerRepository();
 	}
 	
@@ -265,7 +265,15 @@ public class DomeinController {
 		return s.controleerHoeveelheidFichesNemen(fiche);
 	}
 	
+	public void voegTmpLijstFichesToeAanPermLijst() {
+		s.voegTmpLijstFichesToeAanPermLijst();
+	}
+	
 	public List<EdelsteenAantal> getTmpLijstSpeler() {
-		return huidigeSpeler.getTmpFicheLijst();
+		return s.getTmpLijstSpeler();
+	}
+	
+	public boolean controleerAlTweeGelijkeFichesGekozen() {
+		return s.controleerAlTweeGelijkeFichesGekozen();
 	}
 }

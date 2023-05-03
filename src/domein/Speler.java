@@ -85,6 +85,13 @@ public class Speler {
 		tmpFicheLijst.add(fiche);
 	}
 	
+	public void voegTmpLijstFichesToeAanPermLijst() {
+		for(int i = 0; i < tmpFicheLijst.size(); i++) {
+			voegEdelsteenficheToe(new EdelsteenAantal(tmpFicheLijst.get(i).getAantal(), tmpFicheLijst.get(i).getSoort()));
+		}
+		tmpFicheLijst.clear();
+	}
+	
 	public void isStartspeler(boolean i) {
 		isStartspeler = i;
 	}

@@ -177,6 +177,16 @@ public class Spel {
 		}
 	}
 	
+	private void fichesUitSpel(EdelsteenAantal fiche) {
+		switch(fiche.getSoort()) {
+		case DIAMANT ->	diamantAantal.setAantal(diamantAantal.getAantal() - fiche.getAantal());
+		case ONYX -> onyxAantal.setAantal(onyxAantal.getAantal() - fiche.getAantal());
+		case ROBIJN -> robijnAantal.setAantal(robijnAantal.getAantal() - fiche.getAantal());
+		case SAFFIER -> saffierAantal.setAantal(saffierAantal.getAantal() - fiche.getAantal());
+		case SMARAGD -> smaragdAantal.setAantal(smaragdAantal.getAantal() - fiche.getAantal());
+		}
+	}
+	
 	private boolean kanKaartGekochtWorden(Ontwikkelingskaart k) {
 		int aantalSoortenEdelstenen = k.getKosten().size();
 		int aantalGoed = 0;
@@ -191,11 +201,6 @@ public class Spel {
 	}
 	
 	public void neemEdelsteenAantal(EdelsteenAantal fiche) {
-//		EdelsteenSoort vorigeSoort = null;
-//		if(vorigeSoort == fiche.getSoort())
-//			switch(vorigeSoort) {
-//			case DIAMANT -> 
-//			}
 		switch(fiche.getSoort()) {
 		case DIAMANT ->	controleerAantal(diamantAantal.getAantal(), fiche.getSoort());
 		case ONYX -> controleerAantal(onyxAantal.getAantal(), fiche.getSoort());
@@ -203,13 +208,16 @@ public class Spel {
 		case SAFFIER -> controleerAantal(saffierAantal.getAantal(), fiche.getSoort());
 		case SMARAGD -> controleerAantal(smaragdAantal.getAantal(), fiche.getSoort());
 		}
-		// ipv dit fiche in tijdelijke lijst steken?
 		huidigeSpeler.voegEdelsteenficheToe(fiche);
 	}
 	
-	// private void voeg tijdelijke lijst toe aan permanente lijst fiches
-	
-	// private boolean keuze fiches is correct?
+	public void voegTmpLijstFichesToeAanPermLijst() {
+		List<EdelsteenAantal> lijst = huidigeSpeler.getTmpFicheLijst();
+		for(int i = 0; i < lijst.size(); i++) {
+			fichesUitSpel(lijst.get(i));
+		}
+		huidigeSpeler.voegTmpLijstFichesToeAanPermLijst();	
+	}
 	
 	private void controleerAantal(int aantal, EdelsteenSoort soort) {
 		if(aantal == 0)
@@ -219,29 +227,33 @@ public class Spel {
 	public boolean controleerHoeveelheidFichesNemen(EdelsteenAantal fiche) {
 		List<EdelsteenAantal> tmpLijst = huidigeSpeler.getTmpFicheLijst();
 		if(tmpLijst.size() == 3)
-			return false;
+			return false; 
 		else {
 			for(int i = 0; i < tmpLijst.size(); i++) {
 				EdelsteenAantal spelerFiche = tmpLijst.get(i);
 				if(spelerFiche.getSoort().equals(fiche.getSoort())) {
 					if(spelerFiche.getAantal() == 2)
-						return false;
-					//hier argument
+						throw new IllegalArgumentException("Je hebt al 2 fiches van dezelfde soort!");
 					else if(tmpLijst.size() == 2)
-						return false;
-					//hier argument
+						throw new IllegalArgumentException("Je moet 3 verschillende fiches nemen!");
 					huidigeSpeler.voegTmpFicheToe(fiche);
-					tmpLijst.add(fiche);
 					return true;					
 				}
 				huidigeSpeler.voegTmpFicheToe(fiche);
-				tmpLijst.add(fiche);
 				return true;
 			}
 		}
 		huidigeSpeler.voegTmpFicheToe(fiche);
-		tmpLijst.add(fiche);
 		return true;
+	}
+	
+	public boolean controleerAlTweeGelijkeFichesGekozen() {
+		List<EdelsteenAantal> tmpLijst = huidigeSpeler.getTmpFicheLijst();
+		if(tmpLijst.get(0).getSoort().equals(tmpLijst.get(1).getSoort())) {
+			return true;
+		}
+		return false;
+		
 	}
 	
 	public List<Ontwikkelingskaart> getNiveau1Zichtbaar() {
@@ -310,6 +322,10 @@ public class Spel {
 	
 	public List<Edele> getBeschikbareEdelenSpeler() {
 		return beschikbareEdelenSpeler;
+	}
+	
+	public List<EdelsteenAantal> getTmpLijstSpeler() {
+		return huidigeSpeler.getTmpFicheLijst();
 	}
 	
 	

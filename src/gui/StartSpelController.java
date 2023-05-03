@@ -450,20 +450,66 @@ public class StartSpelController extends StackPane {
     	case 4 -> EdelsteenSoort.ROBIJN;
 		default -> throw new IllegalArgumentException("Unexpected value: " + kolom);
     	};
-    	
-    	// tijdelijke lijst aanmaken 
+
     	List<EdelsteenAantal> tmpLijstSpeler = dc.getTmpLijstSpeler();
-    	// do while met private methode in dc die controle
-    	if(!dc.controleerHoeveelheidFichesNemen(new EdelsteenAantal(1, soort))) {
-    		Alert alert = new Alert(AlertType.ERROR);
+ 
+    	try {
+    		
+    		 if(!dc.controleerHoeveelheidFichesNemen(new EdelsteenAantal(1, soort))) {
+	    		knoppenDisable();
+	    		dc.voegTmpLijstFichesToeAanPermLijst();
+	    		Alert alert = new Alert(AlertType.INFORMATION);
+	    		alert.setTitle("Fiches gekozen!");
+	    		alert.setContentText("Je hebt alle fiches gekozen");
+	    		alert.show();
+	    	}
+	    	else {
+	    		Alert alert = new Alert(AlertType.INFORMATION);
+	    		alert.setTitle("Edelsteenfiche gekozen!");	
+	    		alert.setContentText(String.format("Je hebt deze edelsteenfiche van het soort %s gekozen!", soort.toString().toLowerCase()));
+	    		alert.showAndWait();
+	    	}
+	    	
+	    	// vergeet niet size == 2 moet nog gedaan w
+	    	
+    	}catch(IllegalArgumentException e) {
+			Alert alert = new Alert(AlertType.ERROR);
 			alert.setTitle("Dit mag niet!");
 			alert.setContentText(e.getMessage());
 			alert.show();
     	}
-    	// switch case voor invoer fiches -> case -> steek deze fiche in tijdelijke lijst
-    	// tijdelijiek lijst aan perm lijst toevoegen
-    	// jetons uit spel halen 
-    	// lijst verwijderen
+    	controleerAlDrieFichesGekozen();
+    	if(tmpLijstSpeler.size() == 2) {
+    		controleerAlTweeGelijkeFichesGekozen();
+    	}
+    	updateAantalFichesSpel();
+    	updateAantalFichesSpeler();
+    	
+    }
+    
+    private void controleerAlDrieFichesGekozen() {
+    	List<EdelsteenAantal> tmpLijstSpeler = dc.getTmpLijstSpeler();
+    	if(tmpLijstSpeler.size() == 3) {
+			knoppenDisable();
+    		dc.voegTmpLijstFichesToeAanPermLijst();
+    		Alert alert = new Alert(AlertType.INFORMATION);
+    		alert.setTitle("Fiches gekozen!");
+    		alert.setContentText("Je hebt alle fiches gekozen");
+    		alert.show();
+    		btnFicheKiezen.setDisable(true);
+		}
+    }
+    
+    private void controleerAlTweeGelijkeFichesGekozen() {
+    	if(dc.controleerAlTweeGelijkeFichesGekozen()) {
+    		knoppenDisable();
+    		dc.voegTmpLijstFichesToeAanPermLijst();
+    		Alert alert = new Alert(AlertType.INFORMATION);
+    		alert.setTitle("Fiches gekozen!");
+    		alert.setContentText("Je hebt alle fiches gekozen");
+    		alert.show();
+    		btnFicheKiezen.setDisable(true);
+    	}
     }
     
 
