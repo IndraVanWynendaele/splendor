@@ -19,6 +19,7 @@ public class Speler {
 	private List<Ontwikkelingskaart> ontwikkelingskaartenInBezit= new ArrayList<>();
 	private List<EdelsteenAantal> edelsteenfichesInBezit = new ArrayList<>();
 	private List<Edele> edelenInBezit = new ArrayList<>();
+	private List<EdelsteenAantal> tmpFicheLijst = new ArrayList<>();
 	
 	public Speler(String gebruikersnaam, int geboortejaar) {
 		controleerGebruikersnaam(gebruikersnaam);
@@ -80,6 +81,10 @@ public class Speler {
 		}
 	}
 	
+	public void voegTmpFicheToe(EdelsteenAantal fiche) {
+		tmpFicheLijst.add(fiche);
+	}
+	
 	public void isStartspeler(boolean i) {
 		isStartspeler = i;
 	}
@@ -98,6 +103,10 @@ public class Speler {
 	
 	public List<Edele> getEdelenInBezit() {
 		return edelenInBezit;
+	}
+	
+	public List<EdelsteenAantal> getTmpFicheLijst() {
+		return tmpFicheLijst;
 	}
 	
 	public List<EdelsteenAantal> getEdelsteenfichesInBezit() {

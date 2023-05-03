@@ -260,4 +260,12 @@ public class DomeinController {
 	public void neemEdelsteenaantal(EdelsteenAantal fiche) {
 		s.neemEdelsteenAantal(fiche);
 	}
+	
+	public boolean controleerHoeveelheidFichesNemen(EdelsteenAantal fiche) {
+		return s.controleerHoeveelheidFichesNemen(fiche);
+	}
+	
+	public List<EdelsteenAantal> getTmpLijstSpeler() {
+		return huidigeSpeler.getTmpFicheLijst();
+	}
 }

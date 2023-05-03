@@ -18,26 +18,10 @@ public class Spel {
 	private Edele[] edeleInSpel;
 	private List<Speler> winnaars;
 	
-	public Speler getHuidigeSpeler() {
-		return huidigeSpeler;
-	}
-	
-	public Speler getStartSpeler() {
-		return startSpeler;
-	}
-	
-	public List<Speler> getWinnaars() {
-		return winnaars;
-	}
-	
-	public List<Edele> getBeschikbareEdelenSpeler() {
-		return beschikbareEdelenSpeler;
-	}
-	
 	public Spel() {
-		okr= new OntwikkelingskaartRepository();
-		er= new EdeleRepository();
-		spelers= new ArrayList<>();
+		okr = new OntwikkelingskaartRepository();
+		er = new EdeleRepository();
+		spelers = new ArrayList<>();
 	}
 	
 	public void meldAan(Speler sp){
@@ -232,6 +216,34 @@ public class Spel {
 			throw new IllegalArgumentException(String.format("Er zijn geen fiches meer van het soort %s", soort.name().toLowerCase()));
 	}
 	
+	public boolean controleerHoeveelheidFichesNemen(EdelsteenAantal fiche) {
+		List<EdelsteenAantal> tmpLijst = huidigeSpeler.getTmpFicheLijst();
+		if(tmpLijst.size() == 3)
+			return false;
+		else {
+			for(int i = 0; i < tmpLijst.size(); i++) {
+				EdelsteenAantal spelerFiche = tmpLijst.get(i);
+				if(spelerFiche.getSoort().equals(fiche.getSoort())) {
+					if(spelerFiche.getAantal() == 2)
+						return false;
+					//hier argument
+					else if(tmpLijst.size() == 2)
+						return false;
+					//hier argument
+					huidigeSpeler.voegTmpFicheToe(fiche);
+					tmpLijst.add(fiche);
+					return true;					
+				}
+				huidigeSpeler.voegTmpFicheToe(fiche);
+				tmpLijst.add(fiche);
+				return true;
+			}
+		}
+		huidigeSpeler.voegTmpFicheToe(fiche);
+		tmpLijst.add(fiche);
+		return true;
+	}
+	
 	public List<Ontwikkelingskaart> getNiveau1Zichtbaar() {
 		return niveau1Zichtbaar;
 	}
@@ -284,6 +296,22 @@ public class Spel {
 		return smaragdAantal;
 	}
 	
+	public Speler getHuidigeSpeler() {
+		return huidigeSpeler;
+	}
+	
+	public Speler getStartSpeler() {
+		return startSpeler;
+	}
+	
+	public List<Speler> getWinnaars() {
+		return winnaars;
+	}
+	
+	public List<Edele> getBeschikbareEdelenSpeler() {
+		return beschikbareEdelenSpeler;
+	}
+	
 	
 //	public void speelRonde() {
 //		for(Speler sp : spelers) {
@@ -292,35 +320,35 @@ public class Spel {
 //		}
 //		isEindeSpel();
 //	}
-
-	private void koopOntwikkelingskaart(int rij, int kolom) {
-		Ontwikkelingskaart o ;
-		switch(rij) {
-		case 1 ->{ 
-			o=niveau1Zichtbaar.get(kolom-1);
-			controleerOntwikkelingskaartKopen(o);
-			}
-		case 2 ->{ o=niveau2Zichtbaar.remove(kolom-1);}
-		case 3 ->{ o=niveau3Zichtbaar.remove(kolom-1);}
-		}
-		
-	}
-
-	private boolean controleerOntwikkelingskaartKopen(Ontwikkelingskaart o) {
-//		TODO huidigeSpeler
-		return false;
-	}
-	
-	private void controleerKeuzeEdelsteenfiches(int kolom) {
-		List<EdelsteenAantal> edelsteenfichesInBezit=huidigeSpeler.getEdelsteenfichesInBezit();
-		switch(kolom) {
-			case 1 -> {
-			edelsteenfichesInBezit.get(kolom);
-			smaragdAantal.setAantal(smaragdAantal.getAantal()-1);
-			}
-		}
-		
-	}
+//
+//	private void koopOntwikkelingskaart(int rij, int kolom) {
+//		Ontwikkelingskaart o ;
+//		switch(rij) {
+//		case 1 ->{ 
+//			o=niveau1Zichtbaar.get(kolom-1);
+//			controleerOntwikkelingskaartKopen(o);
+//			}
+//		case 2 ->{ o=niveau2Zichtbaar.remove(kolom-1);}
+//		case 3 ->{ o=niveau3Zichtbaar.remove(kolom-1);}
+//		}
+//		
+//	}
+//
+//	private boolean controleerOntwikkelingskaartKopen(Ontwikkelingskaart o) {
+////		TODO huidigeSpeler
+//		return false;
+//	}
+//	
+//	private void controleerKeuzeEdelsteenfiches(int kolom) {
+//		List<EdelsteenAantal> edelsteenfichesInBezit=huidigeSpeler.getEdelsteenfichesInBezit();
+//		switch(kolom) {
+//			case 1 -> {
+//			edelsteenfichesInBezit.get(kolom);
+//			smaragdAantal.setAantal(smaragdAantal.getAantal()-1);
+//			}
+//		}
+//		
+//	}
 
 	public boolean isEindeSpel() {
 		for(Speler speler: spelers) {

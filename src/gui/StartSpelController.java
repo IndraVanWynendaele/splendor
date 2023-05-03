@@ -436,8 +436,30 @@ public class StartSpelController extends StackPane {
 //    }
     
     void btnFicheClicked(ActionEvent event) {
+    	int kolom;
+    	Button b = (Button) event.getSource();
+    	if(GridPane.getColumnIndex(b) == null)
+        	kolom = 0;
+        else
+        	kolom = GridPane.getColumnIndex(b);
+    	EdelsteenSoort soort = switch(kolom) {
+    	case 0 -> EdelsteenSoort.SMARAGD;
+    	case 1 -> EdelsteenSoort.ONYX;
+    	case 2 -> EdelsteenSoort.DIAMANT;
+    	case 3 -> EdelsteenSoort.SAFFIER;
+    	case 4 -> EdelsteenSoort.ROBIJN;
+		default -> throw new IllegalArgumentException("Unexpected value: " + kolom);
+    	};
+    	
     	// tijdelijke lijst aanmaken 
+    	List<EdelsteenAantal> tmpLijstSpeler = dc.getTmpLijstSpeler();
     	// do while met private methode in dc die controle
+    	if(!dc.controleerHoeveelheidFichesNemen(new EdelsteenAantal(1, soort))) {
+    		Alert alert = new Alert(AlertType.ERROR);
+			alert.setTitle("Dit mag niet!");
+			alert.setContentText(e.getMessage());
+			alert.show();
+    	}
     	// switch case voor invoer fiches -> case -> steek deze fiche in tijdelijke lijst
     	// tijdelijiek lijst aan perm lijst toevoegen
     	// jetons uit spel halen 
