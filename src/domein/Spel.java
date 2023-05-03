@@ -324,7 +324,7 @@ public class Spel {
 
 	public boolean isEindeSpel() {
 		for(Speler speler: spelers) {
-			if(speler.getTotaalAantalPrestigePunten()>=0) {
+			if(speler.getTotaalAantalPrestigePunten()>=15) {
 				bepaalWinnaar();
 				return true;
 			}

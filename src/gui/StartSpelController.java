@@ -336,17 +336,6 @@ public class StartSpelController extends StackPane {
 		if(tmpSpelerLijst.size()==1) {
 			btnVolgende.setDisable(true);
 	    	btnStartRonde.setDisable(false);
-	    	if(dc.isEindeSpel()) {
-	    		WinnaarsOverzichtController woc = new WinnaarsOverzichtController(this, dc);
-	    		Scene scene1 = new Scene(woc);
-	    		Stage stage1 = (Stage) this.getScene().getWindow();
-	    		stage1.setScene(scene1);
-	    		stage1.setMinHeight(600);
-	    		stage1.setMinWidth(600);
-	    		stage1.setMaxHeight(600);
-	    		stage1.setMaxWidth(600);
-	    		stage1.show();
-	    	}
 		}
 	}
 	
@@ -366,6 +355,18 @@ public class StartSpelController extends StackPane {
     	if(aantalKlik > 1)
     		btnKaartKopen.setDisable(false);
 
+    	if(dc.isEindeSpel()) {
+    		WinnaarsOverzichtController woc = new WinnaarsOverzichtController(this, dc);
+    		Scene scene1 = new Scene(woc);
+    		Stage stage1 = (Stage) this.getScene().getWindow();
+    		stage1.setScene(scene1);
+    		stage1.setMinHeight(600);
+    		stage1.setMinWidth(600);
+    		stage1.setMaxHeight(600);
+    		stage1.setMaxWidth(600);
+    		stage1.show();
+    	}
+    	
     	geefHuidigeSpeler();
     	btnVolgende.setDisable(false);
     	btnStartRonde.setDisable(true);
