@@ -1,5 +1,6 @@
 package gui;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -14,6 +15,8 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
 import javafx.scene.layout.StackPane;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 
 public class WinnaarsOverzichtController extends StackPane{
 
@@ -64,6 +67,14 @@ public class WinnaarsOverzichtController extends StackPane{
     	FXMLLoader loader = new FXMLLoader(getClass().getResource("WinnaarsOverzicht.fxml"));
     	loader.setRoot(this);
     	loader.setController(this);
+    	
+    	MediaPlayer mp = StartController.mp;
+    	mp.pause();
+    	
+    	String sound2 = "src/sounds/ineedtobealone.mp3";
+    	Media mediaSound2 = new Media(new File(sound2).toURI().toString());
+    	MediaPlayer mp2 = new MediaPlayer(mediaSound2);
+    	mp2.play();
     	
     	try {
     		loader.load();
