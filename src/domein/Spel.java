@@ -17,6 +17,7 @@ public class Spel {
 	private List<Edele> edelen, beschikbareEdelenSpeler;
 	private Edele[] edeleInSpel;
 	private List<Speler> winnaars;
+	private static final int prestigePunten = 15;
 	
 	public Spel() {
 		okr = new OntwikkelingskaartRepository();
@@ -379,7 +380,7 @@ public class Spel {
 
 	public boolean isEindeSpel() {
 		for(Speler speler: spelers) {
-			if(speler.getTotaalAantalPrestigePunten()>=15) {
+			if(speler.getTotaalAantalPrestigePunten() >= prestigePunten) {
 				bepaalWinnaar();
 				return true;
 			}
