@@ -234,6 +234,8 @@ public class Spel {
 				if(spelerFiche.getSoort().equals(fiche.getSoort())) {
 					if(spelerFiche.getAantal() == 2)
 						throw new IllegalArgumentException("Je hebt al 2 fiches van dezelfde soort!");
+					if(aantalInSpel(fiche.getSoort()) < 4)
+						throw new IllegalArgumentException("Voor 2 dezelfde fiches moeten er min 4 fiches op de stapel liggen");
 					else if(tmpLijst.size() == 2)
 						throw new IllegalArgumentException("Je moet 3 verschillende fiches nemen!");
 					huidigeSpeler.voegTmpFicheToe(fiche);
@@ -247,13 +249,22 @@ public class Spel {
 		return true;
 	}
 	
+	private int aantalInSpel(EdelsteenSoort soort) {
+		return switch(soort) {
+		case DIAMANT ->	diamantAantal.getAantal();
+		case ONYX -> onyxAantal.getAantal();
+		case ROBIJN -> robijnAantal.getAantal();
+		case SAFFIER -> saffierAantal.getAantal();
+		case SMARAGD -> smaragdAantal.getAantal();
+		};
+	}
+	
 	public boolean controleerAlTweeGelijkeFichesGekozen() {
 		List<EdelsteenAantal> tmpLijst = huidigeSpeler.getTmpFicheLijst();
 		if(tmpLijst.get(0).getSoort().equals(tmpLijst.get(1).getSoort())) {
 			return true;
 		}
 		return false;
-		
 	}
 	
 	public List<Ontwikkelingskaart> getNiveau1Zichtbaar() {
