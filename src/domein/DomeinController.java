@@ -14,7 +14,6 @@ public class DomeinController {
 	private OntwikkelingskaartRepository oRepo;
 	private Spel s ;
 	public Speler startSpeler;
-	public Speler huidigeSpeler;
 	public List<Speler> spelersInSpel;
 	private boolean wordtVertaald;
 	
@@ -101,17 +100,17 @@ public class DomeinController {
 	}
 	
 	public int controleerMogelijkheidTotEdelen() {
-		if(s.controleerMogelijkheidTotEdelen(huidigeSpeler)) {
-			List<Edele> beschikbareEdelen = s.edelenOpBezoek(huidigeSpeler);
+		if(s.controleerMogelijkheidTotEdelen(getHuisdigeSpeler())) {
+			List<Edele> beschikbareEdelen = s.edelenOpBezoek(getHuisdigeSpeler());
 			if(beschikbareEdelen.size() == 1)
-				huidigeSpeler.voegEdeleToe(beschikbareEdelen.get(0));
+				s.getHuidigeSpeler().voegEdeleToe(beschikbareEdelen.get(0));
 			return beschikbareEdelen.size();
 		}
 		return 0;
 	}
 	
 	public List<Edele> geefBeschikbareEdelen() {
-		return s.edelenOpBezoek(huidigeSpeler);
+		return s.edelenOpBezoek(getHuisdigeSpeler());
 	}
 	
 	public List<Speler> getSpelersInSpel() {

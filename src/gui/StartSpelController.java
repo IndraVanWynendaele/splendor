@@ -390,51 +390,6 @@ public class StartSpelController extends StackPane {
     	btnSmaragdSpel.setOnAction(this::btnFicheClicked);
     }
     
-//    void btnFicheClicked(ActionEvent event) {
-//    	int kolom;
-//    	Button b = (Button) event.getSource();
-//    	// steek in tijdelijke lijst
-//    	try {
-//    		if(GridPane.getColumnIndex(b) == null)
-//        		kolom = 0;
-//        	else
-//        		kolom = GridPane.getColumnIndex(b);
-//        	
-//        	switch(kolom) {
-//        	case 0 ->{
-//        		dc.neemEdelsteenaantal(new EdelsteenAantal(1, EdelsteenSoort.SMARAGD));
-//        		// dc.getSmaragdAantal().setAantal(dc.getSmaragdAantal().getAantal() - 1);
-//        	}
-//        	case 1 -> {
-//        		dc.neemEdelsteenaantal(new EdelsteenAantal(1, EdelsteenSoort.ONYX));
-//        		// dc.getOnyxAantal().setAantal(dc.getOnyxAantal().getAantal() - 1);
-//        	}
-//        	case 2 -> {
-//        		dc.neemEdelsteenaantal(new EdelsteenAantal(1, EdelsteenSoort.DIAMANT));
-//        		 //dc.getDiamantAantal().setAantal(dc.getDiamantAantal().getAantal() - 1);
-//        	}
-//        	case 3 -> {
-//        		dc.neemEdelsteenaantal(new EdelsteenAantal(1, EdelsteenSoort.SAFFIER));
-//        		// dc.getSaffierAantal().setAantal(dc.getSaffierAantal().getAantal() - 1);
-//        	}
-//        	case 4 -> {
-//        		dc.neemEdelsteenaantal(new EdelsteenAantal(1, EdelsteenSoort.ROBIJN));
-//        		// dc.getRobijnAantal().setAantal(dc.getRobijnAantal().getAantal() - 1);
-//        	}
-//        	}
-//    	}catch(IllegalArgumentException e) {
-//    		Alert alert = new Alert(AlertType.ERROR);
-//			alert.setTitle("Geen edelsteenfiches meer!");
-//			alert.setContentText(e.getMessage());
-//			alert.show();
-//    	}
-//    	// if controleer keuze fiches
-//    	// -> voeg toe aan permanente lijst
-//    	// -> verwijder fiches spel?
-//    	updateAantalFichesSpel();
-//    	updateAantalFichesSpeler();
-//    }
-    
     void btnFicheClicked(ActionEvent event) {
     	int kolom;
     	Button b = (Button) event.getSource();

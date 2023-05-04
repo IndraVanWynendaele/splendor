@@ -12,7 +12,7 @@ public class Spel {
 	private OntwikkelingskaartRepository okr;
 	private EdeleRepository er;
 	private EdelsteenAantal diamantAantal, smaragdAantal, saffierAantal, onyxAantal, robijnAantal;
-	public Speler huidigeSpeler;
+	private Speler huidigeSpeler;
 	private List<Ontwikkelingskaart> niveau1, niveau2, niveau3, niveau1Zichtbaar, niveau2Zichtbaar, niveau3Zichtbaar;
 	private List<Edele> edelen, beschikbareEdelenSpeler;
 	private Edele[] edeleInSpel;
