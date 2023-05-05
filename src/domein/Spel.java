@@ -15,7 +15,7 @@ public class Spel {
 	private Speler huidigeSpeler;
 	private List<Ontwikkelingskaart> niveau1, niveau2, niveau3, niveau1Zichtbaar, niveau2Zichtbaar, niveau3Zichtbaar;
 	private List<Edele> edelen, beschikbareEdelenSpeler = new ArrayList<>();
-	private Edele[] edeleInSpel;
+	private List<Edele> edeleInSpel;
 	private List<Speler> winnaars;
 	private static final int prestigePunten = 50; // OPGEPAST AANGEPAST
 	
@@ -48,38 +48,38 @@ public class Spel {
 	
 	public void geefKaartenAantalSpelers() {	
 		if(spelers.size() == 2) {
-			edeleInSpel=new Edele[3];
+			edeleInSpel = new ArrayList<>();
 			diamantAantal = new EdelsteenAantal(4,EdelsteenSoort.DIAMANT);
 			smaragdAantal = new EdelsteenAantal(4,EdelsteenSoort.SMARAGD);
 			robijnAantal = new EdelsteenAantal(4,EdelsteenSoort.ROBIJN);
 			saffierAantal = new EdelsteenAantal(4,EdelsteenSoort.SAFFIER);
 			onyxAantal = new EdelsteenAantal(4,EdelsteenSoort.ONYX);
-			for(int i =0;i<edeleInSpel.length;i++) {
-				edeleInSpel[i]=edelen.get(i);
+			for(int i = 0; i < 3; i++) {
+				edeleInSpel.add(edelen.get(i));
 			}
 		}
 			
 		if(spelers.size() == 3) {
-			edeleInSpel=new Edele[4];
+			edeleInSpel = new ArrayList<>();
 			diamantAantal = new EdelsteenAantal(5,EdelsteenSoort.DIAMANT);
 			smaragdAantal = new EdelsteenAantal(5,EdelsteenSoort.SMARAGD);
 			robijnAantal = new EdelsteenAantal(5,EdelsteenSoort.ROBIJN);
 			saffierAantal = new EdelsteenAantal(5,EdelsteenSoort.SAFFIER);
 			onyxAantal = new EdelsteenAantal(5,EdelsteenSoort.ONYX);
-			for(int i =0;i<edeleInSpel.length;i++) {
-				edeleInSpel[i]=edelen.get(i);
+			for(int i = 0; i < 4; i++) {
+				edeleInSpel.add(edelen.get(i));
 			}
 		}
 		
 		if(spelers.size() == 4) {
-			edeleInSpel=new Edele[5];
+			edeleInSpel = new ArrayList<>();
 			diamantAantal = new EdelsteenAantal(7,EdelsteenSoort.DIAMANT);
 			smaragdAantal = new EdelsteenAantal(7,EdelsteenSoort.SMARAGD);
 			robijnAantal = new EdelsteenAantal(7,EdelsteenSoort.ROBIJN);
 			saffierAantal = new EdelsteenAantal(7,EdelsteenSoort.SAFFIER);
 			onyxAantal = new EdelsteenAantal(7,EdelsteenSoort.ONYX);
-			for(int i =0;i<edeleInSpel.length;i++) {
-				edeleInSpel[i]=edelen.get(i);
+			for(int i = 0; i < 5; i++) {
+				edeleInSpel.add(edelen.get(i));
 			}
 		}
 	}
@@ -96,56 +96,25 @@ public class Spel {
 		}
 	}
 	
-//	public boolean controleerMogelijkheidTotEdelen(Speler huidigeSpeler) {
-//		// lijst aanmaken met edelsteen aantal van huidigeSpeler zijn huidige voorraad ontwikkelingskaarten
-//		List<Edele> beschikbareEdelen = edelenOpBezoek(huidigeSpeler);		
-//		if(beschikbareEdelen.size() > 0)
-//			return true;
-//		return false;
-//	}	
-//	
-//	public List<Edele> edelenOpBezoek(Speler huidigeSpeler){
-//		List<Ontwikkelingskaart> aantalHuidigeOntwikkelingskaarten = huidigeSpeler.getOntwikkelingskaartenInBezit();
-//		beschikbareEdelenSpeler = new ArrayList<>();
-//		
-//		for(Edele ed : edeleInSpel)
-//			for(Ontwikkelingskaart otw : aantalHuidigeOntwikkelingskaarten)
-//				if(otw.getKosten().containsAll(ed.getKosten()))
-//					// ed.getKosten().equals(otw.getKosten()
-//					beschikbareEdelenSpeler.add(ed);
-//		
-//		return beschikbareEdelenSpeler;
-//	}
-	
 	public boolean controleerMogelijkheidTotEdelen() {
 		int aantalSoortenEdelstenen = -1;
 		int aantalGoed = 0;
-		for(int i = 0; i < edeleInSpel.length; i++) {
-		aantalSoortenEdelstenen = edeleInSpel[i].getKosten().size();
-		for(EdelsteenAantal kost : edeleInSpel[i].getKosten())
+		for(int i = 0; i < edeleInSpel.size(); i++) {
+		aantalSoortenEdelstenen = edeleInSpel.get(i).getKosten().size();
+		for(EdelsteenAantal kost : edeleInSpel.get(i).getKosten())
 			for(EdelsteenAantal bonus : huidigeSpeler.getBonussen())
 				if(kost.getSoort().equals(bonus.getSoort()))
 					if(kost.getAantal() <= bonus.getAantal())
 						aantalGoed++;
 			if(aantalGoed == aantalSoortenEdelstenen) {
-				huidigeSpeler.voegEdeleToe(edeleInSpel[i]); // voor 1 edele
-				// verwijderEdeleSpel(edeleInSpel[i]);
+				huidigeSpeler.voegEdeleToe(edeleInSpel.get(i)); // voor 1 edele
+				edeleInSpel.remove(i);
 				return true;
 			}
 		}
 		
 		return false;
 	}
-	
-//	private void verwijderEdeleSpel(Edele edele) {
-//		List<Edele> edeleInSpelLijst = new ArrayList<>();
-//		for(Edele ed : edeleInSpel) {
-//			if(!ed.equals(edele))
-//				edeleInSpelLijst.add(ed);
-//		}
-//		
-//		edeleInSpel = edeleInSpelLijst.toArray();
-//	}
 	
 	public void koopKaartNiveau1(int index) {
 		// krijgt index binnen van kaartnummer
@@ -315,7 +284,7 @@ public class Spel {
 		return spelers;
 	}
 	
-	public Edele[] getEdeleSpelers() {
+	public List<Edele> getEdeleSpelers() {
 		return edeleInSpel;
 	}
 	
