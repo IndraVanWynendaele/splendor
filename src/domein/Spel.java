@@ -129,13 +129,23 @@ public class Spel {
 						aantalGoed++;
 			if(aantalGoed == aantalSoortenEdelstenen) {
 				huidigeSpeler.voegEdeleToe(edeleInSpel[i]); // voor 1 edele
+				// verwijderEdeleSpel(edeleInSpel[i]);
 				return true;
 			}
 		}
 		
 		return false;
 	}
-
+	
+//	private void verwijderEdeleSpel(Edele edele) {
+//		List<Edele> edeleInSpelLijst = new ArrayList<>();
+//		for(Edele ed : edeleInSpel) {
+//			if(!ed.equals(edele))
+//				edeleInSpelLijst.add(ed);
+//		}
+//		
+//		edeleInSpel = edeleInSpelLijst.toArray();
+//	}
 	
 	public void koopKaartNiveau1(int index) {
 		// krijgt index binnen van kaartnummer

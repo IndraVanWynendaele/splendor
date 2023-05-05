@@ -293,8 +293,10 @@ public class StartSpelController extends StackPane {
 			ontwikkelingsKaartenSpeler.add(imgKaartSpeler14);
 			
 			// hier kaarten en edelen tonen
-			// for()
-			 for(int i = 0; i < e.size(); i++) {
+			for(int i = 0; i < edeleBezitImv.size(); i ++) {
+				edeleBezitImv.get(i).setImage(null);
+			}
+			for(int i = 0; i < e.size(); i++) {
 				edeleBezitImv.get(i).setImage(e.get(i).getImage());	
 				edeleBezitImv.get(i).setFitHeight(150);
 				edeleBezitImv.get(i).setFitWidth(150);
