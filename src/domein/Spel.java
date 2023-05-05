@@ -198,7 +198,7 @@ public class Spel {
 						aantalGoed++;
 		if(aantalGoed == aantalSoortenEdelstenen)
 			return true;
-		throw new IllegalArgumentException("Deze kaart kan niet gekocht worden, je hebt niet genoeg edelsteenfiches!");
+		throw new IllegalArgumentException("Deze kaart kan niet gekocht worden, je hebt niet genoeg edelsteenfiches!");//rb.getString("kanKaartGekochtWorden")
 	}
 	
 	public void neemEdelsteenAantal(EdelsteenAantal fiche) {

@@ -92,7 +92,7 @@ public class DomeinController {
 		spelersInSpel= s.getSpelers();
 
 			if(spelersInSpel.size() < 2) {
-				throw new IllegalArgumentException("Er moeten minstens 2 spelers aangemeld zijn\n");
+				throw new IllegalArgumentException(rb.getString("controleerAantalSpelers2"));
 			}
 			aantalSpelersInOrde = true;
 
