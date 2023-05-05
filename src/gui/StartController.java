@@ -43,10 +43,10 @@ public class StartController extends StackPane{
 		loader.setRoot(this);
 		loader.setController(this);
 		
-		String sound = "src/sounds/achtergrondmuziekje.mp3";
-    	Media mediaSound = new Media(new File(sound).toURI().toString());
-    	mp = new MediaPlayer(mediaSound);
-    	mp.play();
+//		String sound = "src/sounds/achtergrondmuziekje.mp3";
+//    	Media mediaSound = new Media(new File(sound).toURI().toString());
+//    	mp = new MediaPlayer(mediaSound);
+//    	mp.play();
 		
 		try {
 			loader.load();
