@@ -20,21 +20,31 @@ public class Speler {
 	private List<EdelsteenAantal> edelsteenfichesInBezit = new ArrayList<>();
 	private List<Edele> edelenInBezit = new ArrayList<>();
 	private List<EdelsteenAantal> tmpFicheLijst = new ArrayList<>();
+	private List<EdelsteenAantal> bonussen = new ArrayList<>();
 	
 	public Speler(String gebruikersnaam, int geboortejaar) {
 		controleerGebruikersnaam(gebruikersnaam);
 		controleerGeboortejaar(geboortejaar);
 		ficheBegin();
+		bonussenBegin();
 		this.gebruikersnaam = gebruikersnaam;
 		this.geboortejaar = geboortejaar;
 	}
 	
-	private void ficheBegin() {
-		edelsteenfichesInBezit.add(new EdelsteenAantal(0,EdelsteenSoort.DIAMANT));
-		edelsteenfichesInBezit.add(new EdelsteenAantal(0,EdelsteenSoort.ONYX));
-		edelsteenfichesInBezit.add(new EdelsteenAantal(0,EdelsteenSoort.ROBIJN));
-		edelsteenfichesInBezit.add(new EdelsteenAantal(0,EdelsteenSoort.SAFFIER));
-		edelsteenfichesInBezit.add(new EdelsteenAantal(0,EdelsteenSoort.SMARAGD));
+	private void ficheBegin() { // OPGEPAST AANGEPAST 
+		edelsteenfichesInBezit.add(new EdelsteenAantal(50,EdelsteenSoort.DIAMANT));
+		edelsteenfichesInBezit.add(new EdelsteenAantal(50,EdelsteenSoort.ONYX));
+		edelsteenfichesInBezit.add(new EdelsteenAantal(50,EdelsteenSoort.ROBIJN));
+		edelsteenfichesInBezit.add(new EdelsteenAantal(50,EdelsteenSoort.SAFFIER));
+		edelsteenfichesInBezit.add(new EdelsteenAantal(50,EdelsteenSoort.SMARAGD));
+	}
+	
+	private void bonussenBegin() {
+		bonussen.add(new EdelsteenAantal(0, EdelsteenSoort.DIAMANT));
+		bonussen.add(new EdelsteenAantal(0, EdelsteenSoort.ONYX));
+		bonussen.add(new EdelsteenAantal(0, EdelsteenSoort.ROBIJN));
+		bonussen.add(new EdelsteenAantal(0, EdelsteenSoort.SAFFIER));
+		bonussen.add(new EdelsteenAantal(0, EdelsteenSoort.SMARAGD));
 	}
 	
 	private void controleerGebruikersnaam(String gebruikersnaam) {
@@ -71,6 +81,18 @@ public class Speler {
 	public void voegOntwikkelingskaartToe(Ontwikkelingskaart kaart) {
 		ontwikkelingskaartenInBezit.add(kaart);
 		totaalAantalPrestigepunten += kaart.getPrestigepunten();
+		
+		for(int i = 0; i < bonussen.size(); i++) {
+			if(kaart.getBonus().equals(bonussen.get(i).getSoort())) {
+				switch(kaart.getBonus()) {
+				case DIAMANT -> bonussen.get(i).setAantal(bonussen.get(i).getAantal() + 1);
+				case ONYX -> bonussen.get(i).setAantal(bonussen.get(i).getAantal() + 1);
+				case ROBIJN -> bonussen.get(i).setAantal(bonussen.get(i).getAantal() + 1);
+				case SAFFIER -> bonussen.get(i).setAantal(bonussen.get(i).getAantal() + 1);
+				case SMARAGD -> bonussen.get(i).setAantal(bonussen.get(i).getAantal() + 1);
+				}
+			}	
+		}	
 	}
 	
 	public void verwijderEdelsteenfiches(EdelsteenSoort soort, int aantal) {
@@ -134,5 +156,9 @@ public class Speler {
 
 	public int getGeboortejaar() {
 		return this.geboortejaar;
+	}
+	
+	public List<EdelsteenAantal> getBonussen(){
+		return this.bonussen;
 	}
 }

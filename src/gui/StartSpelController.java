@@ -216,22 +216,22 @@ public class StartSpelController extends StackPane {
 		edeleBezitImv.add(imgEdeleSpeler4);
 		edeleBezitImv.add(imgEdeleSpeler5);
 		
-		List<ImageView> niveauBezitImv = new ArrayList<>();
-		niveauBezitImv.add(imgKaartSpeler1);
-		niveauBezitImv.add(imgKaartSpeler2);
-		niveauBezitImv.add(imgKaartSpeler3);
-		niveauBezitImv.add(imgKaartSpeler4);
-		niveauBezitImv.add(imgKaartSpeler5);
-		niveauBezitImv.add(imgKaartSpeler6);
-		niveauBezitImv.add(imgKaartSpeler7);
-		niveauBezitImv.add(imgKaartSpeler8);
-		niveauBezitImv.add(imgKaartSpeler9);
-		niveauBezitImv.add(imgKaartSpeler10);
-		niveauBezitImv.add(imgKaartSpeler11);
-		niveauBezitImv.add(imgKaartSpeler12);
-		niveauBezitImv.add(imgKaartSpeler13);
-		niveauBezitImv.add(imgKaartSpeler14);
-		
+		List<ImageView> ontwikkelingsKaartenSpeler = new ArrayList<>();
+			ontwikkelingsKaartenSpeler.add(imgKaartSpeler1);
+			ontwikkelingsKaartenSpeler.add(imgKaartSpeler2);
+			ontwikkelingsKaartenSpeler.add(imgKaartSpeler3);
+			ontwikkelingsKaartenSpeler.add(imgKaartSpeler4);
+			ontwikkelingsKaartenSpeler.add(imgKaartSpeler5);
+			ontwikkelingsKaartenSpeler.add(imgKaartSpeler6);
+			ontwikkelingsKaartenSpeler.add(imgKaartSpeler7);
+			ontwikkelingsKaartenSpeler.add(imgKaartSpeler8);
+			ontwikkelingsKaartenSpeler.add(imgKaartSpeler9);
+			ontwikkelingsKaartenSpeler.add(imgKaartSpeler10);
+			ontwikkelingsKaartenSpeler.add(imgKaartSpeler11);
+			ontwikkelingsKaartenSpeler.add(imgKaartSpeler12);
+			ontwikkelingsKaartenSpeler.add(imgKaartSpeler13);
+			ontwikkelingsKaartenSpeler.add(imgKaartSpeler14);
+			
 		for(Speler s: spelers) {
 			List<Ontwikkelingskaart> ok = s.getOntwikkelingskaartenInBezit();
 			List<Edele> e = s.getEdelenInBezit();
@@ -248,21 +248,7 @@ public class StartSpelController extends StackPane {
 					}				    
 				}
 			}
-			List<ImageView> ontwikkelingsKaartenSpeler = new ArrayList<>();
-			ontwikkelingsKaartenSpeler.add(imgKaartSpeler1);
-			ontwikkelingsKaartenSpeler.add(imgKaartSpeler2);
-			ontwikkelingsKaartenSpeler.add(imgKaartSpeler3);
-			ontwikkelingsKaartenSpeler.add(imgKaartSpeler4);
-			ontwikkelingsKaartenSpeler.add(imgKaartSpeler5);
-			ontwikkelingsKaartenSpeler.add(imgKaartSpeler6);
-			ontwikkelingsKaartenSpeler.add(imgKaartSpeler7);
-			ontwikkelingsKaartenSpeler.add(imgKaartSpeler8);
-			ontwikkelingsKaartenSpeler.add(imgKaartSpeler9);
-			ontwikkelingsKaartenSpeler.add(imgKaartSpeler10);
-			ontwikkelingsKaartenSpeler.add(imgKaartSpeler11);
-			ontwikkelingsKaartenSpeler.add(imgKaartSpeler12);
-			ontwikkelingsKaartenSpeler.add(imgKaartSpeler13);
-			ontwikkelingsKaartenSpeler.add(imgKaartSpeler14);
+			
 			
 			// hier kaarten en edelen tonen
 			 for(int i = 0; i < e.size(); i++) {
@@ -270,16 +256,12 @@ public class StartSpelController extends StackPane {
 				edeleBezitImv.get(i).setFitHeight(150);
 				edeleBezitImv.get(i).setFitWidth(150);
 			}
-			 
-			if(ok.size() == 0) 
-				for(ImageView kaart: ontwikkelingsKaartenSpeler)
-					kaart.setImage(null);
-			else {
+
+			 if(ok.size()!=0)
 				for(int i = 0; i < ok.size(); i++) {
 					ontwikkelingsKaartenSpeler.get(i).setImage(ok.get(i).getImage());	
 					ontwikkelingsKaartenSpeler.get(i).setFitHeight(160);
 					ontwikkelingsKaartenSpeler.get(i).setFitWidth(125);
-				}
 			}
 		}
 	}
@@ -311,21 +293,7 @@ public class StartSpelController extends StackPane {
 	void btnVolgendeClicked(ActionEvent event) {
 		tmpSpelerLijst = dc.updateIsAanDeBeurt(tmpSpelerLijst);
 		geefHuidigeSpeler();
-//		if(tmpSpelerLijst.size()==1) {
-//			btnVolgende.setDisable(true);
-//	    	btnStartRonde.setDisable(false);
-//	    	if(dc.isEindeSpel()) {
-//	    		WinnaarsOverzichtController woc = new WinnaarsOverzichtController(this, dc);
-//	    		Scene scene1 = new Scene(woc);
-//	    		Stage stage1 = (Stage) this.getScene().getWindow();
-//	    		stage1.setScene(scene1);
-//	    		stage1.setMinHeight(600);
-//	    		stage1.setMinWidth(600);
-//	    		stage1.setMaxHeight(600);
-//	    		stage1.setMaxWidth(600);
-//	    		stage1.show();
-//	    	}
-//		}
+
 		btnFicheKiezen.setDisable(false);
 		if(aantalKlik > 1)
     		btnKaartKopen.setDisable(false);
@@ -425,8 +393,6 @@ public class StartSpelController extends StackPane {
 	    		alert.showAndWait();
 	    	}
 	    	
-	    	// vergeet niet size == 2 moet nog gedaan w
-	    	
     	}catch(IllegalArgumentException e) {
 			Alert alert = new Alert(AlertType.ERROR);
 			alert.setTitle("Dit mag niet!");
@@ -512,7 +478,7 @@ public class StartSpelController extends StackPane {
         			b.setGraphic(null);
         		stapelNiveau1.setImage(null);
         	}
-        	if(dc.controleerMogelijkheidTotEdelen() == 1) {
+        	if(dc.controleerMogelijkheidTotEdelen()) {
         		Alert alert = new Alert(AlertType.INFORMATION);
         		alert.setTitle("Je hebt een edele op bezoek!");
         		alert.show();
@@ -545,6 +511,11 @@ public class StartSpelController extends StackPane {
         			b.setGraphic(null);
         		stapelNiveau2.setImage(null);
         	}
+        	if(dc.controleerMogelijkheidTotEdelen()) {
+        		Alert alert = new Alert(AlertType.INFORMATION);
+        		alert.setTitle("Je hebt een edele op bezoek!");
+        		alert.show();
+        	}
     	}catch(IllegalArgumentException e) {
     		Alert alert = new Alert(AlertType.ERROR);
 			alert.setTitle("Niet genoeg edelsteenfiches!");
@@ -564,6 +535,11 @@ public class StartSpelController extends StackPane {
         		if(stapelNiveau3.getImage() == null)
         			b.setGraphic(null);
         		stapelNiveau3.setImage(null);
+        	}
+        	if(dc.controleerMogelijkheidTotEdelen()) {
+        		Alert alert = new Alert(AlertType.INFORMATION);
+        		alert.setTitle("Je hebt een edele op bezoek!");
+        		alert.show();
         	}
     	}catch(IllegalArgumentException e) {
     		Alert alert = new Alert(AlertType.ERROR);
