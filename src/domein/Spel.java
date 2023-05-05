@@ -19,6 +19,7 @@ public class Spel {
 	private List<Speler> winnaars;
 	private static final int prestigePunten = 15;
 	
+	
 	public Spel() {
 		okr = new OntwikkelingskaartRepository();
 		er = new EdeleRepository();
