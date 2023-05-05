@@ -99,18 +99,21 @@ public class DomeinController {
 		return s.updateIsAanDeBeurt(tmpSpelerLijst);
 	}
 	
-	public int controleerMogelijkheidTotEdelen() {
-		if(s.controleerMogelijkheidTotEdelen(getHuisdigeSpeler())) {
-			List<Edele> beschikbareEdelen = s.edelenOpBezoek(getHuisdigeSpeler());
-			if(beschikbareEdelen.size() == 1)
-				s.getHuidigeSpeler().voegEdeleToe(beschikbareEdelen.get(0));
-			return beschikbareEdelen.size();
-		}
-		return 0;
-	}
-	
-	public List<Edele> geefBeschikbareEdelen() {
-		return s.edelenOpBezoek(getHuisdigeSpeler());
+//	public int controleerMogelijkheidTotEdelen() {
+//		if(s.controleerMogelijkheidTotEdelen(getHuisdigeSpeler())) {
+//			List<Edele> beschikbareEdelen = s.edelenOpBezoek(getHuisdigeSpeler());
+//			if(beschikbareEdelen.size() == 1)
+//				s.getHuidigeSpeler().voegEdeleToe(beschikbareEdelen.get(0));
+//			return beschikbareEdelen.size();
+//		}
+//		return 0;
+//	}
+//	
+//	public List<Edele> geefBeschikbareEdelen() {
+//		return s.edelenOpBezoek(getHuisdigeSpeler());
+//	}
+	public boolean controleerMogelijkheidTotEdelen() {
+		return s.controleerMogelijkheidTotEdelen();
 	}
 	
 	public List<Speler> getSpelersInSpel() {
