@@ -1,9 +1,9 @@
 package gui;
 
 import java.io.IOException;
+import java.util.ResourceBundle;
 
 import domein.DomeinController;
-import domein.MyResourceBundle_en;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -21,7 +21,7 @@ public class MenuController extends GridPane{
 	
 	private DomeinController dc;
 	private StartController preStartScreen;
-	private MyResourceBundle_en rb_en;
+	private ResourceBundle rb;
 	
 	@FXML
     private ImageView BGImage;
@@ -44,7 +44,6 @@ public class MenuController extends GridPane{
 	public MenuController(StartController preStartScreen, DomeinController dc) {
 		this.preStartScreen = preStartScreen;
 		this.dc = dc;
-		rb_en = new MyResourceBundle_en();
 		
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("Menu.fxml"));
 		loader.setRoot(this);
@@ -52,11 +51,10 @@ public class MenuController extends GridPane{
 			
 		try {
 			loader.load();
-			if(dc.geefWordtVertaald()) {
-				btnAppStoppen.setText(rb_en.getString("btnAppStoppen"));
-				btnOverzichtSpelers.setText(rb_en.getString("btnOverzichtSpelers"));
-				btnSpelerAanmelden.setText(rb_en.getString("btnSpelerAanmelden"));
-			}
+			rb = dc.getRb();
+			btnSpelerAanmelden.setText(rb.getString("btnSpelerAanmelden"));
+			btnOverzichtSpelers.setText(rb.getString("btnOverzichtSpelers"));
+			btnAppStoppen.setText(rb.getString("btnAppStoppen"));
 		} catch (IOException ex) {
 			throw new RuntimeException(ex);
 		}

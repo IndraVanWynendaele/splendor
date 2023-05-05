@@ -6,10 +6,10 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Comparator;
 import java.util.List;
+import java.util.ResourceBundle;
 import java.util.stream.Collectors;
 
 import domein.DomeinController;
-import domein.MyResourceBundle_en;
 import domein.Speler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -23,7 +23,7 @@ public class WinnaarsOverzichtController extends StackPane{
 	private DomeinController dc;
 	private StartSpelController preStartSpelScreen;
 	private List<Speler> winnaars;
-	private MyResourceBundle_en rb_en;
+	private ResourceBundle rb;
 	
 
     @FXML
@@ -62,7 +62,6 @@ public class WinnaarsOverzichtController extends StackPane{
     public WinnaarsOverzichtController(StartSpelController preStartSpelScreen, DomeinController dc) {
     	this.preStartSpelScreen = preStartSpelScreen;
     	this.dc = dc;
-    	rb_en = new MyResourceBundle_en();
     	
     	FXMLLoader loader = new FXMLLoader(getClass().getResource("WinnaarsOverzicht.fxml"));
     	loader.setRoot(this);
@@ -78,11 +77,11 @@ public class WinnaarsOverzichtController extends StackPane{
     	
     	try {
     		loader.load();
-    		if(dc.geefWordtVertaald()) {
-    			lblSpeler.setText(rb_en.getString("lblSpeler"));
-    			lblPrestigepunten.setText(rb_en.getString("lblPrestigepunten"));
-    			lblWinnaar.setText(rb_en.getString("lblWinnaar"));
-			}
+    		rb = dc.getRb();
+    		lblSpeler.setText(rb.getString("lblSpeler"));
+    		lblPrestigepunten.setText(rb.getString("lblPrestigepunten"));
+    		lblWinnaar.setText(rb.getString("lblWinnaar"));
+
     		toonWinnaars();
     	}catch (IOException ex) {
     		throw new RuntimeException(ex);

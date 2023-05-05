@@ -26,7 +26,7 @@
          <children>
             <HBox>
                <children>
-                  <Label fx:id="lblWinnaar" alignment="TOP_CENTER" contentDisplay="TOP" prefHeight="90.0" prefWidth="435.0" text="Winnaar" textAlignment="CENTER" textFill="#e4dede">
+                  <Label fx:id="lblWinnaar" alignment="TOP_CENTER" contentDisplay="TOP" prefHeight="90.0" prefWidth="435.0" textAlignment="CENTER" textFill="#e4dede">
                      <font>
                         <Font name="GothicI" size="70.0" />
                      </font>
@@ -92,12 +92,12 @@
                         <Insets left="20.0" />
                      </padding>
                   </Label>
-                  <Label fx:id="lblSpeler" text="Speler:" textFill="WHITE">
+                  <Label fx:id="lblSpeler" textFill="WHITE">
                      <font>
                         <Font name="RomanC" size="20.0" />
                      </font>
                   </Label>
-                  <Label fx:id="lblPrestigepunten" text="Prestigepunten:" textFill="WHITE" GridPane.columnIndex="1">
+                  <Label fx:id="lblPrestigepunten" textFill="WHITE" GridPane.columnIndex="1">
                      <font>
                         <Font name="RomanC" size="20.0" />
                      </font>

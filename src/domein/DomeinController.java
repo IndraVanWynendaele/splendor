@@ -2,6 +2,8 @@ package domein;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
+import java.util.ResourceBundle;
 
 import dtos.EdeleDTO;
 import dtos.OntwikkelingskaartDTO;
@@ -15,7 +17,9 @@ public class DomeinController {
 	private Spel s ;
 	public Speler startSpeler;
 	public List<Speler> spelersInSpel;
-	private boolean wordtVertaald;
+	private Locale taal;
+	private ResourceBundle rb;
+
 	
 	public DomeinController() {
 		s = new Spel();
@@ -29,14 +33,6 @@ public class DomeinController {
 		s.geefKaartenAantalSpelers();
 		s.maakZichtbareOntwikkelingskaarten();
 	}
-
-	public boolean geefWordtVertaald() {
-		return wordtVertaald;
-	}
-	
-	public void setWordtVertaald(boolean wordtVertaald) {
-		this.wordtVertaald = wordtVertaald;
-	}
 	
 	public boolean meldAan(Speler sp) {
 		if(sRepo.geefSpeler(sp.getGebruikersnaam(), sp.getGeboortejaar())!= null) {
@@ -44,6 +40,22 @@ public class DomeinController {
 			return true;
 		}
 		return false;	
+	}
+	
+	public ResourceBundle getRb() {
+		return rb;
+	}
+	
+	public void setRb(ResourceBundle rb) {
+		this.rb = rb;
+	}
+	
+	public Locale geefTaal() {
+		return taal;
+	}
+	
+	public void setTaal(String taal) {
+		 this.taal= new Locale(taal);
 	}
 	
 	public void voegToe(Speler sp) {

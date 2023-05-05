@@ -2,9 +2,9 @@ package gui;
 
 import java.io.IOException;
 import java.util.Optional;
+import java.util.ResourceBundle;
 
 import domein.DomeinController;
-import domein.MyResourceBundle_en;
 import domein.Speler;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -25,7 +25,7 @@ public class AanmeldenController extends StackPane{
 	private DomeinController dc;
 	private MenuController preMenuScreen;
 	private int aantalSpelersInSpel = 0;
-	private MyResourceBundle_en rb_en;
+	private ResourceBundle rb;
 	
 	@FXML
 	private Button btnLogIn;
@@ -58,17 +58,16 @@ public class AanmeldenController extends StackPane{
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("Aanmelden.fxml"));
 		loader.setRoot(this);
 		loader.setController(this);
-		rb_en = new MyResourceBundle_en();
+		
 		
 		try {
 			loader.load();
-			if(dc.geefWordtVertaald()) {
-				btnLogIn.setText(rb_en.getString("btnLogIn"));
-				btnTerug.setText(rb_en.getString("btnTerug"));
-				btnStartSpel.setText(rb_en.getString("btnStartSpel"));
-				lblGebruikersnaam.setText(rb_en.getString("lblGebruikersnaam"));
-				lblGeboortejaar.setText(rb_en.getString("lblGeboortejaar"));
-			}
+			rb = dc.getRb();
+			btnLogIn.setText(rb.getString("btnLogIn"));
+			btnTerug.setText(rb.getString("btnTerug"));
+			btnStartSpel.setText(rb.getString("btnStartSpel"));
+			lblGebruikersnaam.setText(rb.getString("lblGebruikersnaam"));
+			lblGeboortejaar.setText(rb.getString("lblGeboortejaar"));
 		} catch (IOException ex) {
 			throw new RuntimeException(ex);
 		}
