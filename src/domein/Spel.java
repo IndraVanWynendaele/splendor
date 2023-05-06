@@ -222,7 +222,7 @@ public class Spel {
 	
 	private void controleerAantal(int aantal, EdelsteenSoort soort) {
 		if(aantal == 0)
-			throw new IllegalArgumentException(String.format("Er zijn geen fiches meer van het soort %s", soort.name().toLowerCase()));
+			throw new IllegalArgumentException(String.format(TaalHelper.getText("controleerAantal"), soort.name().toLowerCase()));
 	}
 	
 	public boolean controleerHoeveelheidFichesNemen(EdelsteenAantal fiche) {

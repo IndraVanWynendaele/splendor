@@ -97,20 +97,16 @@ public class StartController extends StackPane{
     void MI_en_action(ActionEvent event) {
     	btnSpelen.setDisable(false);
     	MBTaal.setText(MI_en.getText());
-    	dc.setTaal("en");
-    	ResourceBundle rb = ResourceBundle.getBundle("languages.Messages",dc.geefTaal());
-    	dc.setRb(rb);
-    	btnSpelen.setText(rb.getString("btnSpelen"));
+    	dc.setTaal2("en");
+    	btnSpelen.setText(DomeinController.getText("btnSpelen"));
     }
 
     @FXML
     void MI_nl_action(ActionEvent event) {
     	btnSpelen.setDisable(false);
     	MBTaal.setText(MI_nl.getText());
-    	dc.setTaal("ln");
-    	ResourceBundle rb = ResourceBundle.getBundle("languages.Messages",dc.geefTaal());
-    	dc.setRb(rb);
-    	btnSpelen.setText(rb.getString("btnSpelen"));
+    	dc.setTaal2("ln");
+    	btnSpelen.setText(DomeinController.getText("btnSpelen"));
     }
     
     private String percentToText(BigDecimal value) {

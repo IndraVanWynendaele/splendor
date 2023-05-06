@@ -19,6 +19,7 @@ public class DomeinController {
 	public List<Speler> spelersInSpel;
 	private Locale taal;
 	private ResourceBundle rb;
+	private static TaalHelper th;
 
 	
 	public DomeinController() {
@@ -40,6 +41,14 @@ public class DomeinController {
 			return true;
 		}
 		return false;	
+	}
+	
+	public void setTaal2(String taal) {
+		  th = new TaalHelper(taal);
+	}
+	
+	public static String getText(String key) {
+		return th.getText(key);
 	}
 	
 	public ResourceBundle getRb() {
