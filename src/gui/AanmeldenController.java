@@ -6,6 +6,7 @@ import java.util.ResourceBundle;
 
 import domein.DomeinController;
 import domein.Speler;
+import domein.TaalHelper;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -25,7 +26,7 @@ public class AanmeldenController extends StackPane{
 	private DomeinController dc;
 	private MenuController preMenuScreen;
 	private int aantalSpelersInSpel = 0;
-	private ResourceBundle rb;
+//	private ResourceBundle rb;
 	
 	@FXML
 	private Button btnLogIn;
@@ -62,12 +63,18 @@ public class AanmeldenController extends StackPane{
 		
 		try {
 			loader.load();
-			rb = dc.getRb();
-			btnLogIn.setText(rb.getString("btnLogIn"));
-			btnTerug.setText(rb.getString("btnTerug"));
-			btnStartSpel.setText(rb.getString("btnStartSpel"));
-			lblGebruikersnaam.setText(rb.getString("lblGebruikersnaam"));
-			lblGeboortejaar.setText(rb.getString("lblGeboortejaar"));
+//			rb = dc.getRb();
+//			btnLogIn.setText(rb.getString("btnLogIn"));
+//			btnTerug.setText(rb.getString("btnTerug"));
+//			btnStartSpel.setText(rb.getString("btnStartSpel"));
+//			lblGebruikersnaam.setText(rb.getString("lblGebruikersnaam"));
+//			lblGeboortejaar.setText(rb.getString("lblGeboortejaar"));
+			
+			btnLogIn.setText(DomeinController.getText("btnLogIn"));
+			btnTerug.setText(DomeinController.getText("btnTerug"));
+			btnStartSpel.setText(DomeinController.getText("btnStartSpel"));
+			lblGebruikersnaam.setText(DomeinController.getText("lblGebruikersnaam"));
+			lblGeboortejaar.setText(DomeinController.getText("lblGeboortejaar"));
 		} catch (IOException ex) {
 			throw new RuntimeException(ex);
 		}
@@ -86,8 +93,8 @@ public class AanmeldenController extends StackPane{
 				}
 				else{
 					Alert alert = new Alert(AlertType.CONFIRMATION);
-					alert.setTitle("Nieuwe speler aanmaken?");
-					alert.setContentText("Wil je een nieuwe speler aanmaken?");
+					alert.setTitle(DomeinController.getText("btnLogInClicked1"));
+					alert.setContentText(DomeinController.getText("btnLogInClicked2"));
 					Optional<ButtonType> result = alert.showAndWait();
 					if(result.get() == ButtonType.OK) {
 						dc.voegToe(sp);
@@ -96,7 +103,7 @@ public class AanmeldenController extends StackPane{
 					}
 				}
 			}else {
-				throw new IllegalArgumentException("Deze speler is al aangemeld!\n");
+				throw new IllegalArgumentException(DomeinController.getText("btnLogInClicked3"));
 			}
 			
 			if(aantalSpelersInSpel > 1)
@@ -107,11 +114,11 @@ public class AanmeldenController extends StackPane{
 			txfGeboortjaar.setPromptText("");
 		}catch(NumberFormatException ex) {
 			txfGeboortjaar.setText("");
-			txfGeboortjaar.setPromptText("Moet een positief getal zijn");
+			txfGeboortjaar.setPromptText(DomeinController.getText("AanmeldenMislukt2"));
 			txfGeboortjaar.setStyle("-fx-text-box-border: red");
 		}catch(IllegalArgumentException ex) {
 			Alert alert = new Alert(AlertType.ERROR);
-			alert.setTitle("Aanmelden mislukt");
+			alert.setTitle(DomeinController.getText("AanmeldenMislukt1"));
 			alert.setContentText(ex.getMessage());
 			alert.show();
 		}
@@ -119,8 +126,8 @@ public class AanmeldenController extends StackPane{
 	
 	private void aanmeldAlert(String gebruikersnaam, int geboortejaar) {
 		Alert alert = new Alert(AlertType.INFORMATION);
-		alert.setTitle("Aanmelden gelukt");
-		alert.setContentText(String.format("Speler met naam %s en geboortejaar %d is aangemeld", gebruikersnaam, geboortejaar));
+		alert.setTitle(DomeinController.getText("AanmeldenGelukt1"));
+		alert.setContentText(String.format(DomeinController.getText("AanmeldenGelukt2"), gebruikersnaam, geboortejaar));
 		alert.show();
 		aantalSpelersInSpel++;
 		

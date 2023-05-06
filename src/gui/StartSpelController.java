@@ -33,7 +33,7 @@ public class StartSpelController extends StackPane {
 	private int aantalKlik = 0;
 	private List<Edele> zichtbareEdelen;
 	private List<Ontwikkelingskaart> niveau1, niveau2, niveau3, niveau1Zichtbaar, niveau2Zichtbaar, niveau3Zichtbaar;
-	private ResourceBundle rb;
+//	private ResourceBundle rb;
 	
     public StartSpelController(AanmeldenController preAanmeldenScreen, DomeinController dc) {
 		this.dc = dc;
@@ -46,12 +46,12 @@ public class StartSpelController extends StackPane {
 		try {
 			loader.load();
 			toonStartSpelbord();
-			rb = dc.getRb();
+//			rb = dc.getRb();
 			
-			btnFicheKiezen.setText(rb.getString("btnFicheKiezen"));
-			btnKaartKopen.setText(rb.getString("btnKaartKopen"));
-			btnStartRonde.setText(rb.getString("btnStartRonde"));
-			btnVolgende.setText(rb.getString("btnVolgende"));
+			btnFicheKiezen.setText(DomeinController.getText("btnFicheKiezen"));
+			btnKaartKopen.setText(DomeinController.getText("btnKaartKopen"));
+			btnStartRonde.setText(DomeinController.getText("btnStartRonde"));
+			btnVolgende.setText(DomeinController.getText("btnVolgende"));
 			
 		} catch (IOException ex) {
 			throw new RuntimeException(ex);
@@ -153,7 +153,7 @@ public class StartSpelController extends StackPane {
 		List<Speler> spelers = dc.getSpelersInSpel();
 		for(Speler s: spelers) {
 			if(s.geefIsAanDeBeurt()) {
-				lblPrestigepunten.setText(String.format("%s: %s", rb.getString("lblPrestigepunten"), s.getTotaalAantalPrestigePunten()));
+				lblPrestigepunten.setText(String.format("%s: %s", DomeinController.getText("lblPrestigepunten"), s.getTotaalAantalPrestigePunten()));
 				for(EdelsteenAantal ea : s.getEdelsteenfichesInBezit()) {
 					switch(ea.getSoort()) {
 					case DIAMANT -> lblDiamantSpelerAantal.setText(toString(ea.getAantal()));
@@ -187,7 +187,7 @@ public class StartSpelController extends StackPane {
 		List<Speler> spelers = dc.getSpelersInSpel();
 		for(Speler s: spelers) {
 			if(s.geefIsAanDeBeurt()) {
-				lblPrestigepunten.setText(String.format("%s: %s", rb.getString("lblPrestigepunten"), s.getTotaalAantalPrestigePunten()));
+				lblPrestigepunten.setText(String.format("%s: %s", DomeinController.getText("lblPrestigepunten"), s.getTotaalAantalPrestigePunten()));
 				List<Ontwikkelingskaart> ok = s.getOntwikkelingskaartenInBezit();
 				for(int i= 0; i < ontwikkelingsKaartenSpeler.size(); i++) {
 					ontwikkelingsKaartenSpeler.get(i).setImage(null);
@@ -265,7 +265,7 @@ public class StartSpelController extends StackPane {
 			List<Edele> e = s.getEdelenInBezit();
 			if(s.geefIsAanDeBeurt()) {
 				lblSpelerNaam.setText(s.getGebruikersnaam());
-				lblPrestigepunten.setText(String.format("%s: %s", rb.getString("lblPrestigepunten"), s.getTotaalAantalPrestigePunten()));
+				lblPrestigepunten.setText(String.format("%s: %s", DomeinController.getText("lblPrestigepunten"), s.getTotaalAantalPrestigePunten()));
 				for(EdelsteenAantal ea : s.getEdelsteenfichesInBezit()) {
 					switch(ea.getSoort()) {
 					case DIAMANT -> lblDiamantSpelerAantal.setText(toString(ea.getAantal()));
@@ -370,7 +370,7 @@ public class StartSpelController extends StackPane {
     @FXML
     void btnStartRondeClicked(ActionEvent event) {
     	aantalKlik++; 
-		lblRondeNr.setText(String.format("%s: %d", rb.getString("lblRondeNr"), aantalKlik));
+		lblRondeNr.setText(String.format("%s: %d",DomeinController.getText("lblRondeNr"), aantalKlik));
     	lblSpelerNaam.setText(dc.getStartSpeler().getGebruikersnaam());
     	tmpSpelerLijst = new ArrayList<>();
     	for(int i = 0; i < dc.getSpelersInSpel().size();i++) {
@@ -431,7 +431,7 @@ public class StartSpelController extends StackPane {
     	case 2 -> EdelsteenSoort.DIAMANT;
     	case 3 -> EdelsteenSoort.SAFFIER;
     	case 4 -> EdelsteenSoort.ROBIJN;
-		default -> throw new IllegalArgumentException("Unexpected value: " + kolom);
+		default -> throw new IllegalArgumentException(DomeinController.getText("btnFicheClicked1") + kolom);
     	};
 
     	List<EdelsteenAantal> tmpLijstSpeler = dc.getTmpLijstSpeler();
@@ -442,14 +442,14 @@ public class StartSpelController extends StackPane {
 	    		knoppenDisable();
 	    		dc.voegTmpLijstFichesToeAanPermLijst();
 	    		Alert alert = new Alert(AlertType.INFORMATION);
-	    		alert.setTitle("Fiches gekozen!");
-	    		alert.setContentText("Je hebt alle fiches gekozen");
+	    		alert.setTitle(DomeinController.getText("controleerAlDrieFichesGekozen1"));
+	    		alert.setContentText(DomeinController.getText("controleerAlDrieFichesGekozen2"));
 	    		alert.show();
 	    	}
 	    	else {
 	    		Alert alert = new Alert(AlertType.INFORMATION);
-	    		alert.setTitle("Edelsteenfiche gekozen!");	
-	    		alert.setContentText(String.format("Je hebt deze edelsteenfiche van het soort %s gekozen!", soort.toString().toLowerCase()));
+	    		alert.setTitle(DomeinController.getText("btnFicheClicked2"));	
+	    		alert.setContentText(String.format(DomeinController.getText("btnFicheClicked3"), soort.toString().toLowerCase()));
 	    		alert.showAndWait();
 	    	}
 	    	
@@ -457,7 +457,7 @@ public class StartSpelController extends StackPane {
 	    	
     	}catch(IllegalArgumentException e) {
 			Alert alert = new Alert(AlertType.ERROR);
-			alert.setTitle("Dit mag niet!");
+			alert.setTitle(DomeinController.getText("btnFicheClicked4"));
 			alert.setContentText(e.getMessage());
 			alert.show();
     	}
@@ -476,8 +476,8 @@ public class StartSpelController extends StackPane {
 			knoppenDisable();
     		dc.voegTmpLijstFichesToeAanPermLijst();
     		Alert alert = new Alert(AlertType.INFORMATION);
-    		alert.setTitle("Fiches gekozen!");
-    		alert.setContentText("Je hebt alle fiches gekozen");
+    		alert.setTitle(DomeinController.getText("controleerAlDrieFichesGekozen1"));
+    		alert.setContentText(DomeinController.getText("controleerAlDrieFichesGekozen2"));
     		alert.show();
     		btnFicheKiezen.setDisable(true);
 		}
@@ -488,8 +488,8 @@ public class StartSpelController extends StackPane {
     		knoppenDisable();
     		dc.voegTmpLijstFichesToeAanPermLijst();
     		Alert alert = new Alert(AlertType.INFORMATION);
-    		alert.setTitle("Fiches gekozen!");
-    		alert.setContentText("Je hebt alle fiches gekozen");
+    		alert.setTitle(DomeinController.getText("controleerAlDrieFichesGekozen1"));
+    		alert.setContentText(DomeinController.getText("controleerAlDrieFichesGekozen2"));
     		alert.show();
     		btnFicheKiezen.setDisable(true);
     	}
@@ -542,7 +542,7 @@ public class StartSpelController extends StackPane {
         	}
         	if(dc.controleerMogelijkheidTotEdelen()) {
         		Alert alert = new Alert(AlertType.INFORMATION);
-        		alert.setTitle("Je hebt een edele op bezoek!");
+        		alert.setTitle(DomeinController.getText("btnNiveauClicked1"));
         		alert.show();
         		updateEdele();
         	}
@@ -556,7 +556,7 @@ public class StartSpelController extends StackPane {
 //        	}
     	}catch(IllegalArgumentException e) {
     		Alert alert = new Alert(AlertType.ERROR);
-			alert.setTitle("Niet genoeg edelsteenfiches!");
+			alert.setTitle(DomeinController.getText("btnNiveauClicked2"));
 			alert.setContentText(e.getMessage());
 			alert.show();
     	}
@@ -576,13 +576,13 @@ public class StartSpelController extends StackPane {
         	}
         	if(dc.controleerMogelijkheidTotEdelen()) {
         		Alert alert = new Alert(AlertType.INFORMATION);
-        		alert.setTitle("Je hebt een edele op bezoek!");
+        		alert.setTitle(DomeinController.getText("btnNiveauClicked1"));
         		alert.show();
         		updateEdele();
         	}
     	}catch(IllegalArgumentException e) {
     		Alert alert = new Alert(AlertType.ERROR);
-			alert.setTitle("Niet genoeg edelsteenfiches!");
+			alert.setTitle(DomeinController.getText("btnNiveauClicked2"));
 			alert.setContentText(e.getMessage());
 			alert.show();
     	}
@@ -602,13 +602,13 @@ public class StartSpelController extends StackPane {
         	}
         	if(dc.controleerMogelijkheidTotEdelen()) {
         		Alert alert = new Alert(AlertType.INFORMATION);
-        		alert.setTitle("Je hebt een edele op bezoek!");
+        		alert.setTitle(DomeinController.getText("btnNiveauClicked1"));
         		alert.show();
         		updateEdele();
         	}
     	}catch(IllegalArgumentException e) {
     		Alert alert = new Alert(AlertType.ERROR);
-			alert.setTitle("Niet genoeg edelsteenfiches!");
+			alert.setTitle(DomeinController.getText("btnNiveauClicked2"));
 			alert.setContentText(e.getMessage());
 			alert.show();
     	}

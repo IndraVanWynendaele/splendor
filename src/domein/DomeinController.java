@@ -101,7 +101,7 @@ public class DomeinController {
 		spelersInSpel= s.getSpelers();
 
 			if(spelersInSpel.size() < 2) {
-				throw new IllegalArgumentException(rb.getString("controleerAantalSpelers2"));
+				throw new IllegalArgumentException(getText("controleerAantalSpelers2"));
 			}
 			aantalSpelersInOrde = true;
 

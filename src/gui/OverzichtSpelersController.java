@@ -21,7 +21,7 @@ public class OverzichtSpelersController extends StackPane{
 
 	private DomeinController dc;
 	private MenuController preMenuScreen;
-	private ResourceBundle rb;
+//	private ResourceBundle rb;
 	
     @FXML
     private Label lblOverzicht;
@@ -42,9 +42,9 @@ public class OverzichtSpelersController extends StackPane{
 		
 		try {
 			loader.load();
-			rb = dc.getRb();
-			lblOverzicht.setText(rb.getString("lblOverzicht"));
-			btnTerug.setText(rb.getString("btnTerug"));
+//			rb = dc.getRb();
+			lblOverzicht.setText(DomeinController.getText("lblOverzicht"));
+			btnTerug.setText(DomeinController.getText("btnTerug"));
 		} catch (IOException ex) {
 			throw new RuntimeException(ex);
 		}
@@ -54,13 +54,13 @@ public class OverzichtSpelersController extends StackPane{
 			if(dc.controleerAantalSpelers()) {
 				dc.startSpel();
 				Alert alert = new Alert(AlertType.INFORMATION);
-				alert.setTitle("Spel gestart");
-				alert.setContentText("Aantal spelers correct & spel is aangemaakt!");
+				alert.setTitle(DomeinController.getText("OverzichtSpelersController1"));
+				alert.setContentText(DomeinController.getText("OverzichtSpelersController2"));
 				alert.show();
 			}
 		}catch(IllegalArgumentException e) {
 			Alert alert = new Alert(AlertType.ERROR);
-			alert.setTitle("Aantal spelers incorrect");
+			alert.setTitle(DomeinController.getText("OverzichtSpelersController3"));
 			alert.setContentText(e.getMessage());
 			alert.show();
 		}

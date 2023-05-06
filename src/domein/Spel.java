@@ -198,7 +198,7 @@ public class Spel {
 						aantalGoed++;
 		if(aantalGoed == aantalSoortenEdelstenen)
 			return true;
-		throw new IllegalArgumentException("Deze kaart kan niet gekocht worden, je hebt niet genoeg edelsteenfiches!");//rb.getString("kanKaartGekochtWorden")
+		throw new IllegalArgumentException(TaalHelper.getText("kanKaartGekochtWorden"));//rb.getString("kanKaartGekochtWorden")
 	}
 	
 	public void neemEdelsteenAantal(EdelsteenAantal fiche) {
@@ -234,11 +234,11 @@ public class Spel {
 				EdelsteenAantal spelerFiche = tmpLijst.get(i);
 				if(spelerFiche.getSoort().equals(fiche.getSoort())) {
 					if(spelerFiche.getAantal() == 2)
-						throw new IllegalArgumentException("Je hebt al 2 fiches van dezelfde soort!");
+						throw new IllegalArgumentException(TaalHelper.getText("controleerHoeveelheidFichesNemen1"));
 					if(aantalInSpel(fiche.getSoort()) < 4)
-						throw new IllegalArgumentException("Voor 2 dezelfde fiches moeten er min 4 fiches op de stapel liggen");
+						throw new IllegalArgumentException(TaalHelper.getText("controleerHoeveelheidFichesNemen2"));
 					else if(tmpLijst.size() == 2)
-						throw new IllegalArgumentException("Je moet 3 verschillende fiches nemen!");
+						throw new IllegalArgumentException(TaalHelper.getText("controleerHoeveelheidFichesNemen3"));
 					huidigeSpeler.voegTmpFicheToe(fiche);
 					return true;					
 				}

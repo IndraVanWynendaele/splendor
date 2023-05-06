@@ -51,17 +51,17 @@ public class Speler {
 		String specialeKarakters = "!#$%&'()*+,-./:;<=>?@[]^`{|}";
 		for(int i = 0; i < specialeKarakters.length(); i++)
 			if(gebruikersnaam.contains(Character.toString(specialeKarakters.charAt(i))))
-				throw new IllegalArgumentException("gebruikersnaam mag geen speciale tekens buiten spatie en _ bevatten");
+				throw new IllegalArgumentException(TaalHelper.getText("controleerGebruikersnaam1"));
 		char c = gebruikersnaam.charAt(0);
 		if(!((c >= 'A' && c <='Z') || (c >= 'a' && c <='z')))
-			throw new IllegalArgumentException("Gebruikersnaam moet starten met een letter (klein of groot)!");		
+			throw new IllegalArgumentException(TaalHelper.getText("controleerGebruikersnaam2"));		
 	}
 	
 	private void controleerGeboortejaar(int geboortejaar) {
 		if(geboortejaar < 0)
-			throw new IllegalArgumentException("Vul positief getal in");
+			throw new IllegalArgumentException(TaalHelper.getText("controleerGeboortejaar1"));
 		if(geboortejaar > MINIMUM_JAAR || geboortejaar < MAXIMUM_JAAR)
-			throw new IllegalArgumentException("Gebruiker moet minimum 6 en maximum 99 jaar oud zijn");
+			throw new IllegalArgumentException(TaalHelper.getText("controleerGeboortejaar2"));
 	}
 	
 	public void voegEdeleToe(Edele edele) {

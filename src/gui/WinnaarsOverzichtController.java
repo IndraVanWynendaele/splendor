@@ -23,7 +23,7 @@ public class WinnaarsOverzichtController extends StackPane{
 	private DomeinController dc;
 	private StartSpelController preStartSpelScreen;
 	private List<Speler> winnaars;
-	private ResourceBundle rb;
+//	private ResourceBundle rb;
 	
 
     @FXML
@@ -77,10 +77,10 @@ public class WinnaarsOverzichtController extends StackPane{
     	
     	try {
     		loader.load();
-    		rb = dc.getRb();
-    		lblSpeler.setText(rb.getString("lblSpeler"));
-    		lblPrestigepunten.setText(rb.getString("lblPrestigepunten"));
-    		lblWinnaar.setText(rb.getString("lblWinnaar"));
+//    		rb = dc.getRb();
+    		lblSpeler.setText(DomeinController.getText("lblSpeler"));
+    		lblPrestigepunten.setText(DomeinController.getText("lblPrestigepunten"));
+    		lblWinnaar.setText(DomeinController.getText("lblWinnaar"));
 
     		toonWinnaars();
     	}catch (IOException ex) {
