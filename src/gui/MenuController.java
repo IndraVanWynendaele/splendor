@@ -21,7 +21,7 @@ public class MenuController extends GridPane{
 	
 	private DomeinController dc;
 	private StartController preStartScreen;
-	//private ResourceBundle rb;
+	private ResourceBundle rb;
 	
 	@FXML
     private ImageView BGImage;
@@ -51,10 +51,13 @@ public class MenuController extends GridPane{
 			
 		try {
 			loader.load();
-			//rb = dc.getRb();
-			btnSpelerAanmelden.setText(DomeinController.getText("btnSpelerAanmelden"));
-			btnOverzichtSpelers.setText(DomeinController.getText("btnOverzichtSpelers"));
-			btnAppStoppen.setText(DomeinController.getText("btnAppStoppen"));
+			rb = dc.getRb();
+			btnSpelerAanmelden.setText(rb.getString("btnSpelerAanmelden"));
+			btnOverzichtSpelers.setText(rb.getString("btnOverzichtSpelers"));
+			btnAppStoppen.setText(rb.getString("btnAppStoppen"));
+//			btnSpelerAanmelden.setText(DomeinController.getText("btnSpelerAanmelden"));
+//			btnOverzichtSpelers.setText(DomeinController.getText("btnOverzichtSpelers"));
+//			btnAppStoppen.setText(DomeinController.getText("btnAppStoppen"));
 		} catch (IOException ex) {
 			throw new RuntimeException(ex);
 		}
