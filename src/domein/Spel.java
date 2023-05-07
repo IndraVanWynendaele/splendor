@@ -100,17 +100,18 @@ public class Spel {
 		int aantalSoortenEdelstenen = -1;
 		int aantalGoed = 0;
 		for(int i = 0; i < edeleInSpel.size(); i++) {
-		aantalSoortenEdelstenen = edeleInSpel.get(i).getKosten().size();
-		for(EdelsteenAantal kost : edeleInSpel.get(i).getKosten())
-			for(EdelsteenAantal bonus : huidigeSpeler.getBonussen())
-				if(kost.getSoort().equals(bonus.getSoort()))
-					if(kost.getAantal() <= bonus.getAantal())
-						aantalGoed++;
-			if(aantalGoed == aantalSoortenEdelstenen) {
-				huidigeSpeler.voegEdeleToe(edeleInSpel.get(i)); // voor 1 edele
-				edeleInSpel.remove(i);
-				return true;
-			}
+			aantalGoed = 0; // opnieuw op 0 zetten anders blijft het optellen -> foute edelen geven
+			aantalSoortenEdelstenen = edeleInSpel.get(i).getKosten().size();
+			for(EdelsteenAantal kost : edeleInSpel.get(i).getKosten())
+				for(EdelsteenAantal bonus : huidigeSpeler.getBonussen())
+					if(kost.getSoort().equals(bonus.getSoort()))
+						if(kost.getAantal() <= bonus.getAantal())
+							aantalGoed++;
+				if(aantalGoed == aantalSoortenEdelstenen) {
+					huidigeSpeler.voegEdeleToe(edeleInSpel.get(i)); // voor 1 edele
+					edeleInSpel.remove(i);
+					return true;
+				}
 		}
 		
 		return false;

@@ -260,6 +260,31 @@ public class StartSpelController extends StackPane {
 		niveauBezitImv.add(imgKaartSpeler13);
 		niveauBezitImv.add(imgKaartSpeler14);
 		
+		List<ImageView> ontwikkelingsKaartenSpeler = new ArrayList<>();
+		ontwikkelingsKaartenSpeler.add(imgKaartSpeler1);
+		ontwikkelingsKaartenSpeler.add(imgKaartSpeler2);
+		ontwikkelingsKaartenSpeler.add(imgKaartSpeler3);
+		ontwikkelingsKaartenSpeler.add(imgKaartSpeler4);
+		ontwikkelingsKaartenSpeler.add(imgKaartSpeler5);
+		ontwikkelingsKaartenSpeler.add(imgKaartSpeler6);
+		ontwikkelingsKaartenSpeler.add(imgKaartSpeler7);
+		ontwikkelingsKaartenSpeler.add(imgKaartSpeler8);
+		ontwikkelingsKaartenSpeler.add(imgKaartSpeler9);
+		ontwikkelingsKaartenSpeler.add(imgKaartSpeler10);
+		ontwikkelingsKaartenSpeler.add(imgKaartSpeler11);
+		ontwikkelingsKaartenSpeler.add(imgKaartSpeler12);
+		ontwikkelingsKaartenSpeler.add(imgKaartSpeler13);
+		ontwikkelingsKaartenSpeler.add(imgKaartSpeler14);
+		
+		//imageview leeg maken
+		for(int i = 0; i < edeleBezitImv.size(); i ++) {
+			edeleBezitImv.get(i).setImage(null);
+		}
+		
+		for(int i = 0; i < ontwikkelingsKaartenSpeler.size(); i++) {
+			ontwikkelingsKaartenSpeler.get(i).setImage(null);
+		}
+		
 		for(Speler s: spelers) {
 			List<Ontwikkelingskaart> ok = s.getOntwikkelingskaartenInBezit();
 			List<Edele> e = s.getEdelenInBezit();
@@ -275,39 +300,21 @@ public class StartSpelController extends StackPane {
 					case SMARAGD -> lblSmaragdSpelerAantal.setText(toString(ea.getAantal()));
 					}				    
 				}
-			}
-			List<ImageView> ontwikkelingsKaartenSpeler = new ArrayList<>();
-			ontwikkelingsKaartenSpeler.add(imgKaartSpeler1);
-			ontwikkelingsKaartenSpeler.add(imgKaartSpeler2);
-			ontwikkelingsKaartenSpeler.add(imgKaartSpeler3);
-			ontwikkelingsKaartenSpeler.add(imgKaartSpeler4);
-			ontwikkelingsKaartenSpeler.add(imgKaartSpeler5);
-			ontwikkelingsKaartenSpeler.add(imgKaartSpeler6);
-			ontwikkelingsKaartenSpeler.add(imgKaartSpeler7);
-			ontwikkelingsKaartenSpeler.add(imgKaartSpeler8);
-			ontwikkelingsKaartenSpeler.add(imgKaartSpeler9);
-			ontwikkelingsKaartenSpeler.add(imgKaartSpeler10);
-			ontwikkelingsKaartenSpeler.add(imgKaartSpeler11);
-			ontwikkelingsKaartenSpeler.add(imgKaartSpeler12);
-			ontwikkelingsKaartenSpeler.add(imgKaartSpeler13);
-			ontwikkelingsKaartenSpeler.add(imgKaartSpeler14);
-			
-			// hier kaarten en edelen tonen
-			for(int i = 0; i < edeleBezitImv.size(); i ++) {
-				edeleBezitImv.get(i).setImage(null);
-			}
-			for(int i = 0; i < e.size(); i++) {
-				edeleBezitImv.get(i).setImage(e.get(i).getImage());	
-				edeleBezitImv.get(i).setFitHeight(150);
-				edeleBezitImv.get(i).setFitWidth(150);
-			}
-			 
-			if(ok.size()!=0)
-                for(int i = 0; i < ok.size(); i++) {
-                    ontwikkelingsKaartenSpeler.get(i).setImage(ok.get(i).getImage());
-                    ontwikkelingsKaartenSpeler.get(i).setFitHeight(160);
-                    ontwikkelingsKaartenSpeler.get(i).setFitWidth(125);
-            } 
+				// hier kaarten en edelen tonen
+				if(e.size()!=0)
+					for(int i = 0; i < e.size(); i++) {
+						edeleBezitImv.get(i).setImage(e.get(i).getImage());	
+						edeleBezitImv.get(i).setFitHeight(150);
+						edeleBezitImv.get(i).setFitWidth(150);
+					}
+				 
+				if(ok.size()!=0)
+	                for(int i = 0; i < ok.size(); i++) {
+	                    ontwikkelingsKaartenSpeler.get(i).setImage(ok.get(i).getImage());
+	                    ontwikkelingsKaartenSpeler.get(i).setFitHeight(160);
+	                    ontwikkelingsKaartenSpeler.get(i).setFitWidth(125);
+	            } 
+			}		
 		}
 	}
 		
