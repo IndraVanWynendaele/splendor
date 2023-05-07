@@ -23,7 +23,6 @@ public class WinnaarsOverzichtController extends StackPane{
 	private DomeinController dc;
 	private StartSpelController preStartSpelScreen;
 	private List<Speler> winnaars;
-//	private ResourceBundle rb;
 	
 
     @FXML
@@ -101,8 +100,8 @@ public class WinnaarsOverzichtController extends StackPane{
 		prestLabels.add(prestSpeler3);
 		prestLabels.add(prestSpeler4);
 		
-		sorteerWinnaarsOpPrestigepunten();
 		int i = 0;
+		winnaars = dc.getWinnaars();
 		for(Speler w: winnaars) {
 			spelerLabels.get(i).setText(w.getGebruikersnaam());
 			prestLabels.get(i++).setText(toString(w.getTotaalAantalPrestigePunten()));
@@ -112,13 +111,6 @@ public class WinnaarsOverzichtController extends StackPane{
 	
 	private String toString(int aantal) {
 		return String.format("%d", aantal);
-	}
-	
-	private Collection<Speler> sorteerWinnaarsOpPrestigepunten(){
-		winnaars = dc.getWinnaars();
-		return winnaars.stream()
-				.sorted(Comparator.comparing(Speler::getTotaalAantalPrestigePunten))
-				.collect(Collectors.toList());
 	}
 	
 }

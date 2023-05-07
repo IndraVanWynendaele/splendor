@@ -2,6 +2,7 @@ package domein;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 import util.EdelsteenSoort;
@@ -17,7 +18,7 @@ public class Spel {
 	private List<Edele> edelen, beschikbareEdelenSpeler = new ArrayList<>();
 	private List<Edele> edeleInSpel;
 	private List<Speler> winnaars;
-	private static final int prestigePunten = 50; // OPGEPAST AANGEPAST
+	private static final int prestigePunten = 2; // OPGEPAST AANGEPAST
 	
 	
 	public Spel() {
@@ -346,30 +347,40 @@ public class Spel {
 		return false;	
 	}
 	
-	private void bepaalWinnaar() {
+	private void bepaalWinnaar() {			
 		int maxPrestigepunten=Integer.MIN_VALUE;
+		int minAantalOwk=Integer.MAX_VALUE;
 		winnaars = new ArrayList<>();
-		winnaars.add(spelers.get(0));
 				
 		for(Speler speler:spelers) {
 			if(speler.getTotaalAantalPrestigePunten() == maxPrestigepunten) {
-				if(speler.getOntwikkelingskaartenInBezit().size() < startSpeler.getOntwikkelingskaartenInBezit().size()) {
+				if(speler.getOntwikkelingskaartenInBezit().size() < minAantalOwk) {
 					maxPrestigepunten=speler.getTotaalAantalPrestigePunten();
-					winnaars.remove(0);
+					minAantalOwk = speler.getOntwikkelingskaartenInBezit().size();
+					for(int i=0; i < winnaars.size(); i++) {
+						if(winnaars.get(i).getOntwikkelingskaartenInBezit().size() > minAantalOwk) 
+							winnaars.remove(i);
+					}
 					winnaars.add(speler);
 				}
-				else if(speler.getOntwikkelingskaartenInBezit().size() == startSpeler.getOntwikkelingskaartenInBezit().size()) {
+				else if(speler.getOntwikkelingskaartenInBezit().size() == minAantalOwk) {
 					maxPrestigepunten=speler.getTotaalAantalPrestigePunten();
+					minAantalOwk = speler.getOntwikkelingskaartenInBezit().size();
 					winnaars.add(speler);
 				}
 			}
 			else if(speler.getTotaalAantalPrestigePunten()> maxPrestigepunten) {
 				maxPrestigepunten=speler.getTotaalAantalPrestigePunten();
-				winnaars.remove(0);
+				minAantalOwk = speler.getOntwikkelingskaartenInBezit().size();
+				for(int i=0; i < winnaars.size(); i++) {
+					if(winnaars.get(i).getTotaalAantalPrestigePunten() < maxPrestigepunten)
+						winnaars.remove(i);
+				}
 				winnaars.add(speler);
 			}
 		}
 	}
+
 	
 	public void isStartSpeler() {
 		int jongsteJaar=Integer.MIN_VALUE;
