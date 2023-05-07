@@ -2,7 +2,6 @@ package domein;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Comparator;
 import java.util.List;
 
 import util.EdelsteenSoort;
@@ -351,32 +350,30 @@ public class Spel {
 		int maxPrestigepunten=Integer.MIN_VALUE;
 		int minAantalOwk=Integer.MAX_VALUE;
 		winnaars = new ArrayList<>();
-				
+		
 		for(Speler speler:spelers) {
-			if(speler.getTotaalAantalPrestigePunten() == maxPrestigepunten) {
-				if(speler.getOntwikkelingskaartenInBezit().size() < minAantalOwk) {
+			if(speler.getTotaalAantalPrestigePunten() >= prestigePunten) {
+				if(speler.getTotaalAantalPrestigePunten() == maxPrestigepunten) {
+					if(speler.getOntwikkelingskaartenInBezit().size() < minAantalOwk) {
+						minAantalOwk = speler.getOntwikkelingskaartenInBezit().size();
+						for(int i=0; i < winnaars.size(); i++) {
+							if(winnaars.get(i).getOntwikkelingskaartenInBezit().size() > minAantalOwk) 
+								winnaars.remove(i);
+						}
+						winnaars.add(speler);
+					}
+					else if(speler.getOntwikkelingskaartenInBezit().size() == minAantalOwk) {
+						winnaars.add(speler);
+					}
+				}
+				else if(speler.getTotaalAantalPrestigePunten()> maxPrestigepunten) {
 					maxPrestigepunten=speler.getTotaalAantalPrestigePunten();
-					minAantalOwk = speler.getOntwikkelingskaartenInBezit().size();
 					for(int i=0; i < winnaars.size(); i++) {
-						if(winnaars.get(i).getOntwikkelingskaartenInBezit().size() > minAantalOwk) 
+						if(winnaars.get(i).getTotaalAantalPrestigePunten() < maxPrestigepunten)
 							winnaars.remove(i);
 					}
 					winnaars.add(speler);
 				}
-				else if(speler.getOntwikkelingskaartenInBezit().size() == minAantalOwk) {
-					maxPrestigepunten=speler.getTotaalAantalPrestigePunten();
-					minAantalOwk = speler.getOntwikkelingskaartenInBezit().size();
-					winnaars.add(speler);
-				}
-			}
-			else if(speler.getTotaalAantalPrestigePunten()> maxPrestigepunten) {
-				maxPrestigepunten=speler.getTotaalAantalPrestigePunten();
-				minAantalOwk = speler.getOntwikkelingskaartenInBezit().size();
-				for(int i=0; i < winnaars.size(); i++) {
-					if(winnaars.get(i).getTotaalAantalPrestigePunten() < maxPrestigepunten)
-						winnaars.remove(i);
-				}
-				winnaars.add(speler);
 			}
 		}
 	}
