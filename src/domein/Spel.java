@@ -132,9 +132,6 @@ public class Spel {
 				niveau1Zichtbaar.add(index,niveau1.remove(0));				
 			}
 		}
-//		else {
-//			huidigeSpeler.getOntwikkelingskaartenInBezit().add(niveau1Zichtbaar.remove(index));
-//		} --> werkt niet
 	}
 	
 	public void koopKaartNiveau2(int index) {
@@ -148,9 +145,6 @@ public class Spel {
 				niveau2Zichtbaar.add(index,niveau2.remove(0));
 			}
 		}
-		//else {
-//			huidigeSpeler.getOntwikkelingskaartenInBezit().add(niveau2Zichtbaar.remove(index));
-//		} --> werkt niet
 	}
 
 	public void koopKaartNiveau3(int index) {
@@ -164,9 +158,6 @@ public class Spel {
 				niveau3Zichtbaar.add(index,niveau3.remove(0));
 			}
 		}
-		//else {
-//			huidigeSpeler.getOntwikkelingskaartenInBezit().add(niveau3Zichtbaar.remove(index));
-//		} --> werkt niet
 	}
 	
 	private void fichesTerugSpel(EdelsteenAantal fiche) {
@@ -340,44 +331,6 @@ public class Spel {
 	public List<EdelsteenAantal> getTmpLijstSpeler() {
 		return huidigeSpeler.getTmpFicheLijst();
 	}
-	
-	
-//	public void speelRonde() {
-//		for(Speler sp : spelers) {
-//			sp.speelBeurt();
-//			tmpSpelerLijst=updateIsAanDeBeurt(tmpSpelerLijst);
-//		}
-//		isEindeSpel();
-//	}
-//
-//	private void koopOntwikkelingskaart(int rij, int kolom) {
-//		Ontwikkelingskaart o ;
-//		switch(rij) {
-//		case 1 ->{ 
-//			o=niveau1Zichtbaar.get(kolom-1);
-//			controleerOntwikkelingskaartKopen(o);
-//			}
-//		case 2 ->{ o=niveau2Zichtbaar.remove(kolom-1);}
-//		case 3 ->{ o=niveau3Zichtbaar.remove(kolom-1);}
-//		}
-//		
-//	}
-//
-//	private boolean controleerOntwikkelingskaartKopen(Ontwikkelingskaart o) {
-////		TODO huidigeSpeler
-//		return false;
-//	}
-//	
-//	private void controleerKeuzeEdelsteenfiches(int kolom) {
-//		List<EdelsteenAantal> edelsteenfichesInBezit=huidigeSpeler.getEdelsteenfichesInBezit();
-//		switch(kolom) {
-//			case 1 -> {
-//			edelsteenfichesInBezit.get(kolom);
-//			smaragdAantal.setAantal(smaragdAantal.getAantal()-1);
-//			}
-//		}
-//		
-//	}
 
 	public boolean isEindeSpel() {
 		for(Speler speler: spelers) {
@@ -428,7 +381,7 @@ public class Spel {
 					String str2 = startSpeler.getGebruikersnaam();
 					int result;
 					do {
-						result = str1.compareTo(str2);
+						result = str1.compareToIgnoreCase(str2);
 						if(result > 0) // 1
 							startSpeler = speler;
 					}while(result <= 0);			        
@@ -484,6 +437,14 @@ public class Spel {
 				s.isAanDeBeurt(false);
 			}
 		}
+	}
+
+	public boolean spelerAlAangemeld(Speler sp) {
+		for(Speler speler : spelers)
+			if(speler.getGebruikersnaam().toLowerCase().equals(sp.getGebruikersnaam().toLowerCase()))
+				if(speler.getGeboortejaar() == sp.getGeboortejaar())
+					return false;
+		return true;
 	}
 	
 }

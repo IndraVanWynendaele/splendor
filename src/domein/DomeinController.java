@@ -72,12 +72,7 @@ public class DomeinController {
 	}
 	
 	public boolean spelerAlAangemeld(Speler sp) {
-		spelersInSpel= s.getSpelers();
-		for(Speler speler : spelersInSpel)
-			if(speler.getGebruikersnaam().equals(sp.getGebruikersnaam()))
-				if(speler.getGeboortejaar() == sp.getGeboortejaar())
-					return false;
-		return true;
+		return s.spelerAlAangemeld(sp);
 	}
 	
 	public boolean isEindeSpel() {
@@ -120,19 +115,6 @@ public class DomeinController {
 		return s.updateIsAanDeBeurt(tmpSpelerLijst);
 	}
 	
-//	public int controleerMogelijkheidTotEdelen() {
-//		if(s.controleerMogelijkheidTotEdelen(getHuisdigeSpeler())) {
-//			List<Edele> beschikbareEdelen = s.edelenOpBezoek(getHuisdigeSpeler());
-//			if(beschikbareEdelen.size() == 1)
-//				s.getHuidigeSpeler().voegEdeleToe(beschikbareEdelen.get(0));
-//			return beschikbareEdelen.size();
-//		}
-//		return 0;
-//	}
-//	
-//	public List<Edele> geefBeschikbareEdelen() {
-//		return s.edelenOpBezoek(getHuisdigeSpeler());
-//	}
 	public boolean controleerMogelijkheidTotEdelen() {
 		return s.controleerMogelijkheidTotEdelen();
 	}
