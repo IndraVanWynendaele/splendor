@@ -33,7 +33,8 @@ public class StartSpelController extends StackPane {
 	private int aantalKlik = 0;
 	private List<Edele> zichtbareEdelen;
 	private List<Ontwikkelingskaart> niveau1, niveau2, niveau3, niveau1Zichtbaar, niveau2Zichtbaar, niveau3Zichtbaar;
-//	private ResourceBundle rb;
+	private boolean standVanZakenKnopVolgende;
+	private boolean standVanZakenKnopRonde;
 	
     public StartSpelController(AanmeldenController preAanmeldenScreen, DomeinController dc) {
 		this.dc = dc;
@@ -343,6 +344,7 @@ public class StartSpelController extends StackPane {
         btnN3Owk2.setDisable(true);
         btnN3Owk3.setDisable(true);
         btnN3Owk4.setDisable(true);
+        
 	}
 
 	@FXML
@@ -401,6 +403,14 @@ public class StartSpelController extends StackPane {
     void btnFicheKiezenClicked(ActionEvent event) {
     	btnKaartKopen.setDisable(true);
     	
+    	standVanZakenKnopRonde = btnVolgende.isDisable();
+    	standVanZakenKnopVolgende = btnStartRonde.isDisable();
+    	
+    	btnVolgende.setDisable(true);
+    	btnStartRonde.setDisable(true);
+    	
+    	btnFicheKiezen.setDisable(true);
+    	
     	btnDiamantSpel.setDisable(false);
     	btnDiamantSpel.setOnAction(this::btnFicheClicked);    	
     	btnOnyxSpel.setDisable(false);
@@ -411,7 +421,7 @@ public class StartSpelController extends StackPane {
     	btnSaffierSpel.setOnAction(this::btnFicheClicked);    	
     	btnSmaragdSpel.setDisable(false);
     	btnSmaragdSpel.setOnAction(this::btnFicheClicked);
-    }
+    	}
     
     void btnFicheClicked(ActionEvent event) {
     	int kolom;
@@ -430,10 +440,14 @@ public class StartSpelController extends StackPane {
     	};
 
     	List<EdelsteenAantal> tmpLijstSpeler = dc.getTmpLijstSpeler();
+    	
+    	
  
     	try {
     		 if(!dc.controleerHoeveelheidFichesNemen(new EdelsteenAantal(1, soort))) {
 	    		knoppenDisable();
+	    		btnVolgende.setDisable(!standVanZakenKnopVolgende);
+	        	btnStartRonde.setDisable(!standVanZakenKnopRonde);
 	    		dc.voegTmpLijstFichesToeAanPermLijst();
 	    		Alert alert = new Alert(AlertType.INFORMATION);
 	    		alert.setTitle(DomeinController.getText("controleerAlDrieFichesGekozen1"));
@@ -474,6 +488,8 @@ public class StartSpelController extends StackPane {
     		alert.setContentText(DomeinController.getText("controleerAlDrieFichesGekozen2"));
     		alert.show();
     		btnFicheKiezen.setDisable(true);
+    		btnVolgende.setDisable(!standVanZakenKnopVolgende);
+        	btnStartRonde.setDisable(!standVanZakenKnopRonde);
 		}
     }
     
@@ -486,6 +502,8 @@ public class StartSpelController extends StackPane {
     		alert.setContentText(DomeinController.getText("controleerAlDrieFichesGekozen2"));
     		alert.show();
     		btnFicheKiezen.setDisable(true);
+    		btnVolgende.setDisable(!standVanZakenKnopVolgende);
+        	btnStartRonde.setDisable(!standVanZakenKnopRonde);
     	}
     }
     
