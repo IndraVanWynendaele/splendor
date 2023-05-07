@@ -439,12 +439,12 @@ public class Spel {
 		}
 	}
 
-	public boolean spelerAlAangemeld(Speler sp) {
-		for(Speler speler : spelers)
-			if(speler.getGebruikersnaam().toLowerCase().equals(sp.getGebruikersnaam().toLowerCase()))
-				if(speler.getGeboortejaar() == sp.getGeboortejaar())
-					return false;
-		return true;
-	}
+//	public boolean spelerAlAangemeld(Speler sp) {
+//		for(Speler speler : spelers)
+//			if(speler.getGebruikersnaam().toLowerCase().equals(sp.getGebruikersnaam().toLowerCase()))
+//				if(speler.getGeboortejaar() == sp.getGeboortejaar())
+//					return false;
+//		return true;
+//	}
 	
 }

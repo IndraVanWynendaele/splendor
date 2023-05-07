@@ -72,7 +72,12 @@ public class DomeinController {
 	}
 	
 	public boolean spelerAlAangemeld(Speler sp) {
-		return s.spelerAlAangemeld(sp);
+		spelersInSpel = s.getSpelers();
+		for(Speler speler : spelersInSpel)
+			if(speler.getGebruikersnaam().toLowerCase().equals(sp.getGebruikersnaam().toLowerCase()))
+				if(speler.getGeboortejaar() == sp.getGeboortejaar())
+					return false;
+		return true;
 	}
 	
 	public boolean isEindeSpel() {
