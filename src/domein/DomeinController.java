@@ -286,4 +286,12 @@ public class DomeinController {
 	public boolean controleerAlTweeGelijkeFichesGekozen() {
 		return s.controleerAlTweeGelijkeFichesGekozen();
 	}
+	
+	public List<EdelsteenAantal> getFichesHuidigeSpeler(){
+		return getHuisdigeSpeler().getEdelsteenfichesInBezit();
+	}
+	
+	public void verwijder1FicheUitTmpLijst(EdelsteenAantal fiche) {
+		s.verwijder1FicheUitTmpLijst(fiche);
+	}
 }

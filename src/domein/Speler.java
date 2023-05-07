@@ -33,11 +33,11 @@ public class Speler {
 	}
 	
 	private void ficheBegin() { // OPGEPAST AANGEPAST 
-		edelsteenfichesInBezit.add(new EdelsteenAantal(50,EdelsteenSoort.DIAMANT));
-		edelsteenfichesInBezit.add(new EdelsteenAantal(50,EdelsteenSoort.ONYX));
-		edelsteenfichesInBezit.add(new EdelsteenAantal(50,EdelsteenSoort.ROBIJN));
-		edelsteenfichesInBezit.add(new EdelsteenAantal(50,EdelsteenSoort.SAFFIER));
-		edelsteenfichesInBezit.add(new EdelsteenAantal(50,EdelsteenSoort.SMARAGD));
+		edelsteenfichesInBezit.add(new EdelsteenAantal(0,EdelsteenSoort.DIAMANT));
+		edelsteenfichesInBezit.add(new EdelsteenAantal(0,EdelsteenSoort.ONYX));
+		edelsteenfichesInBezit.add(new EdelsteenAantal(0,EdelsteenSoort.ROBIJN));
+		edelsteenfichesInBezit.add(new EdelsteenAantal(0,EdelsteenSoort.SAFFIER));
+		edelsteenfichesInBezit.add(new EdelsteenAantal(0,EdelsteenSoort.SMARAGD));
 	}
 	
 	private void bonussenBegin() {
@@ -110,6 +110,14 @@ public class Speler {
 			voegEdelsteenficheToe(new EdelsteenAantal(tmpFicheLijst.get(i).getAantal(), tmpFicheLijst.get(i).getSoort()));
 		}
 		tmpFicheLijst.clear();
+	}
+	
+	public void verwijder1FicheUitTmpLijst(EdelsteenAantal fiche) {
+		for(int i = 0; i < tmpFicheLijst.size(); i++) {
+    		if(tmpFicheLijst.get(i).equals(fiche)) {
+    			tmpFicheLijst.remove(i);
+    		}
+    	}
 	}
 	
 	public void isStartspeler(boolean i) {

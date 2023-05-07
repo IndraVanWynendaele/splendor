@@ -3,7 +3,6 @@ package gui;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.ResourceBundle;
 
 import domein.DomeinController;
 import domein.Edele;
@@ -17,11 +16,11 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
-import javafx.stage.Popup;
 import javafx.stage.Stage;
 import util.EdelsteenSoort;
 
@@ -441,14 +440,16 @@ public class StartSpelController extends StackPane {
 
     	List<EdelsteenAantal> tmpLijstSpeler = dc.getTmpLijstSpeler();
     	
-    	
- 
     	try {
     		 if(!dc.controleerHoeveelheidFichesNemen(new EdelsteenAantal(1, soort))) {
 	    		knoppenDisable();
 	    		btnVolgende.setDisable(!standVanZakenKnopVolgende);
 	        	btnStartRonde.setDisable(!standVanZakenKnopRonde);
-	    		dc.voegTmpLijstFichesToeAanPermLijst();
+	        	if(dc.getTmpLijstSpeler().size() + dc.getFichesHuidigeSpeler().size() > 10) {
+	        		verwijderExtraFiches(tmpLijstSpeler);
+	        		tmpLijstSpeler = dc.getTmpLijstSpeler();
+	        	}
+	        	dc.voegTmpLijstFichesToeAanPermLijst();
 	    		Alert alert = new Alert(AlertType.INFORMATION);
 	    		alert.setTitle(DomeinController.getText("controleerAlDrieFichesGekozen1"));
 	    		alert.setContentText(DomeinController.getText("controleerAlDrieFichesGekozen2"));
@@ -475,7 +476,6 @@ public class StartSpelController extends StackPane {
     	}
     	updateAantalFichesSpel();
     	updateAantalFichesSpeler();
-    	
     }
     
     private void controleerAlDrieFichesGekozen() {
@@ -507,6 +507,15 @@ public class StartSpelController extends StackPane {
     	}
     }
     
+    private void verwijderExtraFiches(List<EdelsteenAantal> tmpLijstSpeler) {
+    	ChoiceBox<EdelsteenAantal> choicebox = new ChoiceBox<EdelsteenAantal>();
+    	for(EdelsteenAantal fiche : tmpLijstSpeler) {
+    		choicebox.getItems().add(fiche);
+    	}
+    	
+    	EdelsteenAantal value = choicebox.getValue();
+    	dc.verwijder1FicheUitTmpLijst(value);
+    }
 
     @FXML
     void btnKaartKopenClicked(ActionEvent event) {

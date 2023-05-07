@@ -212,6 +212,10 @@ public class Spel {
 		huidigeSpeler.voegTmpLijstFichesToeAanPermLijst();	
 	}
 	
+	public void verwijder1FicheUitTmpLijst(EdelsteenAantal fiche) {
+		huidigeSpeler.verwijder1FicheUitTmpLijst(fiche);
+	}
+	
 	private void controleerAantal(int aantal, EdelsteenSoort soort) {
 		if(aantal == 0)
 			throw new IllegalArgumentException(String.format(TaalHelper.getText("controleerAantal"), soort.name().toLowerCase()));
