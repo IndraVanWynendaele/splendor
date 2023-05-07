@@ -18,7 +18,7 @@ public class DomeinController {
 	public Speler startSpeler;
 	public List<Speler> spelersInSpel;
 	private Locale taal;
-	private ResourceBundle rb;
+	private static ResourceBundle rb;
 	private static TaalHelper th;
 
 	
@@ -51,12 +51,12 @@ public class DomeinController {
 		return TaalHelper.getText(key);
 	}
 	
-	public ResourceBundle getRb() {
+	public static ResourceBundle getRb() {
 		return rb;
 	}
 	
 	public void setRb(ResourceBundle rb) {
-		this.rb = rb;
+		DomeinController.rb = rb;
 	}
 	
 	public Locale geefTaal() {

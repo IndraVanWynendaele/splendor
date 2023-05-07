@@ -2,6 +2,7 @@ package domein;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.ResourceBundle;
 
 import util.EdelsteenSoort;
 
@@ -47,14 +48,11 @@ public class Speler {
 		bonussen.add(new EdelsteenAantal(0, EdelsteenSoort.SMARAGD));
 	}
 	
-	private void controleerGebruikersnaam(String gebruikersnaam) {
-		String specialeKarakters = "!#$%&'()*+,-./:;<=>?@[]^`{|}";
-		for(int i = 0; i < specialeKarakters.length(); i++)
-			if(gebruikersnaam.contains(Character.toString(specialeKarakters.charAt(i))))
-				throw new IllegalArgumentException(TaalHelper.getText("controleerGebruikersnaam1"));
-		char c = gebruikersnaam.charAt(0);
-		if(!((c >= 'A' && c <='Z') || (c >= 'a' && c <='z')))
-			throw new IllegalArgumentException(TaalHelper.getText("controleerGebruikersnaam2"));		
+	private void controleerGebruikersnaam(String gebruikersnaam) {	
+		if(gebruikersnaam == null || gebruikersnaam.isBlank())
+			throw new IllegalArgumentException(TaalHelper.getText("controleerGebruikersnaam1"));
+		if(!gebruikersnaam.matches("[a-zA-Z][\\w\\s]*"))
+			throw new IllegalArgumentException(TaalHelper.getText("controleerGebruikersnaam2"));
 	}
 	
 	private void controleerGeboortejaar(int geboortejaar) {
