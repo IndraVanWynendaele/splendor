@@ -25,7 +25,7 @@ public class AanmeldenController extends StackPane{
 
 	private DomeinController dc;
 	private MenuController preMenuScreen;
-	private int aantalSpelersInSpel = 0;
+	private int aantalSpelersInSpel;
 //	private ResourceBundle rb;
 	
 	@FXML
@@ -129,7 +129,7 @@ public class AanmeldenController extends StackPane{
 		alert.setTitle(DomeinController.getText("AanmeldenGelukt1"));
 		alert.setContentText(String.format(DomeinController.getText("AanmeldenGelukt2"), gebruikersnaam, geboortejaar));
 		alert.show();
-		aantalSpelersInSpel++;
+		aantalSpelersInSpel = dc.spelersInSpel.size();
 		
 		txfGeboortjaar.clear();
 		txfGebruikersnaam.clear();
