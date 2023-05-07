@@ -90,8 +90,12 @@ public class StartSpelController extends StackPane {
 		niveau3Buttons.add(btnN3Owk4);
 		
 		// edele
+		for(int i = 0; i < edeleImv.size(); i++) {
+			edeleImv.get(i).setImage(null);
+		}
+		
 		for (int i = 0; i < zichtbareEdelen.size(); i++) {
-            edeleImv.get(i).setImage(zichtbareEdelen.get(i).getImage());
+			edeleImv.get(i).setImage(zichtbareEdelen.get(i).getImage());
         }
 		
 		// niveau 1
@@ -100,7 +104,7 @@ public class StartSpelController extends StackPane {
 			imv.setImage(niveau1Zichtbaar.get(i).getImage());	
 			imv.setFitHeight(160);
 			imv.setFitWidth(125);
-			if(dc.getNiveau1().size()==0) {
+			if(dc.getNiveau1().size() == 0) {
 				if(stapelNiveau1.getImage() == null)
 					if(niveau1Buttons.get(i).getGraphic() == null)
 						niveau1Buttons.get(i).setGraphic(null);
@@ -115,7 +119,7 @@ public class StartSpelController extends StackPane {
 			imv.setImage(niveau2Zichtbaar.get(i).getImage());	
 			imv.setFitHeight(160);
 			imv.setFitWidth(125);
-			if(dc.getNiveau2().size()==0) {
+			if(dc.getNiveau2().size() == 0) {
 				if(stapelNiveau2.getImage() == null)
 					if(niveau2Buttons.get(i).getGraphic() == null)
 						niveau2Buttons.get(i).setGraphic(null);
@@ -130,7 +134,7 @@ public class StartSpelController extends StackPane {
 			imv.setImage(niveau3Zichtbaar.get(i).getImage());	
 			imv.setFitHeight(160);
 			imv.setFitWidth(125);
-			if(dc.getNiveau3().size()==0) {
+			if(dc.getNiveau3().size() == 0) {
 				if(stapelNiveau3.getImage() == null)
 					if(niveau3Buttons.get(i).getGraphic() == null)
 						niveau3Buttons.get(i).setGraphic(null);
@@ -300,7 +304,7 @@ public class StartSpelController extends StackPane {
 					case SMARAGD -> lblSmaragdSpelerAantal.setText(toString(ea.getAantal()));
 					}				    
 				}
-				// hier kaarten en edelen tonen
+				// hier kaarten en edelen tonen van huidige speler
 				if(e.size()!=0)
 					for(int i = 0; i < e.size(); i++) {
 						edeleBezitImv.get(i).setImage(e.get(i).getImage());	
@@ -345,21 +349,6 @@ public class StartSpelController extends StackPane {
 	void btnVolgendeClicked(ActionEvent event) {
 		tmpSpelerLijst = dc.updateIsAanDeBeurt(tmpSpelerLijst);
 		geefHuidigeSpeler();
-//		if(tmpSpelerLijst.size()==1) {
-//			btnVolgende.setDisable(true);
-//	    	btnStartRonde.setDisable(false);
-//	    	if(dc.isEindeSpel()) {
-//	    		WinnaarsOverzichtController woc = new WinnaarsOverzichtController(this, dc);
-//	    		Scene scene1 = new Scene(woc);
-//	    		Stage stage1 = (Stage) this.getScene().getWindow();
-//	    		stage1.setScene(scene1);
-//	    		stage1.setMinHeight(600);
-//	    		stage1.setMinWidth(600);
-//	    		stage1.setMaxHeight(600);
-//	    		stage1.setMaxWidth(600);
-//	    		stage1.show();
-//	    	}
-//		}
 		btnFicheKiezen.setDisable(false);
 		if(aantalKlik > 1)
     		btnKaartKopen.setDisable(false);
@@ -371,7 +360,6 @@ public class StartSpelController extends StackPane {
 			btnVolgende.setDisable(true);
 	    	btnStartRonde.setDisable(false);
 		}
-		
 	}
 	
     @FXML
@@ -444,7 +432,6 @@ public class StartSpelController extends StackPane {
     	List<EdelsteenAantal> tmpLijstSpeler = dc.getTmpLijstSpeler();
  
     	try {
-    		
     		 if(!dc.controleerHoeveelheidFichesNemen(new EdelsteenAantal(1, soort))) {
 	    		knoppenDisable();
 	    		dc.voegTmpLijstFichesToeAanPermLijst();
@@ -452,7 +439,7 @@ public class StartSpelController extends StackPane {
 	    		alert.setTitle(DomeinController.getText("controleerAlDrieFichesGekozen1"));
 	    		alert.setContentText(DomeinController.getText("controleerAlDrieFichesGekozen2"));
 	    		alert.show();
-	    	}
+    		 }
 	    	else {
 	    		Alert alert = new Alert(AlertType.INFORMATION);
 	    		alert.setTitle(DomeinController.getText("btnFicheClicked2"));	
@@ -552,6 +539,8 @@ public class StartSpelController extends StackPane {
         		alert.setTitle(DomeinController.getText("btnNiveauClicked1"));
         		alert.show();
         		updateEdele();
+        		updateAantalFichesSpeler();
+        		toonStartSpelbord();
         	}
 //        	else if(dc.controleerMogelijkheidTotEdelen() > 1) {
 //        		Popup popup = new Popup();
@@ -586,6 +575,8 @@ public class StartSpelController extends StackPane {
         		alert.setTitle(DomeinController.getText("btnNiveauClicked1"));
         		alert.show();
         		updateEdele();
+        		updateAantalFichesSpeler();
+        		toonStartSpelbord();
         	}
     	}catch(IllegalArgumentException e) {
     		Alert alert = new Alert(AlertType.ERROR);
@@ -612,6 +603,8 @@ public class StartSpelController extends StackPane {
         		alert.setTitle(DomeinController.getText("btnNiveauClicked1"));
         		alert.show();
         		updateEdele();
+        		updateAantalFichesSpeler();
+        		toonStartSpelbord();
         	}
     	}catch(IllegalArgumentException e) {
     		Alert alert = new Alert(AlertType.ERROR);
