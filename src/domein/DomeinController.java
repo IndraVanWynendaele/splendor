@@ -48,7 +48,7 @@ public class DomeinController {
 	}
 	
 	public static String getText(String key) {
-		return th.getText(key);
+		return TaalHelper.getText(key);
 	}
 	
 	public ResourceBundle getRb() {

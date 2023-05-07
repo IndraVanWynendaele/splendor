@@ -29,7 +29,6 @@ import javafx.stage.Stage;
 public class StartController extends StackPane{
 	private DomeinController dc;
 	public static MediaPlayer mp;
-	private Locale taal;
 	
 	private BigDecimal volume= new BigDecimal(0.70);
 	
@@ -114,8 +113,9 @@ public class StartController extends StackPane{
     void MI_nl_action(ActionEvent event) {
     	btnSpelen.setDisable(false);
     	MBTaal.setText(MI_nl.getText());
-    	dc.setTaal2("ln");
-//    	btnSpelen.setText(DomeinController.getText("btnSpelen"));
+    	dc.setTaal2("nl");
+    	btnSpelen.setText(DomeinController.getText("btnSpelen"));
+    	
 //    	btnSpelen.setDisable(false);
 //    	MBTaal.setText(MI_nl.getText());
 //    	dc.setTaal("ln");
