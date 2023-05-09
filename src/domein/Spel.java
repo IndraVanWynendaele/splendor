@@ -7,7 +7,7 @@ import java.util.List;
 import util.EdelsteenSoort;
 
 public class Spel {
-	private List<Speler> spelers,tmpSpelerLijst;
+	private List<Speler> spelers;
 	private Speler startSpeler;
 	private OntwikkelingskaartRepository okr;
 	private EdeleRepository er;
@@ -17,7 +17,7 @@ public class Spel {
 	private List<Edele> edelen, beschikbareEdelenSpeler = new ArrayList<>();
 	private List<Edele> edeleInSpel;
 	private List<Speler> winnaars;
-	private static final int prestigePunten = 2; // OPGEPAST AANGEPAST
+	private static final int prestigePunten = 200; // OPGEPAST AANGEPAST
 	
 	
 	public Spel() {
@@ -96,30 +96,28 @@ public class Spel {
 		}
 	}
 	
-	public boolean controleerMogelijkheidTotEdelen() {
-		int aantalSoortenEdelstenen = -1;
-		int aantalGoed = 0;
-		for(int i = 0; i < edeleInSpel.size(); i++) {
-			aantalGoed = 0; // opnieuw op 0 zetten anders blijft het optellen -> foute edelen geven
+	public List<Edele> controleerMogelijkheidTotEdelen() {
+		int aantalSoortenEdelstenen ;
+		int aantalJuisteBonusen ;
+		List<Edele> tmpLijstEdelenSpeler = new ArrayList<>();
+		for(int i = 0; i < edeleInSpel.size(); i++) { //per in edelen in spel
+			aantalJuisteBonusen = 0; // opnieuw op 0 zetten anders blijft het optellen -> foute edelen geven
 			aantalSoortenEdelstenen = edeleInSpel.get(i).getKosten().size();
-			for(EdelsteenAantal kost : edeleInSpel.get(i).getKosten())
-				for(EdelsteenAantal bonus : huidigeSpeler.getBonussen())
+			for(EdelsteenAantal kost : edeleInSpel.get(i).getKosten())// per kost
+				for(EdelsteenAantal bonus : huidigeSpeler.getBonussen())// per bonus
 					if(kost.getSoort().equals(bonus.getSoort()))
 						if(kost.getAantal() <= bonus.getAantal())
-							aantalGoed++;
-				if(aantalGoed == aantalSoortenEdelstenen) {
-					// lijst met mogelijke edele ++
-					
-					// dit ergens anders
-					huidigeSpeler.voegEdeleToe(edeleInSpel.get(i)); // voor 1 edele
-					edeleInSpel.remove(i);
-					
-					return true;
+							aantalJuisteBonusen++;
+							
+				if(aantalJuisteBonusen == aantalSoortenEdelstenen) {
+					tmpLijstEdelenSpeler.add(edeleInSpel.get(i));
 				}
-				// if (edele mogelijk > 1) -> pop up ding
 		}
-		
-		return false;
+		if(tmpLijstEdelenSpeler.size()==1) {
+			huidigeSpeler.voegEdeleToe(tmpLijstEdelenSpeler.get(0)); 
+			edeleInSpel.remove(tmpLijstEdelenSpeler.get(0));
+		}
+		return tmpLijstEdelenSpeler;
 	}
 	
 	public void koopKaartNiveau1(int index) {
@@ -454,14 +452,5 @@ public class Spel {
 				s.isAanDeBeurt(false);
 			}
 		}
-	}
-
-//	public boolean spelerAlAangemeld(Speler sp) {
-//		for(Speler speler : spelers)
-//			if(speler.getGebruikersnaam().toLowerCase().equals(sp.getGebruikersnaam().toLowerCase()))
-//				if(speler.getGeboortejaar() == sp.getGeboortejaar())
-//					return false;
-//		return true;
-//	}
-	
+	}	
 }

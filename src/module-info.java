@@ -11,6 +11,7 @@ module splendor {
 	requires org.junit.jupiter.api;
 	requires org.junit.jupiter.params;
 	requires javafx.media;
+	requires java.desktop;
 	
 	opens gui to javafx.graphics, javafx.fxml;
 	//opens main to javafx.graphics, javafx.fxml;

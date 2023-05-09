@@ -19,7 +19,6 @@ public class DomeinController {
 	private EdeleRepository eRepo;
 	private OntwikkelingskaartRepository oRepo;
 	private Spel s ;
-	public Speler startSpeler;
 	/**
 	 * 
 	 */
@@ -127,7 +126,7 @@ public class DomeinController {
 		return s.updateIsAanDeBeurt(tmpSpelerLijst);
 	}
 	
-	public boolean controleerMogelijkheidTotEdelen() {
+	public List<Edele> controleerMogelijkheidTotEdelen() {
 		return s.controleerMogelijkheidTotEdelen();
 	}
 	

@@ -1,5 +1,6 @@
 package gui;
 
+import java.awt.event.MouseEvent;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -16,6 +17,8 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonBar;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
@@ -57,6 +60,8 @@ public class StartSpelController extends StackPane {
 			throw new RuntimeException(ex);
 		}
 	}
+    
+    private void porobeersel() {}
 	
 	private void toonStartSpelbord() {
 		zichtbareEdelen = dc.geefEdelenZichtbaar();
@@ -547,6 +552,12 @@ public class StartSpelController extends StackPane {
         btnN3Owk3.setOnAction(this::btnNiveau3Clicked);
         btnN3Owk4.setDisable(false);
         btnN3Owk4.setOnAction(this::btnNiveau3Clicked);
+        
+    }
+    
+    void imageEdelenClicked(MouseEvent event) {
+    	ImageView img = (ImageView) event.getSource();
+    	GridPane.getColumnIndex(img);
     }
     
     void btnNiveau1Clicked(ActionEvent event) {
@@ -561,22 +572,31 @@ public class StartSpelController extends StackPane {
         			b.setGraphic(null);
         		stapelNiveau1.setImage(null);
         	}
-        	if(dc.controleerMogelijkheidTotEdelen()) {
+        	List<Edele> mogelijkeEdeleOpBezoek = dc.controleerMogelijkheidTotEdelen();
+        	if(mogelijkeEdeleOpBezoek.size()==1) {
         		Alert alert = new Alert(AlertType.INFORMATION);
         		alert.setTitle(DomeinController.getText("btnNiveauClicked1"));
         		alert.show();
         		updateEdele();
         		updateAantalFichesSpeler();
         		toonStartSpelbord();
+        	}else if(mogelijkeEdeleOpBezoek.size()>1) {
+        		Alert alert = new Alert(AlertType.WARNING);
+        		String context = "";
+        		List<ButtonType> bts= new ArrayList<>();
+        		for(int i =0 ; i<mogelijkeEdeleOpBezoek.size();i++) {
+        			ButtonType bt = new ButtonType(String.format("%s", mogelijkeEdeleOpBezoek.get(i).getNaam()));
+        			bts.add(bt);
+        			context+= String.format(DomeinController.getText("mogelijkeEdeleOpBezoek1"),mogelijkeEdeleOpBezoek.get(i).getNaam() ,mogelijkeEdeleOpBezoek.get(i).getPrestigepunten()); //AANPASSEN
+        		}
+        		alert.getButtonTypes().setAll(bts);
+        		alert.setContentText(context);
+        		alert.setTitle(DomeinController.getText("mogelijkeEdeleOpBezoek2"));
+        		alert.show();
+        		updateEdele();
+        		updateAantalFichesSpeler();
+        		toonStartSpelbord();
         	}
-//        	else if(dc.controleerMogelijkheidTotEdelen() > 1) {
-//        		Popup popup = new Popup();
-//        		for(Edele edele : dc.geefBeschikbareEdelen()) {
-//        			ImageView imv = new ImageView();
-//        			imv.setImage(edele.getImage());
-//        			popup.getContent().addAll(imv);
-//        		}
-//        	}
     	}catch(IllegalArgumentException e) {
     		Alert alert = new Alert(AlertType.ERROR);
 			alert.setTitle(DomeinController.getText("btnNiveauClicked2"));
@@ -597,9 +617,26 @@ public class StartSpelController extends StackPane {
         			b.setGraphic(null);
         		stapelNiveau2.setImage(null);
         	}
-        	if(dc.controleerMogelijkheidTotEdelen()) {
+        	List<Edele> mogelijkeEdeleOpBezoek = dc.controleerMogelijkheidTotEdelen();
+        	if(mogelijkeEdeleOpBezoek.size()==1) {
         		Alert alert = new Alert(AlertType.INFORMATION);
         		alert.setTitle(DomeinController.getText("btnNiveauClicked1"));
+        		alert.show();
+        		updateEdele();
+        		updateAantalFichesSpeler();
+        		toonStartSpelbord();
+        	}else if(mogelijkeEdeleOpBezoek.size()>1) {
+        		Alert alert = new Alert(AlertType.WARNING);
+        		String context = "";
+        		List<ButtonType> bts= new ArrayList<>();
+        		for(int i =0 ; i<mogelijkeEdeleOpBezoek.size();i++) {
+        			ButtonType bt = new ButtonType(String.format("%s", mogelijkeEdeleOpBezoek.get(i).getNaam()));
+        			bts.add(bt);
+        			context+= String.format(DomeinController.getText("mogelijkeEdeleOpBezoek1"),mogelijkeEdeleOpBezoek.get(i).getNaam() ,mogelijkeEdeleOpBezoek.get(i).getPrestigepunten()); //AANPASSEN
+        		}
+        		alert.getButtonTypes().setAll(bts);
+        		alert.setContentText(context);
+        		alert.setTitle(DomeinController.getText("mogelijkeEdeleOpBezoek2"));
         		alert.show();
         		updateEdele();
         		updateAantalFichesSpeler();
@@ -625,9 +662,26 @@ public class StartSpelController extends StackPane {
         			b.setGraphic(null);
         		stapelNiveau3.setImage(null);
         	}
-        	if(dc.controleerMogelijkheidTotEdelen()) {
+        	List<Edele> mogelijkeEdeleOpBezoek = dc.controleerMogelijkheidTotEdelen();
+        	if(mogelijkeEdeleOpBezoek.size()==1) {
         		Alert alert = new Alert(AlertType.INFORMATION);
         		alert.setTitle(DomeinController.getText("btnNiveauClicked1"));
+        		alert.show();
+        		updateEdele();
+        		updateAantalFichesSpeler();
+        		toonStartSpelbord();
+        	}else if(mogelijkeEdeleOpBezoek.size()>1) {
+        		Alert alert = new Alert(AlertType.WARNING);
+        		String context = "";
+        		List<ButtonType> bts= new ArrayList<>();
+        		for(int i =0 ; i<mogelijkeEdeleOpBezoek.size();i++) {
+        			ButtonType bt = new ButtonType(String.format("%s", mogelijkeEdeleOpBezoek.get(i).getNaam()));
+        			bts.add(bt);
+        			context+= String.format(DomeinController.getText("mogelijkeEdeleOpBezoek1"),mogelijkeEdeleOpBezoek.get(i).getNaam() ,mogelijkeEdeleOpBezoek.get(i).getPrestigepunten()); //AANPASSEN
+        		}
+        		alert.getButtonTypes().setAll(bts);
+        		alert.setContentText(context);
+        		alert.setTitle(DomeinController.getText("mogelijkeEdeleOpBezoek2"));
         		alert.show();
         		updateEdele();
         		updateAantalFichesSpeler();

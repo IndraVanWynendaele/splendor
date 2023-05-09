@@ -33,11 +33,11 @@ public class Speler {
 	}
 	
 	private void ficheBegin() { // OPGEPAST AANGEPAST 
-		edelsteenfichesInBezit.add(new EdelsteenAantal(0,EdelsteenSoort.DIAMANT));
-		edelsteenfichesInBezit.add(new EdelsteenAantal(0,EdelsteenSoort.ONYX));
-		edelsteenfichesInBezit.add(new EdelsteenAantal(0,EdelsteenSoort.ROBIJN));
-		edelsteenfichesInBezit.add(new EdelsteenAantal(0,EdelsteenSoort.SAFFIER));
-		edelsteenfichesInBezit.add(new EdelsteenAantal(0,EdelsteenSoort.SMARAGD));
+		edelsteenfichesInBezit.add(new EdelsteenAantal(50,EdelsteenSoort.DIAMANT));
+		edelsteenfichesInBezit.add(new EdelsteenAantal(50,EdelsteenSoort.ONYX));
+		edelsteenfichesInBezit.add(new EdelsteenAantal(50,EdelsteenSoort.ROBIJN));
+		edelsteenfichesInBezit.add(new EdelsteenAantal(50,EdelsteenSoort.SAFFIER));
+		edelsteenfichesInBezit.add(new EdelsteenAantal(50,EdelsteenSoort.SMARAGD));
 	}
 	
 	private void bonussenBegin() {
