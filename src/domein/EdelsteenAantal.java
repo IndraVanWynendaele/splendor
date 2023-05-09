@@ -7,7 +7,7 @@ public class EdelsteenAantal {
 	private final EdelsteenSoort soort;
 	
 	public EdelsteenAantal(int aantal, EdelsteenSoort soort) {
-		this.aantal = aantal;
+		setAantal(aantal);
 		this.soort = soort;
 	}
 	
@@ -18,6 +18,7 @@ public class EdelsteenAantal {
 	public EdelsteenSoort getSoort() {
 		return soort;
 	}
+	
 	public void setAantal(int aantal) {
 		this.aantal = aantal;
 	}
