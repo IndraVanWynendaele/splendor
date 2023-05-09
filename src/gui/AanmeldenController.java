@@ -1,12 +1,11 @@
 package gui;
 
 import java.io.IOException;
+import java.util.List;
 import java.util.Optional;
-import java.util.ResourceBundle;
 
 import domein.DomeinController;
 import domein.Speler;
-import domein.TaalHelper;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -71,6 +70,8 @@ public class AanmeldenController extends StackPane{
 		
 		try {
 			loader.load();
+			setAantalSpelersInSpel(dc.spelersInSpel);
+			knoppenDisable();
 //			rb = dc.getRb();
 //			btnLogIn.setText(rb.getString("btnLogIn"));
 //			btnTerug.setText(rb.getString("btnTerug"));
@@ -114,10 +115,7 @@ public class AanmeldenController extends StackPane{
 				throw new IllegalArgumentException(DomeinController.getText("btnLogInClicked3"));
 			}
 			
-			if(aantalSpelersInSpel > 1)
-				btnStartSpel.setDisable(false);
-			if(aantalSpelersInSpel == 4)
-				btnLogIn.setDisable(true);
+			knoppenDisable();
 			txfGeboortjaar.setStyle("-fx-text-box-border: white");
 			txfGeboortjaar.setPromptText("");
 		}catch(NumberFormatException ex) {
@@ -171,5 +169,19 @@ public class AanmeldenController extends StackPane{
 			alert.setContentText(e.getMessage());
 			alert.show();
 		}
+	}
+	
+	private void setAantalSpelersInSpel(List<Speler> aantalSpelersInSpelLijst) {
+		if(aantalSpelersInSpelLijst == null)
+			this.aantalSpelersInSpel = 0;
+		else
+		 this.aantalSpelersInSpel = aantalSpelersInSpelLijst.size();
+	}
+	
+	private void knoppenDisable() {
+		if(aantalSpelersInSpel > 1)
+			btnStartSpel.setDisable(false);
+		if(aantalSpelersInSpel == 4)
+			btnLogIn.setDisable(true);
 	}
 }
