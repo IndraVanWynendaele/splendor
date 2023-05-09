@@ -108,10 +108,15 @@ public class Spel {
 						if(kost.getAantal() <= bonus.getAantal())
 							aantalGoed++;
 				if(aantalGoed == aantalSoortenEdelstenen) {
+					// lijst met mogelijke edele ++
+					
+					// dit ergens anders
 					huidigeSpeler.voegEdeleToe(edeleInSpel.get(i)); // voor 1 edele
 					edeleInSpel.remove(i);
+					
 					return true;
 				}
+				// if (edele mogelijk > 1) -> pop up ding
 		}
 		
 		return false;
