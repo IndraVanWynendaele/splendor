@@ -17,6 +17,10 @@ import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 
+/**
+ * @author Youna
+ *
+ */
 public class MenuController extends GridPane{
 	
 	private DomeinController dc;
@@ -41,6 +45,10 @@ public class MenuController extends GridPane{
     @FXML
     private Label titelSpel;
 	
+	/**
+	 * @param preStartScreen pruts
+	 * @param dc pruts
+	 */
 	public MenuController(StartController preStartScreen, DomeinController dc) {
 		this.preStartScreen = preStartScreen;
 		this.dc = dc;

@@ -26,6 +26,10 @@ import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
+/**
+ * @author Youna
+ *
+ */
 public class StartController extends StackPane{
 	private DomeinController dc;
 	public static MediaPlayer mp;

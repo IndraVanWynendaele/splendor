@@ -9,6 +9,10 @@ import dtos.EdeleDTO;
 import dtos.OntwikkelingskaartDTO;
 import dtos.SpelerDTO;
 
+/**
+ * @author Youna
+ *
+ */
 public class DomeinController {
 
 	private SpelerRepository sRepo;
@@ -16,6 +20,9 @@ public class DomeinController {
 	private OntwikkelingskaartRepository oRepo;
 	private Spel s ;
 	public Speler startSpeler;
+	/**
+	 * 
+	 */
 	public List<Speler> spelersInSpel;
 	private Locale taal;
 	private static ResourceBundle rb;

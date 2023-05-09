@@ -21,6 +21,10 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 
+/**
+ * @author Youna
+ *
+ */
 public class AanmeldenController extends StackPane{
 
 	private DomeinController dc;
@@ -52,6 +56,10 @@ public class AanmeldenController extends StackPane{
 	@FXML
 	private TextField txfGebruikersnaam;
 
+	/**
+	 * @param preMenuScreen
+	 * @param dc
+	 */
 	public AanmeldenController(MenuController preMenuScreen, DomeinController dc) {
 		this.preMenuScreen = preMenuScreen;
 		this.dc = dc;
