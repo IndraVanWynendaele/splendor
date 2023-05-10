@@ -451,7 +451,7 @@ public class StartSpelController extends StackPane {
 	    		btnVolgende.setDisable(!standVanZakenKnopVolgende);
 	        	btnStartRonde.setDisable(!standVanZakenKnopRonde);
 	        	if(dc.getTmpLijstSpeler().size() + dc.getFichesHuidigeSpeler().size() > 10) {
-	        		controleerTeVeelAantalFiches(tmpLijstSpeler);
+	        		// controleerTeVeelAantalFiches(tmpLijstSpeler);
 	        		tmpLijstSpeler = dc.getTmpLijstSpeler();
 	        	}
 	        	dc.voegTmpLijstFichesToeAanPermLijst();
@@ -459,28 +459,20 @@ public class StartSpelController extends StackPane {
 	    		alert.setTitle(DomeinController.getText("controleerAlDrieFichesGekozen1"));
 	    		alert.setContentText(DomeinController.getText("controleerAlDrieFichesGekozen2"));
 	    		alert.show();
-    		 }
-	    	else {
-	    		if(totaalAantalInLijst(dc.getTmpLijstSpeler()) + totaalAantalInLijst(dc.getFichesHuidigeSpeler()) > 10) {
-	    			controleerTeVeelAantalFiches(tmpLijstSpeler);
-	        		tmpLijstSpeler = dc.getTmpLijstSpeler();
-	        	}
-	    		else {
+    		 }else{	
 	    			Alert alert = new Alert(AlertType.INFORMATION);
-		    		alert.setTitle(DomeinController.getText("btnFicheClicked2"));	
-		    		alert.setContentText(String.format(DomeinController.getText("btnFicheClicked3"), soort.toString().toLowerCase()));
-		    		alert.showAndWait();
-	    		}
+		    		alert.setTitle(DomeinController.getText("btnFicheClicked2")); // "edelsteenfiche gekozen"
+		    		alert.setContentText(String.format(DomeinController.getText("btnFicheClicked3"), soort.toString().toLowerCase())); //"je hebt deze x gekozen"
+		    		alert.show();	
 	    	}
-	    	
-	    	// vergeet niet size == 2 moet nog gedaan w
-	    	
+    		 
     	}catch(IllegalArgumentException e) {
 			Alert alert = new Alert(AlertType.ERROR);
-			alert.setTitle(DomeinController.getText("btnFicheClicked4"));
+			alert.setTitle(DomeinController.getText("btnFicheClicked4")); // "dit mag niet"
 			alert.setContentText(e.getMessage());
 			alert.show();
     	}
+    		
     	controleerAlDrieFichesGekozen();
     	if(tmpLijstSpeler.size() == 2) {
     		controleerAlTweeGelijkeFichesGekozen();
@@ -490,6 +482,56 @@ public class StartSpelController extends StackPane {
     	meerdereEdelenOpBezoekControle();
     	updateEdele();
     	toonStartSpelbord();
+    	if(totaalAantalInLijst(dc.getFichesHuidigeSpeler()) > 10) {
+    		
+    		Alert alert = new Alert(AlertType.INFORMATION);
+    		alert.setTitle(DomeinController.getText("btnFicheClicked5")); // "je hebt te veel fiches"
+    		alert.setContentText(String.format(DomeinController.getText("btnFicheClicked6"), soort.toString().toLowerCase())); //"klik op één fiche die je wilt verwijderen"
+    		alert.showAndWait();
+    		
+    		btnSmaragdSpeler.setDisable(false);
+    		btnSmaragdSpeler.setOnAction(this::btnFicheSpelerClicked);
+
+    		btnSaffierSpeler.setDisable(false);
+    		btnSaffierSpeler.setOnAction(this::btnFicheSpelerClicked);
+
+    		btnDiamantSpeler.setDisable(false);
+    		btnDiamantSpeler.setOnAction(this::btnFicheSpelerClicked);
+
+    		btnOnyxSpeler.setDisable(false);
+    		btnOnyxSpeler.setOnAction(this::btnFicheSpelerClicked);
+
+    		btnRobijnSpeler.setDisable(false);
+    		btnRobijnSpeler.setOnAction(this::btnFicheSpelerClicked);
+
+    		
+    		
+	        	}
+    }
+    
+    private void btnFicheSpelerClicked(ActionEvent event) {
+       	int rij;
+    	Button b = (Button) event.getSource();
+    	if(GridPane.getRowIndex(b) == null)
+        	rij = 0;
+        else
+        	rij = GridPane.getColumnIndex(b);
+    	EdelsteenSoort soort = switch(rij) {
+    	case 0 -> EdelsteenSoort.SMARAGD;
+    	case 1 -> EdelsteenSoort.ONYX;
+    	case 2 -> EdelsteenSoort.DIAMANT;
+    	case 3 -> EdelsteenSoort.SAFFIER;
+    	case 4 -> EdelsteenSoort.ROBIJN;
+		default -> throw new IllegalArgumentException(DomeinController.getText("btnFicheClicked1") + rij); // "kapot"
+    	};
+    	
+    	for (int i = 0; i < dc.getHuisdigeSpeler().getEdelsteenfichesInBezit().size(); i++) {
+    		if(dc.getHuisdigeSpeler().getEdelsteenfichesInBezit().get(i).getSoort() == soort) {
+    			dc.getHuisdigeSpeler().getEdelsteenfichesInBezit().get(i).setAantal(dc.getHuisdigeSpeler().getEdelsteenfichesInBezit().get(i).getAantal() -1);			
+    		}
+    	}
+    	
+    	
     }
     
     private int totaalAantalInLijst(List<EdelsteenAantal> lijst) {
@@ -888,4 +930,19 @@ public class StartSpelController extends StackPane {
 
     @FXML
     private ImageView stapelNiveau3;
+    
+    @FXML
+    private Button btnDiamantSpeler;
+    
+    @FXML
+    private Button btnSmaragdSpeler;
+    
+    @FXML
+    private Button btnSaffierSpeler;
+    
+    @FXML
+    private Button btnOnyxSpeler;
+    
+    @FXML
+    private Button btnRobijnSpeler;
 }
