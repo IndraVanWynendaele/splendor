@@ -146,14 +146,14 @@ public class DomeinController {
 		return s.getWinnaars();
 	}
 	
-	public List<Edele> geefEdelenZichtbaar(){
-		List<Edele> edelenZichtbaar = new ArrayList<>();
-		List<Edele> edelen = s.getEdeleSpelers();
-		for(Edele e: edelen) {
-			edelenZichtbaar.add(e);
-		}
-		return edelenZichtbaar;
-	}
+//	public List<Edele> geefEdelenZichtbaar(){
+//		List<Edele> edelenZichtbaar = new ArrayList<>();
+//		List<Edele> edelen = s.getEdeleInSpel();
+//		for(Edele e: edelen) {
+//			edelenZichtbaar.add(e);
+//		}
+//		return edelenZichtbaar;
+//	}
 	
 	public List<Ontwikkelingskaart> geefOWK1Zichtbaar(){
 		return s.getNiveau1Zichtbaar();
@@ -175,7 +175,7 @@ public class DomeinController {
 	}
 	
 	public List<EdeleDTO> geefEdeleDTO(){
-		List<Edele> edeleInSpel = s.getEdeleSpelers();
+		List<Edele> edeleInSpel = s.getEdeleInSpel();
 		List<EdeleDTO> edeleDTO = new ArrayList<>();
 		for(Edele edele:edeleInSpel) {
 			edeleDTO.add(new EdeleDTO(edele.getPrestigepunten(),edele.getKosten(), edele.getImage()));
@@ -249,8 +249,8 @@ public class DomeinController {
 		return s.getNiveau3();
 	}
 	
-	public List<Edele> getEdeleSpelers() {
-		return s.getEdeleSpelers();
+	public List<Edele> getEdeleSpel() {
+		return s.getEdeleInSpel();
 	}
 	
 	public EdelsteenAantal getDiamantAantal() {

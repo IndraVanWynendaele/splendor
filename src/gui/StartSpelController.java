@@ -4,6 +4,7 @@ import java.awt.event.MouseEvent;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import domein.DomeinController;
 import domein.Edele;
@@ -17,10 +18,11 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
-import javafx.scene.control.ButtonBar;
+import javafx.scene.control.ButtonBar.ButtonData;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
+import javafx.scene.control.skin.ToggleButtonSkin;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
@@ -61,10 +63,8 @@ public class StartSpelController extends StackPane {
 		}
 	}
     
-    private void porobeersel() {}
-	
 	private void toonStartSpelbord() {
-		zichtbareEdelen = dc.geefEdelenZichtbaar();
+		zichtbareEdelen = dc.getEdeleSpel();
 		niveau1Zichtbaar = dc.geefOWK1Zichtbaar();
 		niveau2Zichtbaar = dc.geefOWK2Zichtbaar();
 		niveau3Zichtbaar = dc.geefOWK3Zichtbaar();
@@ -481,6 +481,9 @@ public class StartSpelController extends StackPane {
     	}
     	updateAantalFichesSpel();
     	updateAantalFichesSpeler();
+    	meerdereEdelenOpBezoekControle();
+    	updateEdele();
+    	toonStartSpelbord();
     }
     
     private void controleerAlDrieFichesGekozen() {
@@ -560,6 +563,45 @@ public class StartSpelController extends StackPane {
     	GridPane.getColumnIndex(img);
     }
     
+    private void meerdereEdelenOpBezoekControle() {
+    	List<Edele> mogelijkeEdeleOpBezoek = dc.controleerMogelijkheidTotEdelen();
+    	if(mogelijkeEdeleOpBezoek.size()==1) {
+    		Alert alert = new Alert(AlertType.INFORMATION);
+    		alert.setTitle(DomeinController.getText("btnNiveauClicked1"));
+    		alert.setContentText(String.format(DomeinController.getText("btnNiveauClicked3"),mogelijkeEdeleOpBezoek.get(0).getNaam()));
+    		alert.show();
+    		
+    		dc.getHuisdigeSpeler().voegEdeleToe(mogelijkeEdeleOpBezoek.get(0)); 
+    		dc.getEdeleSpel().remove(mogelijkeEdeleOpBezoek.get(0));
+    		
+    	}else if(mogelijkeEdeleOpBezoek.size()>1) {
+	        Alert alert = new Alert(AlertType.WARNING);
+	        String context = "";
+	        List<ButtonType> bts= new ArrayList<>();
+	        for(int i =0 ; i<mogelijkeEdeleOpBezoek.size();i++) {
+	        	ButtonType bt = new ButtonType(String.format("%s", mogelijkeEdeleOpBezoek.get(i).getNaam()));
+	        	bts.add(bt);
+	        	context+= String.format(DomeinController.getText("mogelijkeEdeleOpBezoek1"),mogelijkeEdeleOpBezoek.get(i).getNaam() ,mogelijkeEdeleOpBezoek.get(i).getPrestigepunten()); //AANPASSEN
+	        }
+	        alert.getButtonTypes().setAll(bts);
+	        alert.setContentText(context);
+	        alert.setTitle(DomeinController.getText("mogelijkeEdeleOpBezoek2"));
+	        		
+	        Optional<ButtonType> result = alert.showAndWait();
+	        for(ButtonType bt : bts) {
+	        	if(result.get()==bt) {
+	        		String naam = bt.getText();
+	        		for(Edele e : mogelijkeEdeleOpBezoek) {
+	        			if(naam.equals(e.getNaam())) {
+	        				dc.getHuisdigeSpeler().voegEdeleToe(e); 
+	    	        		dc.getEdeleSpel().remove(e);
+	        			}
+	        		}
+	        	}
+	       	}
+    	}	
+    }
+    
     void btnNiveau1Clicked(ActionEvent event) {
     	Button b = (Button) event.getSource();
     	try {
@@ -572,32 +614,11 @@ public class StartSpelController extends StackPane {
         			b.setGraphic(null);
         		stapelNiveau1.setImage(null);
         	}
-        	List<Edele> mogelijkeEdeleOpBezoek = dc.controleerMogelijkheidTotEdelen();
-        	if(mogelijkeEdeleOpBezoek.size()==1) {
-        		Alert alert = new Alert(AlertType.INFORMATION);
-        		alert.setTitle(DomeinController.getText("btnNiveauClicked1"));
-        		alert.show();
-        		updateEdele();
-        		updateAantalFichesSpeler();
-        		toonStartSpelbord();
-        	}else if(mogelijkeEdeleOpBezoek.size()>1) {
-        		Alert alert = new Alert(AlertType.WARNING);
-        		String context = "";
-        		List<ButtonType> bts= new ArrayList<>();
-        		for(int i =0 ; i<mogelijkeEdeleOpBezoek.size();i++) {
-        			ButtonType bt = new ButtonType(String.format("%s", mogelijkeEdeleOpBezoek.get(i).getNaam()));
-        			bts.add(bt);
-        			context+= String.format(DomeinController.getText("mogelijkeEdeleOpBezoek1"),mogelijkeEdeleOpBezoek.get(i).getNaam() ,mogelijkeEdeleOpBezoek.get(i).getPrestigepunten()); //AANPASSEN
-        		}
-        		alert.getButtonTypes().setAll(bts);
-        		alert.setContentText(context);
-        		alert.setTitle(DomeinController.getText("mogelijkeEdeleOpBezoek2"));
-        		alert.show();
-        		updateEdele();
-        		updateAantalFichesSpeler();
-        		toonStartSpelbord();
-        	}
-    	}catch(IllegalArgumentException e) {
+        	meerdereEdelenOpBezoekControle();
+        	updateEdele();
+        	updateAantalFichesSpeler();
+        	toonStartSpelbord();
+        }catch(IllegalArgumentException e) {
     		Alert alert = new Alert(AlertType.ERROR);
 			alert.setTitle(DomeinController.getText("btnNiveauClicked2"));
 			alert.setContentText(e.getMessage());
@@ -617,31 +638,10 @@ public class StartSpelController extends StackPane {
         			b.setGraphic(null);
         		stapelNiveau2.setImage(null);
         	}
-        	List<Edele> mogelijkeEdeleOpBezoek = dc.controleerMogelijkheidTotEdelen();
-        	if(mogelijkeEdeleOpBezoek.size()==1) {
-        		Alert alert = new Alert(AlertType.INFORMATION);
-        		alert.setTitle(DomeinController.getText("btnNiveauClicked1"));
-        		alert.show();
-        		updateEdele();
-        		updateAantalFichesSpeler();
-        		toonStartSpelbord();
-        	}else if(mogelijkeEdeleOpBezoek.size()>1) {
-        		Alert alert = new Alert(AlertType.WARNING);
-        		String context = "";
-        		List<ButtonType> bts= new ArrayList<>();
-        		for(int i =0 ; i<mogelijkeEdeleOpBezoek.size();i++) {
-        			ButtonType bt = new ButtonType(String.format("%s", mogelijkeEdeleOpBezoek.get(i).getNaam()));
-        			bts.add(bt);
-        			context+= String.format(DomeinController.getText("mogelijkeEdeleOpBezoek1"),mogelijkeEdeleOpBezoek.get(i).getNaam() ,mogelijkeEdeleOpBezoek.get(i).getPrestigepunten()); //AANPASSEN
-        		}
-        		alert.getButtonTypes().setAll(bts);
-        		alert.setContentText(context);
-        		alert.setTitle(DomeinController.getText("mogelijkeEdeleOpBezoek2"));
-        		alert.show();
-        		updateEdele();
-        		updateAantalFichesSpeler();
-        		toonStartSpelbord();
-        	}
+        	meerdereEdelenOpBezoekControle();
+        	updateEdele();
+        	updateAantalFichesSpeler();
+        	toonStartSpelbord();
     	}catch(IllegalArgumentException e) {
     		Alert alert = new Alert(AlertType.ERROR);
 			alert.setTitle(DomeinController.getText("btnNiveauClicked2"));
@@ -662,31 +662,10 @@ public class StartSpelController extends StackPane {
         			b.setGraphic(null);
         		stapelNiveau3.setImage(null);
         	}
-        	List<Edele> mogelijkeEdeleOpBezoek = dc.controleerMogelijkheidTotEdelen();
-        	if(mogelijkeEdeleOpBezoek.size()==1) {
-        		Alert alert = new Alert(AlertType.INFORMATION);
-        		alert.setTitle(DomeinController.getText("btnNiveauClicked1"));
-        		alert.show();
-        		updateEdele();
-        		updateAantalFichesSpeler();
-        		toonStartSpelbord();
-        	}else if(mogelijkeEdeleOpBezoek.size()>1) {
-        		Alert alert = new Alert(AlertType.WARNING);
-        		String context = "";
-        		List<ButtonType> bts= new ArrayList<>();
-        		for(int i =0 ; i<mogelijkeEdeleOpBezoek.size();i++) {
-        			ButtonType bt = new ButtonType(String.format("%s", mogelijkeEdeleOpBezoek.get(i).getNaam()));
-        			bts.add(bt);
-        			context+= String.format(DomeinController.getText("mogelijkeEdeleOpBezoek1"),mogelijkeEdeleOpBezoek.get(i).getNaam() ,mogelijkeEdeleOpBezoek.get(i).getPrestigepunten()); //AANPASSEN
-        		}
-        		alert.getButtonTypes().setAll(bts);
-        		alert.setContentText(context);
-        		alert.setTitle(DomeinController.getText("mogelijkeEdeleOpBezoek2"));
-        		alert.show();
-        		updateEdele();
-        		updateAantalFichesSpeler();
-        		toonStartSpelbord();
-        	}
+        	meerdereEdelenOpBezoekControle();
+        	updateEdele();
+        	updateAantalFichesSpeler();
+        	toonStartSpelbord();
     	}catch(IllegalArgumentException e) {
     		Alert alert = new Alert(AlertType.ERROR);
 			alert.setTitle(DomeinController.getText("btnNiveauClicked2"));

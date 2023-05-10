@@ -113,10 +113,6 @@ public class Spel {
 					tmpLijstEdelenSpeler.add(edeleInSpel.get(i));
 				}
 		}
-		if(tmpLijstEdelenSpeler.size()==1) {
-			huidigeSpeler.voegEdeleToe(tmpLijstEdelenSpeler.get(0)); 
-			edeleInSpel.remove(tmpLijstEdelenSpeler.get(0));
-		}
 		return tmpLijstEdelenSpeler;
 	}
 	
@@ -283,7 +279,7 @@ public class Spel {
 		return spelers;
 	}
 	
-	public List<Edele> getEdeleSpelers() {
+	public List<Edele> getEdeleInSpel() {
 		return edeleInSpel;
 	}
 	
