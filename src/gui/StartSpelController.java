@@ -425,7 +425,7 @@ public class StartSpelController extends StackPane {
     	btnSaffierSpel.setOnAction(this::btnFicheClicked);    	
     	btnSmaragdSpel.setDisable(false);
     	btnSmaragdSpel.setOnAction(this::btnFicheClicked);
-    	}
+    }
     
     void btnFicheClicked(ActionEvent event) {
     	int kolom;
@@ -451,7 +451,7 @@ public class StartSpelController extends StackPane {
 	    		btnVolgende.setDisable(!standVanZakenKnopVolgende);
 	        	btnStartRonde.setDisable(!standVanZakenKnopRonde);
 	        	if(dc.getTmpLijstSpeler().size() + dc.getFichesHuidigeSpeler().size() > 10) {
-	        		verwijderExtraFiches(tmpLijstSpeler);
+	        		controleerTeVeelAantalFiches(tmpLijstSpeler);
 	        		tmpLijstSpeler = dc.getTmpLijstSpeler();
 	        	}
 	        	dc.voegTmpLijstFichesToeAanPermLijst();
@@ -461,10 +461,16 @@ public class StartSpelController extends StackPane {
 	    		alert.show();
     		 }
 	    	else {
-	    		Alert alert = new Alert(AlertType.INFORMATION);
-	    		alert.setTitle(DomeinController.getText("btnFicheClicked2"));	
-	    		alert.setContentText(String.format(DomeinController.getText("btnFicheClicked3"), soort.toString().toLowerCase()));
-	    		alert.showAndWait();
+	    		if(totaalAantalInLijst(dc.getTmpLijstSpeler()) + totaalAantalInLijst(dc.getFichesHuidigeSpeler()) > 10) {
+	    			controleerTeVeelAantalFiches(tmpLijstSpeler);
+	        		tmpLijstSpeler = dc.getTmpLijstSpeler();
+	        	}
+	    		else {
+	    			Alert alert = new Alert(AlertType.INFORMATION);
+		    		alert.setTitle(DomeinController.getText("btnFicheClicked2"));	
+		    		alert.setContentText(String.format(DomeinController.getText("btnFicheClicked3"), soort.toString().toLowerCase()));
+		    		alert.showAndWait();
+	    		}
 	    	}
 	    	
 	    	// vergeet niet size == 2 moet nog gedaan w
@@ -484,6 +490,42 @@ public class StartSpelController extends StackPane {
     	meerdereEdelenOpBezoekControle();
     	updateEdele();
     	toonStartSpelbord();
+    }
+    
+    private int totaalAantalInLijst(List<EdelsteenAantal> lijst) {
+    	int aantal = 0;
+    	
+    	for(EdelsteenAantal i : lijst) {
+    		aantal += i.getAantal();
+    	}
+    	
+    	return aantal;
+    }
+    
+    private void controleerTeVeelAantalFiches(List<EdelsteenAantal> tmpLijstSpeler) {
+    	Alert alert = new Alert(AlertType.WARNING);
+        String context = "";
+        List<ButtonType> bts= new ArrayList<>();
+        for(int i = 0 ; i < tmpLijstSpeler.size();i++) {
+        	ButtonType bt = new ButtonType(String.format("%s", tmpLijstSpeler.get(i).getSoort().name().toLowerCase()));
+        	bts.add(bt);
+        	context+= String.format("verwijder de fiche %s", tmpLijstSpeler.get(i).getSoort().name().toLowerCase()); //AANPASSEN
+        }
+        alert.getButtonTypes().setAll(bts);
+        alert.setContentText(context);
+        alert.setTitle("JE HEBT TE VEEL FICHES TUT");
+        		
+        Optional<ButtonType> result = alert.showAndWait();
+        for(ButtonType bt : bts) {
+        	if(result.get() == bt) {
+        		String naam = bt.getText();
+        		for(EdelsteenAantal ea : tmpLijstSpeler) {
+        			if(naam.equals(ea.getSoort().name().toLowerCase())) {
+        				dc.verwijder1FicheUitTmpLijst(ea);
+        			}
+        		}
+        	}
+       	}
     }
     
     private void controleerAlDrieFichesGekozen() {
@@ -513,16 +555,6 @@ public class StartSpelController extends StackPane {
     		btnVolgende.setDisable(!standVanZakenKnopVolgende);
         	btnStartRonde.setDisable(!standVanZakenKnopRonde);
     	}
-    }
-    
-    private void verwijderExtraFiches(List<EdelsteenAantal> tmpLijstSpeler) {
-    	ChoiceBox<EdelsteenAantal> choicebox = new ChoiceBox<EdelsteenAantal>();
-    	for(EdelsteenAantal fiche : tmpLijstSpeler) {
-    		choicebox.getItems().add(fiche);
-    	}
-    	
-    	EdelsteenAantal value = choicebox.getValue();
-    	dc.verwijder1FicheUitTmpLijst(value);
     }
 
     @FXML

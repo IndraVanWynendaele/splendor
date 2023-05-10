@@ -32,12 +32,12 @@ public class Speler {
 		this.geboortejaar = geboortejaar;
 	}
 	
-	private void ficheBegin() { // OPGEPAST AANGEPAST 
-		edelsteenfichesInBezit.add(new EdelsteenAantal(50,EdelsteenSoort.DIAMANT));
-		edelsteenfichesInBezit.add(new EdelsteenAantal(50,EdelsteenSoort.ONYX));
-		edelsteenfichesInBezit.add(new EdelsteenAantal(50,EdelsteenSoort.ROBIJN));
-		edelsteenfichesInBezit.add(new EdelsteenAantal(50,EdelsteenSoort.SAFFIER));
-		edelsteenfichesInBezit.add(new EdelsteenAantal(50,EdelsteenSoort.SMARAGD));
+	private void ficheBegin() { // OPGEPAST AANGEPAST
+		edelsteenfichesInBezit.add(new EdelsteenAantal(1,EdelsteenSoort.DIAMANT));
+		edelsteenfichesInBezit.add(new EdelsteenAantal(2,EdelsteenSoort.ONYX));
+		edelsteenfichesInBezit.add(new EdelsteenAantal(2,EdelsteenSoort.ROBIJN));
+		edelsteenfichesInBezit.add(new EdelsteenAantal(2,EdelsteenSoort.SAFFIER));
+		edelsteenfichesInBezit.add(new EdelsteenAantal(2,EdelsteenSoort.SMARAGD));
 	}
 	
 	private void bonussenBegin() {

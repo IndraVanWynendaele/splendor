@@ -17,7 +17,7 @@ public class Spel {
 	private List<Edele> edelen, beschikbareEdelenSpeler = new ArrayList<>();
 	private List<Edele> edeleInSpel;
 	private List<Speler> winnaars;
-	private static final int prestigePunten = 200; // OPGEPAST AANGEPAST
+	private static final int prestigePunten = 15;
 	
 	
 	public Spel() {
