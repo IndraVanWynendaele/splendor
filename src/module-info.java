@@ -1,4 +1,4 @@
-module SceneBuilderVoorbeeld {
+module splendor {
 	exports gui;
 	exports main;
 

@@ -149,7 +149,7 @@
                         <ImageView fx:id="imgKaartSpeler12" fitHeight="120.0" fitWidth="120.0" layoutX="470.0" layoutY="675.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="4" GridPane.rowIndex="5" />
                         <ImageView fx:id="imgKaartSpeler13" fitHeight="120.0" fitWidth="120.0" layoutX="637.0" layoutY="675.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.rowIndex="6" />
                         <ImageView fx:id="imgKaartSpeler14" fitHeight="120.0" fitWidth="120.0" layoutX="470.0" layoutY="805.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="4" GridPane.rowIndex="6" />
-                        <Button fx:id="btnSmaragdSpeler" mnemonicParsing="false" style="-fx-background-color: null;">
+                        <Button fx:id="btnSmaragdSpeler" disable="true" mnemonicParsing="false" style="-fx-background-color: null;">
                            <graphic>
                               <ImageView disable="true" fitHeight="70.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -158,7 +158,7 @@
                               </ImageView>
                            </graphic>
                         </Button>
-                        <Button fx:id="btnOnyxSpeler" mnemonicParsing="false" style="-fx-background-color: null;" GridPane.rowIndex="1">
+                        <Button fx:id="btnOnyxSpeler" disable="true" mnemonicParsing="false" style="-fx-background-color: null;" GridPane.rowIndex="1">
                            <graphic>
                               <ImageView disable="true" fitHeight="70.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -167,7 +167,7 @@
                               </ImageView>
                            </graphic>
                         </Button>
-                        <Button fx:id="btnDiamantSpeler" mnemonicParsing="false" style="-fx-background-color: null;" GridPane.rowIndex="2">
+                        <Button fx:id="btnDiamantSpeler" disable="true" mnemonicParsing="false" style="-fx-background-color: null;" GridPane.rowIndex="2">
                            <graphic>
                               <ImageView disable="true" fitHeight="70.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -176,7 +176,7 @@
                               </ImageView>
                            </graphic>
                         </Button>
-                        <Button fx:id="btnSaffierSpeler" mnemonicParsing="false" style="-fx-background-color: null;" GridPane.rowIndex="3">
+                        <Button fx:id="btnSaffierSpeler" disable="true" mnemonicParsing="false" style="-fx-background-color: null;" GridPane.rowIndex="3">
                            <graphic>
                               <ImageView disable="true" fitHeight="70.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -185,7 +185,7 @@
                               </ImageView>
                            </graphic>
                         </Button>
-                        <Button fx:id="btnRobijnSpeler" mnemonicParsing="false" style="-fx-background-color: null;" GridPane.rowIndex="4">
+                        <Button fx:id="btnRobijnSpeler" disable="true" mnemonicParsing="false" style="-fx-background-color: null;" GridPane.rowIndex="4">
                            <graphic>
                               <ImageView disable="true" fitHeight="70.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true">
                                  <image>

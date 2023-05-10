@@ -41,6 +41,10 @@ public class DomeinController {
 		s.maakZichtbareOntwikkelingskaarten();
 	}
 	
+	public List<EdelsteenAantal> getHuidigeSpelerdelsteenfichesInBezit() {
+		return s.getHuidigeSpeler().getEdelsteenfichesInBezit();
+	}
+	
 	public boolean meldAan(Speler sp) {
 		if(sRepo.geefSpeler(sp.getGebruikersnaam(), sp.getGeboortejaar())!= null) {
 			s.meldAan(sp);
