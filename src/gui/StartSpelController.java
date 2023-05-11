@@ -51,7 +51,6 @@ public class StartSpelController extends StackPane {
 		try {
 			loader.load();
 			toonStartSpelbord();
-//			rb = dc.getRb();
 			
 			btnFicheKiezen.setText(DomeinController.getText("btnFicheKiezen"));
 			btnKaartKopen.setText(DomeinController.getText("btnKaartKopen"));
@@ -255,10 +254,6 @@ public class StartSpelController extends StackPane {
 				}
 				
 			}
-		// for lijst edelen in bezit
-		// for lijst zichbare edelen
-		// if bonus edelen spel == bonus edelen speler
-		// remove image edele spel ??
 	}
 		
 	private String toString(int aantal) {

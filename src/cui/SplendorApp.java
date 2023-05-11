@@ -96,10 +96,6 @@ public class SplendorApp {
 		uitvoerGeg += String.format("\nEdesteenfiche in bezit:%7s","");
 		
 		for(SpelerDTO speler: spelersDTO) {
-//			List<EdelsteenAantal> edelsteenfichesInBezit=speler.edelsteenfichesInBezit();
-//			for(EdelsteenAantal o:edelsteenfichesInBezit) {
-//				uitvoerGeg += String.format("%15s:%d", o.getSoort().toString(),o.getAantal());
-//			}
 			uitvoerGeg += String.format("%15s", speler.edelsteenfichesInBezit().isEmpty()==true?0: speler.edelsteenfichesInBezit());
 		}
 		uitvoerGeg += String.format("\nEdelen in bezit:%14s","");
@@ -256,9 +252,7 @@ public class SplendorApp {
 				System.out.println("Verkeerde invoer, geboortejaar moet een getal zijn");
 			}catch(IllegalArgumentException e) {
 				System.out.println(e.getMessage());
-			}/*finally {
-				input.nextLine();
-			} */
+			}
 		}while(!finished);
 	} 
 }

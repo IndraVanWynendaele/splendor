@@ -23,7 +23,6 @@ public class WinnaarsOverzichtController extends StackPane{
 	private DomeinController dc;
 	private StartSpelController preStartSpelScreen;
 	private List<Speler> winnaars;
-	
 
     @FXML
     private Label lblPrestigepunten;
@@ -76,7 +75,6 @@ public class WinnaarsOverzichtController extends StackPane{
     	
     	try {
     		loader.load();
-//    		rb = dc.getRb();
     		lblSpeler.setText(DomeinController.getText("lblSpeler"));
     		lblPrestigepunten.setText(DomeinController.getText("lblPrestigepunten"));
     		lblWinnaar.setText(DomeinController.getText("lblWinnaar"));

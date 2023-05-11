@@ -21,7 +21,6 @@ public class OverzichtSpelersController extends StackPane{
 
 	private DomeinController dc;
 	private MenuController preMenuScreen;
-//	private ResourceBundle rb;
 	
     @FXML
     private Label lblOverzicht;
@@ -42,7 +41,6 @@ public class OverzichtSpelersController extends StackPane{
 		
 		try {
 			loader.load();
-//			rb = dc.getRb();
 			lblOverzicht.setText(DomeinController.getText("lblOverzicht"));
 			btnTerug.setText(DomeinController.getText("btnTerug"));
 		} catch (IOException ex) {

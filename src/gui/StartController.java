@@ -26,10 +26,6 @@ import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
-/**
- * @author Youna
- *
- */
 public class StartController extends StackPane{
 	private DomeinController dc;
 	public static MediaPlayer mp;
@@ -101,16 +97,7 @@ public class StartController extends StackPane{
     	btnSpelen.setDisable(false);
     	MBTaal.setText(MI_en.getText());
     	dc.setTaal2("en");
-    	btnSpelen.setText(DomeinController.getText("btnSpelen"));
-    	
-//        	btnSpelen.setDisable(false);
-//        	MBTaal.setText(MI_en.getText());
-//        	dc.setTaal("en");
-//        	ResourceBundle rb = ResourceBundle.getBundle("languages.Messages",dc.geefTaal());
-//        	dc.setRb(rb);
-//        	btnSpelen.setText(rb.getString("btnSpelen"));
-        
-
+    	btnSpelen.setText(DomeinController.getText("btnSpelen"));    
     }
 
     @FXML
@@ -119,13 +106,6 @@ public class StartController extends StackPane{
     	MBTaal.setText(MI_nl.getText());
     	dc.setTaal2("nl");
     	btnSpelen.setText(DomeinController.getText("btnSpelen"));
-    	
-//    	btnSpelen.setDisable(false);
-//    	MBTaal.setText(MI_nl.getText());
-//    	dc.setTaal("ln");
-//    	ResourceBundle rb = ResourceBundle.getBundle("languages.Messages",dc.geefTaal());
-//    	dc.setRb(rb);
-//    	btnSpelen.setText(rb.getString("btnSpelen"));
     }
     
     private String percentToText(BigDecimal value) {

@@ -17,10 +17,6 @@ import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 
-/**
- * @author Youna
- *
- */
 public class MenuController extends GridPane{
 	
 	private DomeinController dc;
@@ -44,11 +40,7 @@ public class MenuController extends GridPane{
 
     @FXML
     private Label titelSpel;
-	
-	/**
-	 * @param preStartScreen pruts
-	 * @param dc pruts
-	 */
+
 	public MenuController(StartController preStartScreen, DomeinController dc) {
 		this.preStartScreen = preStartScreen;
 		this.dc = dc;
@@ -59,10 +51,6 @@ public class MenuController extends GridPane{
 			
 		try {
 			loader.load();
-//			rb = dc.getRb();
-//			btnSpelerAanmelden.setText(rb.getString("btnSpelerAanmelden"));
-//			btnOverzichtSpelers.setText(rb.getString("btnOverzichtSpelers"));
-//			btnAppStoppen.setText(rb.getString("btnAppStoppen"));
 			btnSpelerAanmelden.setText(DomeinController.getText("btnSpelerAanmelden"));
 			btnOverzichtSpelers.setText(DomeinController.getText("btnOverzichtSpelers"));
 			btnAppStoppen.setText(DomeinController.getText("btnAppStoppen"));

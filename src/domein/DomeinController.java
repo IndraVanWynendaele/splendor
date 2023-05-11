@@ -10,19 +10,12 @@ import dtos.OntwikkelingskaartDTO;
 import dtos.SpelerDTO;
 import util.TaalHelper;
 
-/**
- * @author Youna
- *
- */
 public class DomeinController {
 
 	private SpelerRepository sRepo;
 	private EdeleRepository eRepo;
 	private OntwikkelingskaartRepository oRepo;
 	private Spel s ;
-	/**
-	 * 
-	 */
 	public List<Speler> spelersInSpel;
 	private Locale taal;
 	private static ResourceBundle rb;
@@ -150,15 +143,6 @@ public class DomeinController {
 	public List<Speler> getWinnaars(){
 		return s.getWinnaars();
 	}
-	
-//	public List<Edele> geefEdelenZichtbaar(){
-//		List<Edele> edelenZichtbaar = new ArrayList<>();
-//		List<Edele> edelen = s.getEdeleInSpel();
-//		for(Edele e: edelen) {
-//			edelenZichtbaar.add(e);
-//		}
-//		return edelenZichtbaar;
-//	}
 	
 	public List<Ontwikkelingskaart> geefOWK1Zichtbaar(){
 		return s.getNiveau1Zichtbaar();

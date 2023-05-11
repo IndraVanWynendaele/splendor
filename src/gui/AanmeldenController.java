@@ -20,16 +20,11 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 
-/**
- * @author Youna
- *
- */
 public class AanmeldenController extends StackPane{
 
 	private DomeinController dc;
 	private MenuController preMenuScreen;
 	private int aantalSpelersInSpel;
-//	private ResourceBundle rb;
 	
 	@FXML
 	private Button btnLogIn;
@@ -55,10 +50,6 @@ public class AanmeldenController extends StackPane{
 	@FXML
 	private TextField txfGebruikersnaam;
 
-	/**
-	 * @param preMenuScreen
-	 * @param dc
-	 */
 	public AanmeldenController(MenuController preMenuScreen, DomeinController dc) {
 		this.preMenuScreen = preMenuScreen;
 		this.dc = dc;
@@ -72,12 +63,6 @@ public class AanmeldenController extends StackPane{
 			loader.load();
 			setAantalSpelersInSpel(dc.spelersInSpel);
 			knoppenDisable();
-//			rb = dc.getRb();
-//			btnLogIn.setText(rb.getString("btnLogIn"));
-//			btnTerug.setText(rb.getString("btnTerug"));
-//			btnStartSpel.setText(rb.getString("btnStartSpel"));
-//			lblGebruikersnaam.setText(rb.getString("lblGebruikersnaam"));
-//			lblGeboortejaar.setText(rb.getString("lblGeboortejaar"));
 			
 			btnLogIn.setText(DomeinController.getText("btnLogIn"));
 			btnTerug.setText(DomeinController.getText("btnTerug"));
