@@ -21,8 +21,7 @@ public class MenuController extends GridPane{
 	
 	private DomeinController dc;
 	private StartController preStartScreen;
-	private ResourceBundle rb;
-	
+
 	@FXML
     private ImageView BGImage;
 

@@ -82,6 +82,13 @@ public class StartSpelController extends StackPane {
 		btnN3Owk2.setOnAction(this::btnNiveau3Clicked);
 		btnN3Owk3.setOnAction(this::btnNiveau3Clicked);
 		btnN3Owk4.setOnAction(this::btnNiveau3Clicked);
+		//edelsteenfiches spel
+    	btnDiamantSpel.setOnAction(this::btnFicheClicked);    	
+    	btnOnyxSpel.setOnAction(this::btnFicheClicked);    	
+    	btnRobijnSpel.setOnAction(this::btnFicheClicked);    	
+    	btnSaffierSpel.setOnAction(this::btnFicheClicked);    	
+    	btnSmaragdSpel.setOnAction(this::btnFicheClicked);
+
     }
     
 	private void toonStartSpelbord() {
@@ -149,8 +156,7 @@ public class StartSpelController extends StackPane {
 				if(stapelNiveau2.getImage() == null)
 					if(niveau2Buttons.get(i).getGraphic() == null)
 						niveau2Buttons.get(i).setGraphic(null);
-			}
-			else
+			}else
 				niveau2Buttons.get(i).setGraphic(imv);
 		}
 		
@@ -164,8 +170,7 @@ public class StartSpelController extends StackPane {
 				if(stapelNiveau3.getImage() == null)
 					if(niveau3Buttons.get(i).getGraphic() == null)
 						niveau3Buttons.get(i).setGraphic(null);
-			}
-			else
+			}else
 				niveau3Buttons.get(i).setGraphic(imv);
 		}
 		updateAantalFichesSpel();
@@ -378,7 +383,7 @@ public class StartSpelController extends StackPane {
 			
 		knoppenDisable();
 		updateAantalFichesSpeler();
-		updateSpelerOntwikkelingskaarten();// dit staat op de juiste plek AFBLIJVEN
+		updateSpelerOntwikkelingskaarten();
 		if(tmpSpelerLijst.size()==1) {
 			btnVolgende.setDisable(true);
 	    	btnStartRonde.setDisable(false);
@@ -429,19 +434,17 @@ public class StartSpelController extends StackPane {
     	
     	btnVolgende.setDisable(true);
     	btnStartRonde.setDisable(true);
-    	
     	btnFicheKiezen.setDisable(true);
     	
-    	btnDiamantSpel.setDisable(false);
-    	btnDiamantSpel.setOnAction(this::btnFicheClicked);    	
-    	btnOnyxSpel.setDisable(false);
-    	btnOnyxSpel.setOnAction(this::btnFicheClicked);    	
-    	btnRobijnSpel.setDisable(false);
-    	btnRobijnSpel.setOnAction(this::btnFicheClicked);    	
-    	btnSaffierSpel.setDisable(false);
-    	btnSaffierSpel.setOnAction(this::btnFicheClicked);    	
-    	btnSmaragdSpel.setDisable(false);
-    	btnSmaragdSpel.setOnAction(this::btnFicheClicked);
+    	fichesSpelDisable(false);
+    }
+    
+    private void fichesSpelDisable(boolean b) {
+    	btnDiamantSpel.setDisable(b);
+    	btnOnyxSpel.setDisable(b);
+    	btnRobijnSpel.setDisable(b);
+    	btnSaffierSpel.setDisable(b);
+    	btnSmaragdSpel.setDisable(b);
     }
     
     void btnFicheClicked(ActionEvent event) {
