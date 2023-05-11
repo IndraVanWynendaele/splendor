@@ -5,6 +5,7 @@ import java.util.Collections;
 import java.util.List;
 
 import util.EdelsteenSoort;
+import util.TaalHelper;
 
 public class Spel {
 	private List<Speler> spelers;
@@ -17,7 +18,7 @@ public class Spel {
 	private List<Edele> edelen, beschikbareEdelenSpeler = new ArrayList<>();
 	private List<Edele> edeleInSpel;
 	private List<Speler> winnaars;
-	private static final int prestigePunten = 15;
+	private static final int prestigePunten =15;// 50
 	
 	
 	public Spel() {

@@ -13,7 +13,7 @@ import org.junit.jupiter.params.provider.ValueSource;
 
 import domein.DomeinController;
 import domein.Speler;
-import domein.TaalHelper;
+import util.TaalHelper;
 
 class SpelerTest {
 

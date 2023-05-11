@@ -57,11 +57,33 @@ public class StartSpelController extends StackPane {
 			btnKaartKopen.setText(DomeinController.getText("btnKaartKopen"));
 			btnStartRonde.setText(DomeinController.getText("btnStartRonde"));
 			btnVolgende.setText(DomeinController.getText("btnVolgende"));
+			setOnActionMethode();
 			
 		} catch (IOException ex) {
 			throw new RuntimeException(ex);
 		}
 	}
+    private void setOnActionMethode() {
+    	//edelsteenfiches speler
+    	btnSmaragdSpeler.setOnAction(this::btnFicheSpelerClicked);
+		btnSaffierSpeler.setOnAction(this::btnFicheSpelerClicked);
+		btnDiamantSpeler.setOnAction(this::btnFicheSpelerClicked);
+		btnOnyxSpeler.setOnAction(this::btnFicheSpelerClicked);
+		btnRobijnSpeler.setOnAction(this::btnFicheSpelerClicked);
+		//ontwikkelingskaarten niveau 1 2 3
+		btnN1Owk1.setOnAction(this::btnNiveau1Clicked);
+		btnN1Owk2.setOnAction(this::btnNiveau1Clicked);
+		btnN1Owk3.setOnAction(this::btnNiveau1Clicked);
+		btnN1Owk4.setOnAction(this::btnNiveau1Clicked);
+		btnN2Owk1.setOnAction(this::btnNiveau2Clicked);
+		btnN2Owk2.setOnAction(this::btnNiveau2Clicked);
+		btnN2Owk3.setOnAction(this::btnNiveau2Clicked);
+		btnN2Owk4.setOnAction(this::btnNiveau2Clicked);
+		btnN3Owk1.setOnAction(this::btnNiveau3Clicked);
+		btnN3Owk2.setOnAction(this::btnNiveau3Clicked);
+		btnN3Owk3.setOnAction(this::btnNiveau3Clicked);
+		btnN3Owk4.setOnAction(this::btnNiveau3Clicked);
+    }
     
 	private void toonStartSpelbord() {
 		zichtbareEdelen = dc.getEdeleSpel();
@@ -482,42 +504,26 @@ public class StartSpelController extends StackPane {
     	meerdereEdelenOpBezoekControle();
     	updateEdele();
     	toonStartSpelbord();
-    	
+		
+    	ficheVerwijderen(); 
+    }
+    private void ficheVerwijderen() {
     	if(totaalAantalInLijst(dc.getFichesHuidigeSpeler()) > 10) { //while
 	    	
-	    		Alert alert = new Alert(AlertType.INFORMATION);
-	    		alert.setTitle(DomeinController.getText("btnFicheClicked5")); // "je hebt te veel fiches"
-	    		alert.setContentText(String.format(DomeinController.getText("btnFicheClicked6"), soort.name().toLowerCase())); //"klik op één fiche die je wilt verwijderen"
-	    		alert.showAndWait();
-	    		
-	    		btnSmaragdSpeler.setDisable(false);
-	    		btnSmaragdSpeler.setOnAction(this::btnFicheSpelerClicked);
-	
-	    		btnSaffierSpeler.setDisable(false);
-	    		btnSaffierSpeler.setOnAction(this::btnFicheSpelerClicked);
-	
-	    		btnDiamantSpeler.setDisable(false);
-	    		btnDiamantSpeler.setOnAction(this::btnFicheSpelerClicked);
-	
-	    		btnOnyxSpeler.setDisable(false);
-	    		btnOnyxSpeler.setOnAction(this::btnFicheSpelerClicked);
-	
-	    		btnRobijnSpeler.setDisable(false);
-	    		btnRobijnSpeler.setOnAction(this::btnFicheSpelerClicked);
-		   
-//	    		if(totaalAantalInLijst(dc.getFichesHuidigeSpeler()) <= 10) {
-//	    			Alert alert2 = new Alert(AlertType.INFORMATION);
-//		    		alert2.setTitle("Je heb genoeg fiches"); // "je hebt te veel fiches"
-//		    		alert2.setContentText("Je hebt weer 10 fiches"); //"klik op één fiche die je wilt verwijderen"
-//		    		alert2.showAndWait();
-//		    		btnSmaragdSpeler.setDisable(true);
-//		    		btnSaffierSpeler.setDisable(true);
-//		    		btnDiamantSpeler.setDisable(true);
-//		    		btnOnyxSpeler.setDisable(true);
-//		    		btnRobijnSpeler.setDisable(true);
-//	    		}
-	    		
+    		Alert alert = new Alert(AlertType.INFORMATION);
+    		alert.setTitle(DomeinController.getText("btnFicheClicked5")); // "je hebt te veel fiches"
+    		alert.setContentText(String.format(DomeinController.getText("btnFicheClicked6"))); //"klik op één fiche die je wilt verwijderen"
+    		alert.showAndWait();
+    		
+    		setKnoppenSpelerFiches(false);  		
     	}
+    }
+    private void setKnoppenSpelerFiches(boolean b) {
+    	btnSmaragdSpeler.setDisable(b);
+    	btnSaffierSpeler.setDisable(b);
+    	btnDiamantSpeler.setDisable(b);
+		btnOnyxSpeler.setDisable(b);
+		btnRobijnSpeler.setDisable(b);
     }
     
     private void btnFicheSpelerClicked(ActionEvent event) {
@@ -552,6 +558,9 @@ public class StartSpelController extends StackPane {
 		}
 		updateAantalFichesSpel();
     	updateAantalFichesSpeler();
+    	if(totaalAantalInLijst(dc.getFichesHuidigeSpeler()) == 10){
+    		setKnoppenSpelerFiches(true);
+    	}
     	
     }
     
@@ -597,34 +606,24 @@ public class StartSpelController extends StackPane {
     @FXML
     void btnKaartKopenClicked(ActionEvent event) {
     	btnFicheKiezen.setDisable(true);
-    	
-    	btnN1Owk1.setDisable(false);
-    	btnN1Owk1.setOnAction(this::btnNiveau1Clicked);
-        btnN1Owk2.setDisable(false);
-        btnN1Owk2.setOnAction(this::btnNiveau1Clicked);
-        btnN1Owk3.setDisable(false);
-        btnN1Owk3.setOnAction(this::btnNiveau1Clicked);
-        btnN1Owk4.setDisable(false);
-        btnN1Owk4.setOnAction(this::btnNiveau1Clicked);
-        
-        btnN2Owk1.setDisable(false);
-        btnN2Owk1.setOnAction(this::btnNiveau2Clicked);
-        btnN2Owk2.setDisable(false);
-        btnN2Owk2.setOnAction(this::btnNiveau2Clicked);
-        btnN2Owk3.setDisable(false);
-        btnN2Owk3.setOnAction(this::btnNiveau2Clicked);
-        btnN2Owk4.setDisable(false);
-        btnN2Owk4.setOnAction(this::btnNiveau2Clicked);
-        
-        btnN3Owk1.setDisable(false);
-        btnN3Owk1.setOnAction(this::btnNiveau3Clicked);
-        btnN3Owk2.setDisable(false);
-        btnN3Owk2.setOnAction(this::btnNiveau3Clicked);
-        btnN3Owk3.setDisable(false);
-        btnN3Owk3.setOnAction(this::btnNiveau3Clicked);
-        btnN3Owk4.setDisable(false);
-        btnN3Owk4.setOnAction(this::btnNiveau3Clicked);
-        
+    	btnOntwikkelingskaartenSpelDisable(false);
+ 
+    }
+    private void btnOntwikkelingskaartenSpelDisable(boolean b) {
+    	btnN1Owk1.setDisable(b);
+        btnN1Owk2.setDisable(b);
+        btnN1Owk3.setDisable(b);
+        btnN1Owk4.setDisable(b);
+       
+        btnN2Owk1.setDisable(b);
+        btnN2Owk2.setDisable(b);
+        btnN2Owk3.setDisable(b);
+        btnN2Owk4.setDisable(b);
+
+        btnN3Owk1.setDisable(b);
+        btnN3Owk2.setDisable(b);
+        btnN3Owk3.setDisable(b);
+        btnN3Owk4.setDisable(b);
     }
     
     void imageEdelenClicked(MouseEvent event) {
@@ -687,6 +686,8 @@ public class StartSpelController extends StackPane {
         	updateEdele();
         	updateAantalFichesSpeler();
         	toonStartSpelbord();
+        	btnOntwikkelingskaartenSpelDisable(true);
+        	btnKaartKopen.setDisable(true);
         }catch(IllegalArgumentException e) {
     		Alert alert = new Alert(AlertType.ERROR);
 			alert.setTitle(DomeinController.getText("btnNiveauClicked2"));
@@ -711,6 +712,8 @@ public class StartSpelController extends StackPane {
         	updateEdele();
         	updateAantalFichesSpeler();
         	toonStartSpelbord();
+        	btnOntwikkelingskaartenSpelDisable(true);
+        	btnKaartKopen.setDisable(true);
     	}catch(IllegalArgumentException e) {
     		Alert alert = new Alert(AlertType.ERROR);
 			alert.setTitle(DomeinController.getText("btnNiveauClicked2"));
@@ -735,6 +738,8 @@ public class StartSpelController extends StackPane {
         	updateEdele();
         	updateAantalFichesSpeler();
         	toonStartSpelbord();
+        	btnOntwikkelingskaartenSpelDisable(true);
+        	btnKaartKopen.setDisable(true);
     	}catch(IllegalArgumentException e) {
     		Alert alert = new Alert(AlertType.ERROR);
 			alert.setTitle(DomeinController.getText("btnNiveauClicked2"));

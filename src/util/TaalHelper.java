@@ -1,4 +1,4 @@
-package domein;
+package util;
 
 import java.util.Locale;
 import java.util.ResourceBundle;
@@ -9,8 +9,8 @@ public class TaalHelper {
 	private static ResourceBundle rb;
 	
 	public TaalHelper(String taal) {
-		this.taal=new Locale(taal);
-    	rb = ResourceBundle.getBundle("languages.Messages",this.taal);
+		TaalHelper.taal=new Locale(taal);
+    	rb = ResourceBundle.getBundle("languages.Messages",TaalHelper.taal);
 	}
 	
 	public static String getText(String key) {

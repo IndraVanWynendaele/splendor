@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.ResourceBundle;
 
 import util.EdelsteenSoort;
+import util.TaalHelper;
 
 public class Speler {
 	private final String gebruikersnaam;
@@ -33,11 +34,11 @@ public class Speler {
 	}
 	
 	private void ficheBegin() { // OPGEPAST AANGEPAST
-		edelsteenfichesInBezit.add(new EdelsteenAantal(1,EdelsteenSoort.DIAMANT));
-		edelsteenfichesInBezit.add(new EdelsteenAantal(2,EdelsteenSoort.ONYX));
-		edelsteenfichesInBezit.add(new EdelsteenAantal(2,EdelsteenSoort.ROBIJN));
-		edelsteenfichesInBezit.add(new EdelsteenAantal(2,EdelsteenSoort.SAFFIER));
-		edelsteenfichesInBezit.add(new EdelsteenAantal(2,EdelsteenSoort.SMARAGD));
+		edelsteenfichesInBezit.add(new EdelsteenAantal(2,EdelsteenSoort.DIAMANT));//50
+		edelsteenfichesInBezit.add(new EdelsteenAantal(1,EdelsteenSoort.ONYX));//50
+		edelsteenfichesInBezit.add(new EdelsteenAantal(2,EdelsteenSoort.ROBIJN));//50
+		edelsteenfichesInBezit.add(new EdelsteenAantal(2,EdelsteenSoort.SAFFIER));//50
+		edelsteenfichesInBezit.add(new EdelsteenAantal(2,EdelsteenSoort.SMARAGD));//50
 	}
 	
 	private void bonussenBegin() {

@@ -8,6 +8,7 @@ import java.util.ResourceBundle;
 import dtos.EdeleDTO;
 import dtos.OntwikkelingskaartDTO;
 import dtos.SpelerDTO;
+import util.TaalHelper;
 
 /**
  * @author Youna
