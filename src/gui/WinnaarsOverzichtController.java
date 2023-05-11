@@ -69,7 +69,7 @@ public class WinnaarsOverzichtController extends StackPane{
     	MediaPlayer mp = StartController.mp;
     	mp.pause();
     	
-    	String sound2 = "src/sounds/ineedtobealone.mp3";
+    	String sound2 = "src/sounds/winnaarsmuziekje.mp3";
     	Media mediaSound2 = new Media(new File(sound2).toURI().toString());
     	MediaPlayer mp2 = new MediaPlayer(mediaSound2);
     	mp2.play();
