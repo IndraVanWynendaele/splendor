@@ -13,7 +13,4 @@ public enum EdelsteenSoort {
 		
 		return resultaat;
 	}
-	
-	// int meegeven en edelsteensoort terug
-	// omgekeerd ook
 }
