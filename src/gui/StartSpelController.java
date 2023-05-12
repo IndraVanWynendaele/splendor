@@ -415,7 +415,7 @@ public class StartSpelController extends StackPane {
     		stage1.setMinWidth(600);
     		stage1.setMaxHeight(600);
     		stage1.setMaxWidth(600);
-    		stage1.showAndWait();
+    		stage1.show();
     	}
     	
     	geefHuidigeSpeler();
